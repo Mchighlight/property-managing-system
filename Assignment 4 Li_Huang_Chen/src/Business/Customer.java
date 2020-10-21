@@ -5,10 +5,7 @@
  */
 package Business;
 
-/**
- *
- * @author shashank
- */
+
 public class Customer {
     private String firstName;
     private String lastName;

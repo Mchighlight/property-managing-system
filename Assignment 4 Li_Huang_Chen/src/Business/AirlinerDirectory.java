@@ -8,10 +8,7 @@ package Business;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- *
- * @author medas
- */
+
 public class AirlinerDirectory {
     
     private ArrayList<Airliner> airlinerDir;

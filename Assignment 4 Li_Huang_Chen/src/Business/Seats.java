@@ -7,10 +7,7 @@ package Business;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author vennelareddy
- */
+
 public class Seats {
    ArrayList<String> seat;
     

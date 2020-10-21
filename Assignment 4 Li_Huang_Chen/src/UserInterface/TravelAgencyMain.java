@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author medas
- */
+
 public class TravelAgencyMain extends javax.swing.JFrame {
 
     /**

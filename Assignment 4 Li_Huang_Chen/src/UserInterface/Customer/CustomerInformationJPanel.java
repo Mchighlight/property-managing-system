@@ -13,10 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author medas
- */
+
 public class CustomerInformationJPanel extends javax.swing.JPanel {
 
     /**

@@ -8,10 +8,7 @@ package Business;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author vennelareddy
- */
+
 public class CustomerDirectory {
     //public static CustomerDirectory customerDirectory;
     public static List<Customer> customerList;
@@ -20,10 +17,7 @@ public class CustomerDirectory {
        customerList= new ArrayList<Customer>();
     }
     
-//    public static CustomerDirectory getCustomersDirectory(){
-//        customerDirectory = new CustomerDirectory();
-//        return customerDirectory;
-//    } 
+
 
     public void setCustomerList(List<Customer> customerList) {
         this.customerList = customerList;

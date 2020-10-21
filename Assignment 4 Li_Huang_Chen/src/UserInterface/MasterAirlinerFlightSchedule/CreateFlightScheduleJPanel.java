@@ -20,10 +20,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vennelareddy
- */
 public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**

@@ -13,10 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author vennelareddy
- */
+
 public class FlightDirectory {
     private List<Flight> flightDir;
     private Flight flights;
@@ -26,19 +23,33 @@ public class FlightDirectory {
         mockFlightSchedules();
     }
     public void mockFlightSchedules(){
-        String[][] arr = {  {"British Airways","ba01","boston","los angles","01:30","4:30","100.0","Morning","3"},
-                            {"British Airways","ba02","boston","los vegas","01:30","4:30","100.0","Afternoon","3"},
-                            {"American Airways","aa01","boston","los angles","01:30","4:30","100.0","Morning","4"},
-                            {"American Airways","aa02","boston","los vegas","01:30","4:30","100.0","Afternoon","4"},
-                            {"Jet Airways","ja01","boston","los angles","01:30","4:30","100.0","Morning","4"},
-                            {"Jet Airways","ja02","boston","los vegas","01:30","4:30","100.0","Afternoon","4"},
-                            {"Indian Airways","ia01","boston","los angles","01:30","4:30","100.0","Morning","4"},
-                            {"Indian Airways","ia02","boston","los vegas","01:30","4:30","100.0","Evening","4"},
-                            {"Chineese Airways","ca01","boston","los angles","01:30","4:30","100.0","Night","4"},
-                            {"Chineese Airways","ca02","boston","los vegas","01:30","4:30","100.0","Night","4"},
-                            {"Aerlingus Airways","aea01","boston","los angles","01:30","4:30","100.0","Morning","4"},
-                            {"Aerlingus Airways","aea02","boston","los vegas","01:30","4:30","100.0","Morning","4"}
-                         };
+         String[][] arr = { {"Emirates"                ,"EM001", "BOS","DXB","06:00","19:00","100.0","Morning"  ,"13"},
+                           {"Emirates"                ,"EM002", "BOS","DFW","15:00","19:00","100.0","Afternoon","4"},
+                           {"Emirates"                ,"EM003", "DFW","BOS","01:00","05:00","100.0","Midnight" ,"4"},
+                           {"Singapore Airlines"      ,"SA001", "BOS","LAS","07:00","13:00","100.0","Morning"  ,"6"},
+                           {"Singapore Airlines"      ,"SA002", "BOS","JFK","11:00","13:00","100.0","Afternoon","2"},
+                           {"Singapore Airlines"      ,"SA003", "JFK","BOS","08:00","10:00","100.0","Morning"  ,"2"},
+                           {"Cathay Pacific Airways"  ,"CPA001","BOS","HKG","20:00","15:00","100.0","Evening"  ,"19"},
+                           {"Cathay Pacific Airways"  ,"CPA002","HKG","SHA","15:00","17:00","100.0","Afternoon","2"},
+                           {"Cathay Pacific Airways"  ,"CPA003","HKG","BOS","16:00","11:00","100.0","Afternoon" ,"19"},
+                           {"Delta AirLines"          ,"DA001" ,"BOS","LAS","06:00","10:00","100.0","Morning"  ,"6"},
+                           {"Delta AirLines"          ,"DA002" ,"BOS","DFW","01:00","05:00","100.0","Midnight","4"},
+                           {"Delta AirLines"          ,"DA003" ,"BOS","JFK","22:00","00:00","100.0","Evening","2"},
+                           {"JetBlue"                 ,"JB001" ,"BOS","LAS","06:00","12:00","100.0","Morning","6"},
+                           {"JetBlue"                 ,"JB002" ,"BOS","DFW","14:00","18:00","100.0","Afternoon","4"},
+                           {"JetBlue"                 ,"JB003" ,"BOS","EWR","22:00","00:00","100.0","Evening","2"},
+                           {"United Airlines"         ,"UA001" ,"BOS","EWR","00:00","02:00","100.0","Midnight","2"},
+                           {"United Airlines"         ,"UA002" ,"BOS","JFK","15:00","17:00","100.0","Afternoon","2"},
+                           {"United Airlines"         ,"UA003" ,"BOS","LAS","08:00","14:00","100.0","Morning","6"},
+                           {"Spirit Airlines"         ,"SA001" ,"BOS","JFK","14:00","16:00","100.0","Afternoon","2"},
+                           {"Spirit Airlines"         ,"SA002" ,"BOS","DFW","06:00","10:00","100.0","Morning","4"},
+                           {"Spirit Airlines"         ,"SA003" ,"BOS","JFK","21:00","23:00","100.0","Evening","2"},
+                           {"American Airlines"       ,"AA001"  ,"BOS","LAS","09:00","15:00","100.0","Morning","6"},
+                           {"American Airlines"       ,"AA002"  ,"BOS","JFK","00:00","02:00","100.0","Midnight","2"},
+                           {"American Airlines"       ,"AA003"  ,"BOS","SHA","14:00","09:00","100.0","Afternoon","19"},
+        };
+
+
 
         for(int i=0;i<arr.length;i++) {
             Flight temp = new Flight();

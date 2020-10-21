@@ -12,10 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author vennelareddy
- */
+
 public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**

@@ -13,10 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 
-/**
- *
- * @author medas
- */
+
 public class BookingInformationJPanel extends javax.swing.JPanel {
 
     /**

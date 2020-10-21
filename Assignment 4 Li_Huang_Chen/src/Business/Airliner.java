@@ -5,10 +5,7 @@
  */
 package Business;
 
-/**
- *
- * @author medas
- */
+
 public class Airliner {
     
     private String name;

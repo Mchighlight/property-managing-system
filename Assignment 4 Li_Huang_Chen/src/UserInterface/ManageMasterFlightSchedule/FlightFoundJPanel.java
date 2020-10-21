@@ -14,10 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author shashank
- */
+
 public class FlightFoundJPanel extends javax.swing.JPanel {
 
     /**

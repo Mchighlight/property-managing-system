@@ -17,10 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author shashank
- */
+
 public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 
     /**
