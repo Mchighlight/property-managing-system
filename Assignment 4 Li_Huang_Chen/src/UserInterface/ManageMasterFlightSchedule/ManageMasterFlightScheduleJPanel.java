@@ -5,6 +5,7 @@
  */
 package UserInterface.ManageMasterFlightSchedule;
 
+import Business.Airliner;
 import Business.AirlinerDirectory;
 import Business.Flight;
 import Business.FlightDirectory;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +38,25 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         this.flightDir = flightDir;
         populateTable();
         otodComboBox.setSelectedItem("Select Option");
+        flighterSelectDestinationComboBox();
     }
+    
+    
+        
+    public void flighterSelectDestinationComboBox(){
+        ArrayList<String> airlinerArray = new ArrayList();
+        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+        cBmodel.addElement("Select Destination");
+        for(Flight flighter: flightDir.getFlightDir()){
+            if(airlinerArray.contains(flighter.getDestination())){continue;}
+            else {
+                airlinerArray.add(flighter.getDestination());
+                cBmodel.addElement(flighter.getDestination());
+            }
+        }
+        DestinationCombobox.setModel(cBmodel);
+    }
+
         public void populateTable(){
         DefaultTableModel dtm = (DefaultTableModel)tblMasterFlight.getModel();
         dtm.setRowCount(0);
@@ -76,6 +96,7 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         dateTxtField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         otodComboBox = new javax.swing.JComboBox<>();
+        DestinationCombobox = new javax.swing.JComboBox<>();
 
         tblMasterFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,6 +142,13 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
+        DestinationCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DestinationCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DestinationComboboxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +158,10 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -174,9 +205,14 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(dateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(searchBtn)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(searchBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,8 +285,13 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_otodComboBoxActionPerformed
 
+    private void DestinationComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestinationComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DestinationComboboxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> DestinationCombobox;
     private javax.swing.JTextField dateTxtField;
     private javax.swing.JTextField destinationTxtField;
     private javax.swing.JLabel jLabel1;
