@@ -37,16 +37,17 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         this.cardSequenceJPanel = cardSequenceJPanel;
         this.flightDir = flightDir;
         populateTable();
-        otodComboBox.setSelectedItem("Select Option");
+        //otodComboBox.setSelectedItem("Select Option");
         flighterSelectDestinationComboBox();
-    }
-    
-    
+        flighterSelectDepartingComboBox();
+        flighterSelectTimeComboBox();
+        flighterSelectDateComboBox();
         
+    }
     public void flighterSelectDestinationComboBox(){
         ArrayList<String> airlinerArray = new ArrayList();
         DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
-        cBmodel.addElement("Select Destination");
+        cBmodel.addElement("Where to");
         for(Flight flighter: flightDir.getFlightDir()){
             if(airlinerArray.contains(flighter.getDestination())){continue;}
             else {
@@ -55,6 +56,47 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             }
         }
         DestinationCombobox.setModel(cBmodel);
+    }
+    
+    
+        public void flighterSelectDepartingComboBox(){
+        ArrayList<String> airlinerArray = new ArrayList();
+        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+        cBmodel.addElement("Departing from");
+        for(Flight flighter: flightDir.getFlightDir()){
+            if(airlinerArray.contains(flighter.getSource())){continue;}
+            else {
+                airlinerArray.add(flighter.getSource());
+                cBmodel.addElement(flighter.getSource());
+            }
+        }
+        DepartingCombobox.setModel(cBmodel);
+    }
+         public void flighterSelectTimeComboBox(){
+        ArrayList<String> airlinerArray = new ArrayList();
+        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+        cBmodel.addElement("Preferred time");
+        for(Flight flighter: flightDir.getFlightDir()){
+            if(airlinerArray.contains(flighter.getOtod ())){continue;}
+            else {
+                airlinerArray.add(flighter.getOtod());
+                cBmodel.addElement(flighter.getOtod());
+            }
+        }
+        PreferredTimeCombobox.setModel(cBmodel);
+    }
+            public void flighterSelectDateComboBox(){
+        ArrayList<String> airlinerArray = new ArrayList();
+        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+        cBmodel.addElement("Date");
+        for(Flight flighter: flightDir.getFlightDir()){
+            if(airlinerArray.contains(flighter.getDate ())){continue;}
+            else {
+               // airlinerArray.add(flighter.getDate());
+                cBmodel.addElement(flighter.getDate());
+            }
+        }
+        DateCombobox.setModel(cBmodel);
     }
 
         public void populateTable(){
@@ -87,16 +129,11 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMasterFlight = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        destinationTxtField = new javax.swing.JTextField();
-        sourceTxtField = new javax.swing.JTextField();
-        dateTxtField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
-        otodComboBox = new javax.swing.JComboBox<>();
         DestinationCombobox = new javax.swing.JComboBox<>();
+        DepartingCombobox = new javax.swing.JComboBox<>();
+        PreferredTimeCombobox = new javax.swing.JComboBox<>();
+        DateCombobox = new javax.swing.JComboBox<>();
 
         tblMasterFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,20 +151,6 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("MASTER FLIGHT INFORMATION");
 
-        jLabel2.setText("Destination");
-
-        jLabel3.setText("Source");
-
-        jLabel4.setText("Preferred time of Day");
-
-        jLabel5.setText("Date (dd-mm-yyyy)");
-
-        destinationTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                destinationTxtFieldActionPerformed(evt);
-            }
-        });
-
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,17 +158,31 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
-        otodComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option", "Morning", "Afternoon", "Evening", "Night" }));
-        otodComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                otodComboBoxActionPerformed(evt);
-            }
-        });
-
-        DestinationCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DestinationCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  " }));
         DestinationCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DestinationComboboxActionPerformed(evt);
+            }
+        });
+
+        DepartingCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  " }));
+        DepartingCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartingComboboxActionPerformed(evt);
+            }
+        });
+
+        PreferredTimeCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  " }));
+        PreferredTimeCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreferredTimeComboboxActionPerformed(evt);
+            }
+        });
+
+        DateCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  " }));
+        DateCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DateComboboxActionPerformed(evt);
             }
         });
 
@@ -156,30 +193,22 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(128, 128, 128)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(destinationTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                    .addComponent(sourceTxtField)
-                                    .addComponent(dateTxtField)
-                                    .addComponent(otodComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(309, 309, 309)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(DepartingCombobox, 0, 129, Short.MAX_VALUE)
+                            .addComponent(DestinationCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PreferredTimeCombobox, 0, 107, Short.MAX_VALUE)
+                            .addComponent(DateCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,40 +217,26 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(destinationTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(sourceTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(otodComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(dateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(searchBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DepartingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                        .addGap(59, 59, 59)
+                        .addComponent(searchBtn)))
+                .addContainerGap(623, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void destinationTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinationTxtFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_destinationTxtFieldActionPerformed
-
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
+        /*// TODO add your handling code here:
         if("".equals(destinationTxtField.getText())){
             destinationTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel2.setForeground(Color.RED);
@@ -271,38 +286,35 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
         clearSearchFields();
+        */
     }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void clearSearchFields(){
-        destinationTxtField.setText("");
-        sourceTxtField.setText("");
-        otodComboBox.setSelectedItem("Select Option");
-        dateTxtField.setText("");
-    }
     
-    private void otodComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otodComboBoxActionPerformed
+    private void DepartingComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartingComboboxActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_otodComboBoxActionPerformed
+    }//GEN-LAST:event_DepartingComboboxActionPerformed
 
     private void DestinationComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DestinationComboboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DestinationComboboxActionPerformed
 
+    private void PreferredTimeComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreferredTimeComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PreferredTimeComboboxActionPerformed
+
+    private void DateComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DateComboboxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> DateCombobox;
+    private javax.swing.JComboBox<String> DepartingCombobox;
     private javax.swing.JComboBox<String> DestinationCombobox;
-    private javax.swing.JTextField dateTxtField;
-    private javax.swing.JTextField destinationTxtField;
+    private javax.swing.JComboBox<String> PreferredTimeCombobox;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> otodComboBox;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JTextField sourceTxtField;
     private javax.swing.JTable tblMasterFlight;
     // End of variables declaration//GEN-END:variables
 }
