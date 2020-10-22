@@ -114,16 +114,28 @@ public class FlightDirectory {
         this.airDir = airDir;
     }
 
+    
+    
+      public Flight Searchflight (String FlightNumber){
+        for (Flight flight:flightDir){
+            if (flight.getFlightNumber().equals(FlightNumber)){
+            return flight;
+            }
+        }
+    return null;
+    }
+      
+      
     public ArrayList<Flight> searchMaster(String destination, String source, String otod, String date) {
         ArrayList<Flight> flightDirFiltered = new ArrayList<>();
         for (Flight f:flightDir)
         {
-            //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
             String strDate = "";
             try {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 strDate = dateFormat.format(f.getDate());
-                //System.out.println("Converted String: " + strDate);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
