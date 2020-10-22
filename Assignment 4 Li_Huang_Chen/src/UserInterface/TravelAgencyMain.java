@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author medas
- */
+
 public class TravelAgencyMain extends javax.swing.JFrame {
 
     /**
@@ -76,6 +73,12 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         manageAirlinersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageAirlinersBtnActionPerformed(evt);
+            }
+        });
+
+        airlinerSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                airlinerSelectComboBoxActionPerformed(evt);
             }
         });
 
@@ -189,6 +192,10 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
     }//GEN-LAST:event_customerBtnActionPerformed
+
+    private void airlinerSelectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerSelectComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_airlinerSelectComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

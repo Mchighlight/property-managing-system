@@ -13,10 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author medas
- */
+
 public class ViewAirlinerJPanel extends javax.swing.JPanel {
 
     /**

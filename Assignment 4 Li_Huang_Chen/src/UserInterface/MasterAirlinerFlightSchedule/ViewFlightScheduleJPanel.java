@@ -14,10 +14,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- 
- * @author vennelareddy
- */
+
 public class ViewFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**

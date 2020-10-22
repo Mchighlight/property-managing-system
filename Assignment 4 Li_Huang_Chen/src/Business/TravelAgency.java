@@ -5,10 +5,7 @@
  */
 package Business;
 
-/**
- *
- * @author shashank
- */
+
 public class TravelAgency {
     
     private AirlinerDirectory airlineDir;

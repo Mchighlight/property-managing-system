@@ -14,10 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author shashank
- */
+
 public class FlightFoundJPanel extends javax.swing.JPanel {
 
     /**
@@ -121,11 +118,11 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backBtn)
                     .addComponent(jLabel1))
-                .addGap(37, 37, 37)
+                .addGap(69, 69, 69)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(viewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,12 +139,17 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
         if(selectedRow > -1){
            Flight selectedFlight = flightDirFiltered.get(selectedRow);
            FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardSequenceJPanel, selectedFlight);
-           cardSequenceJPanel.add("FlightFoundDetailJPanel",panel);
+           cardSequenceJPanel.add("FlightDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
            layout.next(cardSequenceJPanel);
         }else{
             JOptionPane.showMessageDialog(null, "Please select a row");
         }
+
+        
+     
+       
+        
     }//GEN-LAST:event_viewDetailsBtnActionPerformed
 
 

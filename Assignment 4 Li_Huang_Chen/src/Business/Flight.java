@@ -7,10 +7,7 @@ package Business;
 
 import java.util.Date;
 
-/**
- *
- * @author medas
- */
+
 public class Flight {
     
     private String owner;
