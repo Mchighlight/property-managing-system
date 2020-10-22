@@ -17,6 +17,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import Images.StyledButton;
 
 
 public class TravelAgencyMain extends javax.swing.JFrame {
@@ -33,6 +34,12 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         this.flightDir = new FlightDirectory();
         this.customerDir = new CustomerDirectory();
         airlinerSelectComboBoxBuild();
+        manageAirlinersBtn.setUI(new StyledButton());
+        goBtn.setUI(new StyledButton());
+        travelAgencyBtn.setUI(new StyledButton());
+        customerBtn.setUI(new StyledButton());
+        
+              
     }
     
     public void airlinerSelectComboBoxBuild(){
@@ -69,8 +76,11 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        navJPanel.setBackground(new java.awt.Color(32, 32, 32));
         navJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        manageAirlinersBtn.setBackground(new java.awt.Color(112, 112, 112));
+        manageAirlinersBtn.setForeground(new java.awt.Color(255, 223, 108));
         manageAirlinersBtn.setText("Manage Airliners");
         manageAirlinersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +122,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(navJPanel);
 
+        cardSequenceJPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardSequenceJPanel.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(cardSequenceJPanel);
 
