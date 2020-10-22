@@ -17,6 +17,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import Images.StyledButton;
 
 
 public class TravelAgencyMain extends javax.swing.JFrame {
@@ -33,6 +34,12 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         this.flightDir = new FlightDirectory();
         this.customerDir = new CustomerDirectory();
         airlinerSelectComboBoxBuild();
+        manageAirlinersBtn.setUI(new StyledButton());
+        goBtn.setUI(new StyledButton());
+        travelAgencyBtn.setUI(new StyledButton());
+        customerBtn.setUI(new StyledButton());
+        
+              
     }
     
     public void airlinerSelectComboBoxBuild(){
@@ -66,60 +73,97 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         travelAgencyBtn = new javax.swing.JButton();
         customerBtn = new javax.swing.JButton();
         cardSequenceJPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        navJPanel.setBackground(new java.awt.Color(32, 32, 32));
         navJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        manageAirlinersBtn.setBackground(new java.awt.Color(63, 63, 63));
+        manageAirlinersBtn.setForeground(new java.awt.Color(255, 223, 108));
         manageAirlinersBtn.setText("Manage Airliners");
         manageAirlinersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageAirlinersBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(manageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 125, -1, -1));
+        navJPanel.add(manageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, 40));
 
+        airlinerSelectComboBox.setBackground(new java.awt.Color(63, 63, 63));
+        airlinerSelectComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        airlinerSelectComboBox.setForeground(new java.awt.Color(255, 223, 108));
         airlinerSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 airlinerSelectComboBoxActionPerformed(evt);
             }
         });
-        navJPanel.add(airlinerSelectComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 195, -1, -1));
+        navJPanel.add(airlinerSelectComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 50));
 
+        goBtn.setBackground(new java.awt.Color(63, 63, 63));
+        goBtn.setForeground(new java.awt.Color(255, 223, 108));
         goBtn.setText("Go");
         goBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(goBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 228, -1, -1));
+        navJPanel.add(goBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, 30));
 
+        travelAgencyBtn.setBackground(new java.awt.Color(63, 63, 63));
+        travelAgencyBtn.setForeground(new java.awt.Color(255, 233, 108));
         travelAgencyBtn.setText("Travel Agency");
         travelAgencyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 travelAgencyBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(travelAgencyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 434, -1, -1));
+        navJPanel.add(travelAgencyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 170, 40));
 
+        customerBtn.setBackground(new java.awt.Color(63, 63, 63));
+        customerBtn.setForeground(new java.awt.Color(255, 223, 108));
         customerBtn.setText("Customer");
         customerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(customerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 491, 132, -1));
+        navJPanel.add(customerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 180, 40));
 
         splitPane.setLeftComponent(navJPanel);
 
+        cardSequenceJPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardSequenceJPanel.setLayout(new java.awt.CardLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 191, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        cardSequenceJPanel.add(jPanel1, "card2");
+
         splitPane.setRightComponent(cardSequenceJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,6 +254,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     private javax.swing.JPanel cardSequenceJPanel;
     private javax.swing.JButton customerBtn;
     private javax.swing.JButton goBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton manageAirlinersBtn;
     private javax.swing.JPanel navJPanel;
     private javax.swing.JSplitPane splitPane;
