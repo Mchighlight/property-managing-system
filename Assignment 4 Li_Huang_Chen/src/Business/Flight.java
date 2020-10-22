@@ -138,4 +138,8 @@ public class Flight {
         this.noOfSeats = noOfSeats;
     }
     
+    public String toString(){
+        return flightNumber;
+    }
+    
 }

@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
@@ -35,12 +36,15 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
     private JPanel cardSequenceJPanel;
     private FlightDirectory flightDir;
     DefaultTableModel  dtm;
+    ArrayList<Flight> Multiflightlist;
     public ManageMasterFlightScheduleJPanel(JPanel cardSequenceJPanel, FlightDirectory flightDir) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         initComponents();
         this.cardSequenceJPanel = cardSequenceJPanel;
         this.flightDir = flightDir;
+        Multiflightlist = new ArrayList<>();
         populateTable();
+     
         flighterSelectDestinationComboBox();
         flighterSelectDepartingComboBox();
         flighterSelectTimeComboBox();
@@ -50,8 +54,12 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         AutoCompleteDecorator.decorate(PreferredTimeCombobox);
         AutoCompleteDecorator.decorate(DateCombobox);
         
-        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblMasterFlight.getModel());
+        tblMasterFlight.setRowSorter(sorter);
+        TableRowSorter<TableModel> sorter2 = new TableRowSorter<TableModel>(tblMultipleFlight.getModel());
+        tblMultipleFlight.setRowSorter(sorter2);
     }
+  
     public void flighterSelectDestinationComboBox(){
         ArrayList<String> airlinerArray = new ArrayList();
         DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
@@ -114,7 +122,25 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         for(Flight a : flightDir.getFlightDir()){
             Object[] row = new Object[dtm.getColumnCount()];
             row[0] = a.getOwner();
-            row[1] = a.getFlightNumber();
+            row[1] = a;
+            row[2] = a.getSource();
+            row[3] = a.getDestination();
+            row[4] = a.getDepTime();
+            row[5] = a.getArrTime();
+            row[6] = a.getDuration();
+            row[7] = a.getDate();
+            row[8] = a.getOtod();
+            dtm.addRow(row);
+        }
+    }
+         public void populateTable(ArrayList<Flight> f){
+        dtm = (DefaultTableModel)tblMultipleFlight.getModel();
+        dtm.setRowCount(0);
+        
+        for(Flight a : f){
+            Object[] row = new Object[dtm.getColumnCount()];
+            row[0] = a.getOwner();
+            row[1] = a;
             row[2] = a.getSource();
             row[3] = a.getDestination();
             row[4] = a.getDepTime();
@@ -142,7 +168,11 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         DepartingCombobox = new javax.swing.JComboBox<>();
         PreferredTimeCombobox = new javax.swing.JComboBox<>();
         DateCombobox = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        bookjButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMultipleFlight = new javax.swing.JTable();
+        addjButton = new javax.swing.JButton();
+        multibookjButton = new javax.swing.JButton();
 
         tblMasterFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,10 +225,37 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Book");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bookjButton.setText("Book");
+        bookjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bookjButtonActionPerformed(evt);
+            }
+        });
+
+        tblMultipleFlight.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Airliner", "Flight Number", "Departing from", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of Day"
+            }
+        ));
+        jScrollPane2.setViewportView(tblMultipleFlight);
+
+        addjButton.setText("Add");
+        addjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addjButtonActionPerformed(evt);
+            }
+        });
+
+        multibookjButton.setText("Multi-Book");
+        multibookjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multibookjButtonActionPerformed(evt);
             }
         });
 
@@ -213,23 +270,28 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DepartingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(DateCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(49, 49, 49)
                                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(61, 61, 61)
+                                        .addComponent(addjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(59, 59, 59)
+                                        .addComponent(multibookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(47, 47, 47)))))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                                        .addComponent(bookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,21 +301,26 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DepartingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DepartingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DateCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(311, Short.MAX_VALUE))
+                            .addComponent(addjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(multibookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -367,25 +434,49 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_DateComboboxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bookjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookjButtonActionPerformed
         
-                int selectedRow =tblMasterFlight.getSelectedRow();
-                Flight result=  flightDir.Searchflight((String) tblMasterFlight.getModel().getValueAt(selectedRow,1));
+        int selectedRow =tblMasterFlight.getSelectedRow();
+        if (selectedRow>=0) {
+            Flight result=  flightDir.Searchflight( tblMasterFlight.getModel().getValueAt(selectedRow,1).toString());
         if (result ==null){
              JOptionPane.showMessageDialog(null,"SearialNumber number you entered does not exist","Information",JOptionPane.INFORMATION_MESSAGE);
-        
         }else{
             FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardSequenceJPanel, result);
            cardSequenceJPanel.add("FlightDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
            layout.next(cardSequenceJPanel);
-         
         }
-     
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a row!","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bookjButtonActionPerformed
+
+    private void addjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addjButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedrow=tblMasterFlight.getSelectedRow();
+        if (selectedrow>=0) {
+            Flight f=(Flight) tblMasterFlight.getValueAt(selectedrow,1);
+            if (!Multiflightlist.contains(f)) {
+                Multiflightlist.add(f);
+            }else{
+               JOptionPane.showMessageDialog(null, "Cannot add the same flight!","Warning",JOptionPane.WARNING_MESSAGE);
+            }
+            populateTable(Multiflightlist);
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a row!","Warning",JOptionPane.WARNING_MESSAGE);
+        }
         
-         
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addjButtonActionPerformed
+
+    private void multibookjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multibookjButtonActionPerformed
+        // TODO add your handling code here:
+           FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardSequenceJPanel, Multiflightlist);
+           cardSequenceJPanel.add("FlightDetailJPanel",panel);
+           CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
+           layout.next(cardSequenceJPanel);
+        
+    }//GEN-LAST:event_multibookjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -393,10 +484,14 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> DepartingCombobox;
     private javax.swing.JComboBox<String> DestinationCombobox;
     private javax.swing.JComboBox<String> PreferredTimeCombobox;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addjButton;
+    private javax.swing.JButton bookjButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton multibookjButton;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTable tblMasterFlight;
+    private javax.swing.JTable tblMultipleFlight;
     // End of variables declaration//GEN-END:variables
 }

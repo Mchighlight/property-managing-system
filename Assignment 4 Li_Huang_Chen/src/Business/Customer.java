@@ -5,6 +5,8 @@
  */
 package Business;
 
+import java.util.ArrayList;
+
 
 public class Customer {
     private String firstName;
@@ -12,9 +14,24 @@ public class Customer {
     private int age;
     private String phNum;
     private String ssn;
-    private Flight flightBooked;
+    private ArrayList<Flight> flightBooked;
+    private ArrayList<Ticket> ticketBooked;
     private String seatBooked;
     //private int price; 
+
+    public Customer() {
+        flightBooked=new ArrayList<>();
+        ticketBooked=new ArrayList<>();
+    }
+    
+    
+    public ArrayList<Ticket> getTicketBooked() {
+        return ticketBooked;
+    }
+
+    public void setTicketBooked(ArrayList<Ticket> ticketBooked) {
+        this.ticketBooked = ticketBooked;
+    }
 
     public String getSeatBooked() {
         return seatBooked;
@@ -24,13 +41,15 @@ public class Customer {
         this.seatBooked = seatBooked;
     }
 
-    public Flight getFlightBooked() {
+    public ArrayList<Flight> getFlightBooked() {
         return flightBooked;
     }
 
-    public void setFlightBooked(Flight flightBooked) {
+    public void setFlightBooked(ArrayList<Flight> flightBooked) {
         this.flightBooked = flightBooked;
     }
+
+    
     
     public String getSsn() {
         return ssn;
