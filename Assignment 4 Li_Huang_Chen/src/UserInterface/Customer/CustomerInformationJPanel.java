@@ -7,6 +7,7 @@ package UserInterface.Customer;
 
 import Business.Customer;
 import Business.Flight;
+import Images.StyledButton;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
          this.customerList = customerList;
          this.cardSequenceJPanel = cardSequenceJPanel;
          populateTable();
+         viewBookingHistory.setUI(new StyledButton());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -58,6 +60,8 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         customersTbl = new javax.swing.JTable();
         viewBookingHistory = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Customers");

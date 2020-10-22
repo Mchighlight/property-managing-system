@@ -8,6 +8,7 @@ package UserInterface.ManageMasterFlightSchedule;
 import Business.Customer;
 import Business.CustomerDirectory;
 import Business.Flight;
+import Images.StyledButton;
 import UserInterface.Customer.CustomerInformationJPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -38,6 +39,8 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         addFlightList.add(selectedFlight);
         flightNumbTF.setText(selectedFlight.getFlightNumber());
         priceTF.setText(Double.toString(selectedFlight.getPrice()));
+        backBtn.setUI(new StyledButton());
+        bookBtn.setUI(new StyledButton());
 
     }
      FlightFoundDetailJPanel(JPanel cardSequenceJPanel, ArrayList<Flight> addFlightList) {
@@ -94,6 +97,8 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         flightNumbTF = new javax.swing.JTextArea();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         backBtn.setText("Cancel");
         backBtn.addActionListener(new java.awt.event.ActionListener() {

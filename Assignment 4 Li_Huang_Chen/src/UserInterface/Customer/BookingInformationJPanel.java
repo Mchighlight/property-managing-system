@@ -8,6 +8,7 @@ package UserInterface.Customer;
 import Business.Customer;
 import Business.Flight;
 import Business.Ticket;
+import Images.StyledButton;
 import UserInterface.ManageAirliners.ManageAirlinersJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -37,6 +38,9 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         this.customer=customer;
        flighttoticket();
         populateTable();
+        backBtn.setUI(new StyledButton());
+         selectjButton.setUI(new StyledButton());
+         jButton1.setUI(new StyledButton());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public void flighttoticket(){
@@ -86,6 +90,8 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         seatjComboBox = new javax.swing.JComboBox<>();
         selectjButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Booking Information");
