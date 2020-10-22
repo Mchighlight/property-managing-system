@@ -69,18 +69,22 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        navJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         manageAirlinersBtn.setText("Manage Airliners");
         manageAirlinersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageAirlinersBtnActionPerformed(evt);
             }
         });
+        navJPanel.add(manageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 125, -1, -1));
 
         airlinerSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 airlinerSelectComboBoxActionPerformed(evt);
             }
         });
+        navJPanel.add(airlinerSelectComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 195, -1, -1));
 
         goBtn.setText("Go");
         goBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +92,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 goBtnActionPerformed(evt);
             }
         });
+        navJPanel.add(goBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 228, -1, -1));
 
         travelAgencyBtn.setText("Travel Agency");
         travelAgencyBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +100,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 travelAgencyBtnActionPerformed(evt);
             }
         });
+        navJPanel.add(travelAgencyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 434, -1, -1));
 
         customerBtn.setText("Customer");
         customerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -102,40 +108,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 customerBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout navJPanelLayout = new javax.swing.GroupLayout(navJPanel);
-        navJPanel.setLayout(navJPanelLayout);
-        navJPanelLayout.setHorizontalGroup(
-            navJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navJPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(navJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(airlinerSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(manageAirlinersBtn))
-                    .addComponent(goBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
-            .addGroup(navJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(navJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(travelAgencyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(customerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        navJPanelLayout.setVerticalGroup(
-            navJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navJPanelLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(manageAirlinersBtn)
-                .addGap(41, 41, 41)
-                .addComponent(airlinerSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(goBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(travelAgencyBtn)
-                .addGap(28, 28, 28)
-                .addComponent(customerBtn)
-                .addGap(36, 36, 36))
-        );
+        navJPanel.add(customerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 491, 132, -1));
 
         splitPane.setLeftComponent(navJPanel);
 

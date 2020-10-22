@@ -8,6 +8,7 @@ package UserInterface.Customer;
 import Business.Customer;
 import Business.Flight;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -114,8 +115,9 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = customersTbl.getSelectedRow();
         if(selectedRow > -1){
-           Flight bookedFlight = customerList.get(selectedRow).getFlightBooked();
-           BookingInformationJPanel panel = new BookingInformationJPanel(cardSequenceJPanel, bookedFlight, customerList.get(selectedRow).getSeatBooked());
+            Customer customer = customerList.get(selectedRow);
+           ArrayList<Flight> bookedFlight = customerList.get(selectedRow).getFlightBooked();
+           BookingInformationJPanel panel = new BookingInformationJPanel(cardSequenceJPanel, bookedFlight,customer);
            cardSequenceJPanel.add("FlightFoundDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
            layout.next(cardSequenceJPanel);
