@@ -44,7 +44,7 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
             if(a.getOwner().equals(airlinerName)){
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = a.getOwner();
-                row[1] = a.getFlightNumber();
+                row[1] = a;
                 row[2] = a.getSource();
                 row[3] = a.getDestination();
                 row[4] = a.getDepTime();
@@ -175,7 +175,8 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = flightScheduleTbl.getSelectedRow();
         if(selectedRow > -1){
-            Flight flight = flightDir.getFlightDir().get(selectedRow);
+            Flight flight = (Flight)flightScheduleTbl.getValueAt(selectedRow, 1);
+//                    flightDir.getFlightDir().get(selectedRow);
             ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardSequenceJPanel, flight,flightDir);
             cardSequenceJPanel.add("ViewFlightScheduleJPanel",panel);
             CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
