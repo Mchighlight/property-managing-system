@@ -33,28 +33,28 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         this.airlinerDir = new AirlinerDirectory();
         this.flightDir = new FlightDirectory();
         this.customerDir = new CustomerDirectory();
-        airlinerSelectComboBoxBuild();
+//        airlinerSelectComboBoxBuild();
         manageAirlinersBtn.setUI(new StyledButton());
-        goBtn.setUI(new StyledButton());
+//        goBtn.setUI(new StyledButton());
         travelAgencyBtn.setUI(new StyledButton());
         customerBtn.setUI(new StyledButton());
         
               
     }
     
-    public void airlinerSelectComboBoxBuild(){
-        ArrayList<String> airlinerArray = new ArrayList();
-        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
-        cBmodel.addElement("Select Airliner");
-        for(Airliner airliner: airlinerDir.getAirlinerDir()){
-            if(airlinerArray.contains(airliner.getName())){continue;}
-            else {
-                airlinerArray.add(airliner.getName());
-                cBmodel.addElement(airliner.getName());
-            }
-        }
-        airlinerSelectComboBox.setModel(cBmodel);
-    }
+//    public void airlinerSelectComboBoxBuild(){
+//        ArrayList<String> airlinerArray = new ArrayList();
+//        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+//        cBmodel.addElement("Select Airliner");
+//        for(Airliner airliner: airlinerDir.getAirlinerDir()){
+//            if(airlinerArray.contains(airliner.getName())){continue;}
+//            else {
+//                airlinerArray.add(airliner.getName());
+//                cBmodel.addElement(airliner.getName());
+//            }
+//        }
+//        airlinerSelectComboBox.setModel(cBmodel);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,8 +68,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         splitPane = new javax.swing.JSplitPane();
         navJPanel = new javax.swing.JPanel();
         manageAirlinersBtn = new javax.swing.JButton();
-        airlinerSelectComboBox = new javax.swing.JComboBox<>();
-        goBtn = new javax.swing.JButton();
         travelAgencyBtn = new javax.swing.JButton();
         customerBtn = new javax.swing.JButton();
         cardSequenceJPanel = new javax.swing.JPanel();
@@ -89,27 +87,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 manageAirlinersBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(manageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, 40));
-
-        airlinerSelectComboBox.setBackground(new java.awt.Color(63, 63, 63));
-        airlinerSelectComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        airlinerSelectComboBox.setForeground(new java.awt.Color(255, 223, 108));
-        airlinerSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                airlinerSelectComboBoxActionPerformed(evt);
-            }
-        });
-        navJPanel.add(airlinerSelectComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 50));
-
-        goBtn.setBackground(new java.awt.Color(63, 63, 63));
-        goBtn.setForeground(new java.awt.Color(255, 223, 108));
-        goBtn.setText("Go");
-        goBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBtnActionPerformed(evt);
-            }
-        });
-        navJPanel.add(goBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, 30));
+        navJPanel.add(manageAirlinersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 170, 40));
 
         travelAgencyBtn.setBackground(new java.awt.Color(63, 63, 63));
         travelAgencyBtn.setForeground(new java.awt.Color(255, 233, 108));
@@ -119,7 +97,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 travelAgencyBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(travelAgencyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 170, 40));
+        navJPanel.add(travelAgencyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 170, 40));
 
         customerBtn.setBackground(new java.awt.Color(63, 63, 63));
         customerBtn.setForeground(new java.awt.Color(255, 223, 108));
@@ -129,7 +107,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 customerBtnActionPerformed(evt);
             }
         });
-        navJPanel.add(customerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 180, 40));
+        navJPanel.add(customerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 40));
 
         splitPane.setLeftComponent(navJPanel);
 
@@ -145,14 +123,16 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 191, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cardSequenceJPanel.add(jPanel1, "card2");
@@ -175,24 +155,12 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
     private void manageAirlinersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAirlinersBtnActionPerformed
         // TODO add your handling code here:
-        ManageAirlinersJPanel panel = new ManageAirlinersJPanel(cardSequenceJPanel, airlinerDir);
+        ManageAirlinersJPanel panel = new ManageAirlinersJPanel(cardSequenceJPanel, airlinerDir,flightDir);
         cardSequenceJPanel.add("ManageAirlinersJPanel",panel);
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
     }//GEN-LAST:event_manageAirlinersBtnActionPerformed
 
-    private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
-        // TODO add your handling code here:
-        if(airlinerSelectComboBox.getSelectedItem().equals("Select Airliner")){
-            JOptionPane.showMessageDialog(null, "Please select an option above");
-            return; 
-        }
-        String airlinerName = airlinerSelectComboBox.getSelectedItem().toString();
-        ManageAirlinerFlightScheduleJPanel panel = new ManageAirlinerFlightScheduleJPanel(cardSequenceJPanel, flightDir, airlinerName);
-        cardSequenceJPanel.add("ManageAirlinerFlightScheduleJPanel",panel);
-        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
-        layout.next(cardSequenceJPanel);
-    }//GEN-LAST:event_goBtnActionPerformed
     private void travelAgencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_travelAgencyBtnActionPerformed
         // TODO add your handling code here:
         ManageMasterFlightScheduleJPanel panel = new ManageMasterFlightScheduleJPanel(cardSequenceJPanel, flightDir);
@@ -209,10 +177,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
     }//GEN-LAST:event_customerBtnActionPerformed
-
-    private void airlinerSelectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerSelectComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_airlinerSelectComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,10 +214,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> airlinerSelectComboBox;
     private javax.swing.JPanel cardSequenceJPanel;
     private javax.swing.JButton customerBtn;
-    private javax.swing.JButton goBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton manageAirlinersBtn;
