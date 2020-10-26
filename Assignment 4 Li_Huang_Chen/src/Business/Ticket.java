@@ -14,7 +14,22 @@ import java.util.Date;
 public class Ticket {
    
     private String seat;
+    private String customerName ;
     private Flight flight;
+ 
+    public Ticket( ){
+    } 
+    
+    public Ticket(   String sSeat, String sCustomerName, Flight oFlight ){
+        this.seat = sSeat ;
+        this.customerName = sCustomerName ;
+        this.flight = oFlight ;
+    } 
+    
+    
+    public String getCustomerName() {
+        return customerName;
+    }
     
     public String getSeat() {
         return seat;
@@ -30,6 +45,10 @@ public class Ticket {
 
     public void setFlight(Flight flight) {
         this.flight = flight;
+    }
+    
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
     
     public String toString(){

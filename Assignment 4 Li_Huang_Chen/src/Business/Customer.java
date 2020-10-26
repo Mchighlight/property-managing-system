@@ -13,7 +13,7 @@ public class Customer {
     private String lastName;
     private int age;
     private String phNum;
-    private String ssn;
+    private String passportID;
     private ArrayList<Flight> flightBooked;
     private ArrayList<Ticket> ticketBooked;
     private String seatBooked;
@@ -51,12 +51,12 @@ public class Customer {
 
     
     
-    public String getSsn() {
-        return ssn;
+    public String getPassportID() {
+        return passportID;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
+    public void setPassportID(String passportID) {
+        this.passportID = passportID;
     }
     
     public int getAge() {

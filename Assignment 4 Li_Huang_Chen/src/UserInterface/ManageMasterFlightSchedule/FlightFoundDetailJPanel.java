@@ -117,9 +117,15 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Age");
 
+        ageTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageTFActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Phone");
 
-        jLabel5.setText("SSN");
+        jLabel5.setText("Passport ID");
 
         jLabel6.setText("Price");
 
@@ -139,7 +145,6 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 
         flightNumbTF.setColumns(20);
         flightNumbTF.setRows(5);
-        flightNumbTF.setDragEnabled(false);
         flightNumbTF.setEnabled(false);
         jScrollPane1.setViewportView(flightNumbTF);
 
@@ -171,15 +176,15 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
                             .addComponent(lastNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bookBtn))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(backBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(priceTF, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap(263, Short.MAX_VALUE))
@@ -261,7 +266,11 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         try{
             ageTF.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             jLabel3.setForeground(Color.BLACK);
-            Integer.parseInt(ageTF.getText());
+            int age = Integer.parseInt(ageTF.getText());
+            if( age < 0 || age > 100 ){
+                JOptionPane.showMessageDialog(null, "Please enter correct age between 0 to 100");
+                return;
+            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Please enter number for age");
@@ -283,7 +292,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         {
             ssnTF.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel5.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter your SSN");
+            JOptionPane.showMessageDialog(null, "Please enter your Passport ID");
             return;
         }
         else{
@@ -299,7 +308,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         catch(Exception e){
             ssnTF.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel5.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter number for SSN");
+            JOptionPane.showMessageDialog(null, "Please enter number for Passport ID");
             return;
         }
 //        if(seatComboBox.getSelectedItem().equals("Select Seat")){
@@ -311,7 +320,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         newCustomer.setLastName(lastNameTF.getText());
         newCustomer.setAge((int)Double.parseDouble(ageTF.getText()));
         newCustomer.setPhNum(phoneTF.getText());
-        newCustomer.setSsn(ssnTF.getText());
+        newCustomer.setPassportID(ssnTF.getText());
         newCustomer.setFlightBooked(addFlightList);
         CustomerDirectory.customerList.add(newCustomer);
         
@@ -332,7 +341,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 public void flighttoticket(Customer customer,ArrayList<Flight>bookedFlight){
         ArrayList<Ticket> bookedTicket = customer.getTicketBooked();
         for (int i=0;i<bookedFlight.size();i++) {
-            Ticket t= new Ticket();
+            Ticket t= new Ticket(  );
             t.setFlight(bookedFlight.get(i));
             bookedTicket.add(t);
             
@@ -359,6 +368,10 @@ public void flighttoticket(Customer customer,Flight bookedFlight){
         }
         layout.previous(cardSequenceJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void ageTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ageTFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

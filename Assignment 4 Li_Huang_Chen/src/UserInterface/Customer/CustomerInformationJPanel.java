@@ -42,7 +42,7 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
             row[1]= c.getLastName();
             row[2]= c.getAge();
             row[3] = c.getPhNum();
-            row[4] = c.getSsn();
+            row[4] = c.getPassportID();
             dtm.addRow(row);
         }
     }
@@ -74,9 +74,10 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "FirstName", "LastName", "Age", "Phone", "SSN"
+                "FirstName", "LastName", "Age", "Phone", "Passport ID"
             }
         ));
+        customersTbl.setAutoscrolls(false);
         jScrollPane1.setViewportView(customersTbl);
 
         viewBookingHistory.setText("View Booking Information");

@@ -88,7 +88,7 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                 createBtnActionPerformed(evt);
             }
         });
-        add(createBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 527, 134, 49));
+        add(createBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, 134, 49));
 
         jLabel5.setText("Number of Flight ");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 494, -1, -1));
@@ -100,11 +100,11 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 59, -1, -1));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Create Airliner");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 67, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
