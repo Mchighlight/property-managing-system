@@ -202,16 +202,17 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     private void mgnAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgnAirlinerBtnActionPerformed
         // TODO add your handling code here:
-        int row=airlinerTable.getSelectedRow();
-        if (row<-1){
-             JOptionPane.showMessageDialog(null, "Please select a Row!!");
-             return;
-        }
-        Airliner airliner = (Airliner)airlinerTable.getValueAt(row, 0);
+        int selectedRow = airlinerTable.getSelectedRow();
+        if(selectedRow > -1){
+        Airliner airliner = (Airliner)airlinerTable.getValueAt(selectedRow, 0);
         ManageAirlinerFlightScheduleJPanel panel = new ManageAirlinerFlightScheduleJPanel(cardSequenceJPanel, flightDir, airliner.getName());
         cardSequenceJPanel.add("ManageAirlinerFlightScheduleJPanel",panel);
         CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
         layout.next(cardSequenceJPanel);
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a row above");
+            return;
+        }
         //---------------
     }//GEN-LAST:event_mgnAirlinerBtnActionPerformed
 
