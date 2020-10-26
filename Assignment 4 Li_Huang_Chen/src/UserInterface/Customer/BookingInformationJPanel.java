@@ -36,21 +36,14 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         this.cardSequenceJPanel = cardSequenceJPanel;
         this.bookedFlight = bookedFlight;
         this.customer=customer;
-       flighttoticket();
+        bookedTicket=customer.getTicketBooked();
         populateTable();
         backBtn.setUI(new StyledButton());
          selectjButton.setUI(new StyledButton());
          jButton1.setUI(new StyledButton());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public void flighttoticket(){
-        bookedTicket = customer.getTicketBooked();
-        for (int i=0;i<bookedFlight.size();i++) {
-            Ticket t= new Ticket();
-            t.setFlight(bookedFlight.get(i));
-            bookedTicket.add(t);
-        }
-    }
+
       public void populateTable(){
          DefaultTableModel  dtm;
         dtm = (DefaultTableModel)tblMasterFlight.getModel();

@@ -22,6 +22,11 @@ public class Flight {
     private String otod;
     private int duration;
 
+    public Flight() {
+      
+    }
+    
+    
     public int getDuration() {
         return duration;
     }
@@ -49,6 +54,10 @@ public class Flight {
 
     public Seats getSeats() {
         return seats;
+    }
+    
+    public void setSeats(int capacity) {
+         seats=new Seats(capacity);
     }
 
     public void setSeats(Seats seats) {

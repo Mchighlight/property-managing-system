@@ -78,26 +78,40 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         otodComboBox = new javax.swing.JComboBox<>();
+        capacityTF1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        priceTF = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Create Flight Schedule");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 22, -1, -1));
 
         jLabel2.setText("Air Liner");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 71, -1, -1));
 
         jLabel3.setText("Flight Number");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 115, -1, -1));
 
         jLabel4.setText("Departing from");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 159, -1, -1));
 
         jLabel5.setText("Destination");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 203, -1, -1));
 
         jLabel6.setText("Departure Time");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 247, -1, -1));
 
         jLabel7.setText("Arrival Time");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 291, -1, -1));
 
         jLabel8.setText("Duration");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 335, -1, -1));
 
         jLabel9.setText("Date (dd-mm-yyyy)");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 448, -1, 26));
 
         airlinerTF.setEnabled(false);
         airlinerTF.addActionListener(new java.awt.event.ActionListener() {
@@ -105,24 +119,32 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
                 airlinerTFActionPerformed(evt);
             }
         });
+        add(airlinerTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 66, 131, -1));
 
         flightNumTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flightNumTFActionPerformed(evt);
             }
         });
+        add(flightNumTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 110, 131, -1));
 
         sourceTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sourceTFActionPerformed(evt);
             }
         });
+        add(sourceTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 154, 131, -1));
+        add(destinationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 198, 131, -1));
+        add(departureTimeTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 242, 131, -1));
+        add(arrivalTimeTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 286, 131, -1));
 
         durationTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 durationTFActionPerformed(evt);
             }
         });
+        add(durationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 330, 131, -1));
+        add(dateTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 448, 131, -1));
 
         CreateBtn.setText("Create");
         CreateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -130,8 +152,10 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
                 CreateBtnActionPerformed(evt);
             }
         });
+        add(CreateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 563, 106, 49));
 
         jLabel11.setText("Operated Time of Day");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 496, -1, -1));
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -139,106 +163,30 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, -1, -1));
 
         otodComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option", "Morning", "Afternoon", "Evening", "Night" }));
+        add(otodComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 492, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(flightNumTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(airlinerTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sourceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinationTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(departureTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(arrivalTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(durationTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(otodComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(204, 558, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(backBtn)
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel6))
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(airlinerTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(flightNumTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(sourceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(destinationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(departureTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(arrivalTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(durationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(otodComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(CreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
+        capacityTF1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capacityTF1ActionPerformed(evt);
+            }
+        });
+        add(capacityTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 404, 131, -1));
+
+        jLabel10.setText("Capacity");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 409, -1, -1));
+
+        priceTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceTFActionPerformed(evt);
+            }
+        });
+        add(priceTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 368, 131, -1));
+
+        jLabel12.setText("Price");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 373, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
@@ -257,7 +205,10 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
             flightNumTF.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             jLabel3.setForeground(Color.BLACK);
         }
-        
+         if("".equals(capacityTF1.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Capacity");
+            return;
+        }
         if("".equals(sourceTF.getText())){
             JOptionPane.showMessageDialog(null, "Please enter Source");
             return;
@@ -285,7 +236,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         }
         else{
             Pattern p = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$");
-            Matcher m = p.matcher(arrivalTimeTF.getText());
+            Matcher m = p.matcher(departureTimeTF.getText());
             boolean b = m.matches();
             if(!b){
                 JOptionPane.showMessageDialog(null, "Please enter departure Time in HH:MM");
@@ -297,9 +248,12 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter Flight Number");
             return;
         }
+        if("".equals(priceTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Price");
+            return;
+        }
         if("".equals(dateTF.getText())){
             JOptionPane.showMessageDialog(null, "Please enter Date");
-
             return;
         }
         
@@ -324,11 +278,11 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(null, "Please enter Origin Country");
 //            return;
 //        }
-  try{
+        try{
            Integer.parseInt(durationTF.getText());        }
-  catch(Exception e){
+        catch(Exception e){
            JOptionPane.showMessageDialog(null, "Please enter valid duartion");
-         return;    }
+           return;    }
         if("".equals(otodComboBox.getSelectedItem().equals("Select Option"))){
             JOptionPane.showMessageDialog(null, "Please enter Code");
             return;
@@ -346,6 +300,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         newFlight.setDestination(destinationTF.getText());
         newFlight.setDepTime(departureTimeTF.getText());
         newFlight.setArrTime(arrivalTimeTF.getText());
+        newFlight.setPrice(Double.parseDouble(priceTF.getText()));
+        newFlight.setSeats(Integer.parseInt(capacityTF1.getText()));
         newFlight.setDuration((int)Double.parseDouble(durationTF.getText())); 
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -364,8 +320,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         }
 
         
-        Seats seats = new Seats();
-        newFlight.setSeats(seats);
+       
         newFlight.setOtod(otodComboBox.getSelectedItem().toString());
         flightDir.addFlight(newFlight);
         JOptionPane.showMessageDialog(null, "Flight Created Successfully");
@@ -404,19 +359,30 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         layout.previous(cardSequenceJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void capacityTF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacityTF1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacityTF1ActionPerformed
+
+    private void priceTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceTFActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateBtn;
     private javax.swing.JTextField airlinerTF;
     private javax.swing.JTextField arrivalTimeTF;
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField capacityTF1;
     private javax.swing.JTextField dateTF;
     private javax.swing.JTextField departureTimeTF;
     private javax.swing.JTextField destinationTF;
     private javax.swing.JTextField durationTF;
     private javax.swing.JTextField flightNumTF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -426,6 +392,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> otodComboBox;
+    private javax.swing.JTextField priceTF;
     private javax.swing.JTextField sourceTF;
     // End of variables declaration//GEN-END:variables
 }

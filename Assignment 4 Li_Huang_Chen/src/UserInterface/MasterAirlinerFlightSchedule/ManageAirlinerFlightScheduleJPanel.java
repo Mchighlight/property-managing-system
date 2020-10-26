@@ -9,6 +9,7 @@ import Business.Flight;
 import Business.FlightDirectory;
 import Images.StyledButton;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +32,8 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
         createScheduleBtn.setUI(new StyledButton());
         viewScheduleBtn.setUI(new StyledButton());
         deleteBtn.setUI(new StyledButton());
+        
+        backBtn.setUI(new StyledButton());
     }
     
     public void populateTable(){
@@ -69,6 +72,7 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
         viewScheduleBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -109,6 +113,13 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
+        backBtn.setText("back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +135,9 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
                             .addComponent(createScheduleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewScheduleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addContainerGap()
+                        .addComponent(backBtn)
+                        .addGap(83, 83, 83)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -132,7 +145,9 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(backBtn))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -144,7 +159,7 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,8 +208,25 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        cardSequenceJPanel.remove(this);
+        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
+
+        Component[] components = cardSequenceJPanel.getComponents();
+        for(Component component: components){
+            if(component instanceof ManageAirlinerFlightScheduleJPanel){
+                ManageAirlinerFlightScheduleJPanel mpp = (ManageAirlinerFlightScheduleJPanel) component;
+                mpp.populateTable();
+            }
+        }
+
+        layout.previous(cardSequenceJPanel);
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton createScheduleBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTable flightScheduleTbl;

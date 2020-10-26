@@ -8,6 +8,7 @@ package UserInterface.ManageMasterFlightSchedule;
 import Business.Customer;
 import Business.CustomerDirectory;
 import Business.Flight;
+import Business.Ticket;
 import Images.StyledButton;
 import UserInterface.Customer.CustomerInformationJPanel;
 import java.awt.CardLayout;
@@ -29,6 +30,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
     private Flight selectedFlight;
     private ArrayList<Flight> addFlightList;
     private boolean multiple=false;
+    private Customer newCustomer = new Customer();
 
     FlightFoundDetailJPanel(JPanel cardSequenceJPanel, Flight selectedFlight) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -41,6 +43,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         priceTF.setText(Double.toString(selectedFlight.getPrice()));
         backBtn.setUI(new StyledButton());
         bookBtn.setUI(new StyledButton());
+        flighttoticket(newCustomer,selectedFlight);
 
     }
      FlightFoundDetailJPanel(JPanel cardSequenceJPanel, ArrayList<Flight> addFlightList) {
@@ -48,7 +51,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         initComponents();
         multiple=true;
         this.addFlightList = addFlightList;
-         try {
+        try {
              String flightnumber="";
              double sum=0;
         this.cardSequenceJPanel = cardSequenceJPanel;
@@ -60,6 +63,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
              }
              flightNumbTF.setText(flightnumber);
              priceTF.setText(Double.toString(sum));
+             flighttoticket(newCustomer,addFlightList);
          }
          } catch (Exception e) {
              System.out.println(e.toString());
@@ -302,14 +306,16 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(null, "Please select a seat");
 //            return;
 //        }
-        Customer newCustomer = new Customer();
+       
         newCustomer.setFirstName(firstNameTF.getText());
         newCustomer.setLastName(lastNameTF.getText());
         newCustomer.setAge((int)Double.parseDouble(ageTF.getText()));
         newCustomer.setPhNum(phoneTF.getText());
         newCustomer.setSsn(ssnTF.getText());
         newCustomer.setFlightBooked(addFlightList);
-       CustomerDirectory.customerList.add(newCustomer);
+        CustomerDirectory.customerList.add(newCustomer);
+        
+         
           
         JOptionPane.showMessageDialog(null, "Flight Ticket Booked");
         cardSequenceJPanel.remove(this);
@@ -323,7 +329,23 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         }
         layout.previous(cardSequenceJPanel);
     }//GEN-LAST:event_bookBtnActionPerformed
-
+public void flighttoticket(Customer customer,ArrayList<Flight>bookedFlight){
+        ArrayList<Ticket> bookedTicket = customer.getTicketBooked();
+        for (int i=0;i<bookedFlight.size();i++) {
+            Ticket t= new Ticket();
+            t.setFlight(bookedFlight.get(i));
+            bookedTicket.add(t);
+            
+        }
+    }
+public void flighttoticket(Customer customer,Flight bookedFlight){
+        ArrayList<Ticket> bookedTicket = customer.getTicketBooked();
+        
+            Ticket t= new Ticket();
+            t.setFlight(bookedFlight);
+            bookedTicket.add(t);
+        
+    }
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         cardSequenceJPanel.remove(this);
