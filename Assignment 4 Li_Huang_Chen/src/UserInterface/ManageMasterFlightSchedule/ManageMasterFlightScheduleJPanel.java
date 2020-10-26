@@ -53,11 +53,12 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         flighterSelectDepartingComboBox();
         flighterSelectTimeComboBox();
         flighterSelectDateComboBox();
+
         AutoCompleteDecorator.decorate(DestinationCombobox);
         AutoCompleteDecorator.decorate(DepartingCombobox);
         AutoCompleteDecorator.decorate(PreferredTimeCombobox);
         AutoCompleteDecorator.decorate(DateCombobox);
-        
+
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblMasterFlight.getModel());
         tblMasterFlight.setRowSorter(sorter);
         TableRowSorter<TableModel> sorter2 = new TableRowSorter<TableModel>(tblMultipleFlight.getModel());
@@ -283,20 +284,20 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
                                     .addComponent(DepartingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(DestinationCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(PreferredTimeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(242, 242, 242)
-                                        .addComponent(bookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(242, 242, 242))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(DateCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(addjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(multibookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(11, 11, 11))))
+                                        .addGap(29, 29, 29)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(multibookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bookjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
