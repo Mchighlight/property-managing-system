@@ -5,6 +5,10 @@
  */
 package Business;
 
+/**
+ *
+ * @author junyaoli
+ */
 
 public class TravelAgency {
     

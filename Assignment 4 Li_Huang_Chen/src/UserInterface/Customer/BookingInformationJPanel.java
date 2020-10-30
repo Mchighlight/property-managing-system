@@ -109,7 +109,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblMasterFlight);
 
-        jButton1.setText("Choose a seat");
+        jButton1.setText(">Comfirm seat assignment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,7 +118,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         seatjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        selectjButton.setText("Select a flight");
+        selectjButton.setText("Select this flight");
         selectjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectjButtonActionPerformed(evt);
@@ -133,15 +133,15 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(seatjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
                         .addComponent(selectjButton)
-                        .addGap(37, 37, 37)
+                        .addGap(33, 33, 33)
+                        .addComponent(seatjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(38, 38, 38)
-                            .addComponent(backBtn)
+                            .addGap(28, 28, 28)
+                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(181, 181, 181)
                             .addComponent(jLabel1))
                         .addGroup(layout.createSequentialGroup()
@@ -164,9 +164,9 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seatjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectjButton))
-                .addContainerGap(150, Short.MAX_VALUE))
+                    .addComponent(selectjButton)
+                    .addComponent(seatjComboBox))
+                .addGap(150, 150, 150))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, selectjButton});
