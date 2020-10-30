@@ -189,7 +189,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
         int selectedRow = airlinerTable.getSelectedRow();
         if(selectedRow>=0){
             int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete??","Warning",selectionButton);
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
                 Airliner airliner = (Airliner)airlinerTable.getValueAt(selectedRow, 0);
                 airlinerDir.removeAirliner(airliner);

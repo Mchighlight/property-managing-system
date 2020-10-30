@@ -22,9 +22,6 @@ import Images.StyledButton;
 
 public class TravelAgencyMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TravelAgencyMain
-     */
     private AirlinerDirectory airlinerDir;
     private FlightDirectory flightDir;
     private CustomerDirectory customerDir;
@@ -42,19 +39,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
               
     }
     
-//    public void airlinerSelectComboBoxBuild(){
-//        ArrayList<String> airlinerArray = new ArrayList();
-//        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
-//        cBmodel.addElement("Select Airliner");
-//        for(Airliner airliner: airlinerDir.getAirlinerDir()){
-//            if(airlinerArray.contains(airliner.getName())){continue;}
-//            else {
-//                airlinerArray.add(airliner.getName());
-//                cBmodel.addElement(airliner.getName());
-//            }
-//        }
-//        airlinerSelectComboBox.setModel(cBmodel);
-//    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,15 +109,12 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1223, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         cardSequenceJPanel.add(jPanel1, "card2");

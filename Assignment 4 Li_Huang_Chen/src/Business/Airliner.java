@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package Business;
-
+/**
+ *
+ * @author Yiningchen
+ */
 
 public class Airliner {
     

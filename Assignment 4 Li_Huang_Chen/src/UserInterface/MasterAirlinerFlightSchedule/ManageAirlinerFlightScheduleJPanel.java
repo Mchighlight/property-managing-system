@@ -191,21 +191,23 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
          int selectedRow = flightScheduleTbl.getSelectedRow();
-        if(selectedRow > -1){
-            Flight f = flightDir.getFlightDir().get(selectedRow);
-           int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete??","Warning",selectionButton);
+        if(selectedRow >=0){
+            int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION)
             {
-                flightDir.getFlightDir().remove(f);
-            }
-             
+                Flight f = (Flight)flightScheduleTbl.getValueAt(selectedRow,1);
+                flightDir.removeFlight(f);
                 populateTable();
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Please select a row above");
             return;      
         }
+        
+        
+     
         
     }//GEN-LAST:event_deleteBtnActionPerformed
 
