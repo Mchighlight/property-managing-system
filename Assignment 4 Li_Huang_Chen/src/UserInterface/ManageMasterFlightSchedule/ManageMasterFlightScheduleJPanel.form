@@ -42,12 +42,8 @@
                                       <Component id="PreferredTimeCombobox" min="-2" pref="155" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="searchBtn" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="DateCombobox" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace min="50" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="DateCombobox" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                               <Component id="addjButton" min="-2" pref="101" max="-2" attributes="0"/>
@@ -56,7 +52,6 @@
                                   <Component id="multibookjButton" min="-2" pref="101" max="-2" attributes="0"/>
                                   <Component id="bookjButton" min="-2" pref="101" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="0" min="-2" pref="804" max="-2" attributes="0"/>
                       </Group>

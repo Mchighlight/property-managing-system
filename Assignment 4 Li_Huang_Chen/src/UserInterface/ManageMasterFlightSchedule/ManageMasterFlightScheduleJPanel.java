@@ -106,15 +106,17 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         }
         PreferredTimeCombobox.setModel(cBmodel);
     }
-            public void flighterSelectDateComboBox(){
+        public void flighterSelectDateComboBox(){
         ArrayList<String> airlinerArray = new ArrayList();
         DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
         cBmodel.addElement("Date");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+                
         for(Flight flighter: flightDir.getFlightDir()){
-            if(airlinerArray.contains(flighter.getDate ())){continue;}
+            if(airlinerArray.contains(dateFormat.format(flighter.getDate()))){continue;}
             else {
-               // airlinerArray.add(flighter.getDate());
-                cBmodel.addElement(flighter.getDate());
+                airlinerArray.add(dateFormat.format(flighter.getDate()));
+                cBmodel.addElement(dateFormat.format(flighter.getDate()));
             }
         }
         DateCombobox.setModel(cBmodel);
@@ -123,7 +125,8 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
         public void populateTable(){
         dtm = (DefaultTableModel)tblMasterFlight.getModel();
         dtm.setRowCount(0);
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+                
         for(Flight a : flightDir.getFlightDir()){
             Object[] row = new Object[dtm.getColumnCount()];
             row[0] = a.getOwner();
@@ -133,7 +136,7 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             row[4] = a.getDepTime();
             row[5] = a.getArrTime();
             row[6] = a.getDuration();
-            row[7] = a.getDate();
+            row[7] = dateFormat.format(a.getDate());
             row[8] = a.getOtod();
             dtm.addRow(row);
         }
@@ -141,7 +144,8 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
          public void populateTable(ArrayList<Flight> f){
         dtm = (DefaultTableModel)tblMultipleFlight.getModel();
         dtm.setRowCount(0);
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+                
         for(Flight a : f){
             Object[] row = new Object[dtm.getColumnCount()];
             row[0] = a.getOwner();
@@ -151,7 +155,7 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             row[4] = a.getDepTime();
             row[5] = a.getArrTime();
             row[6] = a.getDuration();
-            row[7] = a.getDate();
+            row[7] = dateFormat.format(a.getDate());
             row[8] = a.getOtod();
             dtm.addRow(row);
         }
@@ -372,60 +376,6 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
        tblMasterFlight.setRowSorter(tr);
        tr.setRowFilter(compoundRowFilter);
       
-        
-        
-        
-        /*// TODO add your handling code here:
-        if("".equals(destinationTxtField.getText())){
-            destinationTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLabel2.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter Destination");
-            return;
-        }
-        else{
-            destinationTxtField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            jLabel2.setForeground(Color.BLACK);
-        }
-        
-        if("".equals(sourceTxtField.getText())){
-            sourceTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLabel3.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter Source");
-            return;
-        }
-        else{
-            sourceTxtField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            jLabel3.setForeground(Color.BLACK);
-        }
-        
-        if(otodComboBox.getSelectedItem().equals("Select Option")){
-            JOptionPane.showMessageDialog(null, "Please enter preferred time of the day");
-            return;
-        }
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
-
-        try {
-
-            Date date = formatter.parse(dateTxtField.getText());
-            dateTxtField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            jLabel5.setForeground(Color.BLACK);
-            //System.out.println("Date format is correct");
-        } catch (ParseException e) {
-            e.printStackTrace();
-            dateTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLabel5.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
-            return;
-        }
-        ArrayList<Flight> flightDirFiltered = flightDir.searchMaster(destinationTxtField.getText(),sourceTxtField.getText(),otodComboBox.getSelectedItem().toString(),dateTxtField.getText());
-        System.out.println(flightDirFiltered);
-        FlightFoundJPanel panel = new FlightFoundJPanel(cardSequenceJPanel, flightDirFiltered);
-        cardSequenceJPanel.add("FlightFoundJPanel",panel);
-        CardLayout layout = (CardLayout)cardSequenceJPanel.getLayout();
-        layout.next(cardSequenceJPanel);
-        clearSearchFields();
-        */
       }
     }//GEN-LAST:event_searchBtnActionPerformed
 
