@@ -46,6 +46,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         arrivalTimeTF.setText("");
         durationTF.setText("");
         dateTF.setText("");
+        priceTF.setText("");
+        capacityTF.setText("");
         otodComboBox.setSelectedItem("Select Option");
     }
     /**
@@ -78,7 +80,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         otodComboBox = new javax.swing.JComboBox<>();
-        capacityTF1 = new javax.swing.JTextField();
+        capacityTF = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         priceTF = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -168,12 +170,12 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         otodComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option", "Morning", "Afternoon", "Evening", "Night" }));
         add(otodComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 492, -1, -1));
 
-        capacityTF1.addActionListener(new java.awt.event.ActionListener() {
+        capacityTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                capacityTF1ActionPerformed(evt);
+                capacityTFActionPerformed(evt);
             }
         });
-        add(capacityTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 404, 131, -1));
+        add(capacityTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 404, 131, -1));
 
         jLabel10.setText("Capacity");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 409, -1, -1));
@@ -205,7 +207,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
             flightNumTF.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             jLabel3.setForeground(Color.BLACK);
         }
-         if("".equals(capacityTF1.getText())){
+         if("".equals(capacityTF.getText())){
             JOptionPane.showMessageDialog(null, "Please enter Capacity");
             return;
         }
@@ -267,17 +269,6 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         }
         
         
-//        try{
-//            Double.parseDouble(countriesOperatedTxtField.getText());
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Please enter number for Countries operated");
-//            return;
-//        }
-//        if("".equals(originCountryTxtField.getText())){
-//            JOptionPane.showMessageDialog(null, "Please enter Origin Country");
-//            return;
-//        }
         try{
            Integer.parseInt(durationTF.getText());        }
         catch(Exception e){
@@ -301,7 +292,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         newFlight.setDepTime(departureTimeTF.getText());
         newFlight.setArrTime(arrivalTimeTF.getText());
         newFlight.setPrice(Double.parseDouble(priceTF.getText()));
-        newFlight.setSeats(Integer.parseInt(capacityTF1.getText()));
+        newFlight.setSeats(Integer.parseInt(capacityTF.getText()));
         newFlight.setDuration((int)Double.parseDouble(durationTF.getText())); 
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -310,6 +301,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         try {
 
             Date date = formatter.parse(dateInString);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+            dateFormat.format(date);
             //System.out.println(formatter.format(date));
             newFlight.setDate(date);
 
@@ -359,9 +352,9 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         layout.previous(cardSequenceJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void capacityTF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacityTF1ActionPerformed
+    private void capacityTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacityTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_capacityTF1ActionPerformed
+    }//GEN-LAST:event_capacityTFActionPerformed
 
     private void priceTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTFActionPerformed
         // TODO add your handling code here:
@@ -373,7 +366,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField airlinerTF;
     private javax.swing.JTextField arrivalTimeTF;
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField capacityTF1;
+    private javax.swing.JTextField capacityTF;
     private javax.swing.JTextField dateTF;
     private javax.swing.JTextField departureTimeTF;
     private javax.swing.JTextField destinationTF;

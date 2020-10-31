@@ -79,6 +79,9 @@ public class FlightDirectory {
 
                 Date date = formatter.parse(dateInString);
                 //System.out.println(formatter.format(date));
+                SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+                dateFormat.format(date);
+                System.out.println(date);
                 temp.setDate(date);
             } catch (ParseException e) {
                 e.printStackTrace();
