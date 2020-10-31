@@ -433,6 +433,10 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
 
     private void multibookjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multibookjButtonActionPerformed
         // TODO add your handling code here:
+        if(Multiflightlist.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Please add at least one flight","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
            FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardSequenceJPanel, Multiflightlist);
            cardSequenceJPanel.add("FlightDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
