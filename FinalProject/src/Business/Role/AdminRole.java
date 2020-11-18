@@ -1,20 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
+import userinterface.AdminRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author raunak
- */
+
 public class AdminRole extends Role{
 
     @Override

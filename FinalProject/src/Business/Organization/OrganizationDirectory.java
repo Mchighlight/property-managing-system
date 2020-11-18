@@ -25,12 +25,40 @@ public class OrganizationDirectory {
     
     public Organization createOrganization(Type type){
         Organization organization = null;
-        if (type.getValue().equals(Type.Doctor.getValue())){
-            organization = new DoctorOrganization();
+        if (type.getValue().equals(Type.Accounting.getValue())){
+            organization = new AccountingOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Lab.getValue())){
-            organization = new LabOrganization();
+        else if (type.getValue().equals(Type.Agent.getValue())){
+            organization = new AgentOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.AnalysisAndReport.getValue())){
+            organization = new AnalysisAndReportOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.BoardMember.getValue())){
+            organization = new BoardMemberOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Cleaning.getValue())){
+            organization = new CleaningOrganization();
+            organizationList.add(organization);
+        }
+                else if (type.getValue().equals(Type.CustomerSupport.getValue())){
+            organization = new CustomerSupportOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Furnishing.getValue())){
+            organization = new FurnishingOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Repair.getValue())){
+            organization = new RepairOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Admin.getValue())){
+            organization = new AdminOrganization();
             organizationList.add(organization);
         }
         return organization;

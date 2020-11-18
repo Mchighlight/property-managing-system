@@ -18,8 +18,22 @@ public abstract class Role {
     
     public enum RoleType{
         Admin("Admin"),
-        Doctor("Doctor"),
-        LabAssistant("Lab Assistant");
+        SystemAdmin("SystemAdmin"),
+        FinanceAdmin("FinanceAdmin"),
+        FurnishingAdmin("FurnishingAdmin"),
+        InvestmentManagerAdmin("InvestmentManagerAdmin"),
+        RealEstateAdmin("RealEstateAdmin"),
+        Accountant("Accountant"),
+        Buyer("Buyer"),
+        CleaningStaff("CleaningStaff"),
+        CustomerSuppor("CustomerSuppor"),
+        DataAnalyst("DataAnalyst"),
+        Decorator("Decorator"),
+        Landlord("Landlord"),
+        Leasing("Leasing"),
+        RealEstateAgent("RealEstateAgent"),
+        RepairSpecialist("RepairSpecialist"),
+        Tenant("Tenant");
         
         private String value;
         private RoleType(String value){
@@ -46,6 +60,5 @@ public abstract class Role {
     public String toString() {
         return this.getClass().getName();
     }
-    
     
 }
