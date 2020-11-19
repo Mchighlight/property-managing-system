@@ -5,9 +5,12 @@
  */
 package mongoDB;
 
+import Business.ConfigureASystem;
+import Business.EcoSystem;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -25,7 +28,7 @@ public class Connection {
     public MongoDatabase database;
     private static Connection instance;
 
-    private Connection() {
+    private MongoDatabase createConnection() {
         db = "mongodb01";
 
         CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
@@ -36,7 +39,8 @@ public class Connection {
                 .build();
         MongoClient mongoClient = (MongoClient) MongoClients.create(settings);
         database = mongoClient.getDatabase("mongodb01");
-      //  MongoCollection<Person> person= database.getCollection("person", Person.class);
+        return database;
+        //  MongoCollection<Person> person= database.getCollection("person", Person.class);
     }
 
     public static Connection getInstance() {
@@ -47,5 +51,19 @@ public class Connection {
             return instance;
         }
     }
-     
+
+   /* public EcoSystem retrieveSystem() {
+        MongoDatabase mongodb = createConnection();
+        MongoCollection<EcoSystem> systems = mongodb.getCollection("Ecosystem", EcoSystem.class);
+
+        EcoSystem system;
+ if (systems.size() == 0){
+            system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
+        }
+        else{
+            system = systems.get(systems.size() - 1);
+        }
+        return system;
+    }*/
+
 }

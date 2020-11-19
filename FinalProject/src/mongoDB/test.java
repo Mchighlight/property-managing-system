@@ -21,7 +21,7 @@ public class test {
     Connection conn;
     
     
-    
+   
     public void getCollection() {
         conn = Connection.getInstance();
         person = conn.database.getCollection("person", Person.class);
