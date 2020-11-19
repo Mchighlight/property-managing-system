@@ -9,9 +9,9 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.UserAccount.Person;
+
 import Business.UserAccount.UserAccount;
-import com.google.gson.Gson;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
@@ -20,8 +20,8 @@ import com.mongodb.client.MongoDatabase;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import mongoDB.Employee;
-import mongoDB.jdbcLauncher;
+
+import mongoDB.retrivesystem;
 import org.bson.Document;
 /**
  *
@@ -34,13 +34,13 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     //private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    private jdbcLauncher db;
-    private MongoCollection <Person> person;
+    private retrivesystem retrivesystem;
     
     public MainJFrame() {
         initComponents();
-
-    }
+      retrivesystem.getCollection();
+      
+    } 
  
 
     /**
