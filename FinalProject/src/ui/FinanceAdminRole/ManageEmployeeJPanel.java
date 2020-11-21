@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.AdminRole;
+package ui.FinanceAdminRole;
 
+import Business.Employee.Accountant;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -57,6 +58,18 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             Object[] row = new Object[2];
             row[0] = employee.getId();
             row[1] = employee.getName();
+            model.addRow(row);
+        }
+    }
+      private void populateAccountTable(Organization organization){
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (Accountant accountant : organization.getAccountDirectory().getAccountantList()){
+            Object[] row = new Object[2];
+            row[0] = accountant.getId();
+            row[1] = accountant.getName();
             model.addRow(row);
         }
     }
@@ -198,15 +211,17 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
 
-        organization.getEmployeeDirectory().createEmployee(name);
-        populateTable(organization);
+        //organization.getEmployeeDirectory().createEmployee(name);
+        organization.getAccountDirectory().createaccountant(name, "email");
+        
+        populateAccountTable(organization);
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null) {
-            populateTable(organization);
+             populateAccountTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

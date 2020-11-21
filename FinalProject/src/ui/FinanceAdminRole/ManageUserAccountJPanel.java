@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.AdminRole;
+package ui.FinanceAdminRole;
 
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;

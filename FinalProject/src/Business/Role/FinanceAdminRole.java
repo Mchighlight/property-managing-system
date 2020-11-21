@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import ui.admin.FinanceAdminWorkAreaJPanel;
 import javax.swing.JPanel;
-import ui.AdminRole.AdminWorkAreaJPanel;
+import ui.FinanceAdminRole.AdminWorkAreaJPanel;
         
 
 
