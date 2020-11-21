@@ -15,10 +15,19 @@ public class CustomerSupport {
     private String name;
     private int id;
     private static int count = 1;
+    private String email;
 
     public CustomerSupport() {
         id = count;
         count++;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

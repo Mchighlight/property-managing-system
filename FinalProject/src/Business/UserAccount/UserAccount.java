@@ -7,9 +7,7 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
-import com.mongodb.BasicDBObjectBuilder;
-import com.mongodb.DBObject;
-import org.bson.types.ObjectId;
+
 
 /**
  *
@@ -23,7 +21,7 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
 
-    public UserAccount(ObjectId _id, String username, String password, Employee employee, Role role) {
+    public UserAccount( String username, String password, Employee employee, Role role) {
 
         this.username = username;
         this.password = password;

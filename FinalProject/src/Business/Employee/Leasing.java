@@ -15,6 +15,8 @@ public class Leasing {
     private String name;
     private int id;
     private static int count = 1;
+    private String email;
+    
 
     public Leasing() {
         id = count;

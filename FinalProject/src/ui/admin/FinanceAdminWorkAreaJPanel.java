@@ -23,10 +23,11 @@ public class FinanceAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantWorkAreaJPanel
-     */ 
+     */
     private JPanel userProcessContainer;
     private EcoSystem system;
     private Enterprise enterprise;
+
     public FinanceAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem system, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -35,19 +36,21 @@ public class FinanceAdminWorkAreaJPanel extends javax.swing.JPanel {
         populateNetworkComboBox();
         titlejLabel.setText(enterprise.getName());
     }
+
     private void populateTable(Organization org) {
         DefaultTableModel model = (DefaultTableModel) useraccountJTable.getModel();
 
         model.setRowCount(0);
-        for(UserAccount ua:org.getUserAccountDirectory().getUserAccountList()){
+        for (UserAccount ua : org.getUserAccountDirectory().getUserAccountList()) {
             Object[] row = new Object[useraccountJTable.getColumnCount()];
-            row[0]=ua;
-            row[1]=ua.getRole();
+            row[0] = ua;
+            row[1] = ua.getRole();
         }
     }
-private void populateNetworkComboBox(){
+
+    private void populateNetworkComboBox() {
         orgJComboBox.removeAllItems();
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
             orgJComboBox.addItem(org);
         }
     }
@@ -187,8 +190,8 @@ private void populateNetworkComboBox(){
 
     private void orgJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgJComboBoxActionPerformed
 
-        Organization org = (Organization)orgJComboBox.getSelectedItem();
-        if (org != null){
+        Organization org = (Organization) orgJComboBox.getSelectedItem();
+        if (org != null) {
             populateTable(org);
         }
 
@@ -197,33 +200,33 @@ private void populateNetworkComboBox(){
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
         int row = useraccountJTable.getSelectedRow();
-        if (row<0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row");
             return;
         }
-        Organization org = (Organization)orgJComboBox.getSelectedItem();
-        if (org == null){
-            System.out.println("org: "+org);
+        Organization org = (Organization) orgJComboBox.getSelectedItem();
+        if (org == null) {
+            System.out.println("org: " + org);
             return;
         }
-        UserAccount ua = (UserAccount)useraccountJTable.getValueAt(row, 2);
+        UserAccount ua = (UserAccount) useraccountJTable.getValueAt(row, 2);
 
         for (UserAccount userAccount : org.getUserAccountDirectory().getUserAccountList()) {
             if (userAccount.equals(ua)) {
-             org.getUserAccountDirectory().getUserAccountList().remove(ua);
-             JOptionPane.showMessageDialog(null, "Delete successfully");
+                org.getUserAccountDirectory().getUserAccountList().remove(ua);
+                JOptionPane.showMessageDialog(null, "Delete successfully");
             }
-        }           
-        if (org != null){
+        }
+        if (org != null) {
             populateTable(org);
         }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
-        Organization org = (Organization)orgJComboBox.getSelectedItem();
-        if (org == null){
-            System.out.println("org: "+org);
+        Organization org = (Organization) orgJComboBox.getSelectedItem();
+        if (org == null) {
+            System.out.println("org: " + org);
             return;
         }
         String username = usernameJTextField.getText();
