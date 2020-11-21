@@ -5,7 +5,13 @@
  */
 package Business.Enterprise;
 
+import Business.Role.BuyerRole;
+import Business.Role.LeasingRole;
+import Business.Role.RealEstateAdminRole;
+import Business.Role.RealEstateAgentRole;
+import Business.Role.RepairSpecialistRole;
 import Business.Role.Role;
+import Business.Role.TenantRole;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +25,14 @@ public class RealEstateEnterprise extends Enterprise {
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new RealEstateAgentRole());
+        roles.add(new RealEstateAdminRole());
+        roles.add(new TenantRole());
+        roles.add(new LeasingRole());
+        roles.add(new BuyerRole());
+        roles.add(new RepairSpecialistRole());
+        return roles;
     }
     
 }

@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.CustomerSupportRole.CustomerSupportWorkAreaJPanel;
+import ui.PropertyCompany.cutomerSupport.CustomerSupportWorkAreaJPanel;
 
 
 public class CustomerSupportRole extends Role {

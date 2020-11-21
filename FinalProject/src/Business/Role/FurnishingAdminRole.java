@@ -4,7 +4,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.FurnishingAdminRole.FurnishingAdminWorkAreaJPanel;
+import ui.admin.FurnishingAdminWorkAreaJPanel;
 import javax.swing.JPanel;
 
 

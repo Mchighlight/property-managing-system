@@ -5,6 +5,9 @@
  */
 package Business.Enterprise;
 
+import Business.Role.CleaningStaffRole;
+import Business.Role.DecoratorRole;
+import Business.Role.FurnishingAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -19,7 +22,11 @@ public class FurnishingEnterprise extends Enterprise {
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new CleaningStaffRole());
+        roles.add(new FurnishingAdminRole());
+        roles.add(new DecoratorRole());
+        return roles;
     }
     
 }

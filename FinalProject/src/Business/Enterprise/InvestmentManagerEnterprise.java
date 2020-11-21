@@ -5,6 +5,8 @@
  */
 package Business.Enterprise;
 
+import Business.Role.InvestmentManagerAdminRole;
+import Business.Role.LandlordRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -19,7 +21,10 @@ public class InvestmentManagerEnterprise extends Enterprise {
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new LandlordRole());
+        roles.add(new InvestmentManagerAdminRole());
+        return roles;
     }
     
 }

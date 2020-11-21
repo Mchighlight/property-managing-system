@@ -5,6 +5,9 @@
  */
 package Business.Enterprise;
 
+import Business.Role.AccountantRole;
+import Business.Role.DataAnalystRole;
+import Business.Role.FinanceAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -13,13 +16,17 @@ import java.util.ArrayList;
  * @author MyPC1
  */
 public class FinanceEnterprise extends Enterprise {
-    
+   
     public FinanceEnterprise(String name){
         super(name,EnterpriseType.Finance);
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new FinanceAdminRole());
+        roles.add(new AccountantRole());
+        roles.add(new DataAnalystRole());
+        return roles;
     }
     
 }

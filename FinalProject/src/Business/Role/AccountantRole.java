@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.AccountingOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.AccountantRole.AccountantWorkAreaJPanel;
+import ui.FinanceCompany.AccountantWorkAreaJPanel;
 
 
 public class AccountantRole extends Role {

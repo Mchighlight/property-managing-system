@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.AgentOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.RealEstateAgentRole.RealEstateAgentWorkAreaJPanel;
+import ui.PropertyCompany.agent.RealEstateAgentWorkAreaJPanel;
 
 
 public class RealEstateAgentRole extends Role {

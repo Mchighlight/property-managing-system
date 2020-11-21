@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.BuyerRole.BuyerWorkAreaJPanel;
+import ui.PropertyCompany.buyer.BuyerWorkAreaJPanel;
 
 
 public class BuyerRole extends Role {

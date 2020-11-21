@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.AnalysisAndReportOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DataAnalystRole.DataAnalystWorkAreaJPanel;
+import ui.FinanceCompany.DataAnalystWorkAreaJPanel;
 
 
 public class DataAnalystRole extends Role {

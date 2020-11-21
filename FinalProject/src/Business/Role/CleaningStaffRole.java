@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.CleaningOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.CleaningStaffRole.CleaningStaffWorkAreaJPanel;
+import ui.FurnishingCompany.CleaningStaffWorkAreaJPanel;
 
 
 public class CleaningStaffRole extends Role {

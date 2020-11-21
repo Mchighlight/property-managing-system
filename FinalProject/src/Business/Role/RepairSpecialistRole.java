@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.RepairSpecialistRole.RepairSpecialistWorkAreaJPanel;
+import ui.PropertyCompany.repair.RepairSpecialistWorkAreaJPanel;
 
 
 public class RepairSpecialistRole extends Role {

@@ -5,105 +5,57 @@
  */
 package mongoDB;
 
+import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.util.JSON;
+import org.bson.Document;
+import org.bson.codecs.configuration.CodecRegistry;
+
 /**
  *
  * @author yiningchen
  */
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import static com.mongodb.client.model.Filters.*;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-
 public class test {
-    private MongoCollection<Person> person;
-    Connection conn;
-    
-    
-   
-    public void getCollection() {
-        conn = Connection.getInstance();
-        person = conn.database.getCollection("person", Person.class);
-    }
-  
-    public static void main(String[] args) throws Exception {
-        test t = new test();
-        t.getCollection();
-        Person p = new Person();
-        p.setEmail("test@test.com1");
-        p.setFname("ftest1");
-        p.setLname("ltest1");
-        p.setPassword("testtest1");
-        p.setUsername("test123");
+/*
+    public static void main(String[] args) {
+        //connect to db
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoDatabase db = mongoClient.getDatabase("mongodb01");
 
+        //get db employee
+        MongoCollection<org.bson.Document> coll = db.getCollection("employee");
 
-        // insert person type objects in database
-        t.insertPerson(p);
+        // get method
+        Document doc = (Document) coll.find().first();
+        Gson gson = new Gson();
+        Employee model = gson.fromJson(doc.toJson(), Employee.class);
+        System.out.println(model.getName());
+        System.out.println(model.getNo());
 
+        //create method
+        Employee employee = new Employee(); // Create java object
+        employee.setNo(2);
+        employee.setName("employee2");
+        String json = gson.toJson(employee);
+        Document doc2 = Document.parse(json);
+        coll.insertOne(doc2);
 
-        // get all persons from database
-        List<Person> pp = t.getAllPersons();
-        Person pt = pp.get(0);
-        System.out.println(pt.getEmail());
-        System.out.println(pt.getId());
+        //update data
+        String name = "employee";
+        String update = "emp";
+        coll.updateOne(Filters.eq("name", name), Updates.combine(Updates.set("name", update)));
 
-
-        // get one person from database by username filter
-
-                 // pass username of person in method argument
-        Person ph = t.getOnePerson("test123");
-        System.out.println(ph.getEmail());
-        System.out.println(ph.getId());
-
-
-        // update/edit person by username filter
-                // pass username of person in method argument
-        t.updatePerson("test123");
-
-
-        // delete person by username filter
-               // pass username of person in method argument
-      //  t.removePerson("updatetest123");
+        //delete method
+        coll.findOneAndDelete(Filters.eq("name", "emp"));
 
     }
-
-
-    public void insertPerson(Person p) {
-
-        person.insertOne(p);
-    }
-
-    public List<Person> getAllPersons() {
-        FindIterable<Person> iterable = person.find();
-        Iterator it = iterable.iterator();
-        List<Person> allPersons = new ArrayList<>();
-        while (it.hasNext()) {
-            Person per = (Person) it.next();
-            allPersons.add(per);
-        }
-        return allPersons;
-    }
-
-    public Person getOnePerson(String username) {
-        return person.find(eq("username", username)).first();
-    }
-
-    public void updatePerson(String username) {
-        Person p = new Person();
-        p.setEmail("update@test.com");
-        p.setFname("updateftest");
-        p.setLname("updateltest");
-        p.setPassword("updatetesttest");
-        p.setUsername("updatetest123");
-        person.replaceOne(eq("username", username), p);
-
-    }
-
-    public void removePerson(String username) {
-        person.deleteOne(eq("username", username));
-    }
-
-
-
+*/
 }

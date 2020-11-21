@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.BoardMemberOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.LandlordRole.LandlordWorkAreaJPanel;
+import ui.InvestmentCompany.LandlordWorkAreaJPanel;
 
 
 public class LandlordRole extends Role {

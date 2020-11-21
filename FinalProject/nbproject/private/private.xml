@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/EnterpriseDirectory.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/admin/FinanceAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/RealEstateEnterprise.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/admin/RealEstateAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/FurnishingEnterprise.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/InvestmentManagerEnterprise.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/userinterfac/MainJFrame.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageNetworkJPanel.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/Enterprise.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/FinanceEnterprise.java</file>
+            <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseAdminJPanel.java</file>
+        </group>
     </open-files>
 </project-private>

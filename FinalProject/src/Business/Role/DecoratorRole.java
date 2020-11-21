@@ -6,7 +6,7 @@ import Business.Organization.Organization;
 import Business.Organization.FurnishingOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DecoratorRole.DecoratorWorkAreaJPanel;
+import ui.FurnishingCompany.DecoratorWorkAreaJPanel;
 
 
 public class DecoratorRole extends Role {
