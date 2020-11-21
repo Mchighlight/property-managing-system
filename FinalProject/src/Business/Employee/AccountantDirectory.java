@@ -13,20 +13,21 @@ import java.util.ArrayList;
  */
 public class AccountantDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<Accountant> accountantList;
 
     public AccountantDirectory() {
-        employeeList = new ArrayList();
+        accountantList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<Accountant> getAccountantList() {
+        return accountantList;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+    public Accountant createaccountant(String name,String email){
+        Accountant accountant = new Accountant();
+        accountant.setName(name);
+        accountant.setEmail(email);
+        accountantList.add(accountant);
+        return accountant;
     }
 }

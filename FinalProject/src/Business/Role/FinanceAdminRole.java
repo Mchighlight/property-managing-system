@@ -6,13 +6,15 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import ui.admin.FinanceAdminWorkAreaJPanel;
 import javax.swing.JPanel;
+import ui.FinanceAdminRole.AdminWorkAreaJPanel;
+        
 
 
 public class FinanceAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new FinanceAdminWorkAreaJPanel(userProcessContainer,business, enterprise);
+        return new AdminWorkAreaJPanel(userProcessContainer,business, enterprise);
     }
 
     

@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Organization/Organization.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/FurnishingAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccount.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/EcoSystem.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseAdminJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceCompany/AccountantWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageNetworkJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/FinanceAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/ConfigureASystem.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/userinterfac/MainJFrame.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/CustomerSupport.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RealEstateAgentWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/AccountantDirectory.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Accountant.java</file>
+        </group>
     </open-files>
 </project-private>

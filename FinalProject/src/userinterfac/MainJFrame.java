@@ -8,14 +8,18 @@ import Business.ConfigureASystem;
 import static Business.ConfigureASystem.configure;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Employee.Accountant;
+import Business.Employee.AccountantDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Role.AccountantRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Lingfeng
@@ -27,15 +31,13 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    
+
     public MainJFrame() {
         initComponents();
-    //    EcoSystem system =EcoSystem.getInstance();
-        //dB4OUtil.storeSystem(configure());
         system = dB4OUtil.retrieveSystem();
-        this.setSize(800,600);
+        this.setSize(800, 600);
+
     }
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,8 +131,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        // Get user name
-        String userName = userNameJTextField.getText();
+   
+           String userName = userNameJTextField.getText();
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
@@ -157,6 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                break;
                            }
                        }
+                        
                     }
                     else{
                        inEnterprise=enterprise;
@@ -178,7 +181,6 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         else{
             CardLayout layout=(CardLayout)container.getLayout();
-            System.out.println();
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
             layout.next(container);
         }
@@ -188,7 +190,64 @@ public class MainJFrame extends javax.swing.JFrame {
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
         
-      
+        
+        /*   // Get user name
+        String userName = userNameJTextField.getText();
+        // Get Password
+        char[] passwordCharArray = passwordField.getPassword();
+        String password = String.valueOf(passwordCharArray);
+
+        //Step1: Check in the system admin user account directory if you have the user
+        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+
+        Enterprise inEnterprise = null;
+        Organization inOrganization = null;
+
+        if (userAccount == null) {
+            //Step 2: Go inside each network and check each enterprise
+            for (Network network : system.getNetworkList()) {
+                //Step 2.a: check against each enterprise
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    if (userAccount == null) {
+                        //Step 3:check against each organization for each enterprise
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
+                                break;
+                            }
+                        }
+                    } else {
+                        inEnterprise = enterprise;
+                        break;
+                    }
+                    if (inOrganization != null) {
+                        break;
+                    }
+                }
+                if (inEnterprise != null) {
+                    break;
+                }
+            }
+        }
+
+        if (userAccount == null) {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            return;
+        } else {
+            CardLayout layout = (CardLayout) container.getLayout();
+            System.out.println();
+            container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
+            layout.next(container);
+        }
+
+        loginJButton.setEnabled(false);
+        logoutJButton.setEnabled(true);
+        userNameJTextField.setEnabled(false);
+        passwordField.setEnabled(false);
+
 //       UserAccount useraccount = system.getUserAccountDirectory().authenticateUser(username, password);
 //       DBCursor results = collection.find(new BasicDBObject("name", "The name I want to find"));
 //     
@@ -199,7 +258,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //       CardLayout cardLayout= (CardLayout) container.getLayout();
 //       container.add(useraccount.getRole().createWorkArea(container, useraccount, system));
 //       cardLayout.next(container);
-     
+*/
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
