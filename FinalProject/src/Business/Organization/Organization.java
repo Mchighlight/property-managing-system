@@ -22,7 +22,6 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private AccountantDirectory accountantDirectory;
-    
     private int organizationID;
     private static int counter=0;
     
@@ -53,6 +52,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        accountantDirectory= new AccountantDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -71,7 +71,8 @@ public abstract class Organization {
         return employeeDirectory;
     }
     
-    public AccountantDirectory  getaccountDirectory() {
+    public AccountantDirectory  getAccountDirectory() {
+        
         return accountantDirectory;
     }
     

@@ -48,13 +48,13 @@ public class FinanceAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         DefaultTableModel dtm = (DefaultTableModel) useraccountJTable.getModel();
         dtm.setRowCount(0);
-        ArrayList<Accountant> acclist = system.getaccountDirectory().getAccountantList();
+        ArrayList<Accountant> acclist = system.getAccountDirectory().getAccountantList();
 
         if (acclist != null) {
             for (Accountant  acc: acclist) {
                 Object[] row = new Object[2];
                 row[0] = acc.getName();
-                row[1] = acc.getId();
+                row[1] = acc.getEmail();
                 dtm.addRow(row);
             }
         }
@@ -255,7 +255,7 @@ public class FinanceAdminWorkAreaJPanel extends javax.swing.JPanel {
         String email=txtemail.getText();
         
         
-        Accountant accountant = enterprise.getaccountDirectory().createaccountant(username, email);
+        Accountant accountant = enterprise.getAccountDirectory().createaccountant(username, email);
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, accountant,new AccountantRole());
        // populateTable(org);
 
