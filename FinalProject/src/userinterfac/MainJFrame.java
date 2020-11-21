@@ -8,9 +8,11 @@ import Business.ConfigureASystem;
 import static Business.ConfigureASystem.configure;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Employee.Accountant;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Role.AccountantRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.Locale;
@@ -34,6 +36,14 @@ public class MainJFrame extends javax.swing.JFrame {
         //dB4OUtil.storeSystem(configure());
         system = dB4OUtil.retrieveSystem();
         this.setSize(800,600);
+        
+        Accountant accountant = new Accountant();
+        accountant.setEmail("acc2");
+         accountant.setName("acc2");
+        system.getaccountDirectory().createaccountant("acc2", "acc2");
+        UserAccount ua2 = system.getUserAccountDirectory().createUserAccount("acc2", "acc2", accountant, new AccountantRole());
+
+        
     }
  
 

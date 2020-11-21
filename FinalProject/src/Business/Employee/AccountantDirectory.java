@@ -23,9 +23,10 @@ public class AccountantDirectory {
         return accountantList;
     }
     
-    public Accountant createaccountant(String name){
+    public Accountant createaccountant(String name,String email){
         Accountant accountant = new Accountant();
         accountant.setName(name);
+        accountant.setEmail(email);
         accountantList.add(accountant);
         return accountant;
     }
