@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.FinanceAdminRole;
+package ui.FurnishingAdminRole;
 
+import ui.FinanceAdminRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;

@@ -13,20 +13,21 @@ import java.util.ArrayList;
  */
 public class DataAnalystDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList< DataAnalyst> dataAnalystList;
 
     public DataAnalystDirectory() {
-        employeeList = new ArrayList();
+         dataAnalystList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList< DataAnalyst>  GetdataAnalystList() {
+        return  dataAnalystList;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+     public DataAnalyst createdataAnalyst(String name,String email){
+        DataAnalyst dataAnalyst = new DataAnalyst();
+        dataAnalyst.setName(name);
+        dataAnalyst.setEmail(email);
+        dataAnalystList.add(dataAnalyst);
+        return dataAnalyst;
     }
 }

@@ -23,6 +23,7 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
+    
     public Organization createOrganization(Type type){
         Organization organization = null;
         if (type.getValue().equals(Type.Accounting.getValue())){

@@ -12,21 +12,22 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class DecoratorDirectory {
-    
-    private ArrayList<Employee> employeeList;
+
+    private ArrayList<Decorator> decoratorList;
 
     public DecoratorDirectory() {
-        employeeList = new ArrayList();
+        decoratorList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<Decorator> getDecoratorList() {
+        return decoratorList;
     }
-    
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+
+    public Decorator createDecorator(String name, String email) {
+        Decorator decorator = new Decorator();
+        decorator.setName(name);
+        decorator.setEmail(email);
+        decoratorList.add(decorator);
+        return decorator;
     }
 }
