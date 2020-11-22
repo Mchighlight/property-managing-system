@@ -12,21 +12,22 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class CleaningStaffDirectory {
-    
-    private ArrayList<Employee> employeeList;
+
+    private ArrayList<CleaningStaff> cleaningStaffList;
 
     public CleaningStaffDirectory() {
-        employeeList = new ArrayList();
+        cleaningStaffList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<  CleaningStaff> getCleaningStaffList() {
+        return cleaningStaffList;
     }
-    
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+
+    public CleaningStaff createCleaningStaff(String name, String email) {
+        CleaningStaff cleaningStaff = new CleaningStaff();
+        cleaningStaff.setName(name);
+        cleaningStaff.setEmail(email);
+        cleaningStaffList.add(cleaningStaff);
+        return cleaningStaff;
     }
 }

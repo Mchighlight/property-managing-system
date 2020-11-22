@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.FinanceAdminRole;
+package ui.FurnishingAdminRole;
 
+import ui.FinanceAdminRole.*;
 import Business.Employee.Accountant;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yiningchen
  */
 public class ManageEmployeeJPanel extends javax.swing.JPanel {
-
+    
     private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
 
@@ -32,30 +33,30 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         this.organizationDir = organizationDir;
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
-
+        
     }
-
+    
     public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-
+        
         for (Organization organization : organizationDir.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
         }
     }
-
+    
     public void populateOrganizationEmpComboBox() {
         organizationEmpJComboBox.removeAllItems();
-
+        
         for (Organization organization : organizationDir.getOrganizationList()) {
             organizationEmpJComboBox.addItem(organization);
         }
     }
-
+    
     private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
+        
         model.setRowCount(0);
-
+        
         for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             Object[] row = new Object[2];
             row[0] = employee.getId();
@@ -63,12 +64,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
+    
     private void populateAccountTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
+        
         model.setRowCount(0);
-
+        
         for (Accountant accountant : organization.getAccountDirectory().getAccountantList()) {
             Object[] row = new Object[2];
             row[0] = accountant.getId();
@@ -125,6 +126,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel2.setText("Name");
 
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationEmpJComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Department");
 
@@ -227,25 +233,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-
+        
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         JOptionPane.showMessageDialog(null, organizationEmpJComboBox.getSelectedItem().toString());
-  String name = nameJTextField.getText();
-            String email = txtemail.getText();
+        String name = nameJTextField.getText();
+        String email = txtemail.getText();
+        if (organizationEmpJComboBox.getSelectedItem().toString().equals("Cleaning Organization")) {
             
-        if (organizationEmpJComboBox.getSelectedItem().toString().equals( "Accounting Organization")) {
-
-            organization.getAccountDirectory().createaccountant(name, email);
-
+            organization.getCleaningStaffDirectory().createCleaningStaff(name, email);
+            
             populateAccountTable(organization);
-        } else if (organizationEmpJComboBox.getSelectedItem().toString().equals( "AnalysisAndReport Organization")){
+        } else if (organizationEmpJComboBox.getSelectedItem().toString().equals("Furnishing Organization")) {
             
-             organization.getDataAnalystDirectory().createdataAnalyst(name, email);
-
-          
-        }else {
-                    JOptionPane.showMessageDialog(null, "none");
-        
+            organization.getDecoratorDirectory().createDecorator(name, email);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "none");
+            
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -258,7 +262,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
+        
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -267,6 +271,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
+
+    private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_organizationEmpJComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
