@@ -5,6 +5,7 @@
 package Business.UserAccount;
 
 import Business.Employee.Accountant;
+import Business.Employee.DataAnalyst;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -20,16 +21,27 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Accountant accountant;
+    private DataAnalyst dataanalyst;
     private Role role;
     private WorkQueue workQueue;
 
-    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant) {
+    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant,DataAnalyst dataanalyst ) {
 
         this.username = username;
         this.password = password;
         this.employee = employee;
         this.role = role;
         this.accountant=accountant;
+        this.dataanalyst=dataanalyst;
+        
+    }
+
+    public DataAnalyst getDataanalyst() {
+        return dataanalyst;
+    }
+
+    public void setDataanalyst(DataAnalyst dataanalyst) {
+        this.dataanalyst = dataanalyst;
     }
 
   
