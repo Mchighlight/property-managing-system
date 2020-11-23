@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yiningchen
  */
-public class AdminWorkAreaJPanel extends javax.swing.JPanel {
+public class FurnishAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Enterprise enterprise;
@@ -29,7 +29,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      */
 
 
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise) {
+    public FurnishAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;

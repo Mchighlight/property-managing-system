@@ -12,21 +12,24 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class LandlordDirectory {
-    
-    private ArrayList<Employee> employeeList;
 
+    private ArrayList<Landlord> landlordList;
     public LandlordDirectory() {
-        employeeList = new ArrayList();
+        landlordList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+
+    public ArrayList<Landlord> getlandlordList() {
+        return landlordList;
     }
-    
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+
+    public Landlord createLandlord( String firstname, String lastname, String email, String ssn) {
+        Landlord landlord = new Landlord();
+        landlord.setFirstname(firstname);
+        landlord.setLastname(lastname);
+        landlord.setEmail(email);
+        landlord.setSSN(ssn);
+        landlordList.add(landlord);
+        return landlord;
     }
 }
