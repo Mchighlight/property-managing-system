@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.BoardMemberOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -17,15 +18,23 @@ import javax.swing.JPanel;
  */
 public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private BoardMemberOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-    public LandlordWorkAreaJPanel() {
-        initComponents();
-    }
+  
 
     public LandlordWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization boardMemberOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.userAccount = account;
+        //valueLabel.setText(enterprise.getName());
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -37,19 +46,50 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+
+        jButton1.setText("create new propority");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jButton1)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jButton1)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        ManageProporityJPanel manageOrganizationJPanel = new ManageProporityJPanel(userProcessContainer, userAccount,organization,enterprise);
+        userProcessContainer.add("manageProporityJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
