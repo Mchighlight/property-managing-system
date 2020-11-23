@@ -17,7 +17,7 @@ public class Landlord {
     private static int count = 1;
     private String firstname;
     private String lastname;
-    private int SSN;
+    private String SSN;
     private String email;
 
 
@@ -42,13 +42,14 @@ public class Landlord {
         this.lastname = lastname;
     }
 
-    public int getSSN() {
+    public String getSSN() {
         return SSN;
     }
 
-    public void setSSN(int SSN) {
+    public void setSSN(String SSN) {
         this.SSN = SSN;
     }
+
 
     public String getEmail() {
         return email;

@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public class LandlordDirectory {
 
     private ArrayList<Landlord> landlordList;
-
     public LandlordDirectory() {
         landlordList = new ArrayList();
     }
+
 
     public ArrayList<Landlord> getlandlordList() {
         return landlordList;
     }
 
-    public Landlord createLandlord(String name, String firstname, String lastname, String email, int ssn) {
+    public Landlord createLandlord( String firstname, String lastname, String email, String ssn) {
         Landlord landlord = new Landlord();
         landlord.setFirstname(firstname);
         landlord.setLastname(lastname);
