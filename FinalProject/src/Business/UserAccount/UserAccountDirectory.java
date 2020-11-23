@@ -5,8 +5,12 @@
 package Business.UserAccount;
 
 import Business.Employee.Accountant;
+import Business.Employee.CleaningStaff;
 import Business.Employee.DataAnalyst;
+import Business.Employee.Decorator;
 import Business.Employee.Employee;
+import Business.Employee.Landlord;
+import static Business.Organization.Organization.Type.Furnishing;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -15,7 +19,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class UserAccountDirectory {
-    
+
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
@@ -25,16 +29,17 @@ public class UserAccountDirectory {
     public ArrayList<UserAccount> getUserAccountList() {
         return userAccountList;
     }
-    
-    public UserAccount authenticateUser(String username, String password){
-        for (UserAccount ua : userAccountList)
-            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+
+    public UserAccount authenticateUser(String username, String password) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)) {
                 return ua;
             }
+        }
         return null;
     }
-    
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+
+    public UserAccount createUserAccount(String username, String password, Employee employee, Role role) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
@@ -43,16 +48,17 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-    
-    public boolean checkIfUsernameIsUnique(String username){
-        for (UserAccount ua : userAccountList){
-            if (ua.getUsername().equals(username))
+
+    public boolean checkIfUsernameIsUnique(String username) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
                 return false;
+            }
         }
         return true;
     }
 
-        public UserAccount createUserAccount(String username, String password,Accountant accountant, Role role){
+    public UserAccount createUserAccount(String username, String password, Accountant accountant, Role role) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
@@ -61,9 +67,8 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-        
-        
-        public UserAccount createUserAccount(String username, String password,DataAnalyst dataanalyst, Role role){
+
+    public UserAccount createUserAccount(String username, String password, DataAnalyst dataanalyst, Role role) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
@@ -71,7 +76,41 @@ public class UserAccountDirectory {
         userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;
+
+    }
+
+    public UserAccount createUserAccount(String username, String password, CleaningStaff cleaningstaff, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setCleaningstaff(cleaningstaff);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
     }
     
-  
+    
+    public UserAccount createUserAccount(String username, String password, Decorator decorator, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setDecorator(decorator);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
+      public UserAccount createUserAccount(String username, String password, Landlord landlord, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setLandlord(landlord);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+
 }

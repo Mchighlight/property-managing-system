@@ -241,7 +241,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addJButton)
                     .addComponent(backJButton))
@@ -276,9 +276,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+          Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null) {
-            populateTable(organization);
+            if (organization.getName().equals(Organization.Type.Accounting.getValue())) {
+                //JOptionPane.showMessageDialog(null, organization.getName());
+
+                populateTable(organization);
+            } else if (organization.getName().equals(Organization.Type.AnalysisAndReport.getValue())) {
+               populatedataTable(organization);
+            }
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

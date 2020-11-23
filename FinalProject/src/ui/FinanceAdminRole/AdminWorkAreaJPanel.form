@@ -29,15 +29,14 @@
                       <Component id="valueLabel" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="manageOrganizationJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="manageEmployeeJButton" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="userJButton" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="manageEmployeeJButton" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="manageOrganizationJButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="372" max="32767" attributes="0"/>
+              <EmptySpace pref="432" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,13 +50,11 @@
                   <Component id="enterpriseLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="valueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="manageEmployeeJButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="userJButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="manageOrganizationJButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="232" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="manageOrganizationJButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="manageEmployeeJButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="240" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,14 +67,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="My Work Area -Adminstrative Role"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="userJButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage User"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="manageEmployeeJButton">
       <Properties>
