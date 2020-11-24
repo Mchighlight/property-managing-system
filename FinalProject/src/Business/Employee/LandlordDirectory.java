@@ -32,4 +32,12 @@ public class LandlordDirectory {
         landlordList.add(landlord);
         return landlord;
     }
+        public Landlord findLandlord(String name) {
+        for (Landlord lord : landlordList)
+            if (lord.getFirstname().equals(name)){
+                return lord;
+        }
+        return null;
+        
+    }
 }

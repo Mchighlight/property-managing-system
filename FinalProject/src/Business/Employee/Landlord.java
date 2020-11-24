@@ -11,7 +11,6 @@ import Business.Employee.*;
  * @author raunak
  */
 public class Landlord {
-    
 
     private int id;
     private static int count = 1;
@@ -19,11 +18,22 @@ public class Landlord {
     private String lastname;
     private String SSN;
     private String email;
-
+    private ProporityCatalog proporityCatalog;
 
     public Landlord() {
         id = count;
         count++;
+
+        proporityCatalog = new ProporityCatalog();
+
+    }
+
+    public ProporityCatalog getProporityCatalog() {
+        return proporityCatalog;
+    }
+
+    public void setProporityCatalog(ProporityCatalog proporityCatalog) {
+        this.proporityCatalog = proporityCatalog;
     }
 
     public String getFirstname() {
@@ -50,7 +60,6 @@ public class Landlord {
         this.SSN = SSN;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -63,12 +72,9 @@ public class Landlord {
         return id;
     }
 
-
-
     @Override
     public String toString() {
         return lastname;
     }
-    
-    
+
 }

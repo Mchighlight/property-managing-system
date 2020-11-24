@@ -3,26 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/ManageOrganizationJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Organization/Organization.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingAdminRole/ManageEmployeeJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingAdminRole/ManageOrganizationJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingAdminRole/ManageUserAccountJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Role/Role.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/inverstmentAdminRole/ManageOrganizationJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/FurnishingAdminWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceCompany/DataAnalystWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccount.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/ManageUserAccountJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/ManageEmployeeJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/InvestmentManagerAdminWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/RealEstateAdminWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseAdminJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingAdminRole/FurnishAdminWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/AdminWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Role/AccountantRole.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/mongoDB/test.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Role/FinanceAdminRole.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageNetworkJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceCompany/AccountantWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/userinterfac/MainJFrame.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/ConfigureASystem.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/admin/FinanceAdminWorkAreaJPanel.java</file>
-            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/inverstmentAdminRole/InvestAdminWorkAreaJPanel.java</file>
         </group>
     </open-files>
 </project-private>

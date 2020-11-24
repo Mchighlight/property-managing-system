@@ -5,7 +5,11 @@
 package Business.UserAccount;
 
 import Business.Employee.Accountant;
+import Business.Employee.CleaningStaff;
+import Business.Employee.DataAnalyst;
+import Business.Employee.Decorator;
 import Business.Employee.Employee;
+import Business.Employee.Landlord;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -20,16 +24,63 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Accountant accountant;
+    private DataAnalyst dataanalyst;
+    private CleaningStaff cleaningstaff;
     private Role role;
     private WorkQueue workQueue;
+    private Decorator decorator;
+    private Landlord landlord;
+    
 
-    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant) {
+    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant,DataAnalyst dataanalyst, CleaningStaff cleaningstaff, Decorator decorator,Landlord landlord) {
 
         this.username = username;
         this.password = password;
         this.employee = employee;
         this.role = role;
         this.accountant=accountant;
+        this.dataanalyst=dataanalyst;
+        this.cleaningstaff=cleaningstaff;
+        this.decorator=decorator;
+        this.landlord=landlord;
+        
+        
+        
+    }
+
+    public Landlord getLandlord() {
+        return landlord;
+    }
+
+    public void setLandlord(Landlord landlord) {
+        this.landlord = landlord;
+    }
+    
+
+    public Decorator getDecorator() {
+        return decorator;
+    }
+
+    public void setDecorator(Decorator decorator) {
+        this.decorator = decorator;
+    }
+    
+
+    public CleaningStaff getCleaningstaff() {
+        return cleaningstaff;
+    }
+
+    public void setCleaningstaff(CleaningStaff cleaningstaff) {
+        this.cleaningstaff = cleaningstaff;
+    }
+    
+
+    public DataAnalyst getDataanalyst() {
+        return dataanalyst;
+    }
+
+    public void setDataanalyst(DataAnalyst dataanalyst) {
+        this.dataanalyst = dataanalyst;
     }
 
   
