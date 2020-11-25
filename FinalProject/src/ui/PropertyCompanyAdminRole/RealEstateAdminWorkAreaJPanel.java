@@ -47,6 +47,7 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        manageCustomerJButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
@@ -70,6 +71,14 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setText("<value>");
 
+        manageCustomerJButton.setText("Manage Customer");
+        manageCustomerJButton.setActionCommand("Manage Customer");
+        manageCustomerJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCustomerJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,9 +95,10 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manageOrganizationJButton))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageCustomerJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
                 .addContainerGap(432, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,11 +110,13 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(valueLabel))
-                .addGap(39, 39, 39)
+                .addGap(37, 37, 37)
                 .addComponent(manageOrganizationJButton)
-                .addGap(33, 33, 33)
+                .addGap(35, 35, 35)
                 .addComponent(manageEmployeeJButton)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(manageCustomerJButton)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,10 +138,19 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
+    private void manageCustomerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageCustomerJPanel manageCustomerJPanel = new ManageCustomerJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageCustomerJPanel", manageCustomerJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageCustomerJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageCustomerJButton;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JLabel valueLabel;

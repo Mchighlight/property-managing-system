@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author hung-chih huang
  */
-public class ManageEmployeeJPanel extends javax.swing.JPanel {
+public class ManageCustomerJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
@@ -28,7 +28,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageEmployeeJPanel
      */
-    public ManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
+    public ManageCustomerJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
@@ -169,20 +169,20 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Name", "email", "Role"
+                "ID", "Name", "email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
