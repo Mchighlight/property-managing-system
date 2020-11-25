@@ -4,29 +4,30 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.RepairSpecialist;
 import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class RepairSpecialistDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<RepairSpecialist> repairSpecialist;
 
     public RepairSpecialistDirectory() {
-        employeeList = new ArrayList();
+        repairSpecialist = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<RepairSpecialist> getRepairSpecialist() {
+        return repairSpecialist;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+    public RepairSpecialist createRepairSpecialist(String name, String email){
+        RepairSpecialist rs = new RepairSpecialist();
+        rs.setName(name);
+        rs.setEmail(email);
+        repairSpecialist.add(rs);
+        return rs;
     }
 }

@@ -4,29 +4,31 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.CustomerSupport;
 import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class CustomerSupportDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<CustomerSupport> customerSupportList;
 
     public CustomerSupportDirectory() {
-        employeeList = new ArrayList();
+        customerSupportList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<CustomerSupport> getCustomerSupportList() {
+        return customerSupportList;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+    public CustomerSupport createCustomerSupport(String name, String email){
+        CustomerSupport cs = new CustomerSupport();
+        cs.setName(name);
+        cs.setEmail(email);
+        
+        customerSupportList.add(cs);
+        return cs;
     }
 }

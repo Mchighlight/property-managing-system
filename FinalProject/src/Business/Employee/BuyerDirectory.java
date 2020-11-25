@@ -4,29 +4,37 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.Buyer;
 import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class BuyerDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<Buyer> buyerList;
 
     public BuyerDirectory() {
-        employeeList = new ArrayList();
+        buyerList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<Buyer> getBuyerList() {
+        return buyerList;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+    public Buyer createBuyer(String name, String email, 
+                                                   String firstName, String lastName,
+                                                   int SSN ){
+        Buyer buyer = new Buyer();
+        
+        buyer.setName(name);
+        buyer.setEmail(email);
+        buyer.setFirstname(firstName);
+        buyer.setLastname(lastName);
+        buyer.setSSN(SSN);
+        
+        buyerList.add(buyer);
+        return buyer;
     }
 }
