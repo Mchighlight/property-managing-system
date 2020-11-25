@@ -25,7 +25,7 @@ public class BuyerWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     public BuyerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerSupportOrganization customerSupportOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         initComponents();
     }
 
     /**

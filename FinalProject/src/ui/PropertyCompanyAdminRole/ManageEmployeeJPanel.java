@@ -85,38 +85,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-      
-      /*
-      private void populateBuyerTable(Organization organization) {
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
-        model.setRowCount(0);
-
-        for (Buyer buyer : organization.getBuyerDirectory().getBuyerList()) {
-            Object[] row = new Object[3];
-            row[0] = buyer.getId();
-            row[1] = buyer.getName();
-            row[2] = buyer.getEmail();
-            row[3] = "Buyer" ;
-            model.addRow(row);
-        }
-    }
-      
-     private void populateTenantTable(Organization organization) {
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
-        model.setRowCount(0);
-
-        for (Tenant tenant : organization.getTenantDirectory().getTenantList()) {
-            Object[] row = new Object[3];
-            row[0] = tenant.getId();
-            row[1] = tenant.getName();
-            row[2] = tenant.getEmail();
-            row[3] = "Tenant" ;
-            model.addRow(row);
-        }
-    }
-      */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,20 +137,20 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Name", "email", "Role"
+                "ID", "Name", "email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -314,26 +282,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
             populateCustomerSupportTable(organization);
         } 
-        
-        /*
-        else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.CustomerSupport.getValue())) {
-
-            Buyer buyer = organization.getBuyerDirectory().createBuyer(name, email, "", "", 0);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, buyer, new BuyerRole());
-            JOptionPane.showMessageDialog(null, " Buyer  added,user added");
-
-            populateBuyerTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.CustomerSupport.getValue())) {
-
-            Tenant tenant = organization.getTenantDirectory().createTenant(name, email, "", "", 0);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, tenant, new TenantRole());
-            JOptionPane.showMessageDialog(null, " Tenant added,user added");
-
-            populateTenantTable(organization);
-        }
-        */
-        
-
+            
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed

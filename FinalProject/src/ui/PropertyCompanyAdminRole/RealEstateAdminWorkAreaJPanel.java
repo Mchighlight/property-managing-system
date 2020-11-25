@@ -99,7 +99,7 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(manageCustomerJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +116,7 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageEmployeeJButton)
                 .addGap(37, 37, 37)
                 .addComponent(manageCustomerJButton)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,7 +140,8 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageCustomerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerJButtonActionPerformed
         // TODO add your handling code here:
-        ManageCustomerJPanel manageCustomerJPanel = new ManageCustomerJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        ManageCustomerJPanel manageCustomerJPanel = new ManageCustomerJPanel(userProcessContainer, enterprise.getBuyerDirectory(), enterprise.getTenantDirectory()
+                                                                                                                                                          ,enterprise.getUserAccountDirectory());
         userProcessContainer.add("manageCustomerJPanel", manageCustomerJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
