@@ -10,7 +10,12 @@ import Business.Employee.DataAnalyst;
 import Business.Employee.Decorator;
 import Business.Employee.Employee;
 import Business.Employee.Landlord;
-import static Business.Organization.Organization.Type.Furnishing;
+import Business.Employee.RealEstateAgent;
+import Business.Employee.RepairSpecialist;
+import Business.Employee.CustomerSupport;
+import Business.Employee.Buyer;
+import Business.Employee.Tenant;
+
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -108,6 +113,61 @@ public class UserAccountDirectory {
         userAccount.setUsername(username);
         userAccount.setPassword(password);
         userAccount.setLandlord(landlord);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+      
+    public UserAccount createUserAccount(String username, String password, RealEstateAgent rsa, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setRealEstateAgent(rsa);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+            
+    public UserAccount createUserAccount(String username, String password, RepairSpecialist repairSpecialist, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setRepairSpecialist(repairSpecialist);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+                  
+     public UserAccount createUserAccount(String username, String password, CustomerSupport cs, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setCustomerSupport(cs);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+                        
+    public UserAccount createUserAccount(String username, String password, Buyer buyer, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setBuyer(buyer);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+                              
+     public UserAccount createUserAccount(String username, String password, Tenant tenant, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setTenant(tenant);
         userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;

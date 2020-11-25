@@ -8,7 +8,7 @@ import Business.Employee.*;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class RealEstateAgent {
     

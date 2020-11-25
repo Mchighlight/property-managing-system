@@ -7,7 +7,7 @@ package ui.PropertyCompany.repair;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerSupportOrganization;
+import Business.Organization.RepairOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -24,8 +24,8 @@ public class RepairSpecialistWorkAreaJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public RepairSpecialistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerSupportOrganization customerSupportOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public RepairSpecialistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,  RepairOrganization repairOrganization, Enterprise enterprise, EcoSystem business) {
+                initComponents();
     }
 
     /**

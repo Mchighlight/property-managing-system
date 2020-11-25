@@ -12,6 +12,9 @@ import Business.Role.RealEstateAgentRole;
 import Business.Role.RepairSpecialistRole;
 import Business.Role.Role;
 import Business.Role.TenantRole;
+import Business.Employee.BuyerDirectory;
+import Business.Employee.TenantDirectory;
+import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
 /**
@@ -20,8 +23,39 @@ import java.util.ArrayList;
  */
 public class RealEstateEnterprise extends Enterprise {
     
+    private BuyerDirectory buyerDirectory;
+    private TenantDirectory tenantDirectory;
+    private UserAccountDirectory customerAcccountDirectory ;
+    
     public RealEstateEnterprise(String name){
         super(name,EnterpriseType.RealEstate);
+        buyerDirectory = new BuyerDirectory() ;
+        tenantDirectory = new TenantDirectory();
+        customerAcccountDirectory = new UserAccountDirectory() ; 
+    }
+
+    public UserAccountDirectory getCustomerAcccountDirectory() {
+        return customerAcccountDirectory;
+    }
+
+    public void setCustomerAcccountDirectory(UserAccountDirectory customerAcccountDirectory) {
+        this.customerAcccountDirectory = customerAcccountDirectory;
+    }
+
+    public BuyerDirectory getBuyerDirectory() {
+        return buyerDirectory;
+    }
+
+    public void setBuyerDirectory(BuyerDirectory buyerDirectory) {
+        this.buyerDirectory = buyerDirectory;
+    }
+
+    public TenantDirectory getTenantDirectory() {
+        return tenantDirectory;
+    }
+
+    public void setTenantDirectory(TenantDirectory tenantDirectory) {
+        this.tenantDirectory = tenantDirectory;
     }
     @Override
     public ArrayList<Role> getSupportedRole() {

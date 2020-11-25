@@ -7,10 +7,14 @@ package Business.Organization;
 import Business.Employee.AccountantDirectory;
 import Business.Employee.CleaningStaffDirectory;
 import Business.Employee.DataAnalystDirectory;
-import Business.Employee.Decorator;
 import Business.Employee.DecoratorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Employee.LandlordDirectory;
+import Business.Employee.RealEstateAgentDirectory;
+import Business.Employee.RepairSpecialistDirectory;
+import Business.Employee.CustomerSupportDirectory;
+import Business.Employee.TenantDirectory;
+import Business.Employee.BuyerDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -31,6 +35,11 @@ public abstract class Organization {
     private CleaningStaffDirectory cleaningStaffDirectory;
     private DecoratorDirectory decoratorDirectory;
     private LandlordDirectory landlordDirectory;
+    private RealEstateAgentDirectory realEstateAgentDirectory;
+    private RepairSpecialistDirectory repairSpecialistDirectory;
+    private CustomerSupportDirectory customerSupportDirectory;
+    private TenantDirectory tenantDirectory;
+    private BuyerDirectory buyerDirectory;
     private int organizationID;
     private static int counter = 0;
 
@@ -66,6 +75,12 @@ public abstract class Organization {
         cleaningStaffDirectory = new CleaningStaffDirectory();
         decoratorDirectory = new DecoratorDirectory();
         landlordDirectory=new LandlordDirectory();
+        realEstateAgentDirectory = new  RealEstateAgentDirectory();
+        repairSpecialistDirectory = new  RepairSpecialistDirectory();
+        customerSupportDirectory = new  CustomerSupportDirectory();
+        tenantDirectory = new  TenantDirectory();
+        buyerDirectory = new  BuyerDirectory();
+        
         organizationID = counter;
         ++counter;
     }
@@ -102,9 +117,31 @@ public abstract class Organization {
     public DecoratorDirectory getDecoratorDirectory() {
         return decoratorDirectory;
     }
-        public LandlordDirectory getLandlordDirectory() {
+    
+    public LandlordDirectory getLandlordDirectory() {
         return landlordDirectory;
     }
+    
+    public RealEstateAgentDirectory getRealEstateAgentDirectory() {
+        return this.realEstateAgentDirectory;
+    }
+        
+    public RepairSpecialistDirectory getRepairSpecialistDirectory() {
+        return this.repairSpecialistDirectory;
+    }
+            
+    public CustomerSupportDirectory getCustomerSupportDirectory() {
+        return this.customerSupportDirectory;
+    }
+                
+     public TenantDirectory getTenantDirectory() {
+        return this.tenantDirectory;
+    }
+                    
+    public BuyerDirectory getBuyerDirectory() {
+        return this.buyerDirectory;
+    }
+    
 
 
     public String getName() {

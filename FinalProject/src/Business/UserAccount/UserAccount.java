@@ -10,6 +10,11 @@ import Business.Employee.DataAnalyst;
 import Business.Employee.Decorator;
 import Business.Employee.Employee;
 import Business.Employee.Landlord;
+import Business.Employee.RealEstateAgent;
+import Business.Employee.RepairSpecialist;
+import Business.Employee.CustomerSupport;
+import Business.Employee.Buyer;
+import Business.Employee.Tenant;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -26,6 +31,12 @@ public class UserAccount {
     private Accountant accountant;
     private DataAnalyst dataanalyst;
     private CleaningStaff cleaningstaff;
+    private RealEstateAgent realEstateAgent;
+    private RepairSpecialist repairSpecialist;
+    private CustomerSupport customerSupport;
+    private Buyer buyer ;
+    private Tenant tenant ;
+            
     private Role role;
     private WorkQueue workQueue;
     private Decorator decorator;
@@ -99,7 +110,25 @@ public class UserAccount {
         this.accountant = accountant;
     }
     
+     public void setRealEstateAgent(RealEstateAgent rea) {
+        this.realEstateAgent = rea;
+    }
+        
+    public void setRepairSpecialist(RepairSpecialist rs) {
+        this.repairSpecialist = rs;
+    }
     
+    public void setCustomerSupport(CustomerSupport cs) {
+        this.customerSupport = cs;
+    }
+    
+     public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
+    }
+    
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
     
     public String getUsername() {
         return username;

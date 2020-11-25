@@ -25,7 +25,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     public RealEstateAgentWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AgentOrganization agentOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
     }
 
     /**

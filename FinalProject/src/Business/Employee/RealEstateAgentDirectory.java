@@ -4,29 +4,43 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.RealEstateAgent;
 import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class RealEstateAgentDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<RealEstateAgent> realEstateAgentList;
 
     public RealEstateAgentDirectory() {
-        employeeList = new ArrayList();
+        realEstateAgentList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList< RealEstateAgent> getRealEstateAgentList() {
+        return realEstateAgentList;
+    }
+
+    private String name;
+    private String firstname;
+    private String lastname;
+    private int SSN;
+    private String email;
+    
+    public RealEstateAgent createRealEstateAgent(String name, String email, 
+                                                                                          String firstName, String lastName,
+                                                                                          int SSN) {
+        RealEstateAgent realEstateAgent = new RealEstateAgent();
+        realEstateAgent.setName(name);
+        realEstateAgent.setEmail(email);
+        realEstateAgent.setFirstname(firstName);
+        realEstateAgent.setLastname(lastName);
+        realEstateAgent.setSSN(SSN);
+        
+        realEstateAgentList.add(realEstateAgent);
+        return realEstateAgent;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
-    }
 }

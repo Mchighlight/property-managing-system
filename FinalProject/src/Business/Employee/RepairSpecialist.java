@@ -4,11 +4,11 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.RepairSpecialist;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class RepairSpecialist {
     

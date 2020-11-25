@@ -4,29 +4,38 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.Employee.Tenant;
 import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author hung-chih huang
  */
 public class TenantDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<Tenant> tenantList;
 
     public TenantDirectory() {
-        employeeList = new ArrayList();
+        tenantList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<Tenant> getTenantList() {
+        return tenantList;
     }
     
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+    public Tenant createTenant(String name, String email, 
+                                                        String firstName, String lastName,
+                                                        int SSN) {
+        
+        Tenant tenant = new Tenant();
+        
+        tenant.setName(name);
+        tenant.setEmail(email);
+        tenant.setFirstname(firstName);
+        tenant.setLastname(lastName);
+        tenant.setSSN(SSN);
+        
+        tenantList.add(tenant);
+        return tenant;
     }
 }

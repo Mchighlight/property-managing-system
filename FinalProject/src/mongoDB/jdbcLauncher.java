@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package mongoDB;
-
+/*
 import Business.ConfigureASystem;
 import Business.EcoSystem;
 import com.mongodb.BasicDBObject;
@@ -32,7 +32,7 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoDatabase;
-
+*/
 /**
  *
  * @author yiningchen

@@ -58,10 +58,6 @@ public class OrganizationDirectory {
             organization = new RepairOrganization();
             organizationList.add(organization);
         }
-//        else if (type.getValue().equals(Type.Admin.getValue())){
-//            organization = new AdminOrganization();
-//            organizationList.add(organization);
-//        }
         return organization;
     }
 }
