@@ -5,70 +5,56 @@
 package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
-import java.util.Date;
+import Business.property.Department;
 
-/**
- *
- * @author raunak
- */
-public abstract class RepairRequest {
 
-    private String message;
-    private UserAccount sender;
-    private UserAccount receiver;
-    private String status;
-    private Date requestDate;
-    private Date resolveDate;
+public  class RepairRequest extends WorkRequest{
+ 
+    private String comment;
+    private String requirement;
+    private Double feeString;
+    private Department department;
+    private UserAccount customerAccount;
+
+    public UserAccount getCustomerAccount() {
+        return customerAccount;
+    }
+
+    public void setCustomerAccount(UserAccount customerAccount) {
+        this.customerAccount = customerAccount;
+    }
     
-    public RepairRequest(){
-        requestDate = new Date();
+    public Department getDepartment() {
+        return department;
     }
 
-    public String getMessage() {
-        return message;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getComment() {
+        return comment;
     }
 
-    public UserAccount getSender() {
-        return sender;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public void setSender(UserAccount sender) {
-        this.sender = sender;
+    public String getRequirement() {
+        return requirement;
     }
 
-    public UserAccount getReceiver() {
-        return receiver;
+    public void setRequirement(String requirement) {
+        this.requirement = requirement;
     }
 
-    public void setReceiver(UserAccount receiver) {
-        this.receiver = receiver;
+    public Double getFeeString() {
+        return feeString;
     }
 
-    public String getStatus() {
-        return status;
+    public void setFeeString(Double feeString) {
+        this.feeString = feeString;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public Date getResolveDate() {
-        return resolveDate;
-    }
-
-    public void setResolveDate(Date resolveDate) {
-        this.resolveDate = resolveDate;
-    }
+    
+    
 }
