@@ -5,6 +5,6 @@
 package Business.WorkQueue;
 
 
-public  class AgentRequest extends WorkRequest {
+public  class VisitRequest extends WorkRequest {
 
 }
