@@ -7,7 +7,7 @@ import Business.Employee.RealEstateAgent;
 import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
 // Role
-import Business.Role.RealEstateAgentRole;
+import Business.Role.AgentRole;
 import Business.Role.RepairSpecialistRole;
 import Business.Role.CustomerSupportRole;
 // UI package
@@ -263,7 +263,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Agent.getValue())) {
 
             RealEstateAgent realEstateAgent = organization.getRealEstateAgentDirectory().createRealEstateAgent(name, email, "", "", 0);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, realEstateAgent, new RealEstateAgentRole());
+            organization.getUserAccountDirectory().createUserAccount(Username, password, realEstateAgent, new AgentRole());
             JOptionPane.showMessageDialog(null, " Real Estate Agent added,user added");
 
             populateRealEstateAgentTable(organization);

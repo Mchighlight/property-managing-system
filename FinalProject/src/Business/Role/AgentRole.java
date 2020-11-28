@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import ui.PropertyCompany.agent.RealEstateAgentWorkAreaJPanel;
 
 
-public class RealEstateAgentRole extends Role {
+public class AgentRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         return new RealEstateAgentWorkAreaJPanel(userProcessContainer, account, (AgentOrganization)organization, enterprise, business);

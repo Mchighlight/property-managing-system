@@ -8,7 +8,7 @@ package Business.Enterprise;
 import Business.Role.BuyerRole;
 import Business.Role.LeasingRole;
 import Business.Role.RealEstateAdminRole;
-import Business.Role.RealEstateAgentRole;
+import Business.Role.AgentRole;
 import Business.Role.RepairSpecialistRole;
 import Business.Role.Role;
 import Business.Role.TenantRole;
@@ -60,7 +60,7 @@ public class RealEstateEnterprise extends Enterprise {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new RealEstateAgentRole());
+        roles.add(new AgentRole());
         roles.add(new RealEstateAdminRole());
         roles.add(new TenantRole());
         roles.add(new LeasingRole());

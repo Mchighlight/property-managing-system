@@ -15,10 +15,13 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.AccountantRole;
 import Business.UserAccount.UserAccount;
+import com.jtattoo.plaf.aero.AeroLookAndFeel;
 import java.awt.CardLayout;
 import java.util.Locale;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -34,7 +37,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        system = dB4OUtil.retrieveSystem();
+       system = dB4OUtil.retrieveSystem();
+//        system=ConfigureASystem.configure();
+//        dB4OUtil.storeSystem(system);
         this.setSize(800, 600);
 
     }
@@ -289,10 +294,14 @@ public class MainJFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+                    Properties props = new Properties();
+                  props.put("logoString", "my company");
+                  AeroLookAndFeel.setCurrentTheme(props);
+                  UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

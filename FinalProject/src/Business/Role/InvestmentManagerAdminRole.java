@@ -4,7 +4,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import ui.admin.InvestmentManagerAdminWorkAreaJPanel;
 import javax.swing.JPanel;
 import ui.inverstmentAdminRole.InvestAdminWorkAreaJPanel;
 
