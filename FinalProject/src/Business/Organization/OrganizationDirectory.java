@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class OrganizationDirectory {
-    
+
     private ArrayList<Organization> organizationList;
 
     public OrganizationDirectory() {
@@ -22,42 +22,45 @@ public class OrganizationDirectory {
     public ArrayList<Organization> getOrganizationList() {
         return organizationList;
     }
-    
-    
-    public Organization createOrganization(Type type){
+
+    public Organization createOrganization(Type type) {
         Organization organization = null;
-        if (type.getValue().equals(Type.Accounting.getValue())){
+        if (type.getValue().equals(Type.Accounting.getValue())) {
             organization = new AccountingOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.Agent.getValue())){
+        } else if (type.getValue().equals(Type.Agent.getValue())) {
             organization = new AgentOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.AnalysisAndReport.getValue())){
+        } else if (type.getValue().equals(Type.AnalysisAndReport.getValue())) {
             organization = new AnalysisAndReportOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.BoardMember.getValue())){
+        } else if (type.getValue().equals(Type.BoardMember.getValue())) {
             organization = new BoardMemberOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.Cleaning.getValue())){
+        } else if (type.getValue().equals(Type.Cleaning.getValue())) {
             organization = new CleaningOrganization();
             organizationList.add(organization);
-        }
-                else if (type.getValue().equals(Type.CustomerSupport.getValue())){
+        } else if (type.getValue().equals(Type.CustomerSupport.getValue())) {
             organization = new CustomerSupportOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.Furnishing.getValue())){
+        } else if (type.getValue().equals(Type.Furnishing.getValue())) {
             organization = new FurnishingOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.Repair.getValue())){
+        } else if (type.getValue().equals(Type.Repair.getValue())) {
             organization = new RepairOrganization();
             organizationList.add(organization);
         }
         return organization;
     }
+
+    public Organization findorganization(String name) {
+
+        for (Organization organization : organizationList) {
+            if (organization.getName().equals(name)) {
+                return organization;
+            }
+        }
+        return null;
+    }
+
 }

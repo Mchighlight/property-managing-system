@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public class LandlordDirectory {
 
     private ArrayList<Landlord> landlordList;
+
     public LandlordDirectory() {
         landlordList = new ArrayList();
     }
-
 
     public ArrayList<Landlord> getlandlordList() {
         return landlordList;
     }
 
-    public Landlord createLandlord( String firstname, String lastname, String email, String ssn) {
+    public Landlord createLandlord(String firstname, String lastname, String email, String ssn) {
         Landlord landlord = new Landlord();
         landlord.setFirstname(firstname);
         landlord.setLastname(lastname);
@@ -32,12 +32,15 @@ public class LandlordDirectory {
         landlordList.add(landlord);
         return landlord;
     }
-        public Landlord findLandlord(String name) {
-        for (Landlord lord : landlordList)
-            if (lord.getFirstname().equals(name)){
-                return lord;
+
+    public Landlord findlandlord(String name) {
+
+        for (Landlord landlord : landlordList) {
+            if (landlord.getFirstname().equals(name)) {
+                return landlord;
+            }
         }
         return null;
-        
     }
+
 }
