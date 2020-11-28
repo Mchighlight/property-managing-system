@@ -6,10 +6,14 @@
 package ui.PropertyCompany.agent;
 
 import Business.EcoSystem;
+import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Organization.AgentOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,14 +23,17 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TenantWorkAreaJPanel
+     *
      */
-    public RealEstateAgentWorkAreaJPanel() {
-        initComponents();
-    }
+    private Enterprise enterprise;
 
     public RealEstateAgentWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AgentOrganization agentOrganization, Enterprise enterprise, EcoSystem business) {
         initComponents();
+        this.enterprise = enterprise;
+      
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +123,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(119, 119, 119))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +140,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

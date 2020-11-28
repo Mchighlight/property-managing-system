@@ -10,6 +10,7 @@ import Business.Employee.Landlord;
 import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Organization.BoardMemberOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -36,17 +37,20 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
-       // JOptionPane.showMessageDialog(null, organization.getName());
-//populateTable();
+        //JOptionPane.showMessageDialog(null,organization.getName() );
+        // JOptionPane.showMessageDialog(null, organization.getName());
+        populateTable();
+
     }
 
     public void populateTable() {
         String landlordname = userAccount.getUsername();
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
         dtm.setRowCount(0);
-        List<Propority> prolist = organization.getLandlordDirectory().findLandlord(landlordname).getProporityCatalog().getProporitycatalog();
+        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
         if (prolist != null) {
-            for (Propority p : organization.getLandlordDirectory().findLandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
+            for (Propority p : organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
                 Object row[] = new Object[9];
                 row[0] = p.getNickname();
                 row[1] = p.getProporityNum();
@@ -283,7 +287,6 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
 
     private void addjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addjButtonActionPerformed
 
-        
         String nickname = txtnickname.getText();
         String Address = txtaddress.getText();
         String aptno = txtaptno.getText();
@@ -301,9 +304,11 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Input should not be null.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             String landlordname = userAccount.getUsername();
-            //JOptionPane.showMessageDialog(null, landlordname);
-           
-            Landlord landlord = organization.getLandlordDirectory().findLandlord(landlordname);
+            Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+            //"BoardMember Organization"
+            //JOptionPane.showMessageDialog(null, organization.getName());
+            //Landlord landlord =enterprise.getOrganizationDirectory().getOrganizationList().
+            Landlord landlord = organization.getLandlordDirectory().findlandlord(landlordname);
             Propority p = landlord.getProporityCatalog().addPropority();
             p.setAddress(Address);
             p.setNickname(nickname);
@@ -315,36 +320,38 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             p.setSellingprice(sellingprice);
 
             JOptionPane.showMessageDialog(null, "Propority added!", "Info", JOptionPane.INFORMATION_MESSAGE);
+
+            populateTable();
+
+            txtnickname.setText("");
+            txtaddress.setText("");
+            txtaptno.setText("");
+            txtcity.setText("");
+            txtstate.setText("");
+            txtzipcode.setText("");
+            txtrent.setText("");
+            txtprice.setText("");
         }
-        populateTable();
-
-        txtnickname.setText("");
-        txtaddress.setText("");
-        txtaptno.setText("");
-        txtcity.setText("");
-        txtstate.setText("");
-        txtzipcode.setText("");
-        txtrent.setText("");
-        txtprice.setText("");
-
 
     }//GEN-LAST:event_addjButtonActionPerformed
 
     private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
         // TODO add your handling code here:
-        /*  int row = jTable1.getSelectedRow();
-        String food = jTable1.getValueAt(row, 0).toString();
+        int row = jTable1.getSelectedRow();
+        String nickname = jTable1.getValueAt(row, 0).toString();
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!", "get Request", JOptionPane.ERROR_MESSAGE);
         }
-        String restname = account.getUsername();
-        Restaurant res = system.getRestaurantDirectory().findRestaurant(restname);
-        String dishname = jTable1.getValueAt(row, 1).toString();
-        Product p = res.getProductCatalog().findProduct(dishname);
-        res.getProductCatalog().removeProduct(p);
+
+        String landlordname = userAccount.getUsername();
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+        Landlord landlord = organization.getLandlordDirectory().findlandlord(landlordname);
+        Propority propority = landlord.getProporityCatalog().findPropority(nickname);
+        landlord.getProporityCatalog().removePropority(propority);
+
         populateTable();
-        JOptionPane.showMessageDialog(null, "dish deleted");
-         */
+        JOptionPane.showMessageDialog(null, "propority deleted");
+
     }//GEN-LAST:event_deletejButtonActionPerformed
 
     private void txtcityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcityActionPerformed

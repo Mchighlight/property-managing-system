@@ -15,6 +15,7 @@ import Business.Employee.RepairSpecialistDirectory;
 import Business.Employee.CustomerSupportDirectory;
 import Business.Employee.TenantDirectory;
 import Business.Employee.BuyerDirectory;
+import Business.Employee.ProporityCatalog;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -40,6 +41,7 @@ public abstract class Organization {
     private CustomerSupportDirectory customerSupportDirectory;
     private TenantDirectory tenantDirectory;
     private BuyerDirectory buyerDirectory;
+    private ProporityCatalog proporityDirectory;
     private int organizationID;
     private static int counter = 0;
 
@@ -80,10 +82,21 @@ public abstract class Organization {
         customerSupportDirectory = new  CustomerSupportDirectory();
         tenantDirectory = new  TenantDirectory();
         buyerDirectory = new  BuyerDirectory();
+        proporityDirectory= new ProporityCatalog();
         
         organizationID = counter;
         ++counter;
     }
+
+    public ProporityCatalog getProporityDirectory() {
+        return proporityDirectory;
+    }
+
+    public void setProporityDirectory(ProporityCatalog proporityDirectory) {
+        this.proporityDirectory = proporityDirectory;
+    }
+    
+    
 
     public abstract ArrayList<Role> getSupportedRole();
 

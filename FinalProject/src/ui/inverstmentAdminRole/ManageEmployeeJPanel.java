@@ -36,7 +36,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationComboBox();
          Organization organization = (Organization) organizationCombox.getSelectedItem();
          JOptionPane.showMessageDialog(null, organization.getName());
-
     }
 
     public void populateOrganizationComboBox() {
