@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Business.Enterprise.EnterpriseDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.Role;
@@ -20,6 +21,7 @@ public class EcoSystem extends Organization{
     private static EcoSystem business;
     private ArrayList<Network> networkList;
     private jdbcLauncher database;
+    //private EnterpriseDirectory enterpriseDirectory;
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -47,6 +49,16 @@ public class EcoSystem extends Organization{
         return networkList;
     }
 
+    public Network findNetwork(String name) {
+          for (Network network : networkList) {
+            if (network.getName().equals(name)) {
+                return network;
+            }
+        }
+        return null;
+    } 
+        
+   
     public void setNetworkList(ArrayList<Network> networkList) {
         this.networkList = networkList;
     }
@@ -60,4 +72,6 @@ public class EcoSystem extends Organization{
         }
         return true;
     }
+    
+  
 }
