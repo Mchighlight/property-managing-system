@@ -173,4 +173,12 @@ public class UserAccountDirectory {
         return userAccount;
     }
 
+     
+         public UserAccount findUser(String username){
+        for (UserAccount ua : userAccountList)
+            if (ua.getUsername().equals(username)){
+                return ua;
+            }
+        return null;
+    }
 }

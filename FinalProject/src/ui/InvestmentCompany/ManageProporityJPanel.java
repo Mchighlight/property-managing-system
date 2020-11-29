@@ -27,15 +27,17 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private EcoSystem ecosystem;
 
     /**
      * Creates new form ManageProporityJPanel
      */
-    public ManageProporityJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization organization, Enterprise enterprise) {
+    public ManageProporityJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization organization, Enterprise enterprise, EcoSystem ecosystem ) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.ecosystem= ecosystem;
         //JOptionPane.showMessageDialog(null,organization.getName() );
         // JOptionPane.showMessageDialog(null, organization.getName());
         populateTable();

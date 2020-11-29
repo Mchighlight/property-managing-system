@@ -1,6 +1,7 @@
 package Business.Enterprise;
 
 
+import Business.Network.Network;
 import java.util.ArrayList;
 
 public class EnterpriseDirectory {
@@ -40,4 +41,17 @@ public class EnterpriseDirectory {
         }
         return enterprise;
     }
+    
+    
+    public Enterprise findenterprise(String name) {
+
+        for (Enterprise enterprise : enterpriseList) {
+            if (enterprise.getName().equals(name)) {
+                return enterprise;
+            }
+        }
+        return null;
+    }
+    
+    
 }

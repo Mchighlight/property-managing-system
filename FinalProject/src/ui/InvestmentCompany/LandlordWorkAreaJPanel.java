@@ -13,7 +13,6 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import ui.InvestmentCompany.FindFurnishingJPanel;
 
-
 /**
  *
  * @author Mchig
@@ -24,17 +23,19 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     private BoardMemberOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem ecosystem;
+
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-  
 
-    public LandlordWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization boardMemberOrganization, Enterprise enterprise, EcoSystem business) {
+    public LandlordWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization boardMemberOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.ecosystem = ecosystem;
         //valueLabel.setText(enterprise.getName());
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -79,41 +80,34 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(122, 122, 122)
                 .addComponent(jButton1)
-                .addGap(54, 54, 54)
+                .addGap(34, 34, 34)
                 .addComponent(jButton2)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        ManageProporityJPanel manageOrganizationJPanel = new ManageProporityJPanel(userProcessContainer, userAccount,organization,enterprise);
+
+        ManageProporityJPanel manageOrganizationJPanel = new ManageProporityJPanel(userProcessContainer, userAccount, organization, enterprise,ecosystem);
         userProcessContainer.add("manageProporityJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-             
-        FindFurnishingJPanel findFurnishingJPanel = new  FindFurnishingJPanel(userProcessContainer, userAccount,organization,enterprise);
+
+        FindFurnishingJPanel findFurnishingJPanel = new FindFurnishingJPanel(userProcessContainer, userAccount, enterprise,ecosystem);
         userProcessContainer.add("findFurnishingJPanel", findFurnishingJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
