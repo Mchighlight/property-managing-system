@@ -9,8 +9,13 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.BoardMemberOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FurnishingRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import ui.InvestmentCompany.FindFurnishingJPanel;
 
 /**
@@ -36,9 +41,40 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        populateRequestTable();
+        
+        
+        
+        
+        
         //valueLabel.setText(enterprise.getName());
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void populateRequestTable() {
+
+            DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+        dtm.setRowCount(0);
+        ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
+
+//            Restaurant  res = system.getRestaurantDirectory().findRestaurant(account.getUsername());
+        if (work != null) {
+            for (WorkRequest r : work) {
+                Object row[] = new Object[3];
+                row[0] = r.getReceiver().getUsername();
+                row[1] = r.getStatus();
+                row[2] = r.getTitle();
+         
+
+                dtm.addRow(row);
+            }
+
+        }
+        else 
+                   JOptionPane.showMessageDialog(null, "null");
+
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +87,8 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         jButton1.setText("create new propority");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,25 +104,43 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "receiver", "Status", "Title"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(249, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton2)))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
-                .addComponent(jButton2)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -114,5 +170,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
