@@ -60,12 +60,7 @@ public class RealEstateEnterprise extends Enterprise {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new AgentRole());
         roles.add(new RealEstateAdminRole());
-        roles.add(new TenantRole());
-        roles.add(new LeasingRole());
-        roles.add(new BuyerRole());
-        roles.add(new RepairSpecialistRole());
         return roles;
     }
     

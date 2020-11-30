@@ -22,7 +22,6 @@ public class InvestmentManagerEnterprise extends Enterprise {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new LandlordRole());
         roles.add(new InvestmentManagerAdminRole());
         return roles;
     }

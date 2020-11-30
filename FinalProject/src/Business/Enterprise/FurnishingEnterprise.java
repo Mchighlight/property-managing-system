@@ -23,9 +23,7 @@ public class FurnishingEnterprise extends Enterprise {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new CleaningStaffRole());
         roles.add(new FurnishingAdminRole());
-        roles.add(new DecoratorRole());
         return roles;
     }
     

@@ -55,8 +55,9 @@ public class UserAccount {
         this.decorator=decorator;
         this.landlord=landlord;
         
-        
-        
+    }
+    public UserAccount() {
+        workQueue = new WorkQueue();
     }
 
     public Landlord getLandlord() {
@@ -96,11 +97,7 @@ public class UserAccount {
 
   
     
-    public UserAccount() {
-        workQueue = new WorkQueue();
-        
-        
-    }
+    
 
     public Accountant getAccountant() {
         return accountant;
