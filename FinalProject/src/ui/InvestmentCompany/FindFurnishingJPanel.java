@@ -56,17 +56,17 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        String propNickname = jTable1.getValueAt(row, 0).toString();
+        //String propNickname = jTable1.getValueAt(row, 0).toString();
         String dec = decoratorCombobox.getSelectedItem().toString();
 
         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
         int fee = organization.getDecoratorDirectory().findDecorator(dec).getFeepersquarefeet();
-    
+
         int sqtfeet = Integer.parseInt(jTable1.getValueAt(row, 3).toString());
         int total = sqtfeet * fee;
         txtfee.setText(Integer.toString(total));
-            JOptionPane.showMessageDialog(null, "You total quote for decorate is "+ total);
+        JOptionPane.showMessageDialog(null, "You total quote for decorate is " + total);
 
     }
 
@@ -78,7 +78,6 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             decoratorCombobox.addItem(decorator.getName());
         }
     }
-
 
     public void populateproporityTable() {
         String landlordname = userAccount.getUsername();
@@ -268,7 +267,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         Double fee = Double.parseDouble(txtfee.getText());
 
         String decname = decoratorCombobox.getSelectedItem().toString();
-
+        int sqtfeet = Integer.parseInt(jTable1.getValueAt(row, 3).toString());
         UserAccount decaccount = organization.getUserAccountDirectory().findUser(decname);
         if (decaccount != null) {
             request.setFeeString(fee);
@@ -277,6 +276,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             request.setReceiver(decaccount);
             request.setStatus("pending");
             request.setTitle(propNickname + "Decotator request");
+            request.setSqtfeet(sqtfeet);
 
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             organization.getUserAccountDirectory().findUser(decname).getWorkQueue().getFurnishingRequestList().add(request);
