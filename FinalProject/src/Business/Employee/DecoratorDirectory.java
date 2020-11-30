@@ -23,11 +23,22 @@ public class DecoratorDirectory {
         return decoratorList;
     }
 
-    public Decorator createDecorator(String name, String email) {
+    public Decorator createDecorator(String name, String email, int charge) {
         Decorator decorator = new Decorator();
         decorator.setName(name);
         decorator.setEmail(email);
+        decorator.setFeepersquarefeet(charge);
         decoratorList.add(decorator);
         return decorator;
+    }
+    
+        public Decorator findDecorator(String username) {
+
+        for (Decorator decorator : decoratorList) {
+            if (decorator.getName().equals(username)) {
+                return decorator;
+            }
+        }
+        return null;
     }
 }

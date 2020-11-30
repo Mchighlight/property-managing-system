@@ -23,11 +23,23 @@ public class CleaningStaffDirectory {
         return cleaningStaffList;
     }
 
-    public CleaningStaff createCleaningStaff(String name, String email) {
+    public CleaningStaff createCleaningStaff(String name, String email, int charge) {
         CleaningStaff cleaningStaff = new CleaningStaff();
         cleaningStaff.setName(name);
         cleaningStaff.setEmail(email);
+        cleaningStaff.setChargepresquarefee(charge);
+
         cleaningStaffList.add(cleaningStaff);
         return cleaningStaff;
+    }
+
+    public CleaningStaff findCleaningstaff(String username) {
+
+        for (CleaningStaff cleaningStaff : cleaningStaffList) {
+            if (cleaningStaff.getName().equals(username)) {
+                return cleaningStaff;
+            }
+        }
+        return null;
     }
 }

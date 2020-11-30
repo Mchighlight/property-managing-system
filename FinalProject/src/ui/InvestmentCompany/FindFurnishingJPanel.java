@@ -49,18 +49,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         populatDecoratorCombo();
         populateproporityTable();
         populatEnterpriseCombo();
-        populatCleanCombo();
+      
     }
     
-  
-    public void populatCleanCombo() {
-        CleaningStaffComboBox.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
-        for (CleaningStaff cleaning : organization.getCleaningStaffDirectory().getCleaningStaffList()) {
-            CleaningStaffComboBox.addItem(cleaning.getName());
-        }
-    }
+
     
     
     public void populatDecoratorCombo() {
@@ -122,7 +114,6 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         txtfee = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        CleaningStaffComboBox = new javax.swing.JComboBox<>();
 
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -181,13 +172,6 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("offer");
 
-        CleaningStaffComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CleaningStaffComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CleaningStaffComboBoxActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,9 +202,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(63, 63, 63)
                         .addComponent(assignjButton)))
                 .addContainerGap(216, Short.MAX_VALUE))
@@ -248,9 +230,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
                         .addComponent(assignjButton)
                         .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(335, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -306,13 +286,8 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfeeActionPerformed
 
-    private void CleaningStaffComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleaningStaffComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CleaningStaffComboBoxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CleaningStaffComboBox;
     private javax.swing.JButton assignjButton;
     private javax.swing.JComboBox<String> decoratorCombobox;
     private javax.swing.JLabel enterpriseLabel;

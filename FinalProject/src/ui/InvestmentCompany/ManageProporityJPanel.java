@@ -32,12 +32,12 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageProporityJPanel
      */
-    public ManageProporityJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization organization, Enterprise enterprise, EcoSystem ecosystem ) {
+    public ManageProporityJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization organization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
-        this.ecosystem= ecosystem;
+        this.ecosystem = ecosystem;
         //JOptionPane.showMessageDialog(null,organization.getName() );
         // JOptionPane.showMessageDialog(null, organization.getName());
         populateTable();
@@ -52,7 +52,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
         if (prolist != null) {
             for (Propority p : organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
-                Object row[] = new Object[9];
+                Object row[] = new Object[10];
                 row[0] = p.getNickname();
                 row[1] = p.getProporityNum();
                 row[2] = p.getAddress();
@@ -62,7 +62,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
                 row[6] = p.getZipCode();
                 row[7] = p.getMonthlyrent();
                 row[8] = p.getSellingprice();
-
+                row[9] = p.getSquareFeet();
                 dtm.addRow(row);
             }
         }
@@ -100,23 +100,25 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtprice = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtfeet = new javax.swing.JTextField();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Propority List :");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Propority name", "ID", "Address", "apartment number", " City", "State", "zipcode", "monthlyrent", "Selling price"
+                "Propority name", "ID", "Address", "apartment number", " City", "State", "zipcode", "monthlyrent", "Selling price", "square feet"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false, false, false, true
+                false, false, false, false, true, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -195,6 +197,14 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setText("square feet");
+
+        txtfeet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfeetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,8 +229,10 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addComponent(jLabel7)
-                                                .addComponent(jLabel8)
-                                                .addComponent(addjButton))
+                                                .addComponent(addjButton)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel9)
+                                                    .addComponent(jLabel8)))
                                             .addGap(34, 34, 34)
                                             .addComponent(deletejButton)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
@@ -237,7 +249,8 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
                                     .addGap(195, 195, 195)
                                     .addComponent(txtstate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtrent, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfeet, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -290,7 +303,11 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtfeet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addjButton)
                     .addComponent(deletejButton))
@@ -306,7 +323,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         String city = txtcity.getText();
         String state = txtstate.getText();
         String zipcode = txtzipcode.getText();
-
+        int squarefeet = Integer.parseInt(txtfeet.getText());
         int monthlyrent = Integer.parseInt(txtrent.getText());
         int sellingprice = Integer.parseInt(txtprice.getText());
 
@@ -318,9 +335,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         } else {
             String landlordname = userAccount.getUsername();
             Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
-            //"BoardMember Organization"
-            //JOptionPane.showMessageDialog(null, organization.getName());
-            //Landlord landlord =enterprise.getOrganizationDirectory().getOrganizationList().
+
             Landlord landlord = organization.getLandlordDirectory().findlandlord(landlordname);
             Propority p = landlord.getProporityCatalog().addPropority();
             p.setAddress(Address);
@@ -331,6 +346,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             p.setZipCode(zipcode);
             p.setState(state);
             p.setSellingprice(sellingprice);
+            p.setSquareFeet(squarefeet);
 
             JOptionPane.showMessageDialog(null, "Propority added!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
@@ -351,7 +367,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
     private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
         // TODO add your handling code here:
         int row = jTable1.getSelectedRow();
-        String nickname = jTable1.getValueAt(row, 0).toString();
+        String propertynickname = jTable1.getValueAt(row, 0).toString();
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!", "get Request", JOptionPane.ERROR_MESSAGE);
         }
@@ -359,11 +375,11 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         String landlordname = userAccount.getUsername();
         Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
         Landlord landlord = organization.getLandlordDirectory().findlandlord(landlordname);
-        Propority propority = landlord.getProporityCatalog().findPropority(nickname);
+        String propname = jTable1.getValueAt(row, 0).toString();
+        Propority propority =landlord.getProporityCatalog().findPropority(propname);
         landlord.getProporityCatalog().removePropority(propority);
-
         populateTable();
-        JOptionPane.showMessageDialog(null, "propority deleted");
+        JOptionPane.showMessageDialog(null, "property deleted");
 
     }//GEN-LAST:event_deletejButtonActionPerformed
 
@@ -389,11 +405,15 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtfeetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfeetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -409,11 +429,13 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txtaptno;
     private javax.swing.JTextField txtcity;
+    private javax.swing.JTextField txtfeet;
     private javax.swing.JTextField txtnickname;
     private javax.swing.JTextField txtprice;
     private javax.swing.JTextField txtrent;

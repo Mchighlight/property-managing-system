@@ -16,12 +16,22 @@ public class CleaningStaff {
     private int id;
     private static int count = 1;
     private String email;
+    private int chargepresquarefee;
     
 
     public CleaningStaff() {
         id = count;
         count++;
     }
+
+    public int getChargepresquarefee() {
+        return chargepresquarefee;
+    }
+
+    public void setChargepresquarefee(int chargepresquarefee) {
+        this.chargepresquarefee = chargepresquarefee;
+    }
+    
 
     public String getEmail() {
         return email;
