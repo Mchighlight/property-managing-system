@@ -105,7 +105,7 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new appointmentJPanel(userProcessContainer,  ua,  ecosystem));
+        userProcessContainer.add(new mgnaptJPanel(userProcessContainer,  ua,  ecosystem));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 

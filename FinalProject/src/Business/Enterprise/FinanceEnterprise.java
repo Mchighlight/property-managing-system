@@ -24,8 +24,6 @@ public class FinanceEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(new FinanceAdminRole());
-        roles.add(new AccountantRole());
-        roles.add(new DataAnalystRole());
         return roles;
     }
     
