@@ -48,13 +48,28 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
         populatDecoratorCombo();
         populateproporityTable();
-        populatEnterpriseCombo();
-      
-    }
-    
 
+    }
+
+    public void populatchargefee() {
+        int row = jTable1.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        String propNickname = jTable1.getValueAt(row, 0).toString();
+        String dec = decoratorCombobox.getSelectedItem().toString();
+
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
+        int fee = organization.getDecoratorDirectory().findDecorator(dec).getFeepersquarefeet();
     
-    
+        int sqtfeet = Integer.parseInt(jTable1.getValueAt(row, 3).toString());
+        int total = sqtfeet * fee;
+        txtfee.setText(Integer.toString(total));
+            JOptionPane.showMessageDialog(null, "You total quote for decorate is "+ total);
+
+    }
+
     public void populatDecoratorCombo() {
         decoratorCombobox.removeAllItems();
         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
@@ -64,14 +79,6 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         }
     }
 
-    public void populatEnterpriseCombo() {
-        jComboBox1.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
-        for (Enterprise enterprise1 : ecosystem.findNetwork("aa").getEnterpriseDirectory().getEnterpriseList()) {
-            jComboBox1.addItem(enterprise1.getName());
-        }
-    }
 
     public void populateproporityTable() {
         String landlordname = userAccount.getUsername();
@@ -85,10 +92,12 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
         if (prolist != null) {
             for (Propority p : organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
-                Object row[] = new Object[9];
+                Object row[] = new Object[4];
                 row[0] = p.getNickname();
                 row[1] = p.getAddress();
                 row[2] = p.getAptNo();
+                row[3] = p.getSquareFeet();
+
                 dtm.addRow(row);
             }
         }
@@ -106,14 +115,14 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         assignjButton = new javax.swing.JButton();
         decoratorCombobox = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txtfee = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        enterpriseLabel1 = new javax.swing.JLabel();
+        txtfee = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,23 +132,21 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         });
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("furnishing Cpmpany");
-
-        valueLabel.setText("<value>");
+        enterpriseLabel.setText("Decorator");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Property nickName", "Address", "apt No"
+                "Property nickName", "Address", "apt No", "Square feet"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false
+                true, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -148,7 +155,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        assignjButton.setText("Assign Propority to this designer and cleaning staff");
+        assignjButton.setText("Comfirm and Check Out");
         assignjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignjButtonActionPerformed(evt);
@@ -162,7 +169,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("Total Charges base on square feet");
+
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setText("furnishing Company Request");
 
         txtfee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +180,12 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("offer");
+        jButton2.setText("get Quote");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -179,71 +194,65 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(112, 112, 112)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(341, 341, 341)
-                                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(322, 322, 322)
+                        .addGap(291, 291, 291)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(63, 63, 63)
+                                .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(jButton1)
+                        .addGap(131, 131, 131)
+                        .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(420, 420, 420)
                         .addComponent(assignjButton)))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(valueLabel)))
-                .addGap(53, 53, 53)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(assignjButton)
-                        .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(assignjButton)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         LandlordWorkAreaJPanel dwjp = (LandlordWorkAreaJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-       // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void assignjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignjButtonActionPerformed
@@ -252,7 +261,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
 
         int row = jTable1.getSelectedRow();
-           if (row < 0){
+        if (row < 0) {
             return;
         }
         String propNickname = jTable1.getValueAt(row, 0).toString();
@@ -268,8 +277,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             request.setReceiver(decaccount);
             request.setStatus("pending");
             request.setTitle(propNickname + "Decotator request");
-            
-            
+
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             organization.getUserAccountDirectory().findUser(decname).getWorkQueue().getFurnishingRequestList().add(request);
 
@@ -280,23 +288,34 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
     private void decoratorComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decoratorComboboxActionPerformed
         // TODO add your handling code here:
+
+        // populatchargefee();
     }//GEN-LAST:event_decoratorComboboxActionPerformed
 
     private void txtfeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfeeActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "please select a property");
+        } else;
+        populatchargefee();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignjButton;
     private javax.swing.JComboBox<String> decoratorCombobox;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtfee;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }
