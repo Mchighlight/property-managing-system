@@ -11,13 +11,15 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class WorkQueue {
-    
+
     private ArrayList<WorkRequest> workRequestList;
     private ArrayList<VisitRequest> VisitRequestList;
+    private ArrayList<FurnishingRequest> furnishingRequestList;
 
     public WorkQueue() {
         workRequestList = new ArrayList();
         VisitRequestList = new ArrayList();
+        furnishingRequestList = new ArrayList();
     }
 
     public ArrayList<WorkRequest> getWorkRequestList() {
@@ -27,6 +29,19 @@ public class WorkQueue {
     public ArrayList<VisitRequest> getVisitRequestList() {
         return VisitRequestList;
     }
-    
-    
+
+    public ArrayList<FurnishingRequest> getFurnishingRequestList() {
+        return furnishingRequestList;
+    }
+
+    public FurnishingRequest findFurnishingrequest(int orderID) {
+        for (FurnishingRequest object : furnishingRequestList) {
+            if (object.getOrderID() == orderID) {
+                return object;
+            }
+        }
+        return null;
+
+    }
+
 }
