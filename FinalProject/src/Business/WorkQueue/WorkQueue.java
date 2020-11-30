@@ -43,5 +43,14 @@ public class WorkQueue {
         return null;
 
     }
+        public WorkRequest findWorkRequestList(int orderID) {
+        for (WorkRequest object : workRequestList) {
+            if (object.getOrderID() == orderID) {
+                return object;
+            }
+        }
+        return null;
+
+    }
 
 }
