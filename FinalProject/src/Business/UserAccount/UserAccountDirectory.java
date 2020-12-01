@@ -94,8 +94,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-    
-    
+
     public UserAccount createUserAccount(String username, String password, Decorator decorator, Role role) {
 
         UserAccount userAccount = new UserAccount();
@@ -106,8 +105,8 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-    
-      public UserAccount createUserAccount(String username, String password, Landlord landlord, Role role) {
+
+    public UserAccount createUserAccount(String username, String password, Landlord landlord, Role role) {
 
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -117,7 +116,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-      
+
     public UserAccount createUserAccount(String username, String password, RealEstateAgent rsa, Role role) {
 
         UserAccount userAccount = new UserAccount();
@@ -128,7 +127,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-            
+
     public UserAccount createUserAccount(String username, String password, RepairSpecialist repairSpecialist, Role role) {
 
         UserAccount userAccount = new UserAccount();
@@ -139,8 +138,8 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-                  
-     public UserAccount createUserAccount(String username, String password, CustomerSupport cs, Role role) {
+
+    public UserAccount createUserAccount(String username, String password, CustomerSupport cs, Role role) {
 
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -150,7 +149,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-                        
+
     public UserAccount createUserAccount(String username, String password, Buyer buyer, Role role) {
 
         UserAccount userAccount = new UserAccount();
@@ -161,8 +160,8 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-                              
-     public UserAccount createUserAccount(String username, String password, Tenant tenant, Role role) {
+
+    public UserAccount createUserAccount(String username, String password, Tenant tenant, Role role) {
 
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -173,12 +172,17 @@ public class UserAccountDirectory {
         return userAccount;
     }
 
-     
-         public UserAccount findUser(String username){
-        for (UserAccount ua : userAccountList)
-            if (ua.getUsername().equals(username)){
+    public UserAccount findUser(String username) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
                 return ua;
             }
+        }
         return null;
     }
+
+    public void deleteUserAccount(UserAccount account) {
+        this.userAccountList.remove(account);
+    }
+
 }

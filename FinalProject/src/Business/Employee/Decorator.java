@@ -16,11 +16,20 @@ public class Decorator {
     private int id;
     private static int count = 1;
     private String email;
+    private int feepersquarefeet;
     
 
     public Decorator() {
         id = count;
         count++;
+    }
+
+    public int getFeepersquarefeet() {
+        return feepersquarefeet;
+    }
+
+    public void setFeepersquarefeet(int feepersquarefeet) {
+        this.feepersquarefeet = feepersquarefeet;
     }
 
     public String getEmail() {

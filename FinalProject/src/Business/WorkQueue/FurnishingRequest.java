@@ -15,6 +15,7 @@ public  class FurnishingRequest extends WorkRequest {
     private Double feeString;
     private Department department;
     private UserAccount customerAccount;
+    private int Sqtfeet;
 
     public UserAccount getCustomerAccount() {
         return customerAccount;
@@ -23,6 +24,16 @@ public  class FurnishingRequest extends WorkRequest {
     public void setCustomerAccount(UserAccount customerAccount) {
         this.customerAccount = customerAccount;
     }
+
+    public int getSqtfeet() {
+        return Sqtfeet;
+    }
+
+    public void setSqtfeet(int Sqtfeet) {
+        this.Sqtfeet = Sqtfeet;
+    }
+    
+    
     public Department getDepartment() {
         return department;
     }

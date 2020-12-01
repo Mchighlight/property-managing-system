@@ -18,6 +18,9 @@ public class Propority {
     private String zipCode;
     private int Monthlyrent;
     private int Sellingprice;
+    private int SquareFeet;
+    
+    
     
     private int proporityNum;
     private static int count =0;
@@ -27,11 +30,22 @@ public class Propority {
         return Nickname; //To change body of generated methods, choose Tools | Templates.
     }
     
+    
     public Propority() {
     count++;
     proporityNum = count;
     }
 
+    public int getSquareFeet() {
+        return SquareFeet;
+    }
+
+    public void setSquareFeet(int SquareFeet) {
+        this.SquareFeet = SquareFeet;
+    }
+
+    
+    
     public String getNickname() {
         return Nickname;
     }

@@ -6,11 +6,18 @@
 package ui.FurnishingCompany;
 
 import Business.EcoSystem;
+import Business.Employee.CleaningStaff;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FurnishingOrganization;
+import Business.Organization.Organization;
+import static Business.Role.Role.RoleType.CleaningStaff;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FurnishingRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,18 +29,78 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
     private FurnishingOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem ecosystem;
 
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-    public DecoratorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, FurnishingOrganization furnishingOrganization, Enterprise enterprise, EcoSystem business) {
+    public DecoratorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, FurnishingOrganization furnishingOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.ecosystem = ecosystem;
+        // this.request = new CleaningRequest();
         valueLabel.setText(enterprise.getName());
+        populateRequestTable();
+        populatCleanCombo();
+    }
 
+    public void populatchargefee() {
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+
+        String Cleaning = CleaningStaffComboBox.getSelectedItem().toString();
+
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
+        // JOptionPane.showMessageDialog(null, organization.getName());
+
+        int cleaningfee = organization.getCleaningStaffDirectory().findCleaningstaff(Cleaning).getChargepresquarefee();
+        int sqtfeet = Integer.parseInt(workRequestJTable.getValueAt(row, 6).toString());
+        int total = sqtfeet * cleaningfee;
+        txtfee.setText(Integer.toString(total));
+        JOptionPane.showMessageDialog(null, "You cost for cleaning is " + total);
+
+    }
+
+    public void populateRequestTable() {
+
+        DefaultTableModel dtm = (DefaultTableModel) workRequestJTable.getModel();
+        dtm.setRowCount(0);
+        ArrayList<FurnishingRequest> work = userAccount.getWorkQueue().getFurnishingRequestList();
+
+        if (work != null) {
+            for (FurnishingRequest f : work) {
+
+                Object row[] = new Object[7];
+                row[0] = f.getOrderID();
+                row[1] = f.getCustomerAccount().getUsername();
+                row[2] = f.getRequirement();
+                row[3] = f.getFeeString();
+                row[4] = f.getStatus();
+                row[5] = f.getTitle();
+                row[6] = f.getSqtfeet();
+
+                dtm.addRow(row);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "null");
+        }
+
+    }
+
+    public void populatCleanCombo() {
+        CleaningStaffComboBox.removeAllItems();
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
+        for (CleaningStaff cleaning : organization.getCleaningStaffDirectory().getCleaningStaffList()) {
+            CleaningStaffComboBox.addItem(cleaning.getName());
+        }
     }
 
     /**
@@ -50,8 +117,15 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
-        requestTestJButton = new javax.swing.JButton();
-        refreshTestJButton = new javax.swing.JButton();
+        btndeny = new javax.swing.JButton();
+        btnaccept = new javax.swing.JButton();
+        btnFinish = new javax.swing.JButton();
+        CleaningStaffComboBox = new javax.swing.JComboBox<>();
+        assignjButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtfee = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -62,20 +136,20 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "OrderID", "Customer", "Requirement", "budget", "Status", "Title", "Sqt Feet"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -88,45 +162,98 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        requestTestJButton.setText("Request Test");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+        btndeny.setText("Decline");
+        btndeny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
+                btndenyActionPerformed(evt);
             }
         });
 
-        refreshTestJButton.setText("Refresh");
-        refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnaccept.setText("Accept");
+        btnaccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshTestJButtonActionPerformed(evt);
+                btnacceptActionPerformed(evt);
             }
         });
+
+        btnFinish.setText("Finish");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
+
+        CleaningStaffComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        assignjButton.setText("Assign  to this Cleaning profession");
+        assignjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignjButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Total Charges base on square feet");
+
+        txtfee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfeeActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("get Cost");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Select a cleaning profession");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshTestJButton)
-                .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 429, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jScrollPane1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btndeny)
+                    .addComponent(btnaccept)
+                    .addComponent(btnFinish)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(assignjButton)
+                .addGap(277, 277, 277))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(requestTestJButton)
-                        .addGap(86, 86, 86))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel3)
+                        .addGap(50, 50, 50)
+                        .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel2)
+                        .addGap(46, 46, 46)
+                        .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,37 +263,133 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(refreshTestJButton)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(requestTestJButton)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btndeny)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnaccept)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFinish))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(assignjButton)
+                .addGap(127, 127, 127))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
+    private void btndenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndenyActionPerformed
+        // TODO add your handling code here:
 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        /* userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
-         */
-    }//GEN-LAST:event_requestTestJButtonActionPerformed
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Declined");
+        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
 
-    private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        populateRequestTable();
 
-        //   populateRequestTable();
-    }//GEN-LAST:event_refreshTestJButtonActionPerformed
+    }//GEN-LAST:event_btndenyActionPerformed
+
+    private void btnacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnacceptActionPerformed
+        // TODO add your handling code here:
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Accepted and proecssing");
+        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
+
+        JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        populateRequestTable();
+    }//GEN-LAST:event_btnacceptActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Finished");
+        JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        populateRequestTable();
+
+    }//GEN-LAST:event_btnFinishActionPerformed
+
+    private void assignjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignjButtonActionPerformed
+        // TODO add your handling code here:
+         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
+
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int OrderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        String cleanname = CleaningStaffComboBox.getSelectedItem().toString();
+
+        UserAccount cleaningaccount = organization.getUserAccountDirectory().findUser(cleanname);
+        FurnishingRequest request = userAccount.getWorkQueue().findFurnishingrequest(OrderId);
+        if (cleaningaccount != null) {
+
+            request.setStatus("Cleaning processing");
+
+            cleaningaccount.getWorkQueue().getFurnishingRequestList().add(request);
+
+            JOptionPane.showMessageDialog(null, "assign successfully");
+            populateRequestTable();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "null");
+        }
+        
+         
+   
+    }//GEN-LAST:event_assignjButtonActionPerformed
+
+    private void txtfeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfeeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "please select a property");
+        } else;
+        populatchargefee();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CleaningStaffComboBox;
+    private javax.swing.JButton assignjButton;
+    private javax.swing.JButton btnFinish;
+    private javax.swing.JButton btnaccept;
+    private javax.swing.JButton btndeny;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton refreshTestJButton;
-    private javax.swing.JButton requestTestJButton;
+    private javax.swing.JTextField txtfee;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

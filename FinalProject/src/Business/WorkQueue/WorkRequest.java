@@ -19,9 +19,17 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    
-    public WorkRequest(){
+    private int orderID;
+    private static int count = 0;
+
+    public WorkRequest() {
         requestDate = new Date();
+        count++;
+        orderID = count;
+    }
+
+    public int getOrderID() {
+        return orderID;
     }
 
     public String getTitle() {
