@@ -4,7 +4,7 @@
  */
 package Business.Employee;
 
-import Business.Employee.*;
+import Business.property.Lease;
 
 /**
  *
@@ -20,6 +20,42 @@ public class Tenant {
     private String lastname;
     private int SSN;
     private String email;
+    private String phone ;
+    private String currentAddress;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCurrentAddress() {
+        return currentAddress;
+    }
+
+    public void setCurrentAddress(String currentAddress) {
+        this.currentAddress = currentAddress;
+    }
+
+    public String getCityStateZip() {
+        return cityStateZip;
+    }
+
+    public void setCityStateZip(String cityStateZip) {
+        this.cityStateZip = cityStateZip;
+    }
+
+    public Lease getLease() {
+        return lease;
+    }
+
+    public void setLease(Lease lease) {
+        this.lease = lease;
+    }
+    private String cityStateZip ;
+    private Lease lease ;
 
     public Tenant() {
         id = count;

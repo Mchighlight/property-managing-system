@@ -52,7 +52,6 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        dateChooserPanel1 = new datechooser.beans.DateChooserPanel();
         jButton4 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,9 +88,6 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 130, -1));
-
-        dateChooserPanel1.setLocale(new java.util.Locale("en", "GB", ""));
-        add(dateChooserPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 370, 170));
 
         jButton4.setText("...");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +179,6 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private datechooser.beans.DateChooserPanel dateChooserPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

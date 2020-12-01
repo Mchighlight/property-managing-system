@@ -37,72 +37,107 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        btnLeaseCollection = new javax.swing.JButton();
+        btnRenewal = new javax.swing.JButton();
+        btnPaymentCheck = new javax.swing.JButton();
+        btnTermination1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setText("Lease collection");
+        jLabel1.setText("Lease Office");
 
-        jButton1.setText("Create a new lease");
+        btnLeaseCollection.setText("Lease Collection");
+        btnLeaseCollection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeaseCollectionActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Update");
+        btnRenewal.setText("Renewal");
+        btnRenewal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRenewalActionPerformed(evt);
+            }
+        });
+
+        btnPaymentCheck.setText("Payment Check");
+        btnPaymentCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentCheckActionPerformed(evt);
+            }
+        });
+
+        btnTermination1.setText("Termination");
+        btnTermination1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTermination1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(218, 218, 218)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPaymentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnLeaseCollection, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                        .addComponent(btnRenewal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(20, 20, 20)))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(btnLeaseCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRenewal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPaymentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLeaseCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseCollectionActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new customerServiceJPanel( userProcessContainer,  ua,  ecosystem) );
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnLeaseCollectionActionPerformed
+
+    private void btnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenewalActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new mgnaptJPanel(userProcessContainer,  ua,  ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRenewalActionPerformed
+
+    private void btnPaymentCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentCheckActionPerformed
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new contractJPanel(userProcessContainer,  ua,  ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPaymentCheckActionPerformed
+
+    private void btnTermination1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTermination1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTermination1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnLeaseCollection;
+    private javax.swing.JButton btnPaymentCheck;
+    private javax.swing.JButton btnRenewal;
+    private javax.swing.JButton btnTermination1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

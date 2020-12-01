@@ -42,15 +42,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="dateChooserPanel1" min="-2" pref="400" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="400" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="dateChooserPanel1" min="-2" pref="235" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -58,8 +56,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="datechooser.beans.DateChooserPanel" name="dateChooserPanel1">
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Choose"/>
