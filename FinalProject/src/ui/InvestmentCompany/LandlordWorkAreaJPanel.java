@@ -6,9 +6,15 @@
 package ui.InvestmentCompany;
 
 import Business.EcoSystem;
+import Business.Employee.Decorator;
+import Business.Employee.RealEstateAgent;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.BoardMemberOrganization;
+import Business.Organization.Organization;
+import static Business.Organization.Organization.Type.Agent;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BoardMemberRequest;
 import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -24,6 +30,7 @@ import ui.InvestmentCompany.FindFurnishingJPanel;
  */
 public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
 
+    private BoardMemberRequest request;
     private JPanel userProcessContainer;
     private BoardMemberOrganization organization;
     private Enterprise enterprise;
@@ -33,7 +40,6 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-
     public LandlordWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BoardMemberOrganization boardMemberOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -41,19 +47,31 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        this.request = new BoardMemberRequest();
+
         populateRequestTable();
-        
-        
-        
-        
-        
+        for (Network network : ecosystem.getNetworkList()) {
+            NetWorkCombobox.addItem(network.getName());
+
+        }
+
         //valueLabel.setText(enterprise.getName());
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public void populatAgentCombo(String net) {
+        AgentCombobox.removeAllItems();
+        Enterprise enterprise = ecosystem.findNetwork(net).getEnterpriseDirectory().findenterprise("realestate");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Agent Organization");
+        for (RealEstateAgent agent : organization.getRealEstateAgentDirectory().getRealEstateAgentList()) {
+            AgentCombobox.addItem(agent.getName());
+        }
+
+    }
+
     public void populateRequestTable() {
 
-            DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
         dtm.setRowCount(0);
         ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
 
@@ -64,17 +82,15 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
                 row[0] = r.getReceiver().getUsername();
                 row[1] = r.getStatus();
                 row[2] = r.getTitle();
-         
 
                 dtm.addRow(row);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "null");
         }
-        else 
-                   JOptionPane.showMessageDialog(null, "null");
 
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +105,11 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        AgentCombobox = new javax.swing.JComboBox<>();
+        NetWorkCombobox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        value = new javax.swing.JLabel();
 
         jButton1.setText("create new propority");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +138,30 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jButton3.setText("Pick Agent");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        AgentCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AgentCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgentComboboxActionPerformed(evt);
+            }
+        });
+
+        NetWorkCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NetWorkComboboxActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("work with agent :");
+
+        value.setText("<value>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,22 +169,48 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(43, 43, 43))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(46, 46, 46)
-                        .addComponent(jButton2)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NetWorkCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AgentCombobox, 0, 142, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(value)))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(34, 34, 34)
+                .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(AgentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(value))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -147,7 +218,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        ManageProporityJPanel manageOrganizationJPanel = new ManageProporityJPanel(userProcessContainer, userAccount, organization, enterprise,ecosystem);
+        ManageProporityJPanel manageOrganizationJPanel = new ManageProporityJPanel(userProcessContainer, userAccount, organization, enterprise, ecosystem);
         userProcessContainer.add("manageProporityJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -158,7 +229,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        FindFurnishingJPanel findFurnishingJPanel = new FindFurnishingJPanel(userProcessContainer, userAccount, enterprise,ecosystem);
+        FindFurnishingJPanel findFurnishingJPanel = new FindFurnishingJPanel(userProcessContainer, userAccount, enterprise, ecosystem);
         userProcessContainer.add("findFurnishingJPanel", findFurnishingJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -166,11 +237,55 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise("realestate");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Agent Organization");
+
+        String Agentname = AgentCombobox.getSelectedItem().toString();
+        UserAccount Agentaccount = organization.getUserAccountDirectory().findUser(Agentname);
+        if (Agentaccount != null) {
+            request.setReceiver(Agentaccount);
+            request.setSender(userAccount);
+
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            Agentaccount.getWorkQueue().getWorkRequestList().add(request);
+
+            
+            JOptionPane.showMessageDialog(null, "assign successfully");
+            value.setText(Agentname);
+
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void AgentComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentComboboxActionPerformed
+        // TODO add your handling code here:
+
+        // populatchargefee();
+    }//GEN-LAST:event_AgentComboboxActionPerformed
+
+    private void NetWorkComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NetWorkComboboxActionPerformed
+        // TODO add your handling code here:
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        if (network != null) {
+            populatAgentCombo(network);
+        }
+
+    }//GEN-LAST:event_NetWorkComboboxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> AgentCombobox;
+    private javax.swing.JComboBox<String> NetWorkCombobox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel value;
     // End of variables declaration//GEN-END:variables
 }
