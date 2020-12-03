@@ -13,20 +13,32 @@ import java.util.ArrayList;
  */
 public class LeasingDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private ArrayList<Leasing> leasingList;
 
     public LeasingDirectory() {
-        employeeList = new ArrayList();
+        leasingList = new ArrayList();
     }
 
-    public ArrayList<Employee> getEmployeeList() {
-        return employeeList;
+    public ArrayList<Leasing> getLeasingList() {
+        return leasingList;
     }
-    
-    public Employee createEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
-        employeeList.add(employee);
-        return employee;
+
+    public Leasing createLeasing(String name, String email, String ssn) {
+        Leasing leasing = new Leasing();
+        leasing.setName(name);
+        leasing.setEmail(email);
+        leasing.setSSN(ssn);
+        leasingList.add(leasing);
+        return leasing;
+    }
+
+    public Leasing findLeasing(String name) {
+
+        for (Leasing ls : leasingList) {
+            if (ls.getName().equals(name)) {
+                return ls;
+            }
+        }
+        return null;
     }
 }

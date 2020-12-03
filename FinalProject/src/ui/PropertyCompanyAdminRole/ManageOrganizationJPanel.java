@@ -37,6 +37,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             if (type.getValue().equals(Type.CustomerSupport.getValue())
              ||type.getValue().equals(Type.Agent.getValue())
              ||type.getValue().equals(Type.Repair.getValue())
+             ||type.getValue().equals(Type.Leasing.getValue())
             ){
 
                 organizationJComboBox.addItem(type);

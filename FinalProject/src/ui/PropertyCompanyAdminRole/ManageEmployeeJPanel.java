@@ -6,10 +6,12 @@ import Business.Organization.OrganizationDirectory;
 import Business.Employee.RealEstateAgent;
 import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
+import Business.Employee.Leasing;
 // Role
 import Business.Role.AgentRole;
 import Business.Role.RepairSpecialistRole;
 import Business.Role.CustomerSupportRole;
+import Business.Role.LeasingRole;
 // UI package
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -82,6 +84,21 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             row[0] = cs.getId();
             row[1] = cs.getName();
             row[2] = cs.getEmail();
+            model.addRow(row);
+        }
+    }
+      
+      
+     private void populateLeasingTable (Organization organization) {
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+
+        model.setRowCount(0);
+
+        for (Leasing ls : organization.getLeasingDirectory().getLeasingList()) {
+            Object[] row = new Object[3];
+            row[0] = ls.getId();
+            row[1] = ls.getName();
+            row[2] = ls.getEmail();
             model.addRow(row);
         }
     }
@@ -281,6 +298,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " Customer support added,user added");
 
             populateCustomerSupportTable(organization);
+        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Leasing.getValue())) {
+
+            Leasing ls = organization.getLeasingDirectory().createLeasing(name, email, "");
+            organization.getUserAccountDirectory().createUserAccount(Username, password, ls, new LeasingRole());
+            JOptionPane.showMessageDialog(null, " Leasing  added,user added");
+
+            populateCustomerSupportTable(organization);
         } 
             
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -295,6 +319,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 populateRepairSpecialistTable(organization);
             } else if (organization.getName().equals(Organization.Type.CustomerSupport.getValue())) {
                 populateCustomerSupportTable(organization);
+            } else if (organization.getName().equals(Organization.Type.Leasing.getValue())) {
+                populateLeasingTable(organization);
             }
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed

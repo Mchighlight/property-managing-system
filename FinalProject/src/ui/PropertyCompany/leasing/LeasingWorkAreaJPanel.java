@@ -7,8 +7,9 @@ package ui.PropertyCompany.leasing;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.AgentOrganization;
+import Business.Organization.LeasingOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -20,12 +21,19 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-    public LeasingWorkAreaJPanel() {
+    JPanel userProcessContainer;
+    UserAccount ua;
+    EcoSystem eco;
+    LeasingOrganization  leaseOrganization ;
+    Enterprise enterprise ;
+    
+    public LeasingWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
         initComponents();
-    }
-
-    public LeasingWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, AgentOrganization agentOrganization, Enterprise enterprise, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.userProcessContainer = userProcessContainer ;
+        this.ua = account ;
+        this.leaseOrganization = leaseOrganization ;
+        this.enterprise = enterprise ;
+        this.eco = business ;
     }
 
     /**
@@ -111,25 +119,27 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     private void btnLeaseCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseCollectionActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new customerServiceJPanel( userProcessContainer,  ua,  ecosystem) );
+        userProcessContainer.add(new ViewLeaseJPanel( userProcessContainer,  ua,  eco) );
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnLeaseCollectionActionPerformed
 
     private void btnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenewalActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new mgnaptJPanel(userProcessContainer,  ua,  ecosystem));
+        userProcessContainer.add(new RenewalServiceJPanel(userProcessContainer,  ua,  eco));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRenewalActionPerformed
 
     private void btnPaymentCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentCheckActionPerformed
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new contractJPanel(userProcessContainer,  ua,  ecosystem));
+        userProcessContainer.add(new PaymentCheckJPanel(userProcessContainer,  ua,  eco));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPaymentCheckActionPerformed
 
     private void btnTermination1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTermination1ActionPerformed
-        // TODO add your handling code here:
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new TerminationJPanel(userProcessContainer,  ua,  eco));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnTermination1ActionPerformed
 
 

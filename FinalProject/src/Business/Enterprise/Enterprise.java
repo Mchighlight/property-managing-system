@@ -8,6 +8,7 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    private String networkName ;
     
     public enum EnterpriseType{
         Finance("Finance"),
@@ -45,6 +46,17 @@ public abstract class Enterprise extends Organization{
 
     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
+    }
+    
+    public void setNetworkName(String name ){
+        this.networkName = name ;     
+    }
+    
+    public String getNetworkName(){
+        if ( this.networkName == null ){
+            this.setNetworkName("henry");
+        }
+        return this.networkName;
     }
     
 }

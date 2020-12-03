@@ -32,7 +32,13 @@ public class Lease {
         renewalList = new ArrayList<Renewal>() ;
         rentList = new ArrayList<Rent>() ;
     }
-
+     
+    @Override
+    public String toString() {
+        return this.tenant.getName() + "'s lease "; //To change body of generated methods, choose Tools | Templates.
+    }
+     
+     
      public void addRent( Rent oRent ){
          this.rentList.add(oRent) ;
      }

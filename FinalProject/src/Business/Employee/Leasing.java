@@ -5,6 +5,8 @@
 package Business.Employee;
 
 import Business.Employee.*;
+import Business.property.Lease;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +18,32 @@ public class Leasing {
     private int id;
     private static int count = 1;
     private String email;
+    private String SSN ;
+    private ArrayList<Lease> leaseDirectory ;
+
+    public ArrayList<Lease> getLeaseDirectory() {
+        return leaseDirectory;
+    }
+
+    public void setLeaseDirectory(ArrayList<Lease> leaseDirectory) {
+        this.leaseDirectory = leaseDirectory;
+    }
+    
+     public void addLease(Lease ls) {
+        this.leaseDirectory.add(ls) ;
+    }
+     
+    public void removeLease(Lease ls) {
+        this.leaseDirectory.remove(ls) ;
+    }
+
+    public String getSSN() {
+        return SSN;
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
+    }
     
 
     public Leasing() {

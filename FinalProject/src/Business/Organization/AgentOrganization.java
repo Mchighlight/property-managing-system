@@ -16,7 +16,6 @@ public class AgentOrganization extends Organization{
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
         roles.add(new AgentRole());
-        roles.add(new LeasingRole()) ;
         return roles;
     }
      

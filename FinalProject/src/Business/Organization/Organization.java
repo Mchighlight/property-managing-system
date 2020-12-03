@@ -15,6 +15,7 @@ import Business.Employee.RepairSpecialistDirectory;
 import Business.Employee.CustomerSupportDirectory;
 import Business.Employee.TenantDirectory;
 import Business.Employee.BuyerDirectory;
+import Business.Employee.LeasingDirectory ;
 import Business.Employee.ProporityCatalog;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -39,6 +40,7 @@ public abstract class Organization {
     private RealEstateAgentDirectory realEstateAgentDirectory;
     private RepairSpecialistDirectory repairSpecialistDirectory;
     private CustomerSupportDirectory customerSupportDirectory;
+    private LeasingDirectory leasingDirectory ;
     private TenantDirectory tenantDirectory;
     private BuyerDirectory buyerDirectory;
     private ProporityCatalog proporityDirectory;
@@ -49,6 +51,7 @@ public abstract class Organization {
         Admin("Admin Organization"),
         Accounting("Accounting Organization"),
         Agent("Agent Organization"),
+        Leasing("Leasing Organization"),
         AnalysisAndReport("AnalysisAndReport  Organization"),
         BoardMember("BoardMember Organization"),
         Cleaning("Cleaning Organization"),
@@ -80,12 +83,31 @@ public abstract class Organization {
         realEstateAgentDirectory = new  RealEstateAgentDirectory();
         repairSpecialistDirectory = new  RepairSpecialistDirectory();
         customerSupportDirectory = new  CustomerSupportDirectory();
+        leasingDirectory = new LeasingDirectory() ;
         tenantDirectory = new  TenantDirectory();
         buyerDirectory = new  BuyerDirectory();
         proporityDirectory= new ProporityCatalog();
         
         organizationID = counter;
         ++counter;
+    }
+
+    public abstract ArrayList<Role> getSupportedRole();
+    
+    public AccountantDirectory getAccountantDirectory() {
+        return accountantDirectory;
+    }
+
+    public void setAccountantDirectory(AccountantDirectory accountantDirectory) {
+        this.accountantDirectory = accountantDirectory;
+    }
+
+    public LeasingDirectory getLeasingDirectory() {
+        return leasingDirectory;
+    }
+
+    public void setLeasingDirectory(LeasingDirectory leasingDirectory) {
+        this.leasingDirectory = leasingDirectory;
     }
 
     public ProporityCatalog getProporityDirectory() {
@@ -95,10 +117,6 @@ public abstract class Organization {
     public void setProporityDirectory(ProporityCatalog proporityDirectory) {
         this.proporityDirectory = proporityDirectory;
     }
-    
-    
-
-    public abstract ArrayList<Role> getSupportedRole();
 
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
