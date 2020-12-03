@@ -14,9 +14,14 @@ import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
+import Business.property.Lease;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -201,6 +206,44 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+        public static Date firstDayOfNextMonth() {
+            LocalDateTime now = LocalDateTime.now();
+            int year = now.getYear();
+            int month = now.getMonthValue();
+            int day = now.getDayOfMonth();  
+
+            Calendar cal = Calendar.getInstance();
+            cal.clear();
+            cal.set(Calendar.YEAR, year);
+            cal.set(Calendar.MONTH, month);
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+
+            Date dueDate = new Date(cal.getTimeInMillis());
+
+        return dueDate;
+    }
+    
+    private Lease buildLease(SignLeaseRequest slr){
+        Lease lease = new Lease() ;
+        // Lease Start  Day
+        Date leaseStartDate = firstDayOfNextMonth();
+        lease.setStartDate(leaseStartDate);
+        // Lease End Day
+        Calendar cal=Calendar.getInstance();
+        cal.setTime(leaseStartDate);
+        cal.set(Calendar.YEAR,1);
+        Date leaseEndDate =  cal.getTime() ;
+        lease.setEndDate(leaseEndDate);
+        // Info
+        lease.setBalance(Double.valueOf(0));
+        lease.setSecurityDeposit(Double.valueOf(400));
+        lease.setBuilding(slr.getBuilding());
+        lease.setTenant(slr.getTenant());
+        lease.setLeasing(slr.getLeasing());
+        
+        return lease ;
+    }
+    
     private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
         // TODO add your handling code here:
 
@@ -230,7 +273,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         String tenantName = workRequestJTable.getValueAt(row, 1).toString() ;
         SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
         selectedSlr.setStatus("Accepted");
-        
+        selectedSlr.setLease(this.buildLease(selectedSlr));
         
 
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);

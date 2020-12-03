@@ -144,6 +144,12 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtaddressActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Address");
 
         jLabel2.setText("Propority Nick Name");
@@ -424,6 +430,10 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
     private void txtfeetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfeetActionPerformed
+
+    private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtaddressActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

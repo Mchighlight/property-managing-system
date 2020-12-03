@@ -8,6 +8,7 @@ package Business.property;
 import Business.Employee.Leasing;
 import Business.Employee.Propority;
 import Business.Employee.Tenant;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,8 +23,8 @@ public class Lease {
     private Double securityDeposit ;
     private Date rentalDate ;
     private Propority building;
-    private Tenant tenant ;
-    private Leasing  leasePeople ;
+    private UserAccount tenant ;
+    private UserAccount  leasePeople ;
     private Termination termination ;
     private ArrayList<Renewal> renewalList ; 
     private ArrayList<Rent> rentList ;
@@ -35,7 +36,7 @@ public class Lease {
      
     @Override
     public String toString() {
-        return this.tenant.getName() + "'s lease "; //To change body of generated methods, choose Tools | Templates.
+        return this.tenant.getUsername() + "'s lease "; //To change body of generated methods, choose Tools | Templates.
     }
      
      
@@ -55,19 +56,19 @@ public class Lease {
          this.rentList.remove(oRent) ;
      }
      
-     public Tenant getTenant() {
+     public UserAccount getTenant() {
         return tenant;
     }
 
-    public void setTenant(Tenant tenant) {
+    public void setTenant(UserAccount tenant) {
         this.tenant = tenant;
     }
 
-    public Leasing getLeasing() {
+    public UserAccount getLeasing() {
         return this.leasePeople;
     }
 
-    public void setLeasing(Leasing leasing) {
+    public void setLeasing(UserAccount leasing) {
         this.leasePeople = leasing;
     }
 

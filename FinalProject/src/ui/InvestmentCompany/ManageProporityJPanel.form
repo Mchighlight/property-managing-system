@@ -277,6 +277,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtaddress">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtaddressActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtnickname">
     </Component>

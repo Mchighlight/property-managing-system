@@ -249,7 +249,7 @@ public class contractJPanel extends javax.swing.JPanel {
     private void btnPayContractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayContractActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new PayContractJPanel( userProcessContainer,  ua,  ecosystem) );
+        userProcessContainer.add(new ViewLeaseJPanel( userProcessContainer,  ua,  ecosystem) );
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPayContractActionPerformed
 
