@@ -6,12 +6,17 @@
 package ui.PropertyCompany.agent;
 
 import Business.EcoSystem;
+import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.MarketingRequest;
 import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,7 +38,39 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.request = new MarketingRequest();
+        populatAgentCombo();
 
+    }
+
+    public void populatAgentCombo() {
+        LandlordComboBox.removeAllItems();
+        ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
+        for (WorkRequest request : work) {
+            LandlordComboBox.addItem(request.getSender().getUsername());
+        }
+
+    }
+
+    public void populateproporityTable(String landlordname) {
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+
+        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
+
+        if (prolist != null) {
+            for (Propority p : prolist) {
+                Object row[] = new Object[4];
+                row[0] = p.getNickname();
+                row[1] = p.getAddress();
+                row[2] = p.getAptNo();
+                row[3] = p.getSquareFeet();
+
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -45,19 +82,90 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        LandlordComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nickname", "address", "Apt No", "sqtfeet"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        LandlordComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        LandlordComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LandlordComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setText("Client:");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel2.setText("Property:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(72, 72, 72)
+                                .addComponent(LandlordComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(LandlordComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LandlordComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LandlordComboBoxActionPerformed
+        // TODO add your handling code here:
+        String landlord = (String) LandlordComboBox.getSelectedItem();
+        if (landlord != null) {
+
+            populateproporityTable(landlord);
+
+        }
+
+
+    }//GEN-LAST:event_LandlordComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> LandlordComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
