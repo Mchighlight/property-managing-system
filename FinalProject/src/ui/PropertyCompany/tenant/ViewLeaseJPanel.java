@@ -233,7 +233,21 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDetailActionPerformed
 
     private void btnPayLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayLeaseActionPerformed
-
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
+        String status = workRequestJTable.getValueAt(row, 4).toString() ;
+        if( status.equals("Payment Request") ){
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new PayLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            layout.next(userProcessContainer);
+        }//
+        else{
+            JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnPayLeaseActionPerformed
 
     private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed

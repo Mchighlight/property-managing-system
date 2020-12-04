@@ -186,7 +186,7 @@ public class contractJPanel extends javax.swing.JPanel {
         apt.setAptNo("123");
         apt.setCity("Boston");
         apt.setMonthlyrent(1400);
-        apt.setNickname("Lightview901");
+        apt.setNickname("Lightview906");
         apt.setProporityNum(1500);
         apt.setSellingprice(800000);
         apt.setSquareFeet(760);

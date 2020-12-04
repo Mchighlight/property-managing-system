@@ -284,7 +284,9 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_RentDetailJButtonActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
 
