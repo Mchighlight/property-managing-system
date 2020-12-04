@@ -7,14 +7,23 @@ package Business.WorkQueue;
 import Business.UserAccount.UserAccount;
 import Business.property.Department;
 
-
-public  class MarketingRequest extends WorkRequest {
+public class MarketingRequest extends WorkRequest {
 
     private String comment;
     private String requirement;
     private Double feeString;
     private Department department;
     private UserAccount customerAccount;
+    private String propertyNickname;
+
+    public String getPropertyNickname() {
+        return propertyNickname;
+    }
+
+    public void setPropertyNickname(String propertyNickname) {
+        this.propertyNickname = propertyNickname;
+    }
+
     
     
     public UserAccount getCustomerAccount() {
@@ -25,8 +34,6 @@ public  class MarketingRequest extends WorkRequest {
         this.customerAccount = customerAccount;
     }
 
-
-    
     public Department getDepartment() {
         return department;
     }
@@ -58,6 +65,5 @@ public  class MarketingRequest extends WorkRequest {
     public void setFeeString(Double feeString) {
         this.feeString = feeString;
     }
-    
-    
+
 }

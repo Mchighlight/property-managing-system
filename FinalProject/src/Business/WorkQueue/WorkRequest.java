@@ -31,9 +31,9 @@ public abstract class WorkRequest {
     public int getOrderID() {
         return orderID;
     }
-    
-    public void setOrderID(int num){
-        this.orderID = num ;
+
+    public void setOrderID(int num) {
+        this.orderID = num;
     }
 
     public String getTitle() {

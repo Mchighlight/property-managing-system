@@ -16,6 +16,7 @@ import Business.Employee.CustomerSupportDirectory;
 import Business.Employee.TenantDirectory;
 import Business.Employee.BuyerDirectory;
 import Business.Employee.LeasingDirectory ;
+import Business.Employee.MarketingDirectory;
 import Business.Employee.ProporityCatalog;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -44,6 +45,7 @@ public abstract class Organization {
     private TenantDirectory tenantDirectory;
     private BuyerDirectory buyerDirectory;
     private ProporityCatalog proporityDirectory;
+    private MarketingDirectory marketingDirectory;
     private int organizationID;
     private static int counter = 0;
 
@@ -57,8 +59,8 @@ public abstract class Organization {
         Cleaning("Cleaning Organization"),
         CustomerSupport("CustomerSupport Organization"),
         Furnishing("Furnishing Organization"),
-        Repair("Repair Organization");
-
+        Repair("Repair Organization"),
+        Marketing("Marketing Organization");
         private String value;
 
         private Type(String value) {
@@ -87,10 +89,21 @@ public abstract class Organization {
         tenantDirectory = new  TenantDirectory();
         buyerDirectory = new  BuyerDirectory();
         proporityDirectory= new ProporityCatalog();
+        marketingDirectory= new MarketingDirectory();
         
         organizationID = counter;
         ++counter;
     }
+
+    public MarketingDirectory getMarketingDirectory() {
+        return marketingDirectory;
+    }
+
+    public void setMarketingDirectory(MarketingDirectory marketingDirectory) {
+        this.marketingDirectory = marketingDirectory;
+    }
+    
+    
 
     public abstract ArrayList<Role> getSupportedRole();
     

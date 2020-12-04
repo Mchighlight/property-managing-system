@@ -91,12 +91,12 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
         if (prolist != null) {
             for (Propority p : organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
-                Object row[] = new Object[4];
+                Object row[] = new Object[5];
                 row[0] = p.getNickname();
                 row[1] = p.getAddress();
                 row[2] = p.getAptNo();
                 row[3] = p.getSquareFeet();
-
+                row[4] = p.getPropertyURL();
                 dtm.addRow(row);
             }
         }
@@ -135,17 +135,17 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Property nickName", "Address", "apt No", "Square feet"
+                "Property nickName", "Address", "apt No", "Square feet", "URL(opt)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, true
+                true, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

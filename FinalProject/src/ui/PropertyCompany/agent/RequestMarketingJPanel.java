@@ -6,6 +6,7 @@
 package ui.PropertyCompany.agent;
 
 import Business.EcoSystem;
+import Business.Employee.Marketing;
 import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -15,6 +16,7 @@ import Business.WorkQueue.MarketingRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RequestMarketingJPanel extends javax.swing.JPanel {
 
-    private MarketingRequest request;
+    private FurnishingRequest request;
     private UserAccount userAccount;
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
@@ -37,16 +39,26 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecosystem = ecosystem;
-        this.request = new MarketingRequest();
-        populatAgentCombo();
-
+        this.request = new FurnishingRequest();
+        populatsenderCombo();
+        populatmarketCombo();
     }
 
-    public void populatAgentCombo() {
+    public void populatsenderCombo() {
         LandlordComboBox.removeAllItems();
         ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
         for (WorkRequest request : work) {
             LandlordComboBox.addItem(request.getSender().getUsername());
+        }
+
+    }
+
+    public void populatmarketCombo() {
+        LandlordComboBox1.removeAllItems();
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("realestate");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Marketing Organization");
+        for (Marketing marketing : organization.getMarketingDirectory().getMarketingList()) {
+            LandlordComboBox1.addItem(marketing.getName());
         }
 
     }
@@ -87,6 +99,8 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         LandlordComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        LandlordComboBox1 = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,6 +128,20 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Property:");
 
+        jButton3.setText("Request advertisement");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        LandlordComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        LandlordComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LandlordComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,15 +150,18 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(72, 72, 72)
-                                .addComponent(LandlordComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel1)
+                        .addGap(72, 72, 72)
+                        .addComponent(LandlordComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LandlordComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jButton3))
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(385, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,7 +175,11 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LandlordComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,9 +195,49 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_LandlordComboBoxActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("realestate");
+        Organization organization = enterprise.getOrganizationDirectory().findorganization("Marketing Organization");
+
+        int row = jTable1.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "please select a row");
+        }
+        String propNickname = jTable1.getValueAt(row, 0).toString();
+
+        String macketname = LandlordComboBox1.getSelectedItem().toString();
+        UserAccount macaccount = organization.getUserAccountDirectory().findUser(macketname);
+
+        Enterprise enterprise1 = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
+        Organization organization1 = enterprise1.getOrganizationDirectory().findorganization("BoardMember Organization");
+        String landlordname = (String) LandlordComboBox.getSelectedItem();
+        UserAccount cusaccount = organization1.getUserAccountDirectory().findUser(landlordname);
+        if (macaccount != null) {
+            request.setSender(userAccount);
+            request.setReceiver(macaccount);
+            request.setStatus("Processing");
+            request.setCustomerAccount(cusaccount);
+            request.setRequirement(propNickname);
+            
+            userAccount.getWorkQueue().getFurnishingRequestList().add(request);
+            organization.getUserAccountDirectory().findUser(macaccount.getUsername()).getWorkQueue().getFurnishingRequestList().add(request);
+
+            JOptionPane.showMessageDialog(null, "assign successfully");
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void LandlordComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LandlordComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LandlordComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> LandlordComboBox;
+    private javax.swing.JComboBox<String> LandlordComboBox1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

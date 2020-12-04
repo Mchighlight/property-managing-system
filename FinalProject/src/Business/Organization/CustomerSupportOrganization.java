@@ -6,7 +6,7 @@ package Business.Organization;
 
 import Business.Role.TenantRole;
 import Business.Role.CustomerSupportRole;
-import Business.Role.BuyerRole;
+
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -25,7 +25,6 @@ public class CustomerSupportOrganization extends Organization{
         ArrayList<Role> roles = new ArrayList();
         roles.add(new TenantRole());
         roles.add(new CustomerSupportRole());
-        roles.add(new BuyerRole());
         return roles;
     }
      

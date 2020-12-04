@@ -19,6 +19,7 @@ public class Landlord {
     private String SSN;
     private String email;
     private ProporityCatalog proporityCatalog;
+   
 
     public Landlord() {
         id = count;
@@ -27,6 +28,9 @@ public class Landlord {
         proporityCatalog = new ProporityCatalog();
 
     }
+
+  
+    
 
     public ProporityCatalog getProporityCatalog() {
         return proporityCatalog;

@@ -33,7 +33,8 @@ public abstract class Role {
         Leasing("Leasing"),
         RealEstateAgent("RealEstateAgent"),
         RepairSpecialist("RepairSpecialist"),
-        Tenant("Tenant");
+        Tenant("Tenant"),
+        Marketing ("Marketing");
         
         private String value;
         private RoleType(String value){

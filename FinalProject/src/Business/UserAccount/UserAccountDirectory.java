@@ -15,6 +15,7 @@ import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
 import Business.Employee.Buyer;
 import Business.Employee.Leasing;
+import Business.Employee.Marketing;
 import Business.Employee.Tenant;
 
 import Business.Role.Role;
@@ -173,7 +174,7 @@ public class UserAccountDirectory {
         return userAccount;
     }
 
-     public UserAccount createUserAccount(String username, String password, Leasing ls, Role role) {
+    public UserAccount createUserAccount(String username, String password, Leasing ls, Role role) {
 
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -183,7 +184,19 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
+
     
+      public UserAccount createUserAccount(String username, String password, Marketing marketing, Role role) {
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setMarketing(marketing);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+
     public UserAccount findUser(String username) {
         for (UserAccount ua : userAccountList) {
             if (ua.getUsername().equals(username)) {
