@@ -17,13 +17,23 @@ public class WorkQueue {
     private ArrayList<FurnishingRequest> furnishingRequestList;
     private ArrayList<BoardMemberRequest> boardmemberRequestList;
     private ArrayList<SignLeaseRequest> signLeaseRequestList;
+    private ArrayList<MarketingRequest> marketingRequestList;
 
     public WorkQueue() {
         workRequestList = new ArrayList();
         VisitRequestList = new ArrayList();
         furnishingRequestList = new ArrayList();
         boardmemberRequestList = new ArrayList();
-        signLeaseRequestList = new ArrayList() ;
+        signLeaseRequestList = new ArrayList();
+        marketingRequestList = new ArrayList();
+    }
+
+    public ArrayList<MarketingRequest> getMarketingRequestList() {
+        return marketingRequestList;
+    }
+
+    public void setMarketingRequestList(ArrayList<MarketingRequest> marketingRequestList) {
+        this.marketingRequestList = marketingRequestList;
     }
 
     public ArrayList<SignLeaseRequest> getSignLeaseRequestList() {
@@ -45,9 +55,8 @@ public class WorkQueue {
     public ArrayList<BoardMemberRequest> getBoardmemberRequestList() {
         return boardmemberRequestList;
     }
-    
-    
-     public BoardMemberRequest findBoardmemberRequest(int orderID) {
+
+    public BoardMemberRequest findBoardmemberRequest(int orderID) {
         for (BoardMemberRequest object : boardmemberRequestList) {
             if (object.getOrderID() == orderID) {
                 return object;
@@ -56,7 +65,6 @@ public class WorkQueue {
         return null;
 
     }
-
 
     public FurnishingRequest findFurnishingrequest(int orderID) {
         for (FurnishingRequest object : furnishingRequestList) {
@@ -67,6 +75,17 @@ public class WorkQueue {
         return null;
 
     }
+    
+    public FurnishingRequest findFurnishingrequest( String Property) {
+        for (FurnishingRequest object : furnishingRequestList) {
+            if (object.getRequirement() == Property) {
+                return object;
+            }
+        }
+        return null;
+
+    }
+
 
     public WorkRequest findWorkRequestList(int orderID) {
         for (WorkRequest object : workRequestList) {
@@ -77,8 +96,8 @@ public class WorkQueue {
         return null;
 
     }
-    
-      public SignLeaseRequest findSignLeaseRequest(int orderID) {
+
+    public SignLeaseRequest findSignLeaseRequest(int orderID) {
         for (SignLeaseRequest object : signLeaseRequestList) {
             if (object.getOrderID() == orderID) {
                 return object;
@@ -87,9 +106,19 @@ public class WorkQueue {
         return null;
 
     }
-      
-    public void setSignLeaseRequestList( ArrayList<SignLeaseRequest> slr ) {
-        this.signLeaseRequestList = slr ;
+
+    public MarketingRequest findMarketingRequest(int orderID) {
+        for (MarketingRequest object : marketingRequestList) {
+            if (object.getOrderID() == orderID) {
+                return object;
+            }
+        }
+        return null;
+
+    }
+
+    public void setSignLeaseRequestList(ArrayList<SignLeaseRequest> slr) {
+        this.signLeaseRequestList = slr;
     }
 
 }

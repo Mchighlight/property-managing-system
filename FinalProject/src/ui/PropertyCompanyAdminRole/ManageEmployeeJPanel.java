@@ -7,11 +7,13 @@ import Business.Employee.RealEstateAgent;
 import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
 import Business.Employee.Leasing;
+import Business.Employee.Marketing;
 // Role
 import Business.Role.AgentRole;
 import Business.Role.RepairSpecialistRole;
 import Business.Role.CustomerSupportRole;
 import Business.Role.LeasingRole;
+import Business.Role.MarketingRole;
 // UI package
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -51,7 +53,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for ( RealEstateAgent reg : organization.getRealEstateAgentDirectory().getRealEstateAgentList()) {
+        for (RealEstateAgent reg : organization.getRealEstateAgentDirectory().getRealEstateAgentList()) {
             Object[] row = new Object[3];
             row[0] = reg.getId();
             row[1] = reg.getName();
@@ -73,8 +75,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
-      private void populateCustomerSupportTable(Organization organization) {
+
+    private void populateCustomerSupportTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
         model.setRowCount(0);
@@ -87,9 +89,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-      
-      
-     private void populateLeasingTable (Organization organization) {
+
+    private void populateLeasingTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
         model.setRowCount(0);
@@ -102,6 +103,18 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+       private void populateMarketTable(Organization organization) {
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        model.setRowCount(0);
+        for (Marketing ma : organization.getMarketingDirectory().getMarketingList()) {
+            Object[] row = new Object[3];
+            row[0] = ma.getId();
+            row[1] = ma.getName();
+            row[2] = ma.getEmail();
+            model.addRow(row);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -305,8 +318,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, " Leasing  added,user added");
 
             populateCustomerSupportTable(organization);
-        } 
-            
+        }
+        else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Marketing.getValue())) {
+            Marketing marketing = organization.getMarketingDirectory().createMarketing(name, email);
+            organization.getUserAccountDirectory().createUserAccount(Username, password, marketing, new MarketingRole());
+            JOptionPane.showMessageDialog(null, " Marketing added,user added");
+
+             populateMarketTable(organization);
+        }
+
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
@@ -321,6 +341,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 populateCustomerSupportTable(organization);
             } else if (organization.getName().equals(Organization.Type.Leasing.getValue())) {
                 populateLeasingTable(organization);
+            } else if (organization.getName().equals(Organization.Type.Marketing.getValue())) {
+               populateMarketTable(organization);
             }
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed

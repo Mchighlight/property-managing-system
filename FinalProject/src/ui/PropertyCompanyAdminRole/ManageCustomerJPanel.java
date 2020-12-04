@@ -7,7 +7,7 @@ import Business.Employee.BuyerDirectory;
 import Business.Employee.Tenant;
 import Business.Employee.TenantDirectory;
 // Role
-import Business.Role.BuyerRole ;
+
 import Business.Role.TenantRole;
 import Business.UserAccount.UserAccountDirectory;
 // UI package
@@ -43,7 +43,6 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
     public void populateOrganizationComboBox() {
         customerRoleJComboBox.removeAllItems();
 
-        customerRoleJComboBox.addItem("Buyer") ;
         customerRoleJComboBox.addItem("Tenant");
     }
     
@@ -312,21 +311,13 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         String lastName = txtLastName.getText();
         int ssn =  Integer.parseInt(txtSSN.getText()) ;
 
-         if (customerRole.equals("Buyer")) {
-
-            Buyer buyer = this.buyerDirectory.createBuyer(name, email, firstName, lastName, ssn);
-            this.customerAccountDirectory.createUserAccount(Username, password, buyer, new BuyerRole());
-            JOptionPane.showMessageDialog(null, " Buyer  added,user added");
-
-            populateBuyerTable();
-        } else if (customerRole.equals("Tenant")) {
-
+      
             Tenant tenant = this.tenantDirectory.createTenant(name, email, firstName, lastName, ssn);
             this.customerAccountDirectory.createUserAccount(Username, password, tenant, new TenantRole());
             JOptionPane.showMessageDialog(null, " Tenant added,user added");
 
             populateTenantTable();
-        }
+        
 
         
 

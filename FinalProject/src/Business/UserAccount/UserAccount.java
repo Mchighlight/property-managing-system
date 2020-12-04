@@ -15,6 +15,7 @@ import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
 import Business.Employee.Buyer;
 import Business.Employee.Leasing;
+import Business.Employee.Marketing;
 import Business.Employee.Tenant;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -35,6 +36,7 @@ public class UserAccount {
     private RealEstateAgent realEstateAgent;
     private RepairSpecialist repairSpecialist;
     private CustomerSupport customerSupport;
+    private Marketing marketing;
     private Leasing leasing ;
     private Buyer buyer ;
     private Tenant tenant ;
@@ -45,7 +47,7 @@ public class UserAccount {
     private Landlord landlord;
     
 
-    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant,DataAnalyst dataanalyst, CleaningStaff cleaningstaff, Decorator decorator,Landlord landlord) {
+    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant,DataAnalyst dataanalyst, CleaningStaff cleaningstaff, Decorator decorator,Landlord landlord, Marketing marketing) {
 
         this.username = username;
         this.password = password;
@@ -56,10 +58,19 @@ public class UserAccount {
         this.cleaningstaff=cleaningstaff;
         this.decorator=decorator;
         this.landlord=landlord;
+        this.marketing=marketing;
         
     }
     public UserAccount() {
         workQueue = new WorkQueue();
+    }
+
+    public Marketing getMarketing() {
+        return marketing;
+    }
+
+    public void setMarketing(Marketing marketing) {
+        this.marketing = marketing;
     }
 
     public Landlord getLandlord() {
