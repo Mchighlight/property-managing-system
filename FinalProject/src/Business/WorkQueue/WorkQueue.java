@@ -16,12 +16,18 @@ public class WorkQueue {
     private ArrayList<VisitRequest> VisitRequestList;
     private ArrayList<FurnishingRequest> furnishingRequestList;
     private ArrayList<BoardMemberRequest> boardmemberRequestList;
+    private ArrayList<SignLeaseRequest> signLeaseRequestList;
 
     public WorkQueue() {
         workRequestList = new ArrayList();
         VisitRequestList = new ArrayList();
         furnishingRequestList = new ArrayList();
         boardmemberRequestList = new ArrayList();
+        signLeaseRequestList = new ArrayList() ;
+    }
+
+    public ArrayList<SignLeaseRequest> getSignLeaseRequestList() {
+        return signLeaseRequestList;
     }
 
     public ArrayList<WorkRequest> getWorkRequestList() {
@@ -70,6 +76,20 @@ public class WorkQueue {
         }
         return null;
 
+    }
+    
+      public SignLeaseRequest findSignLeaseRequest(int orderID) {
+        for (SignLeaseRequest object : signLeaseRequestList) {
+            if (object.getOrderID() == orderID) {
+                return object;
+            }
+        }
+        return null;
+
+    }
+      
+    public void setSignLeaseRequestList( ArrayList<SignLeaseRequest> slr ) {
+        this.signLeaseRequestList = slr ;
     }
 
 }

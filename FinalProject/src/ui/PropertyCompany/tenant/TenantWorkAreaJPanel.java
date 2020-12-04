@@ -25,6 +25,7 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    Enterprise enterprise;
     public TenantWorkAreaJPanel() {
         initComponents();
     }
@@ -34,6 +35,7 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.enterprise = enterprise;
     }
 
     /**
@@ -111,7 +113,7 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new contractJPanel(userProcessContainer,  ua,  ecosystem));
+        userProcessContainer.add(new contractJPanel(userProcessContainer,  ua,  ecosystem, enterprise));
         layout.next(userProcessContainer);        
     }//GEN-LAST:event_jButton3ActionPerformed
 

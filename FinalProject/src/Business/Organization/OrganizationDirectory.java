@@ -49,7 +49,10 @@ public class OrganizationDirectory {
         } else if (type.getValue().equals(Type.Repair.getValue())) {
             organization = new RepairOrganization();
             organizationList.add(organization);
-        }
+        } else if (type.getValue().equals(Type.Leasing.getValue())) {
+            organization = new LeasingOrganization();
+            organizationList.add(organization);
+        } 
         return organization;
     }
 

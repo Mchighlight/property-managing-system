@@ -14,6 +14,7 @@ import Business.Employee.RealEstateAgent;
 import Business.Employee.RepairSpecialist;
 import Business.Employee.CustomerSupport;
 import Business.Employee.Buyer;
+import Business.Employee.Leasing;
 import Business.Employee.Tenant;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -34,6 +35,7 @@ public class UserAccount {
     private RealEstateAgent realEstateAgent;
     private RepairSpecialist repairSpecialist;
     private CustomerSupport customerSupport;
+    private Leasing leasing ;
     private Buyer buyer ;
     private Tenant tenant ;
             
@@ -91,12 +93,18 @@ public class UserAccount {
         return dataanalyst;
     }
 
+    public Leasing getLeasing(){
+        return this.leasing ;
+    }
+    
     public void setDataanalyst(DataAnalyst dataanalyst) {
         this.dataanalyst = dataanalyst;
     }
 
   
-    
+    public Tenant getTenant() {
+        return tenant;
+    }
     
 
     public Accountant getAccountant() {
@@ -117,6 +125,10 @@ public class UserAccount {
     
     public void setCustomerSupport(CustomerSupport cs) {
         this.customerSupport = cs;
+    }
+    
+    public void setLeasing(Leasing ls) {
+        this.leasing = ls;
     }
     
      public void setTenant(Tenant tenant) {
