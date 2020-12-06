@@ -48,7 +48,6 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnLeaseCollection = new javax.swing.JButton();
         btnRenewal = new javax.swing.JButton();
-        btnPaymentCheck = new javax.swing.JButton();
         btnTermination1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -68,13 +67,6 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnPaymentCheck.setText("Payment Check");
-        btnPaymentCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaymentCheckActionPerformed(evt);
-            }
-        });
-
         btnTermination1.setText("Termination");
         btnTermination1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +81,6 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(218, 218, 218)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPaymentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnLeaseCollection, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
@@ -110,9 +101,7 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnRenewal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPaymentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,15 +115,9 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     private void btnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenewalActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new RenewalServiceJPanel(userProcessContainer,  ua,  eco));
+        userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  eco));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRenewalActionPerformed
-
-    private void btnPaymentCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentCheckActionPerformed
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new PaymentCheckJPanel(userProcessContainer,  ua,  eco));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnPaymentCheckActionPerformed
 
     private void btnTermination1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTermination1ActionPerformed
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
@@ -145,7 +128,6 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLeaseCollection;
-    private javax.swing.JButton btnPaymentCheck;
     private javax.swing.JButton btnRenewal;
     private javax.swing.JButton btnTermination1;
     private javax.swing.JLabel jLabel1;

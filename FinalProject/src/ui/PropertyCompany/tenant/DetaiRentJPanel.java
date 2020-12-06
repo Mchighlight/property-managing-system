@@ -5,21 +5,19 @@
  */
 package ui.PropertyCompany.tenant;
 
-import ui.PropertyCompany.leasing.*;
-import ui.PropertyCompany.agent.*;
-import ui.PropertyCompany.tenant.*;
+
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
+import Business.property.Lease;
+import Business.property.Rent;
 import java.awt.CardLayout;
-import java.awt.Component;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.Date;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -34,17 +32,41 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
     UserAccount ua;
     EcoSystem ecosystem;
     SignLeaseRequest slr;
+    Rent rent ;
    
-    public DetaiRentJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr) {
+    public DetaiRentJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr, Rent sr) {
          initComponents();
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
-         slr = slr ;
+         this.slr = slr ;
+         this.rent = sr;
+         populateTextField();
     }
 
+       public  String dateToString(Date date){
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
+         String strDate = dateFormat.format(date);  
+         return strDate ;
+   }
    
- 
+    private void populateTextField(){
+            Lease lease =  this.slr.getLease() ;
+            txtDayToPay.setText(this.dateToString(this.rent.getDateToPay()));
+            
+            txtRentaldate.setText(this.dateToString(this.rent.getDate()));
+                
+            if( lease.getBalance() != null )
+                txtBalance.setText(String.valueOf(lease.getBalance()));
+            
+            
+
+            txtPayAmount.setText(String.valueOf(this.rent.getPayment().getPayAmount()));
+            txtPayDate.setText(this.dateToString(this.rent.getDateToPay()));
+            txtPayMethod.setText(this.rent.getPayment().getPayMethod());
+               
+           
+   }//
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,54 +78,23 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
-        txtStartDate = new javax.swing.JTextField();
+        backJButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtDayToPay = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtEndDate = new javax.swing.JTextField();
+        txtRentaldate = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtRentalDate = new javax.swing.JTextField();
+        txtPayMethod = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtBalance = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtSecurityDeposit = new javax.swing.JTextField();
+        txtPayAmount = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtBuilding = new javax.swing.JTextField();
-        txtTenant = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtTerminationDate = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        backJButton1 = new javax.swing.JButton();
-        jcbRents = new javax.swing.JComboBox<>();
+        txtPayDate = new javax.swing.JTextField();
 
-        jLabel5.setText("Lease Detail");
+        setEnabled(false);
 
-        backJButton.setText("View Alll Rents Details");
-        backJButton.setToolTipText("");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Start Date");
-
-        jLabel3.setText("End Date");
-
-        jLabel4.setText("Rental Date");
-
-        jLabel6.setText("Balance");
-
-        jLabel7.setText("Security Deposit");
-
-        jLabel8.setText("Building");
-
-        jLabel9.setText("Tenant");
-
-        jLabel10.setText("Termination Date");
-
-        jLabel11.setText("Rent History");
+        jLabel5.setText("Rent  Detail");
 
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +103,34 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jcbRents.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("Day To Pay");
+
+        txtDayToPay.setEnabled(false);
+
+        jLabel3.setText("Rental Date");
+
+        txtRentaldate.setEnabled(false);
+
+        jLabel4.setText("Pay Method");
+
+        txtPayMethod.setEnabled(false);
+        txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPayMethodActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Balance");
+
+        txtBalance.setEnabled(false);
+
+        jLabel7.setText("Pay Amount");
+
+        txtPayAmount.setEnabled(false);
+
+        jLabel8.setText("Pay Date");
+
+        txtPayDate.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,40 +139,27 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
+                        .addGap(270, 270, 270)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
+                        .addGap(234, 234, 234)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel1))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDayToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRentaldate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPayMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTenant, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jcbRents, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtTerminationDate, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                                        .addGap(49, 49, 49)
-                                        .addComponent(backJButton)))))))
-                .addContainerGap(377, Short.MAX_VALUE))
+                                    .addComponent(txtPayAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(541, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(139, 139, 139)
@@ -163,21 +168,21 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDayToPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRentaldate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPayMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -185,25 +190,12 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPayAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtTenant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtTerminationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(backJButton)
-                    .addComponent(jcbRents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(185, Short.MAX_VALUE))
+                    .addComponent(txtPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(292, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(46, 46, 46)
@@ -212,42 +204,31 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
         userProcessContainer.remove(this);
-//        Component[] componentArray = userProcessContainer.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-//        sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_backJButton1ActionPerformed
+
+    private void txtPayMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPayMethodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPayMethodActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton backJButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JComboBox<String> jcbRents;
     private javax.swing.JTextField txtBalance;
-    private javax.swing.JTextField txtBuilding;
-    private javax.swing.JTextField txtEndDate;
-    private javax.swing.JTextField txtRentalDate;
-    private javax.swing.JTextField txtSecurityDeposit;
-    private javax.swing.JTextField txtStartDate;
-    private javax.swing.JTextField txtTenant;
-    private javax.swing.JTextField txtTerminationDate;
+    private javax.swing.JTextField txtDayToPay;
+    private javax.swing.JTextField txtPayAmount;
+    private javax.swing.JTextField txtPayDate;
+    private javax.swing.JTextField txtPayMethod;
+    private javax.swing.JTextField txtRentaldate;
     // End of variables declaration//GEN-END:variables
 }

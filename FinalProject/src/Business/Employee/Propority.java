@@ -19,7 +19,7 @@ public class Propority {
     private int Monthlyrent;
     private int Sellingprice;
     private int SquareFeet;
-    private String  propertyURL ;
+    
     
     
     private int proporityNum;
@@ -36,16 +36,6 @@ public class Propority {
     proporityNum = count;
     }
 
-    public String getPropertyURL() {
-        return propertyURL;
-    }
-
-    public void setPropertyURL(String propertyURL) {
-        this.propertyURL = propertyURL;
-    }
-
-    
-    
     public int getSquareFeet() {
         return SquareFeet;
     }

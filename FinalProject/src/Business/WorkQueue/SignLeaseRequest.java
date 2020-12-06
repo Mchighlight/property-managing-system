@@ -7,8 +7,6 @@ package Business.WorkQueue;
 import Business.Employee.Propority;
 import Business.UserAccount.UserAccount;
 import Business.property.Lease;
-import java.util.ArrayList;
-import java.util.Date;
 
 
 public  class SignLeaseRequest extends WorkRequest {
@@ -16,31 +14,13 @@ public  class SignLeaseRequest extends WorkRequest {
     UserAccount leasing ;
     Lease lease ;
     Propority building;
-    String networkName ;
-    String enterpriseName ;
 
-    public String getNetworkName() {
-        return networkName;
-    }
 
-    public void setNetworkName(String networkName) {
-        this.networkName = networkName;
-    }
-
-    public String getEnterpriseName() {
-        return enterpriseName;
-    }
-
-    public void setEnterpriseName(String enterpriseName) {
-        this.enterpriseName = enterpriseName;
-    }
     
     public SignLeaseRequest( UserAccount tenant, UserAccount leasing,  Propority building) {
         this.tenant = tenant;
         this.building = building;
         this.leasing = leasing ;
-        this.networkName = "aa";
-        this.enterpriseName = "realestate";
     }
 
     public UserAccount getTenant() {
@@ -79,9 +59,7 @@ public  class SignLeaseRequest extends WorkRequest {
     public String toString(){
         return "Tenant: " + this.tenant.getUsername()+ "\n" +
                      "Leasing: " + this.leasing.getLeasing().getName() + "\n" +
-                     "Apt: " + this.building.toString() + "\n" +
-                     "Ent: "  + this.enterpriseName  + "\n" +
-                    "Net: "  + this.networkName  ;
+                     "Apt: " + this.building.toString() + "\n" ;
                      
     }
     

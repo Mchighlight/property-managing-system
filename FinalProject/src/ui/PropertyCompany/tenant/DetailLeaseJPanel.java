@@ -5,16 +5,9 @@
  */
 package ui.PropertyCompany.tenant;
 
-import ui.PropertyCompany.leasing.*;
-import ui.PropertyCompany.agent.*;
 import ui.PropertyCompany.tenant.*;
 import Business.EcoSystem;
-import Business.Employee.RealEstateAgent;
-import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerSupportOrganization;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
 import Business.property.Rent;
@@ -24,9 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -51,21 +42,25 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
          populateTextField();
     }
 
-   public String dateToString(Date date){
-         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+       public  String dateToString(Date date){
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
          String strDate = dateFormat.format(date);  
          return strDate ;
    }
-    
+  
    private void populateTextField(){
             Lease lease =  this.slr.getLease() ;
             txtStartDate.setText(this.dateToString(lease.getStartDate()));
             
             txtEndDate.setText(this.dateToString(lease.getEndDate()));
-            if(lease.getRentalDate() != null)
+            if(  this.slr.getLease().getRentList().size() == 0 ){
                 txtRentalDate.setText(this.dateToString(lease.getRentalDate()));
-            else
-                txtRentalDate.setText("Not Pay Yet");
+            }//
+            else{
+                ArrayList<Rent> rents = this.slr.getLease().getRentList();
+                Rent currentRent = rents.get(rents.size()-1);
+                txtRentalDate.setText(this.dateToString(currentRent.getDate()) );
+            }
                 
             if( lease.getBalance() != null )
                 txtBalance.setText(String.valueOf(lease.getBalance()));
@@ -82,7 +77,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
                 RentsCombobox.removeAllItems();
                 ArrayList<Rent> rentList = lease.getRentList() ;
                 for (Rent r : rentList ) {
-                    RentsCombobox.addItem(this.dateToString(r.getDate()));
+                    RentsCombobox.addItem(r);
                 }
            }//
            else{
@@ -278,8 +273,9 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
     private void RentDetailJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentDetailJButtonActionPerformed
         // TODO add your handling code here:
+        Rent selectedRent = (Rent)RentsCombobox.getSelectedItem();
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new DetaiRentJPanel( userProcessContainer,  ua,  ecosystem, slr) );
+        userProcessContainer.add(new DetaiRentJPanel( userProcessContainer,  ua,  ecosystem, slr, selectedRent) );
         layout.next(userProcessContainer);
     }//GEN-LAST:event_RentDetailJButtonActionPerformed
 
@@ -292,7 +288,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RentDetailJButton;
-    private javax.swing.JComboBox<String> RentsCombobox;
+    private javax.swing.JComboBox<Object> RentsCombobox;
     private javax.swing.JButton backJButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

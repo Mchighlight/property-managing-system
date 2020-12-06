@@ -7,6 +7,8 @@ package Business.property;
 
 import java.util.Date;
 import Business.property.Lease ;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -23,6 +25,17 @@ public class Rent {
      public Rent() {
     }
 
+       public  String dateToString(Date date){
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
+         String strDate = dateFormat.format(date);  
+         return strDate ;
+   }
+     
+    @Override
+    public String toString() {
+        return this.dateToString(this.getDate())  + " Rent"  ;
+    }
+     
     public Double getPrice() {
         return price;
     }

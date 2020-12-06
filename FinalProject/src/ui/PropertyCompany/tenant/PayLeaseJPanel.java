@@ -5,24 +5,19 @@
  */
 package ui.PropertyCompany.tenant;
 
-import ui.PropertyCompany.leasing.*;
-import ui.PropertyCompany.agent.*;
-import ui.PropertyCompany.tenant.*;
+
 import Business.EcoSystem;
-import Business.Employee.RealEstateAgent;
-import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerSupportOrganization;
-import Business.Organization.Organization;
+
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
+import Business.property.Payment;
 import Business.property.Rent;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -53,8 +48,8 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
          populateTextField();
     }
 
-   public String dateToString(Date date){
-         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+       public  String dateToString(Date date){
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
          String strDate = dateFormat.format(date);  
          return strDate ;
    }
@@ -63,20 +58,25 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
             Lease lease =  this.slr.getLease() ;
             txtStartDate.setText(this.dateToString(lease.getStartDate()));
             
-            txtEndDate.setText(this.dateToString(lease.getEndDate()));
-            if(lease.getRentalDate() != null)
-                txtRentalDate.setText(this.dateToString(lease.getRentalDate()));
-            else
-                txtRentalDate.setText("Not Pay Yet");
-                
+            txtEndDate.setText(this.dateToString(lease.getEndDate()));             
             if( lease.getBalance() != null )
                 txtBalance.setText(String.valueOf(lease.getBalance()));
             txtSecurityDeposit.setText(String.valueOf(lease.getSecurityDeposit()));
             txtBuilding.setText(lease.getBuilding().toString());
             txtRentPrice.setText(String.valueOf(lease.getBuilding().getMonthlyrent()));
             
-            Double minimumBalance = lease.getSecurityDeposit() + lease.getBuilding().getMonthlyrent() ;
-            txtMinimumBalance.setText(String.valueOf(minimumBalance));
+            
+            Double minimumBalance = Double.valueOf(lease.getBuilding().getMonthlyrent())  ;
+            if(  this.slr.getLease().getRentList().size() == 0 ){
+                minimumBalance = minimumBalance +  this.slr.getLease().getSecurityDeposit() ;
+                txtRentalDate.setText(this.dateToString(lease.getRentalDate()));
+            }//
+            else{
+                ArrayList<Rent> rents = this.slr.getLease().getRentList();
+                Rent currentRent = rents.get(rents.size()-1);
+                txtRentalDate.setText(this.dateToString(this.getNextMonth(currentRent.getDate())) );
+            }
+            txtMinimumBalance.setText(String.valueOf(minimumBalance));       
                                           
    }//
  
@@ -301,9 +301,21 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+      public  Date getNextMonth(Date date){
+          Calendar cal=Calendar.getInstance();
+          cal.setTime(date);
+          cal.set(Calendar.MONTH, date.getMonth()+1);
+          Date dueDate = new Date(cal.getTimeInMillis());
+         return dueDate ;
+     } //
+    
     private void btnSubmitPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitPaymentActionPerformed
         // TODO add your handling code here:
-        Double minBalance = this.slr.getLease().getSecurityDeposit() + this.slr.getBuilding().getMonthlyrent() ;
+        
+        Double minBalance = Double.valueOf(this.slr.getBuilding().getMonthlyrent())  ;
+        if(  this.slr.getLease().getRentList().size() == 0 )
+           minBalance = minBalance +  this.slr.getLease().getSecurityDeposit() ;
+        
         String payMethod = RentsCombobox.getSelectedItem().toString();
         Double balance ;
         // 
@@ -314,6 +326,34 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
         try{
             balance =  Double.valueOf(txtBalance.getText())  ;
             if( balance >= minBalance  ){
+                // First Rent
+                Rent rent = new Rent() ;
+                rent.setPrice(Double.valueOf(this.slr.getBuilding().getMonthlyrent()));
+                rent.setLateFee(0.0);
+                rent.setLease(this.slr.getLease());
+                if(  this.slr.getLease().getRentList().size() != 0 ){
+                    ArrayList<Rent> rents = this.slr.getLease().getRentList();
+                   Rent currentRent = rents.get(rents.size()-1);
+                    rent.setDate( this.getNextMonth(currentRent.getDate()) );
+                    rent.setDateToPay( this.getNextMonth(currentRent.getDate()) );
+                } // if
+                else{
+                    rent.setDate(this.slr.getLease().getStartDate());
+                    rent.setDateToPay(this.slr.getLease().getStartDate());
+                }
+                // Payment
+                Payment payment = new Payment();
+                payment.setPayAmount(Double.valueOf(minBalance));
+                payment.setPayDate(rent.getDateToPay());
+                payment.setPayMethod(payMethod);
+                payment.setRent(rent);
+                rent.setPayment(payment);
+                //Lease
+                this.slr.getLease().addRent(rent);
+                // Set Status.
+                this.slr.setStatus("Payment Reviewing");
+                this.slr.getLease().setBalance(balance);
+                
                 JOptionPane.showMessageDialog(null, "You Select Method" +   payMethod  +
                         "  Total Balance deposit " + String.valueOf(balance) + " dollars ", "Info", JOptionPane.INFORMATION_MESSAGE);
             } // if

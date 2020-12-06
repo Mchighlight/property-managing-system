@@ -5,19 +5,13 @@
  */
 package ui.PropertyCompany.leasing;
 
-import ui.PropertyCompany.agent.*;
-import ui.PropertyCompany.tenant.*;
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Enterprise.RealEstateEnterprise;
-import Business.Organization.CustomerSupportOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
+import Business.property.Rent;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,21 +50,22 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
 
         if (work != null) {
             for (SignLeaseRequest s: work) {
-
-                Object row[] = new Object[7];
-                row[0] = s.getOrderID();
-                row[1] = s.getTenant().getUsername();
-                row[2] = s.getBuilding().toString();
-                if ( s.getLease() == null )
-                     row[3] = "Leasing in progress";
-                else
-                    if( s.getLease().getBalance() == null )
-                        row[3] = "Wating for Payment";
+                if(  ! s.getStatus().equals("Termination") && ! s.getStatus().equals("Renewal Request")  && ! s.getStatus().equals("Renewal Reviewing")) {
+                    Object row[] = new Object[7];
+                    row[0] = s.getOrderID();
+                    row[1] = s.getTenant().getUsername();
+                    row[2] = s.getBuilding().toString();
+                    if ( s.getLease() == null )
+                         row[3] = "Leasing in progress";
                     else
-                        row[3] = s.getLease().toString();
-                
-                row[4] = s.getStatus() ;
-                dtm.addRow(row);
+                        if( s.getLease().getBalance() == null )
+                            row[3] = "Wating for Payment";
+                        else
+                            row[3] = s.getLease().toString();
+
+                    row[4] = s.getStatus() ;
+                    dtm.addRow(row);
+                }
             }
 
         } else {
@@ -96,6 +91,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         btnDecline = new javax.swing.JButton();
         btnAccept = new javax.swing.JButton();
         btnPaymentRequest = new javax.swing.JButton();
+        btnViewDetail = new javax.swing.JButton();
+        btnPaymentReview = new javax.swing.JButton();
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,6 +152,20 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewDetail.setText("View Detail");
+        btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailActionPerformed(evt);
+            }
+        });
+
+        btnPaymentReview.setText("Payment Review");
+        btnPaymentReview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentReviewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,8 +186,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                                 .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(76, 76, 76)
                                 .addComponent(btnPaymentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(233, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnViewDetail))
+                            .addComponent(btnPaymentReview, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,41 +200,43 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backJButton))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnViewDetail)))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPaymentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(btnPaymentReview, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(238, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-//        Component[] componentArray = userProcessContainer.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-//        sysAdminwjp.populateTree();
+        Component [] componentArray  =userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length-1];
+        LeasingWorkAreaJPanel jpanel = (LeasingWorkAreaJPanel) component ;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-        public static Date firstDayOfNextMonth() {
+     public static Date firstDayOfNextMonth() {
             LocalDateTime now = LocalDateTime.now();
             int year = now.getYear();
             int month = now.getMonthValue();
             int day = now.getDayOfMonth();  
-
             Calendar cal = Calendar.getInstance();
-            cal.clear();
             cal.set(Calendar.YEAR, year);
             cal.set(Calendar.MONTH, month);
             cal.set(Calendar.DAY_OF_MONTH, 1);
-
             Date dueDate = new Date(cal.getTimeInMillis());
-
         return dueDate;
     }
     
@@ -231,7 +248,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         // Lease End Day
         Calendar cal=Calendar.getInstance();
         cal.setTime(leaseStartDate);
-        cal.set(Calendar.YEAR,1);
+        cal.set(Calendar.MONTH,leaseStartDate.getMonth()+1);
         Date leaseEndDate =  cal.getTime() ;
         lease.setEndDate(leaseEndDate);
         // Info
@@ -240,6 +257,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         lease.setBuilding(slr.getBuilding());
         lease.setTenant(slr.getTenant());
         lease.setLeasing(slr.getLeasing());
+        lease.setRentalDate(leaseStartDate);
         
         return lease ;
     }
@@ -272,10 +290,20 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
         String tenantName = workRequestJTable.getValueAt(row, 1).toString() ;
         SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
-        selectedSlr.setStatus("Accepted");
-        selectedSlr.setLease(this.buildLease(selectedSlr));
+        if(selectedSlr.getLease() == null){
+            selectedSlr.setLease(this.buildLease(selectedSlr));
+        } // if
+        else{
+            ArrayList<Rent> rents = selectedSlr.getLease().getRentList() ;
+            Rent currentRent  = rents.get(rents.size()-1);
+            if( currentRent.getDate().after(selectedSlr.getLease().getEndDate()) ||
+                 currentRent.getDate().equals(selectedSlr.getLease().getEndDate())  ){
+                JOptionPane.showMessageDialog(null, "Rent is Expired Need to Terminate or Renew", "Info", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        } // else
         
-
+        selectedSlr.setStatus("Accepted");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
     }//GEN-LAST:event_btnAcceptActionPerformed
@@ -301,12 +329,52 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         populateRequestTable();
     }//GEN-LAST:event_btnPaymentRequestActionPerformed
 
+    private void btnViewDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailActionPerformed
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please selected the lease!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
+        String status = workRequestJTable.getValueAt(row, 4).toString() ;
+        if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            layout.next(userProcessContainer);
+        }//
+        else{
+            JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnViewDetailActionPerformed
+
+    private void btnPaymentReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentReviewActionPerformed
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
+        String status = workRequestJTable.getValueAt(row, 4).toString() ;
+        if( status.equals("Payment Reviewing")  ){ // status.equals("Payment Review")
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new PaymentReviewJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            layout.next(userProcessContainer);
+        }//
+        else{
+            JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnPaymentReviewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDecline;
     private javax.swing.JButton btnPaymentRequest;
+    private javax.swing.JButton btnPaymentReview;
+    private javax.swing.JButton btnViewDetail;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workRequestJTable;

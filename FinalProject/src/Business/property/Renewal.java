@@ -15,7 +15,7 @@ public class Renewal {
     private String renwalID ;
     private Date renewalDate ;
     
-    Renewal(){
+    public Renewal(){
     }
 
     public String getRenwalID() {
