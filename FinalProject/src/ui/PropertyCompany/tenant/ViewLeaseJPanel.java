@@ -55,17 +55,6 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 else
                     row[3] = s.getLease().toString();
                 row[4] = s.getStatus() ;
-                /*
-               if ( s.getNetworkName()== null )
-                     row[5] = "Not set yet";
-                else
-                    row[5] = s.getNetworkName();
-                                
-                if ( s.getEnterpriseName()== null )
-                     row[6] = "not Set yet";
-                else
-                    row[6] = s.getEnterpriseName();
-                */
                 dtm.addRow(row);
             }
 

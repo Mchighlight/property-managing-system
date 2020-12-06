@@ -13,16 +13,19 @@ public  class SignLeaseRequest extends WorkRequest {
     UserAccount tenant;
     UserAccount leasing ;
     Lease lease ;
-    Propority building;
+    Propority apt;
 
 
     
-    public SignLeaseRequest( UserAccount tenant, UserAccount leasing,  Propority building) {
+    public SignLeaseRequest( UserAccount tenant, UserAccount leasing) {
         this.tenant = tenant;
-        this.building = building;
         this.leasing = leasing ;
     }
 
+    public void setApt( Propority apt){
+        this.apt = apt ;
+    }
+    
     public UserAccount getTenant() {
         return tenant;
     }
@@ -48,18 +51,14 @@ public  class SignLeaseRequest extends WorkRequest {
     }
 
     public Propority getBuilding() {
-        return building;
+        return this.apt;
     }
 
-    public void setBuilding(Propority building) {
-        this.building = building;
-    }
     
     @Override
     public String toString(){
         return "Tenant: " + this.tenant.getUsername()+ "\n" +
-                     "Leasing: " + this.leasing.getLeasing().getName() + "\n" +
-                     "Apt: " + this.building.toString() + "\n" ;
+                     "Leasing: " + this.leasing.getLeasing().getName() + "\n" ;
                      
     }
     

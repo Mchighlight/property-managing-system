@@ -22,7 +22,7 @@ public class Lease {
     private Double balance ;
     private Double securityDeposit ;
     private Date rentalDate ;
-    private Propority building;
+    private Propority apt;
     private UserAccount tenant ;
     private UserAccount  leasePeople ;
     private Termination termination ;
@@ -114,11 +114,11 @@ public class Lease {
     }
 
     public Propority getBuilding() {
-        return building;
+        return this.apt;
     }
 
-    public void setBuilding(Propority building) {
-        this.building = building;
+    public void setBuilding(Propority apt) {
+        this.apt = apt;
     }
 
     public Termination getTermination() {

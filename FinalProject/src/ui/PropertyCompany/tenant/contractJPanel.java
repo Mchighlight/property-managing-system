@@ -10,12 +10,9 @@ import Business.Employee.Leasing;
 import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.RealEstateEnterprise;
-import Business.Organization.AgentOrganization;
-import Business.Organization.CustomerSupportOrganization;
 import Business.Organization.LeasingOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.WorkQueue.VisitRequest;
 import java.awt.CardLayout;
@@ -221,9 +218,10 @@ public class contractJPanel extends javax.swing.JPanel {
         for( UserAccount ls : leasingAccountList ){
             System.out.println(ls.getLeasing().getName());
         }
-        UserAccount leasingAccount = leasingAccountList.get(0) ;
+        UserAccount leasingAccount = leasingAccountList.get(1) ;
         
-        SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, leasingAccount, apt);
+        SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, leasingAccount);
+        signLeaseRequest.setApt(apt);
         if (leasingAccount != null) {
 
             signLeaseRequest.setStatus("Contract preparation");
