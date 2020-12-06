@@ -18,6 +18,8 @@ public class WorkQueue {
     private ArrayList<BoardMemberRequest> boardmemberRequestList;
     private ArrayList<SignLeaseRequest> signLeaseRequestList;
     private ArrayList<MarketingRequest> marketingRequestList;
+    private ArrayList<RepairRequest> repairRequestRequestList;
+    private ArrayList<CustomerSupportRequest> customerSupportRequestList;
 
     public WorkQueue() {
         workRequestList = new ArrayList();
@@ -26,6 +28,24 @@ public class WorkQueue {
         boardmemberRequestList = new ArrayList();
         signLeaseRequestList = new ArrayList();
         marketingRequestList = new ArrayList();
+        repairRequestRequestList = new ArrayList();
+        customerSupportRequestList = new ArrayList();
+    }
+
+    public ArrayList<RepairRequest> getRepairRequestRequestList() {
+        return repairRequestRequestList;
+    }
+
+    public void setRepairRequestRequestList(ArrayList<RepairRequest> repairRequestRequestList) {
+        this.repairRequestRequestList = repairRequestRequestList;
+    }
+
+    public ArrayList<CustomerSupportRequest> getCustomerSupportRequestList() {
+        return customerSupportRequestList;
+    }
+
+    public void setCustomerSupportRequestList(ArrayList<CustomerSupportRequest> customerSupportRequestList) {
+        this.customerSupportRequestList = customerSupportRequestList;
     }
 
     public ArrayList<MarketingRequest> getMarketingRequestList() {

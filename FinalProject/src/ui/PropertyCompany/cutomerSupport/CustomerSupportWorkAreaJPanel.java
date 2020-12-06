@@ -7,9 +7,19 @@ package ui.PropertyCompany.cutomerSupport;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.RealEstateEnterprise;
+import Business.Network.Network;
 import Business.Organization.CustomerSupportOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerSupportRequest;
+import Business.WorkQueue.RepairRequest;
+import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import ui.PropertyCompany.repair.ProcessJPanel;
 
 /**
  *
@@ -20,14 +30,50 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TenantWorkAreaJPanel
      */
-    public CustomerSupportWorkAreaJPanel() {
-        initComponents();
+    
+  JPanel userProcessContainer;
+    UserAccount ua;
+    EcoSystem ecosystem;
+    CustomerSupportOrganization CSO;
+    public CustomerSupportWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,  CustomerSupportOrganization CustomerSupportOrganization, Enterprise enterprise, EcoSystem business) {
+         initComponents();
+         this.ecosystem=business;
+         this.ua = account;
+         this. userProcessContainer = userProcessContainer;
+         this.CSO=getOrg();
+         populateFeedbackTable();
     }
-
-    public CustomerSupportWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerSupportOrganization customerSupportOrganization, Enterprise enterprise, EcoSystem business) {
-               initComponents();
+    public void populateFeedbackTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        if(CSO.getWorkQueue().getCustomerSupportRequestList()==null){
+            return;
+        }
+        for (CustomerSupportRequest wq : CSO.getWorkQueue().getCustomerSupportRequestList()) {
+            Object[] row = new Object[jTable2.getColumnCount()];
+            row[0] = wq;
+            row[1] = wq.getCustomerAccount();
+            row[2] = wq.getAssistant();
+            row[3] = wq.getUpdateDate();
+            row[4] = wq.getStatus();
+            model.addRow(row);
+        }
     }
-
+    
+    CustomerSupportOrganization getOrg(){
+        for(Network net: ecosystem.getNetworkList()){
+            for(Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()){
+                if (ent instanceof RealEstateEnterprise) {
+                    for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
+                        if (organization instanceof CustomerSupportOrganization) {
+                            return (CustomerSupportOrganization)organization;
+                        }
+                    }
+                } 
+            }
+        }
+        return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,78 +83,116 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setText("Customer Feecback");
+
+        jButton1.setText("Process");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title", "Customer", "Assistant", "Updated Date", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
 
-        jLabel1.setText("Customer Requirement");
+        jButton2.setText("Asign me");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Repair");
-
-        jButton2.setText("Furnishment");
-
-        jButton3.setText("Cleaning");
+        jLabel2.setText("Asign me 之后进行process，建立一个与customer的对话界面，能够看到标题还有一些基本的投诉类型");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addGap(156, 156, 156))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(267, 267, 267))))
+                        .addGap(267, 267, 267))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(58, 58, 58)
+                                .addComponent(jButton1))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(104, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null,"please select a row","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        CustomerSupportRequest request = (CustomerSupportRequest)jTable2.getValueAt(selectedRow, 0);
+
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new viewCusotmerSupportJPanel(userProcessContainer, ua, ecosystem,request));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null,"please select a row","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        CustomerSupportRequest request = (CustomerSupportRequest)jTable2.getValueAt(selectedRow, 0);
+        request.setAssistant(ua);
+        request.setStatus("Processing");
+        request.setUpdateDate(new Date());
+        populateFeedbackTable();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

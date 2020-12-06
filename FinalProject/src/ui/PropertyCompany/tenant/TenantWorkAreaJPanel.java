@@ -7,7 +7,9 @@ package ui.PropertyCompany.tenant;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.CustomerSupportOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.smartcardio.Card;
@@ -26,18 +28,18 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount ua;
     EcoSystem ecosystem;
     Enterprise enterprise;
-    public TenantWorkAreaJPanel() {
-        initComponents();
-    }
-
-    public TenantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerSupportOrganization customerSupportOrganization, Enterprise enterprise, EcoSystem business) {
+//    CustomerSupportOrganization customerSupportOrganization;
+    Organization Organization;
+    public TenantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization Organization, Enterprise enterprise, EcoSystem business) {
          initComponents();
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
          this.enterprise = enterprise;
     }
-
+//    Enterprise getEntFromNet(){
+//   
+//}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

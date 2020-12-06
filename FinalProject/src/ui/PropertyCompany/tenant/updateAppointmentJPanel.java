@@ -53,6 +53,7 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        dateChooserPanel1 = new datechooser.beans.DateChooserPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,6 +97,7 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 30, 20));
+        add(dateChooserPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 350, 220));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -179,6 +181,7 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private datechooser.beans.DateChooserPanel dateChooserPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

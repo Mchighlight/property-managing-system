@@ -85,7 +85,7 @@ public class newAptJPanel extends javax.swing.JPanel {
                     if (org instanceof BoardMemberOrganization) {
                         for(Landlord ll : org.getLandlordDirectory().getlandlordList())
                             for (Propority object : ll.getProporityCatalog().getProporitycatalog()) {
-                                agentjComboBox.addItem(object);
+                                aptjComboBox.addItem(object);
                             }
                     }
 //                    else
@@ -196,6 +196,7 @@ public class newAptJPanel extends javax.swing.JPanel {
         Propority pp = (Propority) aptjComboBox.getSelectedItem();
         
         VisitRequest request = new VisitRequest(agent, ua, pp);
+        request.setStatus("waiting processed");
         
         try {
             Date date=new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy").parse(jTextField1.getText());
