@@ -351,6 +351,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             request.setStatus("pending");
             request.setTitle(propNickname + " Decotator request");
             request.setSqtfeet(sqtfeet);
+            request.setComment(network);
 
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             organization.getUserAccountDirectory().findUser(decname).getWorkQueue().getFurnishingRequestList().add(request);

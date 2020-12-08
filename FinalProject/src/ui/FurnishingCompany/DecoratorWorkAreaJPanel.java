@@ -44,7 +44,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         // this.request = new CleaningRequest();
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
-        populatCleanCombo();
+        // populatCleanCombo();
     }
 
     public void populatchargefee() {
@@ -77,13 +77,14 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
             for (FurnishingRequest f : work) {
 
                 Object row[] = new Object[7];
-                row[0] = f.getOrderID();
-                row[1] = f.getCustomerAccount().getUsername();
-                row[2] = f.getRequirement();
-                row[3] = f.getFeeString();
-                row[4] = f.getStatus();
-                row[5] = f.getTitle();
-                row[6] = f.getSqtfeet();
+
+                row[0] = f.getCustomerAccount().getUsername();
+                row[1] = f.getRequirement();
+                row[2] = f.getFeeString();
+                row[3] = f.getStatus();
+                row[4] = f.getTitle();
+                row[5] = f.getSqtfeet();
+                row[6] = f.getComment();
 
                 dtm.addRow(row);
             }
@@ -96,7 +97,12 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
 
     public void populatCleanCombo() {
         CleaningStaffComboBox.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        //Enterprise enterprise = ecosystem.findNetwork().getEnterpriseDirectory().findenterprise("furnishing");
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
         for (CleaningStaff cleaning : organization.getCleaningStaffDirectory().getCleaningStaffList()) {
             CleaningStaffComboBox.addItem(cleaning.getName());
@@ -142,14 +148,14 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "OrderID", "Customer", "Requirement", "budget", "Status", "Title", "Sqt Feet"
+                "Customer", "Requirement", "budget", "Status", "Title", "Sqt Feet", "From Network"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true
+                false, false, false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -177,6 +183,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnFinish.setText("Finish");
+        btnFinish.setEnabled(false);
         btnFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinishActionPerformed(evt);
@@ -226,9 +233,9 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(205, 205, 205)
                                 .addComponent(jLabel1)))
                         .addGap(0, 429, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btndeny)
@@ -296,12 +303,11 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Declined");
-        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
-
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Declined");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        btnaccept.setEnabled(false);
 
     }//GEN-LAST:event_btndenyActionPerformed
 
@@ -311,12 +317,16 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Accepted and proecssing");
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Accepted and proecssing");
         //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
 
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        btnFinish.setEnabled(true);
+        btndeny.setEnabled(false);
+
+
     }//GEN-LAST:event_btnacceptActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
@@ -325,8 +335,8 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Finished");
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Finished");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
 
@@ -334,7 +344,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void assignjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignjButtonActionPerformed
         // TODO add your handling code here:
-         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
 
         int row = workRequestJTable.getSelectedRow();
@@ -358,9 +368,8 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "null");
         }
-        
-         
-   
+
+
     }//GEN-LAST:event_assignjButtonActionPerformed
 
     private void txtfeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeeActionPerformed
@@ -373,7 +382,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "please select a property");
         } else;
-        populatchargefee();
+        // populatchargefee();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
