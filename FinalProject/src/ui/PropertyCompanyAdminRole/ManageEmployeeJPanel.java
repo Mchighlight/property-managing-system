@@ -334,7 +334,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             organization.getUserAccountDirectory().createUserAccount(Username, password, ls, new LeasingRole());
             JOptionPane.showMessageDialog(null, " Leasing  added,user added");
 
-            populateCustomerSupportTable(organization);
+            populateLeasingTable(organization);
         } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Marketing.getValue())) {
             Marketing marketing = organization.getMarketingDirectory().createMarketing(name, email);
             organization.getUserAccountDirectory().createUserAccount(Username, password, marketing, new MarketingRole());

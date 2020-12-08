@@ -61,6 +61,11 @@ public class UserAccount {
         this.marketing=marketing;
         
     }
+
+    public CustomerSupport getCustomerSupport() {
+        return customerSupport;
+    }
+    
     public UserAccount() {
         workQueue = new WorkQueue();
     }

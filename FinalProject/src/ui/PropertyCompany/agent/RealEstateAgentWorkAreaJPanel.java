@@ -13,7 +13,11 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VisitRequest;
 import java.awt.CardLayout;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import ui.InvestmentCompany.FindFurnishingJPanel;
@@ -204,7 +208,13 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
         }
         VisitRequest request = (VisitRequest)jTable1.getValueAt(selectedRow, 0);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new viewAppointmentJPanel(userProcessContainer, account, business,request));
+        try {
+            userProcessContainer.add(new viewAppointmentJPanel(userProcessContainer, account, business,request));
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(RealEstateAgentWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(RealEstateAgentWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton4ActionPerformed
 

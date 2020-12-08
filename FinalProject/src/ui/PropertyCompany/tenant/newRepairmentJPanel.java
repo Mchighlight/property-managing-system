@@ -17,6 +17,7 @@ import Business.Organization.Organization;
 import Business.Organization.RepairOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.RepairRequest;
+import Business.WorkQueue.SignLeaseRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
@@ -44,6 +45,7 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
          populateNetworkBox();
+         populateAptBox();
          dateChooserPanel1.setVisible(false);
     }
     
@@ -65,21 +67,25 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
         //}
     }
      
-    void populateAptBox(Network net){
+    void populateAptBox(){
         aptjComboBox.removeAllItems();
-        for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()){
-            if (ent instanceof InvestmentManagerEnterprise) {
-                ent=(InvestmentManagerEnterprise)ent;
-                for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
-                    if (org instanceof BoardMemberOrganization) {
-                        for(Landlord ll : org.getLandlordDirectory().getlandlordList())
-                            for (Propority object : ll.getProporityCatalog()) {
-                                aptjComboBox.addItem(object);
-                            }
-                    }
-                }
-            }
+        for(SignLeaseRequest sq:ua.getWorkQueue().getSignLeaseRequestList()){
+                    aptjComboBox.addItem(sq.getBuilding());
         }
+        
+//        for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()){
+//            if (ent instanceof InvestmentManagerEnterprise) {
+//                ent=(InvestmentManagerEnterprise)ent;
+//                for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
+//                    if (org instanceof BoardMemberOrganization) {
+//                        for(Landlord ll : org.getLandlordDirectory().getlandlordList())
+//                            for (Propority object : ll.getProporityCatalog()) {
+//                                aptjComboBox.addItem(object);
+//                            }
+//                    }
+//                }
+//            }
+//        }
     }
     
     void populateNetworkBox( ){
@@ -280,7 +286,7 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
             Date pointedDate =dateChooserPanel1.getModel().getSelectedDate().getTime();
             jTextField1.setText(pointedDate.toString());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -288,7 +294,7 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
     private void createjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createjButtonActionPerformed
         // TODO add your handling code here:
         
-        UserAccount agent =(UserAccount) agentjComboBox.getSelectedItem();
+            UserAccount agent =(UserAccount) agentjComboBox.getSelectedItem();
             Propority pp = (Propority) aptjComboBox.getSelectedItem();
             //确定property的位置，在tenant还是在leasing上
 
@@ -332,7 +338,7 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
         try {
             if (netjComboBox1.getSelectedItem()!=null) {
                 Network net =(Network) netjComboBox1.getSelectedItem();
-                populateAptBox(net);
+//                populateAptBox(net);
                 populateReparePeopletBox(net);
             }
         } catch (Exception e) {

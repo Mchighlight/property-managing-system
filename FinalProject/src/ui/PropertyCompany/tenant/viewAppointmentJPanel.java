@@ -8,9 +8,14 @@ package ui.PropertyCompany.tenant;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VisitRequest;
+import Util.Map;
+import Util.MapJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -26,12 +31,15 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
     UserAccount ua;
     EcoSystem ecosystem;
     VisitRequest request;
-    public viewAppointmentJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business,VisitRequest request) {
+    Map maojframe;
+    public viewAppointmentJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business,VisitRequest request) throws URISyntaxException, IOException {
          initComponents();
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
          this. request = request;
+         maojframe=new Map(userProcessContainer, request.getBuilding());
+         maojframe.setVisible(false);
          updatemessage();
     }
     public void updatemessage(){
@@ -98,6 +106,11 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
         jTextField1.setText("Please imput message");
 
         jButton3.setText("Map");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +148,7 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jLabel2)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +170,7 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,6 +195,14 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
         
         updatemessage();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+//        userProcessContainer.add(new MapJPanel(userProcessContainer,request.getBuilding()));
+//        layout.next(userProcessContainer);
+            maojframe.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

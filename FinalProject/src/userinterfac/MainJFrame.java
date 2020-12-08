@@ -38,10 +38,9 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
        system = dB4OUtil.retrieveSystem();
-       //system=ConfigureASystem.configure();
-       //dB4OUtil.storeSystem(system);
-        this.setSize(800, 600);
-
+//       system=ConfigureASystem.configure();
+//       dB4OUtil.storeSystem(system);
+//        this.setSize(1000, 900);
     }
 
     /**
@@ -65,6 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -131,7 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(689, 451));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
