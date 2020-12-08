@@ -69,12 +69,13 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         List<Propority> prolist = landlord.getProporityCatalog();
         if (prolist != null) {
             for (Propority p : prolist) {
-                Object row[] = new Object[6];
+                Object row[] = new Object[5];
                 row[0] = p.getNickname();
                 row[1] = p.getAddress();
                 row[2] = p.getAptNo();
-                row[3] = p.getURL();
-
+                row[3]=p.getMonthlyrent();
+                row[4] = p.getURL();
+           
                 dtm.addRow(row);
             }
         }
@@ -231,7 +232,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Property nickName", "Address", "apt No", "URL (opt)", "Assigned Enterprise"
+                "Property nickName", "Address", "apt No", "Monthy rent", "URL"
             }
         ) {
             boolean[] canEdit = new boolean [] {

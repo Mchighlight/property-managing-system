@@ -274,8 +274,8 @@
                 <Column editable="true" title="Property nickName" type="java.lang.Object"/>
                 <Column editable="false" title="Address" type="java.lang.Object"/>
                 <Column editable="false" title="apt No" type="java.lang.Object"/>
-                <Column editable="true" title="URL (opt)" type="java.lang.Object"/>
-                <Column editable="true" title="Assigned Enterprise" type="java.lang.Object"/>
+                <Column editable="true" title="Monthy rent" type="java.lang.Object"/>
+                <Column editable="true" title="URL" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
