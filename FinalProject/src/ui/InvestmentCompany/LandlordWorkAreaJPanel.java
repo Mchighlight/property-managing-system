@@ -78,6 +78,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
                 dtm.addRow(row);
             }
         }
+        
 
     }
 

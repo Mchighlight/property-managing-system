@@ -42,8 +42,8 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         this.request = new FurnishingRequest();
         LandlordComboBox.removeAllItems();
         ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
-        if (work.equals(null)){
-                    JOptionPane.showMessageDialog(null, "null");
+        if (work.equals(null)) {
+            JOptionPane.showMessageDialog(null, "null");
         }
         for (WorkRequest request : work) {
 
@@ -76,21 +76,24 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        Enterprise enterprise = ecosystem.findNetwork("henry").getEnterpriseDirectory().findenterprise("landlordAdmin1207");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+        ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
+        for (WorkRequest object : work) {
+            if (object.getSender().toString() == landlordname) {
+                UserAccount landlord = object.getSender();
+                List<Propority> prolist = landlord.getLandlord().getProporityCatalog();
+                if (prolist != null) {
+                    for (Propority p : prolist) {
+                        Object row[] = new Object[4];
+                        row[0] = p.getNickname();
+                        row[1] = p.getAddress();
+                        row[2] = p.getAptNo();
+                        row[3] = p.getSquareFeet();
+                        model.addRow(row);
+                    }
 
-        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog();
-
-        if (prolist != null) {
-            for (Propority p : prolist) {
-                Object row[] = new Object[4];
-                row[0] = p.getNickname();
-                row[1] = p.getAddress();
-                row[2] = p.getAptNo();
-                row[3] = p.getSquareFeet();
-
-                model.addRow(row);
+                }
             }
+
         }
     }
 
