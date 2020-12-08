@@ -7,6 +7,8 @@ package ui.InvestmentCompany;
 
 import Business.EcoSystem;
 import Business.Employee.Decorator;
+import Business.Employee.Landlord;
+import Business.Employee.Propority;
 import Business.Employee.RealEstateAgent;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -19,6 +21,7 @@ import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -48,25 +51,58 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.request = new BoardMemberRequest();
-
+        populateproporityTable();
         populateRequestTable();
         for (Network network : ecosystem.getNetworkList()) {
             NetWorkCombobox.addItem(network.getName());
 
         }
 
-        //valueLabel.setText(enterprise.getName());
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void populatAgentCombo(String net) {
-        AgentCombobox.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork(net).getEnterpriseDirectory().findenterprise("realestate");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("Agent Organization");
-        for (RealEstateAgent agent : organization.getRealEstateAgentDirectory().getRealEstateAgentList()) {
-            AgentCombobox.addItem(agent.getName());
+    public void populateproporityTable() {
+
+        Landlord landlord = userAccount.getLandlord();
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setRowCount(0);
+        List<Propority> prolist = landlord.getProporityCatalog();
+        if (prolist != null) {
+            for (Propority p : prolist) {
+                Object row[] = new Object[6];
+                row[0] = p.getNickname();
+                row[1] = p.getAddress();
+                row[2] = p.getAptNo();
+                row[3] = p.getURL();
+
+                dtm.addRow(row);
+            }
         }
 
+    }
+
+    public void populatAgentCombo() {
+        AgentCombobox.removeAllItems();
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        String enterprise = EnterpriseCombobox.getSelectedItem().toString();
+        Enterprise enterprise1 = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enterprise);
+        Organization org = enterprise1.getOrganizationDirectory().findorganization("Agent Organization");
+        if (org.getRealEstateAgentDirectory().getRealEstateAgentList() != null) {
+            for (RealEstateAgent agent : org.getRealEstateAgentDirectory().getRealEstateAgentList()) {
+                AgentCombobox.addItem(agent.getName());
+            }
+
+        }
+    }
+
+    public void populatEnterpriseCombo(String net) {
+        EnterpriseCombobox.removeAllItems();
+        for (Enterprise enterprise : ecosystem.findNetwork(net).getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.RealEstate.getValue())) {
+                EnterpriseCombobox.addItem(enterprise.getName());
+            }
+
+        }
     }
 
     public void populateRequestTable() {
@@ -74,8 +110,6 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
         dtm.setRowCount(0);
         ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
-
-//            Restaurant  res = system.getRestaurantDirectory().findRestaurant(account.getUsername());
         if (work != null) {
             for (WorkRequest r : work) {
                 Object row[] = new Object[3];
@@ -110,6 +144,13 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         NetWorkCombobox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         value = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        EnterpriseCombobox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jButton1.setText("create new propority");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,13 +180,13 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable2);
 
         jButton3.setText("Pick Agent");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        AgentCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AgentCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgentComboboxActionPerformed(evt);
@@ -162,56 +203,133 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
 
         value.setText("<value>");
 
+        jLabel2.setText("Network");
+
+        jLabel3.setText("Enterprise");
+
+        EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterpriseComboboxActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Agent");
+
+        jButton4.setText("Find Agent");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Property nickName", "Address", "apt No", "URL (opt)", "Assigned Enterprise"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(43, 43, 43))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
                         .addComponent(jButton1)
                         .addGap(46, 46, 46)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NetWorkCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AgentCombobox, 0, 142, Short.MAX_VALUE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(value)))
-                .addGap(62, 62, 62))
+                        .addContainerGap(73, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(44, 44, 44)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                        .addComponent(jLabel4)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(AgentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(8, 8, 8))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(value))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(EnterpriseCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addGap(819, 819, 819))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(AgentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AgentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(value))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                            .addComponent(value)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -240,7 +358,8 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String network = NetWorkCombobox.getSelectedItem().toString();
-        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise("realestate");
+        String enterprisename = EnterpriseCombobox.getSelectedItem().toString();
+        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enterprisename);
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Agent Organization");
 
         String Agentname = AgentCombobox.getSelectedItem().toString();
@@ -248,13 +367,18 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         if (Agentaccount != null) {
             request.setReceiver(Agentaccount);
             request.setSender(userAccount);
-
+            request.setStatus("Success");
+            request.setTitle("Request agent");
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             Agentaccount.getWorkQueue().getWorkRequestList().add(request);
+            String LandlordName = userAccount.getUsername();
+            for (Propority propority : userAccount.getLandlord().getProporityCatalog()) {
+                propority.setEnterprise(enterprise);
+            }
 
-            
             JOptionPane.showMessageDialog(null, "assign successfully");
             value.setText(Agentname);
+            populateproporityTable();
 
         }
 
@@ -271,20 +395,39 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String network = NetWorkCombobox.getSelectedItem().toString();
         if (network != null) {
-            populatAgentCombo(network);
+            populatEnterpriseCombo(network);
         }
 
     }//GEN-LAST:event_NetWorkComboboxActionPerformed
 
+    private void EnterpriseComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterpriseComboboxActionPerformed
+
+    }//GEN-LAST:event_EnterpriseComboboxActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        populatAgentCombo();
+        jButton3.setEnabled(true);
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> AgentCombobox;
+    private javax.swing.JComboBox<String> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel value;
     // End of variables declaration//GEN-END:variables

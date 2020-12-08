@@ -27,11 +27,11 @@ public class ProporityCatalog {
     }
     
     
-    public Propority addPropority(){
+  /*  public Propority addPropority(){
         Propority p = new Propority();
         ProporityCatalog.add(p);
         return p;
-    }
+    }*/
     
     public void removePropority(Propority p){
        ProporityCatalog.remove(p);

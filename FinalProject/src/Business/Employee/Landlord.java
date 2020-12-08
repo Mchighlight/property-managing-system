@@ -5,6 +5,7 @@
 package Business.Employee;
 
 import Business.Employee.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,27 +19,23 @@ public class Landlord {
     private String lastname;
     private String SSN;
     private String email;
-    private ProporityCatalog proporityCatalog;
-   
+    private ArrayList<Propority> ProporityCatalog;
 
     public Landlord() {
         id = count;
         count++;
-
-        proporityCatalog = new ProporityCatalog();
+        ProporityCatalog = new ArrayList<>();
 
     }
 
-  
-    
-
-    public ProporityCatalog getProporityCatalog() {
-        return proporityCatalog;
+    public ArrayList<Propority> getProporityCatalog() {
+        return ProporityCatalog;
     }
 
-    public void setProporityCatalog(ProporityCatalog proporityCatalog) {
-        this.proporityCatalog = proporityCatalog;
+    public void setProporityCatalog(ArrayList<Propority> ProporityCatalog) {
+        this.ProporityCatalog = ProporityCatalog;
     }
+
 
     public String getFirstname() {
         return firstname;

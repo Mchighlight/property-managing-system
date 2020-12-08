@@ -8,6 +8,7 @@ package ui.InvestmentCompany;
 import Business.EcoSystem;
 import Business.Employee.CleaningStaff;
 import Business.Employee.Decorator;
+import Business.Employee.Landlord;
 import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -45,10 +46,23 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.request = new FurnishingRequest();
+        for (Network network : ecosystem.getNetworkList()) {
+            NetWorkCombobox.addItem(network.getName());
 
-        populatDecoratorCombo();
+        }
+
         populateproporityTable();
 
+    }
+
+    public void populatEnterpriseCombo(String net) {
+        EnterpriseCombobox.removeAllItems();
+        for (Enterprise enterprise : ecosystem.findNetwork(net).getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.Furnishing.getValue())) {
+                EnterpriseCombobox.addItem(enterprise.getName());
+            }
+
+        }
     }
 
     public void populatchargefee() {
@@ -56,10 +70,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        //String propNickname = jTable1.getValueAt(row, 0).toString();
         String dec = decoratorCombobox.getSelectedItem().toString();
-
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        String enter = EnterpriseCombobox.getSelectedItem().toString();
+        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enter);
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
         int fee = organization.getDecoratorDirectory().findDecorator(dec).getFeepersquarefeet();
 
@@ -72,7 +86,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
     public void populatDecoratorCombo() {
         decoratorCombobox.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        String enter = EnterpriseCombobox.getSelectedItem().toString();
+
+        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enter);
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
         for (Decorator decorator : organization.getDecoratorDirectory().getDecoratorList()) {
             decoratorCombobox.addItem(decorator.getName());
@@ -80,23 +97,21 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
     }
 
     public void populateproporityTable() {
-        String landlordname = userAccount.getUsername();
 
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+        Landlord landlord = userAccount.getLandlord();
+
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
-        // ArrayList<commentrequest> work = userAccount.getWorkQueue().getWorkRequestList();
-        dtm.setRowCount(0);
-        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
+        List<Propority> prolist = landlord.getProporityCatalog();
         if (prolist != null) {
-            for (Propority p : organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog()) {
+            for (Propority p : prolist) {
                 Object row[] = new Object[5];
                 row[0] = p.getNickname();
                 row[1] = p.getAddress();
                 row[2] = p.getAptNo();
                 row[3] = p.getSquareFeet();
-                row[4] = p.getPropertyURL();
+                row[4] = p.getURL();
+                
                 dtm.addRow(row);
             }
         }
@@ -122,6 +137,11 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         enterpriseLabel1 = new javax.swing.JLabel();
         txtfee = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        EnterpriseCombobox = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
+        NetWorkCombobox = new javax.swing.JComboBox<>();
 
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +161,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Property nickName", "Address", "apt No", "Square feet", "URL(opt)"
+                "Property nickName", "Address", "apt No", "Square feet", "URL"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -180,9 +200,33 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("get Quote");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Network");
+
+        jLabel3.setText("Enterprise");
+
+        EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterpriseComboboxActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Find Decorator");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        NetWorkCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NetWorkComboboxActionPerformed(evt);
             }
         });
 
@@ -193,12 +237,9 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
+                        .addGap(266, 266, 266)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,17 +247,36 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jButton1)
                         .addGap(131, 131, 131)
                         .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(420, 420, 420)
-                        .addComponent(assignjButton)))
-                .addContainerGap(290, Short.MAX_VALUE))
+                        .addGap(378, 378, 378)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(assignjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(454, 454, 454)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(EnterpriseCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,21 +285,31 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(decoratorCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(assignjButton)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(assignjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,7 +326,9 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
 
     private void assignjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignjButtonActionPerformed
         // TODO add your handling code here:
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        String enter = EnterpriseCombobox.getSelectedItem().toString();
+        Enterprise enterprise = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enter);
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Furnishing Organization");
 
         int row = jTable1.getSelectedRow();
@@ -264,8 +336,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             return;
         }
         String propNickname = jTable1.getValueAt(row, 0).toString();
+          if (txtfee.getText()==""|| decoratorCombobox.getSelectedItem().equals(null)) {
+            return;
+        }else{
         Double fee = Double.parseDouble(txtfee.getText());
-
         String decname = decoratorCombobox.getSelectedItem().toString();
         int sqtfeet = Integer.parseInt(jTable1.getValueAt(row, 3).toString());
         UserAccount decaccount = organization.getUserAccountDirectory().findUser(decname);
@@ -275,14 +349,14 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             request.setCustomerAccount(userAccount);
             request.setReceiver(decaccount);
             request.setStatus("pending");
-            request.setTitle(propNickname + "Decotator request");
+            request.setTitle(propNickname + " Decotator request");
             request.setSqtfeet(sqtfeet);
 
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             organization.getUserAccountDirectory().findUser(decname).getWorkQueue().getFurnishingRequestList().add(request);
 
             JOptionPane.showMessageDialog(null, "assign successfully");
-
+        }
         }
     }//GEN-LAST:event_assignjButtonActionPerformed
 
@@ -305,15 +379,39 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         populatchargefee();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void EnterpriseComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterpriseComboboxActionPerformed
+
+    }//GEN-LAST:event_EnterpriseComboboxActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+
+        populatDecoratorCombo();
+        jButton2.setEnabled(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void NetWorkComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NetWorkComboboxActionPerformed
+        // TODO add your handling code here:
+        String network = NetWorkCombobox.getSelectedItem().toString();
+        if (network != null) {
+            populatEnterpriseCombo(network);
+        }
+    }//GEN-LAST:event_NetWorkComboboxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> EnterpriseCombobox;
+    private javax.swing.JComboBox<String> NetWorkCombobox;
     private javax.swing.JButton assignjButton;
     private javax.swing.JComboBox<String> decoratorCombobox;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtfee;
