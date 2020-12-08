@@ -44,23 +44,21 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         // this.request = new CleaningRequest();
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
-        populatCleanCombo();
+        // populatCleanCombo();
     }
 
-    public void populatchargefee() {
+    public void populatchargefee(String net, String ent) {
         int row = workRequestJTable.getSelectedRow();
         if (row < 0) {
             return;
         }
+        String cleaning = CleaningStaffComboBox.getSelectedItem().toString();
 
-        String Cleaning = CleaningStaffComboBox.getSelectedItem().toString();
-
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
+        Enterprise enterprise = ecosystem.findNetwork(net).getEnterpriseDirectory().findenterprise(ent);
         Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
         // JOptionPane.showMessageDialog(null, organization.getName());
-
-        int cleaningfee = organization.getCleaningStaffDirectory().findCleaningstaff(Cleaning).getChargepresquarefee();
-        int sqtfeet = Integer.parseInt(workRequestJTable.getValueAt(row, 6).toString());
+        int cleaningfee = organization.getCleaningStaffDirectory().findCleaningstaff(cleaning).getChargepresquarefee();
+        int sqtfeet = Integer.parseInt(workRequestJTable.getValueAt(row, 5).toString());
         int total = sqtfeet * cleaningfee;
         txtfee.setText(Integer.toString(total));
         JOptionPane.showMessageDialog(null, "You cost for cleaning is " + total);
@@ -77,14 +75,13 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
             for (FurnishingRequest f : work) {
 
                 Object row[] = new Object[7];
-                row[0] = f.getOrderID();
-                row[1] = f.getCustomerAccount().getUsername();
-                row[2] = f.getRequirement();
-                row[3] = f.getFeeString();
-                row[4] = f.getStatus();
-                row[5] = f.getTitle();
-                row[6] = f.getSqtfeet();
-
+                row[0] = f.getCustomerAccount().getUsername();
+                row[1] = f.getRequirement();
+                row[2] = f.getFeeString();
+                row[3] = f.getStatus();
+                row[4] = f.getTitle();
+                row[5] = f.getSqtfeet();
+                row[6] = f.getComment();
                 dtm.addRow(row);
             }
 
@@ -94,10 +91,27 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
 
     }
 
-    public void populatCleanCombo() {
+    public void populatEnterpriseCombo() {
+        EnterpriseCombobox.removeAllItems();
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "please select a request");
+        }
+        String network = workRequestJTable.getValueAt(row, 6).toString();
+        for (Enterprise enterprise : ecosystem.findNetwork(network).getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.Furnishing.getValue())) {
+                EnterpriseCombobox.addItem(enterprise.getName());
+            }
+
+        }
+    }
+
+    public void populatCleanCombo(String enterprise) {
         CleaningStaffComboBox.removeAllItems();
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
+        int row = workRequestJTable.getSelectedRow();
+        String network = workRequestJTable.getValueAt(row, 6).toString();
+        Enterprise enter = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enterprise);
+        Organization organization = enter.getOrganizationDirectory().findorganization("Cleaning Organization");
         for (CleaningStaff cleaning : organization.getCleaningStaffDirectory().getCleaningStaffList()) {
             CleaningStaffComboBox.addItem(cleaning.getName());
         }
@@ -126,6 +140,9 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         txtfee = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        EnterpriseCombobox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -142,14 +159,14 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "OrderID", "Customer", "Requirement", "budget", "Status", "Title", "Sqt Feet"
+                "Customer", "Requirement", "budget", "Status", "Title", "Sqt Feet", "From Network"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true
+                false, false, false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -177,6 +194,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnFinish.setText("Finish");
+        btnFinish.setEnabled(false);
         btnFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinishActionPerformed(evt);
@@ -184,8 +202,14 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         CleaningStaffComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CleaningStaffComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CleaningStaffComboBoxActionPerformed(evt);
+            }
+        });
 
         assignjButton.setText("Assign  to this Cleaning profession");
+        assignjButton.setEnabled(false);
         assignjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignjButtonActionPerformed(evt);
@@ -201,6 +225,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("get Cost");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -208,6 +233,22 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel3.setText("Select a cleaning profession");
+
+        jButton1.setText("Select a cleaning profession from the same network");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterpriseComboboxActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Select enterprise");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -218,42 +259,52 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addComponent(jLabel1)))
+                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 429, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btndeny)
                     .addComponent(btnaccept)
                     .addComponent(btnFinish)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(assignjButton)
-                .addGap(277, 277, 277))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(assignjButton)
+                        .addGap(279, 279, 279))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(173, 173, 173))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CleaningStaffComboBox, 0, 134, Short.MAX_VALUE)
+                                    .addComponent(EnterpriseCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(325, 325, 325))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel3)
-                        .addGap(50, 50, 50)
-                        .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel2)
-                        .addGap(46, 46, 46)
-                        .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(253, 253, 253)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +315,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btndeny)
@@ -273,19 +324,25 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFinish))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CleaningStaffComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(27, 27, 27)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(assignjButton)
-                .addGap(127, 127, 127))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,12 +353,11 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Declined");
-        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
-
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Declined");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        btnaccept.setEnabled(false);
 
     }//GEN-LAST:event_btndenyActionPerformed
 
@@ -311,12 +367,16 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Accepted and proecssing");
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Accepted and proecssing");
         //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
 
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        btnFinish.setEnabled(true);
+        btndeny.setEnabled(false);
+
+
     }//GEN-LAST:event_btnacceptActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
@@ -325,42 +385,40 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Finished");
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
+        userAccount.getWorkQueue().findFurnishingrequest(pro).setStatus("Finished");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        btnaccept.setEnabled(false);
+        jButton1.setEnabled(true);
 
     }//GEN-LAST:event_btnFinishActionPerformed
 
     private void assignjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignjButtonActionPerformed
         // TODO add your handling code here:
-         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("furnishing");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("Cleaning Organization");
 
+        String enter = EnterpriseCombobox.getSelectedItem().toString();
         int row = workRequestJTable.getSelectedRow();
-        if (row < 0) {
-            return;
-        }
-        int OrderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        String network = workRequestJTable.getValueAt(row, 6).toString();
+
+        String pro = workRequestJTable.getValueAt(row, 1).toString();
         String cleanname = CleaningStaffComboBox.getSelectedItem().toString();
+        Enterprise enterprise1 = ecosystem.findNetwork(network).getEnterpriseDirectory().findenterprise(enter);
+        Organization organization1 = enterprise1.getOrganizationDirectory().findorganization("Cleaning Organization");
 
-        UserAccount cleaningaccount = organization.getUserAccountDirectory().findUser(cleanname);
-        FurnishingRequest request = userAccount.getWorkQueue().findFurnishingrequest(OrderId);
+        UserAccount cleaningaccount = organization1.getUserAccountDirectory().findUser(cleanname);
+        FurnishingRequest request = userAccount.getWorkQueue().findFurnishingrequest(pro);
         if (cleaningaccount != null) {
-
             request.setStatus("Cleaning processing");
-
             cleaningaccount.getWorkQueue().getFurnishingRequestList().add(request);
-
             JOptionPane.showMessageDialog(null, "assign successfully");
             populateRequestTable();
 
         } else {
             JOptionPane.showMessageDialog(null, "null");
         }
-        
-         
-   
+
+
     }//GEN-LAST:event_assignjButtonActionPerformed
 
     private void txtfeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfeeActionPerformed
@@ -369,25 +427,56 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+
+        String enter = EnterpriseCombobox.getSelectedItem().toString();
         int row = workRequestJTable.getSelectedRow();
-        if (row < 0) {
-            JOptionPane.showMessageDialog(null, "please select a property");
-        } else;
-        populatchargefee();
+        String network = workRequestJTable.getValueAt(row, 6).toString();
+        populatchargefee(network, enter);
+          assignjButton.setEnabled(true);
+
+        
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        populatEnterpriseCombo();
+        jButton2.setEnabled(true);
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EnterpriseComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterpriseComboboxActionPerformed
+
+        String Enterprise = EnterpriseCombobox.getSelectedItem().toString();
+        if (Enterprise != null) {
+            populatCleanCombo(Enterprise);
+        }
+
+    }//GEN-LAST:event_EnterpriseComboboxActionPerformed
+
+    private void CleaningStaffComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleaningStaffComboBoxActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_CleaningStaffComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CleaningStaffComboBox;
+    private javax.swing.JComboBox<String> EnterpriseCombobox;
     private javax.swing.JButton assignjButton;
     private javax.swing.JButton btnFinish;
     private javax.swing.JButton btnaccept;
     private javax.swing.JButton btndeny;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtfee;
     private javax.swing.JLabel valueLabel;

@@ -7,6 +7,7 @@ package ui.PropertyCompany.Marketing;
 
 import Business.EcoSystem;
 import Business.Employee.Landlord;
+import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Organization.CustomerSupportOrganization;
 import Business.Organization.FurnishingOrganization;
@@ -59,7 +60,6 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
                 row[2] = f.getSender();
                 row[3] = f.getRequirement();
                 row[4] = f.getStatus();
-
 
                 dtm.addRow(row);
             }
@@ -164,22 +164,32 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int row = workRequestJTable.getSelectedRow();
         if (row < 0) {
-            return;
+            JOptionPane.showMessageDialog(null, "please select a row");
         }
         String propertyname = workRequestJTable.getValueAt(row, 3).toString();
+
         String landlordname = workRequestJTable.getValueAt(row, 1).toString();
-        userAccount.getWorkQueue().findFurnishingrequest(propertyname).setStatus("Finished");
-        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
+        userAccount.getWorkQueue().findFurnishingrequest(propertyname).setStatus("Marketing Finished");
 
         String URL = txtURL.getText();
 
-        Enterprise enterprise1 = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
-        Organization organization1 = enterprise1.getOrganizationDirectory().findorganization("BoardMember Organization");
-        Landlord landlord = organization1.getLandlordDirectory().findlandlord(landlordname);
-        // landlord.getProporityCatalog().findPropority(propertyname).setPropertyURL(URL);
+        ArrayList<FurnishingRequest> work = userAccount.getWorkQueue().getFurnishingRequestList();
+        for (FurnishingRequest object : work) {
+            if (object.getCustomerAccount().toString() == landlordname) {
+                UserAccount landlordaccount = object.getCustomerAccount();
+                for (Propority propority : landlordaccount.getLandlord().getProporityCatalog()) {
+
+                    if (propority.getNickname().equals(propertyname)) {
+                        propority.setURL(URL);
+                    }
+                }
+
+            }
+        }
 
         JOptionPane.showMessageDialog(null, "URL added", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
+        txtURL.setText("");
     }//GEN-LAST:event_btnacceptActionPerformed
 
     private void txtURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtURLActionPerformed

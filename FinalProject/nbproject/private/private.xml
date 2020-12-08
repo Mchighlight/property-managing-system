@@ -6,8 +6,10 @@
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/FindFurnishingJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingCompany/CleaningStaffWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/contractJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccount.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Landlord.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/ManageEmployeeJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/WorkQueue/WorkQueue.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/TenantWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/ManageProporityJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/AdminWorkAreaJPanel.java</file>
@@ -15,7 +17,9 @@
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Propority.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/Marketing/MarketingWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/LandlordWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingCompany/DecoratorWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/ProporityCatalog.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/Enterprise.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RealEstateAgentWorkAreaJPanel.java</file>
             <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RequestMarketingJPanel.java</file>
         </group>

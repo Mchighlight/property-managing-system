@@ -30,4 +30,14 @@ public class RepairSpecialistDirectory {
         repairSpecialist.add(rs);
         return rs;
     }
+    
+        public RepairSpecialist findRepairSpecialist(String name) {
+
+        for (RepairSpecialist rs :repairSpecialist) {
+            if (rs.getName().equals(name)) {
+                return rs;
+            }
+        }
+        return null;
+    }
 }

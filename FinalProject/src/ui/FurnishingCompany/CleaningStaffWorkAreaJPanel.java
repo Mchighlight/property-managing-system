@@ -56,13 +56,12 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
         if (work != null) {
             for (FurnishingRequest f : work) {
 
-                Object row[] = new Object[6];
-                row[0] = f.getOrderID();
-                row[1] = f.getCustomerAccount().getUsername();
-                row[2] = f.getRequirement();
-                row[3] = f.getFeeString();
-                row[4] = f.getStatus();
-                row[5] = f.getTitle();
+                Object row[] = new Object[5];
+                row[0] = f.getCustomerAccount().getUsername();
+                row[1] = f.getRequirement();
+                row[2] = f.getFeeString();
+                row[3] = f.getStatus();
+                row[4] = f.getTitle();
                 dtm.addRow(row);
             }
 
@@ -97,20 +96,20 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "OrderID", "Customer", "Requirement", "budget", "Status", "Title"
+                "Customer", "Requirement", "budget", "Status", "Title"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -175,18 +174,17 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        int orderId = Integer.parseInt(workRequestJTable1.getValueAt(row, 0).toString());
-        String landlordname = workRequestJTable1.getValueAt(row, 1).toString();
-        userAccount.getWorkQueue().findFurnishingrequest(orderId).setStatus("Accepted and proecssing");
-        //userAccount.getWorkQueue().findrequest(orderId).setResult(inmessage);
+        String pro = workRequestJTable1.getValueAt(row, 1).toString();
+        String title = workRequestJTable1.getValueAt(row, 4).toString();
+        String landlordname = workRequestJTable1.getValueAt(row, 0).toString();
+        
+        FurnishingRequest req = userAccount.getWorkQueue().findFurnishingrequest(pro);
+        req.setStatus("Cleaning Finished");
 
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
-        Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
+        UserAccount landlordaccount = req.getCustomerAccount();
 
-        UserAccount landlordaccount = organization.getUserAccountDirectory().findUser(landlordname);
-      //  JOptionPane.showMessageDialog(null, landlordaccount.getUsername(), "Info", JOptionPane.INFORMATION_MESSAGE);
-        WorkRequest request = landlordaccount.getWorkQueue().findWorkRequestList(orderId);
-        request.setStatus("cleaning finished");
+        WorkRequest request = landlordaccount.getWorkQueue().findWorkRequestList(title);
+        request.setStatus("Cleaning Finished");
         JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
     }//GEN-LAST:event_btnacceptActionPerformed

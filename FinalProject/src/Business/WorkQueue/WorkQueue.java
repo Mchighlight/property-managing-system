@@ -86,15 +86,7 @@ public class WorkQueue {
 
     }
 
-    public FurnishingRequest findFurnishingrequest(int orderID) {
-        for (FurnishingRequest object : furnishingRequestList) {
-            if (object.getOrderID() == orderID) {
-                return object;
-            }
-        }
-        return null;
 
-    }
     
     public FurnishingRequest findFurnishingrequest( String Property) {
         for (FurnishingRequest object : furnishingRequestList) {
@@ -107,9 +99,9 @@ public class WorkQueue {
     }
 
 
-    public WorkRequest findWorkRequestList(int orderID) {
+    public WorkRequest findWorkRequestList( String title) {
         for (WorkRequest object : workRequestList) {
-            if (object.getOrderID() == orderID) {
+            if (object.getTitle()== title) {
                 return object;
             }
         }

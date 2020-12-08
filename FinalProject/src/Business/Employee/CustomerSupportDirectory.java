@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author hung-chih huang
  */
 public class CustomerSupportDirectory {
-    
+
     private ArrayList<CustomerSupport> customerSupportList;
 
     public CustomerSupportDirectory() {
@@ -22,15 +22,24 @@ public class CustomerSupportDirectory {
     public ArrayList<CustomerSupport> getCustomerSupportList() {
         return customerSupportList;
     }
-    
-    public CustomerSupport createCustomerSupport(String name, String email){
+
+    public CustomerSupport createCustomerSupport(String name, String email) {
         CustomerSupport cs = new CustomerSupport();
         cs.setName(name);
         cs.setEmail(email);
-        
+
         customerSupportList.add(cs);
         return cs;
     }
-    
-    
+
+    public CustomerSupport findCustomerSupport(String name) {
+
+        for (CustomerSupport cs : customerSupportList) {
+            if (cs.getName().equals(name)) {
+                return cs;
+            }
+        }
+        return null;
+    }
+
 }
