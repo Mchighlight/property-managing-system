@@ -21,7 +21,7 @@ public class EnterpriseDirectory {
     }
     
     //Create enterprise
-    public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
+    public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type, String networkName){
         Enterprise enterprise=null;
         if(type==Enterprise.EnterpriseType.Finance){
             enterprise=new FinanceEnterprise(name);
@@ -39,6 +39,7 @@ public class EnterpriseDirectory {
             enterprise=new RealEstateEnterprise(name);
             enterpriseList.add(enterprise);
         }
+        enterprise.setNetworkName(networkName);
         return enterprise;
     }
     

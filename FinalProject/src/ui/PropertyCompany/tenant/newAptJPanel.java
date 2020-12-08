@@ -22,8 +22,10 @@ import java.awt.Component;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -83,10 +85,17 @@ public class newAptJPanel extends javax.swing.JPanel {
                 ent=(InvestmentManagerEnterprise)ent;
                 for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
                     if (org instanceof BoardMemberOrganization) {
-                        for(Landlord ll : org.getLandlordDirectory().getlandlordList())
-                            for (Propority object : ll.getProporityCatalog().getProporitycatalog()) {
+                        for(Landlord ll : org.getLandlordDirectory().getlandlordList()){
+                            try{
+                                ArrayList<Propority>  tempCatelog = ll.getProporityCatalog() ;
+                                for (Propority object :tempCatelog) {
                                 aptjComboBox.addItem(object);
                             }
+                            } //
+                            catch(Exception e){
+                            }
+
+                        }
                     }
 //                    else
 //                        System.out.println("org:"+org);
@@ -197,9 +206,10 @@ public class newAptJPanel extends javax.swing.JPanel {
         
         VisitRequest request = new VisitRequest(agent, ua, pp);
         request.setStatus("waiting processed");
-        
+
         try {
-            Date date=new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy").parse(jTextField1.getText());
+            SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+            Date date = parserSDF.parse(jTextField1.getText());
             request.setPointedDate(date);agent.getWorkQueue().getVisitRequestList().add(request);
             ua.getWorkQueue().getVisitRequestList().add(request);
         
