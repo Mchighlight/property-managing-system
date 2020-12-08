@@ -17,7 +17,7 @@ public class Termination {
     private Lease lease ;
     private SecurityRefund refund ;
     
-    Termination(){
+    public Termination(){
     }
 
     public Date getLeavingDate() {

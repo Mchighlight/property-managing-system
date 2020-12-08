@@ -19,7 +19,7 @@ public class Payment {
     
     
     
-    Payment(){
+    public Payment(){
     }
 
     public Date getPayDate() {

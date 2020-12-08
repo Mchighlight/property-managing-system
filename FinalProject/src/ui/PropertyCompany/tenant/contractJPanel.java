@@ -10,12 +10,9 @@ import Business.Employee.Leasing;
 import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.RealEstateEnterprise;
-import Business.Organization.AgentOrganization;
-import Business.Organization.CustomerSupportOrganization;
 import Business.Organization.LeasingOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.WorkQueue.VisitRequest;
 import java.awt.CardLayout;
@@ -196,7 +193,7 @@ public class contractJPanel extends javax.swing.JPanel {
         apt.setAptNo("123");
         apt.setCity("Boston");
         apt.setMonthlyrent(1400);
-        apt.setNickname("Lightview906");
+        apt.setNickname("Lightview1220");
         apt.setProporityNum(1500);
         apt.setSellingprice(800000);
         apt.setSquareFeet(760);
@@ -204,50 +201,48 @@ public class contractJPanel extends javax.swing.JPanel {
         apt.setZipCode("02120");
         
         // Choose Leasing !FIX: need to have EnterpriseName & NetworkName
-//        RealEstateEnterprise ent =  (RealEstateEnterprise) this.ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("re");
-//        
-//        ArrayList<Leasing>  leasingList = new ArrayList() ;
-//        ArrayList<UserAccount>  leasingAccountList = new ArrayList() ;        
-//        for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
-//            if (org instanceof LeasingOrganization) {
-//                for(UserAccount ua : org.getUserAccountDirectory().getUserAccountList())
-//                    leasingAccountList.add(ua);
-//                for(Leasing ls : org.getLeasingDirectory().getLeasingList())
-//                    leasingList.add(ls);
-//            }
-//        }
+        RealEstateEnterprise ent =  (RealEstateEnterprise) this.ecosystem.findNetwork("henry").getEnterpriseDirectory().findenterprise("henryRealEstate");
+        ArrayList<Leasing>  leasingList = new ArrayList() ;
+        ArrayList<UserAccount>  leasingAccountList = new ArrayList() ;
+        for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
+            if (org instanceof LeasingOrganization) {
+                for(UserAccount ua : org.getUserAccountDirectory().getUserAccountList())
+                    leasingAccountList.add(ua);
+                for(Leasing ls : org.getLeasingDirectory().getLeasingList())
+                    leasingList.add(ls);
+            }
+        }
         
         // Assign Leasing 
         // Here I  pick the first leasing in the Enterprise
-//        for( UserAccount ls : leasingAccountList ){
-//            System.out.println(ls.getLeasing().getName());
-//        }
-//        UserAccount leasingAccount = leasingAccountList.get(0) ;
+        for( UserAccount ls : leasingAccountList ){
+            System.out.println(ls.getLeasing().getName());
+        }
+        UserAccount leasingAccount = leasingAccountList.get(1) ;
         
-        SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, apt);
-//        if (leasingAccount != null) {
+        SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, leasingAccount);
+        signLeaseRequest.setApt(apt);
+        if (leasingAccount != null) {
 
             signLeaseRequest.setStatus("Contract preparation");
-//            signLeaseRequest.setOrderID(leasingAccount.getWorkQueue().getSignLeaseRequestList().size()+1);
-            signLeaseRequest.setEnterpriseName(this.enterprise.getName());
-            signLeaseRequest.setNetworkName(this.enterprise.getNetworkName());
+            signLeaseRequest.setOrderID(leasingAccount.getWorkQueue().getSignLeaseRequestList().size()+1);
 
-//            if( leasingAccount.getWorkQueue().getSignLeaseRequestList() == null ){
-//                leasingAccount.getWorkQueue().setSignLeaseRequestList(new ArrayList<SignLeaseRequest>());
-//            }
-//            leasingAccount.getWorkQueue().getSignLeaseRequestList().add(signLeaseRequest);
+            if( leasingAccount.getWorkQueue().getSignLeaseRequestList() == null ){
+                leasingAccount.getWorkQueue().setSignLeaseRequestList(new ArrayList<SignLeaseRequest>());
+            }
+            leasingAccount.getWorkQueue().getSignLeaseRequestList().add(signLeaseRequest);
             
-//            if(  this.ua.getWorkQueue().getSignLeaseRequestList() == null ){
-//                 this.ua.getWorkQueue().setSignLeaseRequestList(new ArrayList<SignLeaseRequest>());
-//            }
+            if(  this.ua.getWorkQueue().getSignLeaseRequestList() == null ){
+                 this.ua.getWorkQueue().setSignLeaseRequestList(new ArrayList<SignLeaseRequest>());
+            }
             this.ua.getWorkQueue().getSignLeaseRequestList().add(signLeaseRequest) ;
             
             signLeaseRequest.toString();
             JOptionPane.showMessageDialog(null, "Leasing peopole will prepare your lease, Please wait for further instruction on payment");
             
-//        } else {
-//            JOptionPane.showMessageDialog(null, "no Leasing office");
-//        }
+        } else {
+            JOptionPane.showMessageDialog(null, "no Leasing office");
+        }
         
         
         

@@ -5,15 +5,23 @@
  */
 package ui.PropertyCompany.leasing;
 
-import ui.PropertyCompany.agent.*;
-import ui.PropertyCompany.tenant.*;
+
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerSupportOrganization;
+
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.SignLeaseRequest;
+import Business.property.Lease;
+import Business.property.Rent;
 import java.awt.CardLayout;
-import java.awt.Component;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,8 +41,59 @@ public class TerminationJPanel extends javax.swing.JPanel {
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         populateRequestTable();
     }
 
+   public  String dateToString(Date date){
+         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
+         String strDate = dateFormat.format(date);  
+         return strDate ;
+   }
+    public boolean isExpired(Lease lease){
+        Rent currentRent = lease.getRentList().get(lease.getRentList().size() -1 ) ;
+        String rentalDate = this.dateToString(currentRent.getDate());
+        String endDate = this.dateToString(lease.getEndDate());
+        System.out.println(rentalDate);
+        System.out.println(endDate);
+        if( rentalDate.equals(endDate) )
+            return true ;
+        return false ;
+    }
+    
+     public void populateRequestTable() {
+
+        DefaultTableModel dtm = (DefaultTableModel) workRequestJTable.getModel();
+        dtm.setRowCount(0);
+        ArrayList<SignLeaseRequest> work = this.ua.getWorkQueue().getSignLeaseRequestList();
+
+        if (work != null) {
+            for (SignLeaseRequest s: work) {
+                if( s.getStatus().equals("Termination")  && this.isExpired(s.getLease()) ){
+                    Object row[] = new Object[7];
+                    row[0] = s.getOrderID();
+                    row[1] = s.getTenant().getUsername();
+                    row[2] = s.getBuilding().toString();
+                    if ( s.getLease() == null )
+                         row[3] = "Leasing in progress";
+                    else
+                        if( s.getLease().getBalance() == null )
+                            row[3] = "Wating for Payment";
+                        else
+                            row[3] = s.getLease().toString();
+
+                    row[4] = s.getStatus() ;
+                
+                    dtm.addRow(row);
+                } // if
+            } // for
+
+        } else {
+            JOptionPane.showMessageDialog(null, "null");
+        }
+
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,58 +103,42 @@ public class TerminationJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        workRequestJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
+        btnreturnRenewal = new javax.swing.JButton();
+        btnViewDetail1 = new javax.swing.JButton();
 
-        jLabel4.setText("Appartments");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "OrderId", "Tenant", "apartment", "Lease Balance", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jButton1.setText("Cleaning");
-
-        jButton2.setText("Furnishment");
-
-        jButton3.setText("Repair");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
 
-        jLabel5.setText("Request List");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(workRequestJTable);
 
-        jButton4.setText("Comment");
-
-        jButton5.setText("Contact");
+        jLabel5.setText("Lease Collection");
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,98 +147,143 @@ public class TerminationJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnreturnRenewal.setText("Return Renewal");
+        btnreturnRenewal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreturnRenewalActionPerformed(evt);
+            }
+        });
+
+        btnViewDetail1.setText("View Detail");
+        btnViewDetail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetail1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(237, 237, 237)
-                                    .addComponent(jLabel5)
-                                    .addGap(224, 224, 224)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(137, 137, 137)
+                        .addComponent(backJButton)
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 56, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backJButton)
-                                .addGap(108, 108, 108)
-                                .addComponent(jLabel4))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(149, 149, 149))
+                        .addGap(129, 129, 129)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addComponent(btnreturnRenewal)))
+                .addContainerGap(233, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(703, Short.MAX_VALUE)
+                    .addComponent(btnViewDetail1)
+                    .addGap(112, 112, 112)))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backJButton)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backJButton))
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addGap(65, 65, 65)
+                .addComponent(btnreturnRenewal)
+                .addContainerGap(316, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(149, 149, 149)
+                    .addComponent(btnViewDetail1)
+                    .addContainerGap(428, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-//        Component[] componentArray = userProcessContainer.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-//        sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+     public static Date firstDayOfNextMonth() {
+            LocalDateTime now = LocalDateTime.now();
+            int year = now.getYear();
+            int month = now.getMonthValue();
+            int day = now.getDayOfMonth();  
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.YEAR, year);
+            cal.set(Calendar.MONTH, month);
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            Date dueDate = new Date(cal.getTimeInMillis());
+        return dueDate;
+    }
+    
+    private Lease buildLease(SignLeaseRequest slr){
+        Lease lease = new Lease() ;
+        // Lease Start  Day
+        Date leaseStartDate = firstDayOfNextMonth();
+        lease.setStartDate(leaseStartDate);
+        // Lease End Day
+        Calendar cal=Calendar.getInstance();
+        cal.setTime(leaseStartDate);
+        cal.set(Calendar.YEAR,cal.getWeekYear()+1);
+        Date leaseEndDate =  cal.getTime() ;
+        lease.setEndDate(leaseEndDate);
+        // Info
+        lease.setBalance(Double.valueOf(0));
+        lease.setSecurityDeposit(Double.valueOf(400));
+        lease.setBuilding(slr.getBuilding());
+        lease.setTenant(slr.getTenant());
+        lease.setLeasing(slr.getLeasing());
+        lease.setRentalDate(leaseStartDate);
+        
+        return lease ;
+    }
+    
+    private void btnreturnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreturnRenewalActionPerformed
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please selected the lease!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
+        selectedSlr.setStatus("Renewal Request");
+        JOptionPane.showMessageDialog(null, "Return back to renewal Request!", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnreturnRenewalActionPerformed
+
+    private void btnViewDetail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetail1ActionPerformed
+        int row = workRequestJTable.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please selected the lease!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
+        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
+        String status = workRequestJTable.getValueAt(row, 4).toString() ;
+        if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            layout.next(userProcessContainer);
+        }//
+        else{
+            JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnViewDetail1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btnViewDetail1;
+    private javax.swing.JButton btnreturnRenewal;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

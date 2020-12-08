@@ -7,42 +7,25 @@ package Business.WorkQueue;
 import Business.Employee.Propority;
 import Business.UserAccount.UserAccount;
 import Business.property.Lease;
-import java.util.ArrayList;
-import java.util.Date;
 
 
 public  class SignLeaseRequest extends WorkRequest {
     UserAccount tenant;
     UserAccount leasing ;
     Lease lease ;
-    Propority building;
-    String networkName ;
-    String enterpriseName ;
+    Propority apt;
 
-    public String getNetworkName() {
-        return networkName;
+
+    
+    public SignLeaseRequest( UserAccount tenant, UserAccount leasing) {
+        this.tenant = tenant;
+        this.leasing = leasing ;
     }
 
-    public void setNetworkName(String networkName) {
-        this.networkName = networkName;
-    }
-
-    public String getEnterpriseName() {
-        return enterpriseName;
-    }
-
-    public void setEnterpriseName(String enterpriseName) {
-        this.enterpriseName = enterpriseName;
+    public void setApt( Propority apt){
+        this.apt = apt ;
     }
     
-    public SignLeaseRequest( UserAccount tenant, UserAccount leasing,  Propority building) {
-        this.tenant = tenant;
-        this.building = building;
-        this.leasing = leasing ;
-        this.networkName = "aa";
-        this.enterpriseName = "realestate";
-    }
-
     public UserAccount getTenant() {
         return tenant;
     }
@@ -68,20 +51,14 @@ public  class SignLeaseRequest extends WorkRequest {
     }
 
     public Propority getBuilding() {
-        return building;
+        return this.apt;
     }
 
-    public void setBuilding(Propority building) {
-        this.building = building;
-    }
     
     @Override
     public String toString(){
         return "Tenant: " + this.tenant.getUsername()+ "\n" +
-                     "Leasing: " + this.leasing.getLeasing().getName() + "\n" +
-                     "Apt: " + this.building.toString() + "\n" +
-                     "Ent: "  + this.enterpriseName  + "\n" +
-                    "Net: "  + this.networkName  ;
+                     "Leasing: " + this.leasing.getLeasing().getName() + "\n" ;
                      
     }
     
