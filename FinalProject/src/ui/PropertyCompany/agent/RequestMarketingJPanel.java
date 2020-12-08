@@ -40,11 +40,20 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.request = new FurnishingRequest();
-        populatsenderCombo();
-        populatmarketCombo();
+        LandlordComboBox.removeAllItems();
+        ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
+        if (work.equals(null)){
+                    JOptionPane.showMessageDialog(null, "null");
+        }
+        for (WorkRequest request : work) {
+
+            LandlordComboBox.addItem(request.getSender().getUsername());
+        }
+        // populatsenderCombo();
+        //populatmarketCombo();
     }
 
-    public void populatsenderCombo() {
+    /* public void populatsenderCombo() {
         LandlordComboBox.removeAllItems();
         ArrayList<WorkRequest> work = userAccount.getWorkQueue().getWorkRequestList();
         for (WorkRequest request : work) {
@@ -52,7 +61,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         }
 
     }
-
+     */
     public void populatmarketCombo() {
         LandlordComboBox1.removeAllItems();
         Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("realestate");
@@ -187,9 +196,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String landlord = (String) LandlordComboBox.getSelectedItem();
         if (landlord != null) {
-
             populateproporityTable(landlord);
-
         }
 
 
@@ -219,7 +226,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             request.setStatus("Processing");
             request.setCustomerAccount(cusaccount);
             request.setRequirement(propNickname);
-            
+
             userAccount.getWorkQueue().getFurnishingRequestList().add(request);
             organization.getUserAccountDirectory().findUser(macaccount.getUsername()).getWorkQueue().getFurnishingRequestList().add(request);
 
