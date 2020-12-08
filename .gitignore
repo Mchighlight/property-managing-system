@@ -23,3 +23,5 @@ hs_err_pid*
 /Assignment 4 Li_Huang_Chen/dist/
 *.xml
 *.db4o
+/FinalProject/nbproject/private/
+/FinalProject/build/

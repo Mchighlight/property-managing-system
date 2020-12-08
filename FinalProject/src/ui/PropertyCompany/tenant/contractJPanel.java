@@ -74,8 +74,6 @@ public class contractJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btnPayContract = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -102,20 +100,6 @@ public class contractJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("View contract");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        btnPayContract.setText("pay contract");
-        btnPayContract.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPayContractActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -133,23 +117,20 @@ public class contractJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnPayContract)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(backJButton)
-                .addGap(176, 176, 176)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(backJButton)
+                        .addGap(176, 176, 176)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,13 +141,9 @@ public class contractJPanel extends javax.swing.JPanel {
                     .addComponent(backJButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPayContract, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(62, 62, 62)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,9 +162,14 @@ public class contractJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       int row = jTable1.getSelectedRow();
+        if (row < 0) {
+             JOptionPane.showMessageDialog(null, "Select your contract", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        Propority apt = (Propority) jTable1.getValueAt(row, 2) ;
         
-        // Choose Apt
+        /* Choose Apt
         Propority apt = new Propority() ;
         apt.setAddress("123");
         apt.setAptNo("123");
@@ -199,9 +181,11 @@ public class contractJPanel extends javax.swing.JPanel {
         apt.setSquareFeet(760);
         apt.setState("MA");
         apt.setZipCode("02120");
+        */
         
         // Choose Leasing !FIX: need to have EnterpriseName & NetworkName
-        RealEstateEnterprise ent =  (RealEstateEnterprise) this.ecosystem.findNetwork("henry").getEnterpriseDirectory().findenterprise("henryRealEstate");
+        RealEstateEnterprise ent =  
+                (RealEstateEnterprise) this.ecosystem.findNetwork(apt.getEnterprise().getNetworkName()).getEnterpriseDirectory().findenterprise(apt.getEnterprise().getName());
         ArrayList<Leasing>  leasingList = new ArrayList() ;
         ArrayList<UserAccount>  leasingAccountList = new ArrayList() ;
         for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
@@ -218,7 +202,7 @@ public class contractJPanel extends javax.swing.JPanel {
         for( UserAccount ls : leasingAccountList ){
             System.out.println(ls.getLeasing().getName());
         }
-        UserAccount leasingAccount = leasingAccountList.get(1) ;
+        UserAccount leasingAccount = leasingAccountList.get(0) ;
         
         SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, leasingAccount);
         signLeaseRequest.setApt(apt);
@@ -248,24 +232,11 @@ public class contractJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void btnPayContractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayContractActionPerformed
-        // TODO add your handling code here:
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new ViewLeaseJPanel( userProcessContainer,  ua,  ecosystem) );
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnPayContractActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton btnPayContract;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

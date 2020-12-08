@@ -67,10 +67,10 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        Enterprise enterprise = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
+        Enterprise enterprise = ecosystem.findNetwork("henry").getEnterpriseDirectory().findenterprise("landlordAdmin1207");
         Organization organization = enterprise.getOrganizationDirectory().findorganization("BoardMember Organization");
 
-        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog().getProporitycatalog();
+        List<Propority> prolist = organization.getLandlordDirectory().findlandlord(landlordname).getProporityCatalog();
 
         if (prolist != null) {
             for (Propority p : prolist) {

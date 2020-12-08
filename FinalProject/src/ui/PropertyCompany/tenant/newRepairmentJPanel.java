@@ -73,7 +73,7 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
                 for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
                     if (org instanceof BoardMemberOrganization) {
                         for(Landlord ll : org.getLandlordDirectory().getlandlordList())
-                            for (Propority object : ll.getProporityCatalog().getProporitycatalog()) {
+                            for (Propority object : ll.getProporityCatalog()) {
                                 aptjComboBox.addItem(object);
                             }
                     }

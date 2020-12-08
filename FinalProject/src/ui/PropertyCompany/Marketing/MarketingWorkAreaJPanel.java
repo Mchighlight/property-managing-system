@@ -176,7 +176,7 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         Enterprise enterprise1 = ecosystem.findNetwork("aa").getEnterpriseDirectory().findenterprise("investment");
         Organization organization1 = enterprise1.getOrganizationDirectory().findorganization("BoardMember Organization");
         Landlord landlord = organization1.getLandlordDirectory().findlandlord(landlordname);
-        landlord.getProporityCatalog().findPropority(propertyname).setPropertyURL(URL);
+        // landlord.getProporityCatalog().findPropority(propertyname).setPropertyURL(URL);
 
         JOptionPane.showMessageDialog(null, "URL added", "Info", JOptionPane.INFORMATION_MESSAGE);
         populateRequestTable();
