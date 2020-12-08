@@ -99,9 +99,9 @@ public class WorkQueue {
     }
 
 
-    public WorkRequest findWorkRequestList(int orderID) {
+    public WorkRequest findWorkRequestList( String title) {
         for (WorkRequest object : workRequestList) {
-            if (object.getOrderID() == orderID) {
+            if (object.getTitle()== title) {
                 return object;
             }
         }
