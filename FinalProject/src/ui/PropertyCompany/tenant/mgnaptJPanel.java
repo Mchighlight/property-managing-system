@@ -47,13 +47,15 @@ public class mgnaptJPanel extends javax.swing.JPanel {
             return;
         }
         for (VisitRequest wq : ua.getWorkQueue().getVisitRequestList()) {
-            Object[] row = new Object[jTable1.getColumnCount()];
+            if (wq.getStatus().equals("waiting processed")) {
+                Object[] row = new Object[jTable1.getColumnCount()];
             row[0] = wq;
             row[1] = wq.getAgent();
             row[2] = wq.getBuilding();
             row[3] = wq.getPointedDate();
             row[4] = wq.getStatus();
             model.addRow(row);
+            }
         }
     }
     /**

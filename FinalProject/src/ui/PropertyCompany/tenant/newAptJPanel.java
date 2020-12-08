@@ -17,6 +17,7 @@ import Business.Organization.BoardMemberOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VisitRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.DateFormat;
@@ -78,33 +79,40 @@ public class newAptJPanel extends javax.swing.JPanel {
             }
         }    
     }
-    void populateAptBox(Network net){
+    void populateAptBox(UserAccount ua){
         aptjComboBox.removeAllItems();
-        for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()){
-            if (ent instanceof InvestmentManagerEnterprise) {
-                ent=(InvestmentManagerEnterprise)ent;
-                for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
-                    if (org instanceof BoardMemberOrganization) {
-                        for(Landlord ll : org.getLandlordDirectory().getlandlordList()){
-                            try{
-                                ArrayList<Propority>  tempCatelog = ll.getProporityCatalog() ;
-                                for (Propority object :tempCatelog) {
-                                aptjComboBox.addItem(object);
-                            }
-                            } //
-                            catch(Exception e){
-                            }
-
-                        }
-                    }
-//                    else
-//                        System.out.println("org:"+org);
-                }
+        for(WorkRequest wq : ua.getWorkQueue().getWorkRequestList()){
+            Landlord ll = wq.getSender().getLandlord();
+            for(Propority pp : ll.getProporityCatalog()){
+                aptjComboBox.addItem(pp);
             }
-//            else
-////                System.out.println("ent:"+ent);
-        }  
+        }
         
+//        for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()){
+//            if (ent instanceof InvestmentManagerEnterprise) {
+//                ent=(InvestmentManagerEnterprise)ent;
+//                for(Organization org:ent.getOrganizationDirectory().getOrganizationList()){
+//                    if (org instanceof BoardMemberOrganization) {
+//                        for(Landlord ll : org.getLandlordDirectory().getlandlordList()){
+//                            try{
+//                                ArrayList<Propority>  tempCatelog = ll.getProporityCatalog() ;
+//                                for (Propority object :tempCatelog) {
+//                                aptjComboBox.addItem(object);
+//                            }
+//                            } //
+//                            catch(Exception e){
+//                            }
+//
+//                        }
+//                    }
+////                    else
+////                        System.out.println("org:"+org);
+//                }
+//            }
+////            else
+//////                System.out.println("ent:"+ent);
+//        }  
+//        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,6 +154,11 @@ public class newAptJPanel extends javax.swing.JPanel {
         add(aptjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 94, -1, -1));
 
         agentjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        agentjComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agentjComboBoxActionPerformed(evt);
+            }
+        });
         add(agentjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
         jLabel4.setText("NetWork");
@@ -232,7 +245,6 @@ public class newAptJPanel extends javax.swing.JPanel {
         Network network = (Network) networkJComboBox.getSelectedItem();
         if (network != null){
             populateAgentBox(network);
-            populateAptBox(network);
         }
         
     }//GEN-LAST:event_networkJComboBoxActionPerformed
@@ -283,6 +295,15 @@ public class newAptJPanel extends javax.swing.JPanel {
             dateChooserPanel1.setVisible(true);
          }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void agentjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agentjComboBoxActionPerformed
+        // TODO add your handling code here:
+        UserAccount agent =(UserAccount)agentjComboBox.getSelectedItem();
+        if (agent != null){ 
+            populateAptBox(agent);
+        }
+       
+    }//GEN-LAST:event_agentjComboBoxActionPerformed
 
 public class DateLabelFormatter extends AbstractFormatter {
 
