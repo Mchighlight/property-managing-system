@@ -5,6 +5,8 @@
  */
 package Business.Employee;
 
+import Business.Enterprise.Enterprise;
+
 /**
  *
  * @author abhishekashwathnarayanvenkat
@@ -19,7 +21,9 @@ public class Propority {
     private int Monthlyrent;
     private int Sellingprice;
     private int SquareFeet;
-    private String  propertyURL ;
+    private String URL;
+    private Enterprise enterprise;
+    
     
     
     private int proporityNum;
@@ -29,6 +33,22 @@ public class Propority {
     public String toString() {
         return Nickname; //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
     
     
     public Propority() {
@@ -36,16 +56,6 @@ public class Propority {
     proporityNum = count;
     }
 
-    public String getPropertyURL() {
-        return propertyURL;
-    }
-
-    public void setPropertyURL(String propertyURL) {
-        this.propertyURL = propertyURL;
-    }
-
-    
-    
     public int getSquareFeet() {
         return SquareFeet;
     }

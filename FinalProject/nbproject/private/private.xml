@@ -3,33 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RealEstateAgentWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Employee/CustomerSupportDirectory.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/TenantWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/FurnishingEnterprise.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/cutomerSupport/CustomerSupportWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/FinanceEnterprise.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/WorkQueue/AccoutingRequest.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompanyAdminRole/ManageOrganizationJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/ConfigureASystem.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Organization/OrganizationDirectory.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Employee/TenantDirectory.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Organization/CustomerSupportOrganization.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/buyer/BuyerWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/Enterprise.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/RealEstateEnterprise.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Employee/RealEstateAgent.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Role/RepairSpecialistRole.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompanyAdminRole/RealEstateAdminWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompanyAdminRole/ManageCustomerJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Enterprise/InvestmentManagerEnterprise.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/repair/RepairSpecialistWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Tenant.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Organization/Organization.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/EcoSystem.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/UserAccount/UserAccountDirectory.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Buyer.java</file>
-            <file>file:/C:/Users/Mchig/Desktop/Info5100/final_project/CYN_LJY_HHZ/FinalProject/src/Business/WorkQueue/BoardMemberRequest.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/FindFurnishingJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FurnishingCompany/CleaningStaffWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/contractJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Landlord.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/ManageEmployeeJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/TenantWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/ManageProporityJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/FinanceAdminRole/AdminWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/LandlordDirectory.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/Propority.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/Marketing/MarketingWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/LandlordWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/Business/Employee/ProporityCatalog.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RealEstateAgentWorkAreaJPanel.java</file>
+            <file>file:/Users/yiningchen/Documents/GitHub/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/agent/RequestMarketingJPanel.java</file>
         </group>
     </open-files>
 </project-private>
