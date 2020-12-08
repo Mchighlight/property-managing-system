@@ -177,12 +177,10 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         for (FurnishingRequest object : work) {
             if (object.getCustomerAccount().toString() == landlordname) {
                 UserAccount landlordaccount = object.getCustomerAccount();
-                //JOptionPane.showMessageDialog(null, "get" + landlordaccount.getUsername());
                 for (Propority propority : landlordaccount.getLandlord().getProporityCatalog()) {
 
                     if (propority.getNickname().equals(propertyname)) {
                         propority.setURL(URL);
-
                     }
                 }
 
