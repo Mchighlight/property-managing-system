@@ -6,7 +6,6 @@ package Business.UserAccount;
 
 import Business.Employee.Accountant;
 import Business.Employee.CleaningStaff;
-import Business.Employee.DataAnalyst;
 import Business.Employee.Decorator;
 import Business.Employee.Employee;
 import Business.Employee.Landlord;

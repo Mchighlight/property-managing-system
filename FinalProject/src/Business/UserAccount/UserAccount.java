@@ -6,7 +6,6 @@ package Business.UserAccount;
 
 import Business.Employee.Accountant;
 import Business.Employee.CleaningStaff;
-import Business.Employee.DataAnalyst;
 import Business.Employee.Decorator;
 import Business.Employee.Employee;
 import Business.Employee.Landlord;
@@ -31,7 +30,6 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Accountant accountant;
-    private DataAnalyst dataanalyst;
     private CleaningStaff cleaningstaff;
     private RealEstateAgent realEstateAgent;
     private RepairSpecialist repairSpecialist;
@@ -47,14 +45,13 @@ public class UserAccount {
     private Landlord landlord;
     
 
-    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant,DataAnalyst dataanalyst, CleaningStaff cleaningstaff, Decorator decorator,Landlord landlord, Marketing marketing) {
+    public UserAccount( String username, String password, Employee employee, Role role, Accountant accountant, CleaningStaff cleaningstaff, Decorator decorator,Landlord landlord, Marketing marketing) {
 
         this.username = username;
         this.password = password;
         this.employee = employee;
         this.role = role;
         this.accountant=accountant;
-        this.dataanalyst=dataanalyst;
         this.cleaningstaff=cleaningstaff;
         this.decorator=decorator;
         this.landlord=landlord;
@@ -104,20 +101,10 @@ public class UserAccount {
         this.cleaningstaff = cleaningstaff;
     }
     
-
-    public DataAnalyst getDataanalyst() {
-        return dataanalyst;
-    }
-
     public Leasing getLeasing(){
         return this.leasing ;
     }
-    
-    public void setDataanalyst(DataAnalyst dataanalyst) {
-        this.dataanalyst = dataanalyst;
-    }
-
-  
+     
     public Tenant getTenant() {
         return tenant;
     }

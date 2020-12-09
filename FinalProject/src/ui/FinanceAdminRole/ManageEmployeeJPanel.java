@@ -43,13 +43,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         }
     }
 
-    /*public void populateOrganizationEmpComboBox() {
-        organizationEmpJComboBox.removeAllItems();
-
-        for (Organization organization : organizationDir.getOrganizationList()) {
-            organizationEmpJComboBox.addItem(organization);
-        }
-    }*/
     private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 

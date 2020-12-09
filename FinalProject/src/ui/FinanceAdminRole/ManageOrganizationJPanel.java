@@ -37,8 +37,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()) {
 
-            if (type.getValue().equals(Type.AnalysisAndReport.getValue())
-                    ||type.getValue().equals(Type.Accounting.getValue())){
+            if (type.getValue().equals(Type.Accounting.getValue())){
 
             organizationJComboBox.addItem(type);
             }
