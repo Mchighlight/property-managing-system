@@ -42,7 +42,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
          populateTextField();
     }
 
-       public  String dateToString(Date date){
+     public  String dateToString(Date date){
          DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
          String strDate = dateFormat.format(date);  
          return strDate ;

@@ -17,6 +17,7 @@ import Business.Employee.BuyerDirectory;
 import Business.Employee.LeasingDirectory ;
 import Business.Employee.MarketingDirectory;
 import Business.Employee.ProporityCatalog;
+import Business.Enterprise.Enterprise;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -46,6 +47,7 @@ public abstract class Organization {
     private MarketingDirectory marketingDirectory;
     private int organizationID;
     private static int counter = 0;
+    private Type organizationType;
 
     public enum Type {
         Admin("Admin Organization"),
@@ -136,6 +138,10 @@ public abstract class Organization {
         return organizationID;
     }
 
+    public Organization.Type getOrganizationType() {
+        return organizationType;
+    }
+    
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }

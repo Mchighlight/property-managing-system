@@ -38,7 +38,6 @@ public class UserAccount {
     private Leasing leasing ;
     private Buyer buyer ;
     private Tenant tenant ;
-            
     private Role role;
     private WorkQueue workQueue;
     private Decorator decorator;
@@ -92,6 +91,7 @@ public class UserAccount {
         this.decorator = decorator;
     }
     
+    
 
     public CleaningStaff getCleaningstaff() {
         return cleaningstaff;
@@ -105,6 +105,9 @@ public class UserAccount {
         return this.leasing ;
     }
      
+    public RealEstateAgent getRealEstateAgent() {
+        return realEstateAgent;
+    }
     public Tenant getTenant() {
         return tenant;
     }
