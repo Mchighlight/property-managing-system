@@ -66,8 +66,7 @@ public  class SignLeaseRequest extends WorkRequest {
     
     @Override
     public String toString(){
-        return "Tenant: " + this.tenant.getUsername()+ "\n" +
-                     "Leasing: " + this.leasing.getLeasing().getName() + "\n" ;
+        return this.apt.getNickname();
                      
     }
     
