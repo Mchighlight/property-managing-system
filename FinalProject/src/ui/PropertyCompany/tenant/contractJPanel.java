@@ -168,6 +168,7 @@ public class contractJPanel extends javax.swing.JPanel {
             return;
         }
         Propority apt = (Propority) jTable1.getValueAt(row, 2) ;
+        UserAccount agent = (UserAccount)jTable1.getValueAt(row, 1);
         
         /* Choose Apt
         Propority apt = new Propority() ;
@@ -206,6 +207,7 @@ public class contractJPanel extends javax.swing.JPanel {
         
         SignLeaseRequest signLeaseRequest = new SignLeaseRequest(this.ua, leasingAccount);
         signLeaseRequest.setApt(apt);
+        signLeaseRequest.setAgent(agent);
         if (leasingAccount != null) {
 
             signLeaseRequest.setStatus("Contract preparation");
