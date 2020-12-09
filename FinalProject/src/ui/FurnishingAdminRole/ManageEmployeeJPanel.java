@@ -274,27 +274,37 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        JOptionPane.showMessageDialog(null, organizationJComboBox.getSelectedItem().toString());
 
         String email = txtemail.getText();
         String Username = txtUsername.getText();
         String password = txtpassword.getText();
+        String fee = txtcharge.getText();
         int chargefee = Integer.parseInt(txtcharge.getText());
+        if (password.equals("") || Username.equals("") || email.equals("") || fee.equals("")) {
+            JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else if (chargefee <= 0) {
+            JOptionPane.showMessageDialog(null, "charge fee per square feet should not be smaller than zero", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Cleaning.getValue())) {
 
-        if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Cleaning.getValue())) {
+                CleaningStaff cleaningStaff = organization.getCleaningStaffDirectory().createCleaningStaff(Username, email, chargefee);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, cleaningStaff, new CleaningStaffRole());
+                JOptionPane.showMessageDialog(null, " Cleaning staff added,user added");
 
-            CleaningStaff cleaningStaff = organization.getCleaningStaffDirectory().createCleaningStaff(Username, email, chargefee);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, cleaningStaff, new CleaningStaffRole());
-            JOptionPane.showMessageDialog(null, " Cleaning staff added,user added");
+                populateCleaningTable(organization);
+            } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Furnishing.getValue())) {
 
-            populateCleaningTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Furnishing.getValue())) {
+                Decorator decorator = organization.getDecoratorDirectory().createDecorator(Username, email, chargefee);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, decorator, new DecoratorRole());
+                JOptionPane.showMessageDialog(null, " decorator added,user added");
 
-            Decorator decorator = organization.getDecoratorDirectory().createDecorator(Username, email, chargefee);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, decorator, new DecoratorRole());
-            JOptionPane.showMessageDialog(null, " decorator added,user added");
+                populateDecoratorTable(organization);
 
-            populateDecoratorTable(organization);
+            }
+            txtemail.setText("");
+            txtUsername.setText("");
+            txtpassword.setText("");
+            txtcharge.setText("");
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -351,10 +361,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             populateCleaningTable(organization);
 
             //remove this clean from userAccount so that the user couldn't log in
-            UserAccount use =  organization.getUserAccountDirectory().findUser(name);
+            UserAccount use = organization.getUserAccountDirectory().findUser(name);
             organization.getUserAccountDirectory().deleteUserAccount(use);
-        }else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Furnishing.getValue())) {
-        
+        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Furnishing.getValue())) {
+
             //find cleaningstaff via user name
             Decorator decorator = organization.getDecoratorDirectory().findDecorator(name);
 
@@ -363,12 +373,9 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             populateDecoratorTable(organization);
 
             //remove this customer from userAccount so that the user couldn't log in
-            UserAccount use =  organization.getUserAccountDirectory().findUser(name);
+            UserAccount use = organization.getUserAccountDirectory().findUser(name);
             organization.getUserAccountDirectory().deleteUserAccount(use);
-        
-        
-        
-        
+
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

@@ -131,8 +131,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        nameJTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         txtemail = new javax.swing.JTextField();
@@ -165,8 +163,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("Name");
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,12 +221,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addJButton)
-                .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -244,24 +234,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDelete))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(backJButton)
+                        .addGap(47, 47, 47)
+                        .addComponent(addJButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(6, 6, 6)
+                                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -275,23 +264,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel4))
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addJButton)
-                            .addComponent(backJButton))
-                        .addGap(70, 70, 70))
+                            .addComponent(backJButton)
+                            .addComponent(addJButton))
+                        .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDelete)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -301,46 +290,52 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        //  JOptionPane.showMessageDialog(null, organizationJComboBox.getSelectedItem().toString());
-        String name = nameJTextField.getText();
+
         String email = txtemail.getText();
         String Username = txtUsername.getText();
         String password = txtpassword.getText();
+        if (password.equals("") || Username.equals("") || email.equals("")) {
+            JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Agent.getValue())) {
 
-        if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Agent.getValue())) {
+                RealEstateAgent realEstateAgent = organization.getRealEstateAgentDirectory().createRealEstateAgent(Username, email, "", "", 0);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, realEstateAgent, new AgentRole());
+                JOptionPane.showMessageDialog(null, " Real Estate Agent added,user added");
 
-            RealEstateAgent realEstateAgent = organization.getRealEstateAgentDirectory().createRealEstateAgent(name, email, "", "", 0);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, realEstateAgent, new AgentRole());
-            JOptionPane.showMessageDialog(null, " Real Estate Agent added,user added");
+                populateRealEstateAgentTable(organization);
+            } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Repair.getValue())) {
 
-            populateRealEstateAgentTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Repair.getValue())) {
+                RepairSpecialist repairSpecialist = organization.getRepairSpecialistDirectory().createRepairSpecialist(Username, email);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, repairSpecialist, new RepairSpecialistRole());
+                JOptionPane.showMessageDialog(null, " Repair specialist added,user added");
 
-            RepairSpecialist repairSpecialist = organization.getRepairSpecialistDirectory().createRepairSpecialist(name, email);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, repairSpecialist, new RepairSpecialistRole());
-            JOptionPane.showMessageDialog(null, " Repair specialist added,user added");
+                populateRepairSpecialistTable(organization);
+            } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.CustomerSupport.getValue())) {
 
-            populateRepairSpecialistTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.CustomerSupport.getValue())) {
+                CustomerSupport cs = organization.getCustomerSupportDirectory().createCustomerSupport(Username, email);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, cs, new CustomerSupportRole());
+                JOptionPane.showMessageDialog(null, " Customer support added,user added");
 
-            CustomerSupport cs = organization.getCustomerSupportDirectory().createCustomerSupport(name, email);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, cs, new CustomerSupportRole());
-            JOptionPane.showMessageDialog(null, " Customer support added,user added");
+                populateCustomerSupportTable(organization);
+            } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Leasing.getValue())) {
 
-            populateCustomerSupportTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Leasing.getValue())) {
+                Leasing ls = organization.getLeasingDirectory().createLeasing(Username, email, "");
+                organization.getUserAccountDirectory().createUserAccount(Username, password, ls, new LeasingRole());
+                JOptionPane.showMessageDialog(null, " Leasing  added,user added");
 
-            Leasing ls = organization.getLeasingDirectory().createLeasing(name, email, "");
-            organization.getUserAccountDirectory().createUserAccount(Username, password, ls, new LeasingRole());
-            JOptionPane.showMessageDialog(null, " Leasing  added,user added");
+                populateLeasingTable(organization);
+            } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Marketing.getValue())) {
+                Marketing marketing = organization.getMarketingDirectory().createMarketing(Username, email);
+                organization.getUserAccountDirectory().createUserAccount(Username, password, marketing, new MarketingRole());
+                JOptionPane.showMessageDialog(null, " Marketing added,user added");
 
-            populateLeasingTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Marketing.getValue())) {
-            Marketing marketing = organization.getMarketingDirectory().createMarketing(name, email);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, marketing, new MarketingRole());
-            JOptionPane.showMessageDialog(null, " Marketing added,user added");
+                populateMarketTable(organization);
+            }
 
-            populateMarketTable(organization);
+            txtemail.setText("");
+            txtUsername.setText("");
+            txtpassword.setText("");
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -455,12 +450,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
     private javax.swing.JTextField txtUsername;

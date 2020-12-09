@@ -172,24 +172,28 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         userAccount.getWorkQueue().findFurnishingrequest(propertyname).setStatus("Marketing Finished");
 
         String URL = txtURL.getText();
+        if (URL.equals("")) {
+            JOptionPane.showMessageDialog(null, "input should not be null");
+        } else {
 
-        ArrayList<FurnishingRequest> work = userAccount.getWorkQueue().getFurnishingRequestList();
-        for (FurnishingRequest object : work) {
-            if (object.getCustomerAccount().toString() == landlordname) {
-                UserAccount landlordaccount = object.getCustomerAccount();
-                for (Propority propority : landlordaccount.getLandlord().getProporityCatalog()) {
+            ArrayList<FurnishingRequest> work = userAccount.getWorkQueue().getFurnishingRequestList();
+            for (FurnishingRequest object : work) {
+                if (object.getCustomerAccount().toString() == landlordname) {
+                    UserAccount landlordaccount = object.getCustomerAccount();
+                    for (Propority propority : landlordaccount.getLandlord().getProporityCatalog()) {
 
-                    if (propority.getNickname().equals(propertyname)) {
-                        propority.setURL(URL);
+                        if (propority.getNickname().equals(propertyname)) {
+                            propority.setURL(URL);
+                        }
                     }
+
                 }
-
             }
-        }
 
-        JOptionPane.showMessageDialog(null, "URL added", "Info", JOptionPane.INFORMATION_MESSAGE);
-        populateRequestTable();
-        txtURL.setText("");
+            JOptionPane.showMessageDialog(null, "URL added", "Info", JOptionPane.INFORMATION_MESSAGE);
+            populateRequestTable();
+            txtURL.setText("");
+        }
     }//GEN-LAST:event_btnacceptActionPerformed
 
     private void txtURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtURLActionPerformed
