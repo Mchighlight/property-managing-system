@@ -75,17 +75,6 @@ public class UserAccountDirectory {
         return userAccount;
     }
 
-    public UserAccount createUserAccount(String username, String password, DataAnalyst dataanalyst, Role role) {
-        UserAccount userAccount = new UserAccount();
-        userAccount.setUsername(username);
-        userAccount.setPassword(password);
-        userAccount.setDataanalyst(dataanalyst);
-        userAccount.setRole(role);
-        userAccountList.add(userAccount);
-        return userAccount;
-
-    }
-
     public UserAccount createUserAccount(String username, String password, CleaningStaff cleaningstaff, Role role) {
 
         UserAccount userAccount = new UserAccount();

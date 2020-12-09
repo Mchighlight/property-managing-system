@@ -6,7 +6,6 @@ package Business.Organization;
 
 import Business.Employee.AccountantDirectory;
 import Business.Employee.CleaningStaffDirectory;
-import Business.Employee.DataAnalystDirectory;
 import Business.Employee.DecoratorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Employee.LandlordDirectory;
@@ -34,7 +33,6 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private AccountantDirectory accountantDirectory;
-    private DataAnalystDirectory dataAnalystDirectory;
     private CleaningStaffDirectory cleaningStaffDirectory;
     private DecoratorDirectory decoratorDirectory;
     private LandlordDirectory landlordDirectory;
@@ -78,7 +76,6 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         accountantDirectory = new AccountantDirectory();
-        dataAnalystDirectory = new DataAnalystDirectory();
         cleaningStaffDirectory = new CleaningStaffDirectory();
         decoratorDirectory = new DecoratorDirectory();
         landlordDirectory=new LandlordDirectory();
@@ -146,11 +143,6 @@ public abstract class Organization {
     public AccountantDirectory getAccountDirectory() {
 
         return accountantDirectory;
-    }
-
-    public DataAnalystDirectory getDataAnalystDirectory() {
-
-        return dataAnalystDirectory;
     }
 
     public CleaningStaffDirectory getCleaningStaffDirectory() {

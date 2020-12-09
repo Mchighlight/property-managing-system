@@ -31,9 +31,6 @@ public class OrganizationDirectory {
         } else if (type.getValue().equals(Type.Agent.getValue())) {
             organization = new AgentOrganization();
             organizationList.add(organization);
-        } else if (type.getValue().equals(Type.AnalysisAndReport.getValue())) {
-            organization = new AnalysisAndReportOrganization();
-            organizationList.add(organization);
         } else if (type.getValue().equals(Type.BoardMember.getValue())) {
             organization = new BoardMemberOrganization();
             organizationList.add(organization);

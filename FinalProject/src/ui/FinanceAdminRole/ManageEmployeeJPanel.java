@@ -6,14 +6,9 @@
 package ui.FinanceAdminRole;
 
 import Business.Employee.Accountant;
-import Business.Employee.DataAnalyst;
-import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.AccountantRole;
-import Business.Role.DataAnalystRole;
-import static Business.Role.Role.RoleType.DataAnalyst;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -65,20 +60,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             row[0] = accountant.getId();
             row[1] = accountant.getName();
             row[2] = accountant.getEmail();
-            model.addRow(row);
-        }
-    }
-
-    private void populatedataTable(Organization organization) {
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
-        model.setRowCount(0);
-
-        for (DataAnalyst dataAnalyst : organization.getDataAnalystDirectory().GetdataAnalystList()) {
-            Object[] row = new Object[3];
-            row[0] = dataAnalyst.getId();
-            row[1] = dataAnalyst.getName();
-            row[2] = dataAnalyst.getEmail();
             model.addRow(row);
         }
     }
@@ -265,14 +246,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, " accountant added,user added");
             populateTable(organization);
-        } else if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.AnalysisAndReport.getValue())) {
-
-            DataAnalyst dataanalyst = organization.getDataAnalystDirectory().createdataAnalyst(name, email);
-            organization.getUserAccountDirectory().createUserAccount(Username, password, dataanalyst, new DataAnalystRole());
-            populatedataTable(organization);
-            JOptionPane.showMessageDialog(null, " data analyst added");
-
-        }
+        } 
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
@@ -280,10 +254,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         if (organization != null) {
             if (organization.getName().equals(Organization.Type.Accounting.getValue())) {
                 //JOptionPane.showMessageDialog(null, organization.getName());
-
                 populateTable(organization);
-            } else if (organization.getName().equals(Organization.Type.AnalysisAndReport.getValue())) {
-               populatedataTable(organization);
             }
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed

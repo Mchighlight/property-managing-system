@@ -12,6 +12,7 @@ import Business.property.Lease;
 public  class SignLeaseRequest extends WorkRequest {
     UserAccount tenant;
     UserAccount leasing ;
+    UserAccount agent;
     Lease lease ;
     Propority apt;
 
@@ -50,6 +51,14 @@ public  class SignLeaseRequest extends WorkRequest {
         this.lease = lease;
     }
 
+     public UserAccount getAgent() {
+        return agent;
+    }
+
+    public void setAgent(UserAccount agent) {
+        this.agent = agent;
+    }
+    
     public Propority getBuilding() {
         return this.apt;
     }
