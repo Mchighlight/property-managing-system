@@ -18,7 +18,7 @@ public class Tenant {
 
     private String firstname;
     private String lastname;
-    private int SSN;
+    private String  SSN;
     private String email;
     private String phone ;
     private String currentAddress;
@@ -79,14 +79,15 @@ public class Tenant {
         this.lastname = lastname;
     }
 
-    public int getSSN() {
+    public String getSSN() {
         return SSN;
     }
 
-    public void setSSN(int SSN) {
+    public void setSSN(String SSN) {
         this.SSN = SSN;
     }
 
+   
     public String getEmail() {
         return email;
     }

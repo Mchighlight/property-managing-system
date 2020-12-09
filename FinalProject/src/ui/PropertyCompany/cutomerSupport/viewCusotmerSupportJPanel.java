@@ -11,6 +11,7 @@ import Business.WorkQueue.CustomerSupportRequest;
 import Business.WorkQueue.RepairRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,28 +23,30 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
     /**
      * Creates new form viewCusotmerSupportJPanel
      */
-    
     JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
     CustomerSupportRequest Request;
-    public viewCusotmerSupportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business,CustomerSupportRequest Request) {
-         initComponents();
-         this.ecosystem=business;
-         this.ua = account;
-         this. userProcessContainer = userProcessContainer;
-           this.Request = Request;
-     inimessage();
+
+    public viewCusotmerSupportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, CustomerSupportRequest Request) {
+        initComponents();
+        this.ecosystem = business;
+        this.ua = account;
+        this.userProcessContainer = userProcessContainer;
+        this.Request = Request;
+        inimessage();
     }
-    public void inimessage(){
+
+    public void inimessage() {
         //renew massage
         Request.getMeg();
-        String megString="";
-        for (String string :  Request.getMeg().getMessageList()) {
-                megString+=string+"\n";
-                jTextArea1.setText(megString);
+        String megString = "";
+        for (String string : Request.getMeg().getMessageList()) {
+            megString += string + "\n";
+            jTextArea1.setText(megString);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +84,12 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -149,7 +158,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Request.getMeg().addmessage(ua,"we finish the work!");
+        Request.getMeg().addmessage(ua, "we finish the work!");
         Request.setStatus("Completed");
         inimessage();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -157,13 +166,17 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String sendMeg = jTextField1.getText();
-        Request.getMeg().addmessage(ua,sendMeg);
-        inimessage();
+        if (sendMeg.equals("")) {
+            JOptionPane.showMessageDialog(null, "input should not be null");
+        } else {
+            Request.getMeg().addmessage(ua, sendMeg);
+            inimessage();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Request.getMeg().addmessage(ua,"The order is denied/canceled.");
+        Request.getMeg().addmessage(ua, "The order is denied/canceled.");
         Request.setStatus("Canceled");
         inimessage();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -172,13 +185,17 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        
+
         CustomerSupportWorkAreaJPanel jpanel = (CustomerSupportWorkAreaJPanel) component;
         jpanel.populateFeedbackTable();
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

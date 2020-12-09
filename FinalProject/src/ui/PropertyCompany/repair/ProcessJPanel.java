@@ -10,6 +10,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.RepairRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ui.PropertyCompany.tenant.customerServiceJPanel;
 
@@ -22,26 +23,27 @@ public class ProcessJPanel extends javax.swing.JPanel {
     /**
      * Creates new form processJPanel
      */
-    
     JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
     RepairRequest repairRequest;
-    public ProcessJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business,RepairRequest repairRequest) {
-         initComponents();
-         this.ecosystem=business;
-         this.ua = account;
-         this. userProcessContainer = userProcessContainer;
-     this.repairRequest = repairRequest;
-     inimessage();
+
+    public ProcessJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, RepairRequest repairRequest) {
+        initComponents();
+        this.ecosystem = business;
+        this.ua = account;
+        this.userProcessContainer = userProcessContainer;
+        this.repairRequest = repairRequest;
+        inimessage();
     }
-    public void inimessage(){
+
+    public void inimessage() {
         //renew massage
         repairRequest.getMeg();
-        String megString="";
-        for (String string :  repairRequest.getMeg().getMessageList()) {
-                megString+=string+"\n";
-                jTextArea1.setText(megString);
+        String megString = "";
+        for (String string : repairRequest.getMeg().getMessageList()) {
+            megString += string + "\n";
+            jTextArea1.setText(megString);
         }
     }
 
@@ -172,21 +174,21 @@ public class ProcessJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        repairRequest.getMeg().addmessage(ua,"we finish the work!");
+        repairRequest.getMeg().addmessage(ua, "we finish the work!");
         repairRequest.setStatus("Completed");
         inimessage();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        repairRequest.getMeg().addmessage(ua,"The work is delayed.");
+        repairRequest.getMeg().addmessage(ua, "The work is delayed.");
         repairRequest.setStatus("Delayed");
         inimessage();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        repairRequest.getMeg().addmessage(ua,"The order is denied/canceled.");
+        repairRequest.getMeg().addmessage(ua, "The order is denied/canceled.");
         repairRequest.setStatus("Canceled");
         inimessage();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -194,8 +196,12 @@ public class ProcessJPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String sendMeg = jTextField1.getText();
-        repairRequest.getMeg().addmessage(ua,sendMeg);
-        inimessage();
+        if (sendMeg.equals("")) {
+            JOptionPane.showMessageDialog(null, "input should not be null");
+        } else {
+            repairRequest.getMeg().addmessage(ua, sendMeg);
+            inimessage();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
