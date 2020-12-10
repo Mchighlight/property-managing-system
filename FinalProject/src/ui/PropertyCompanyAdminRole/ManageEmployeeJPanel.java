@@ -296,6 +296,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String password = txtpassword.getText();
         if (password.equals("") || Username.equals("") || email.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+
+        } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
+            JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+
         } else {
             if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Agent.getValue())) {
 

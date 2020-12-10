@@ -36,7 +36,6 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         this.organizationDir = organizationDir;
         populateOrganizationComboBox();
         Organization organization = (Organization) organizationCombox.getSelectedItem();
-        JOptionPane.showMessageDialog(null, organization.getName());
     }
 
     public void populateOrganizationComboBox() {
@@ -273,12 +272,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String SSN = txtSSN.getText();
         String password = txtpassword.getText();
         String Username = txtUsername.getText();
-
-        Landlord landlord = organization.getLandlordDirectory().createLandlord(Username, lastname, email, SSN);
-        organization.getUserAccountDirectory().createUserAccount(Username, password, landlord, new LandlordRole());
-        JOptionPane.showMessageDialog(null, "landlord created");
-        populatelandlordTable(organization);
-
+        if (password.equals("") || Username.equals("") || email.equals("") || SSN.equals("") || lastname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
+            JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Landlord landlord = organization.getLandlordDirectory().createLandlord(Username, lastname, email, SSN);
+            organization.getUserAccountDirectory().createUserAccount(Username, password, landlord, new LandlordRole());
+            JOptionPane.showMessageDialog(null, "landlord created");
+            populatelandlordTable(organization);
+        }
 
     }//GEN-LAST:event_addJButtonActionPerformed
 

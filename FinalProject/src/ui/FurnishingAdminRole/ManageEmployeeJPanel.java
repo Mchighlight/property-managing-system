@@ -5,6 +5,7 @@
  */
 package ui.FurnishingAdminRole;
 
+import Business.EcoSystem;
 import ui.FinanceAdminRole.*;
 import Business.Employee.Accountant;
 import Business.Employee.CleaningStaff;
@@ -30,14 +31,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
 
+
     /**
      * Creates new form ManageEmployeeJPanel
      */
-    public ManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
+    public ManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
         populateOrganizationComboBox();
+
 
     }
 
@@ -284,6 +287,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
         } else if (chargefee <= 0) {
             JOptionPane.showMessageDialog(null, "charge fee per square feet should not be smaller than zero", "Warning", JOptionPane.ERROR_MESSAGE);
+
+        } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
+            JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+
         } else {
             if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Cleaning.getValue())) {
 
