@@ -320,6 +320,9 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         if (password.equals("") || Username.equals("") || email.equals("") || ssn.equals("") || fn.equals("") || ln.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+          } else if (!this.customerAccountDirectory.checkIfUsernameIsUnique(Username)) {
+            JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+
         } else {
             Tenant tenant = this.tenantDirectory.createTenant(Username, email, ssn, fn, ln);
             this.customerAccountDirectory.createUserAccount(Username, password, tenant, new TenantRole());

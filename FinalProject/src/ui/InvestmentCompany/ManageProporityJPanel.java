@@ -347,6 +347,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
                 || state.equals("") || zipcode.equals("")) {
             JOptionPane.showMessageDialog(null, "Input should not be null.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+
             Landlord landlord = userAccount.getLandlord();
             Propority p = new Propority();
             landlord.getProporityCatalog().add(p);
@@ -360,6 +361,17 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             p.setState(state);
             p.setSellingprice(sellingprice);
             p.setSquareFeet(squarefeet);
+
+            if (landlord.isIsAssignagent()) {
+                List<Propority> prolist = landlord.getProporityCatalog();
+                String propname = jTable1.getValueAt(0, 0).toString();
+                for (Propority propority : prolist) {
+                    if (propority.getNickname() == propname) {
+                        Enterprise ent = propority.getEnterprise();
+                        p.setEnterprise(ent);
+                    }
+                }
+            }
 
             JOptionPane.showMessageDialog(null, "Propority added!", "Info", JOptionPane.INFORMATION_MESSAGE);
             populateTable();
@@ -390,7 +402,6 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         Landlord landlord = organization.getLandlordDirectory().findlandlord(landlordname);
         String propname = jTable1.getValueAt(row, 0).toString();
 
-        landlord.getProporityCatalog().remove(row);
         List<Propority> prolist = landlord.getProporityCatalog();
         for (Propority propority : prolist) {
             if (propority.getNickname() == propertynickname) {

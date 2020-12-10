@@ -19,6 +19,8 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BoardMemberRequest;
 import Business.WorkQueue.FurnishingRequest;
 import Business.WorkQueue.WorkRequest;
+import Util.Map;
+import Util.Map_1;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem ecosystem;
+    Map_1 maojframe;
 
     /**
      * Creates new form TenantWorkAreaJPanel
@@ -55,9 +58,15 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         populateRequestTable();
         for (Network network : ecosystem.getNetworkList()) {
             NetWorkCombobox.addItem(network.getName());
+        }
+        if (userAccount.getLandlord().isIsAssignagent()) {
+            jButton4.setEnabled(false);
+            value.setText(userAccount.getLandlord().getAgent());
 
         }
 
+        //  maojframe=new Map_1(userProcessContainer, "jjj");
+        //  maojframe.setVisible(false);
     }
 
     public void populateproporityTable() {
@@ -73,13 +82,12 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
                 row[0] = p.getNickname();
                 row[1] = p.getAddress();
                 row[2] = p.getAptNo();
-                row[3]=p.getMonthlyrent();
+                row[3] = p.getMonthlyrent();
                 row[4] = p.getURL();
-           
+            
                 dtm.addRow(row);
             }
         }
-        
 
     }
 
@@ -381,10 +389,13 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
             for (Propority propority : userAccount.getLandlord().getProporityCatalog()) {
                 propority.setEnterprise(enterprise);
             }
+            userAccount.getLandlord().setIsAssignagent(true);
+            userAccount.getLandlord().setAgent(Agentname);
 
             JOptionPane.showMessageDialog(null, "assign successfully");
             value.setText(Agentname);
             populateRequestTable();
+            jButton4.setEnabled(false);
 
         }
 

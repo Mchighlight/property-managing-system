@@ -20,12 +20,31 @@ public class Landlord {
     private String SSN;
     private String email;
     private ArrayList<Propority> ProporityCatalog;
+    private boolean isAssignagent = false;
+    private String agent;
 
     public Landlord() {
         id = count;
         count++;
         ProporityCatalog = new ArrayList<>();
 
+    }
+
+    public String getAgent() {
+        return agent;
+    }
+
+    public void setAgent(String agent) {
+        this.agent = agent;
+    }
+    
+
+    public boolean isIsAssignagent() {
+        return isAssignagent;
+    }
+
+    public void setIsAssignagent(boolean isAssignagent) {
+        this.isAssignagent = isAssignagent;
     }
 
     public ArrayList<Propority> getProporityCatalog() {
@@ -35,7 +54,6 @@ public class Landlord {
     public void setProporityCatalog(ArrayList<Propority> ProporityCatalog) {
         this.ProporityCatalog = ProporityCatalog;
     }
-
 
     public String getFirstname() {
         return firstname;
