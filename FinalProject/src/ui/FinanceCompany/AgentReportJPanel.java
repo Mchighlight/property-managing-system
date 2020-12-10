@@ -7,17 +7,30 @@ package ui.FinanceCompany;
 
 import ui.PropertyCompany.tenant.*;
 import Business.EcoSystem;
+import Business.Employee.Propority;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.AccountingOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Rent;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
+import javafx.geometry.Side;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.ScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -36,9 +49,14 @@ public class AgentReportJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     Enterprise enterprise ;
     ArrayList<SignLeaseRequest> slr ;
+        private final static ObservableList<PieChart.Data> details =   FXCollections.observableArrayList();
+    private static PieChart pieChart;
+    final JFXPanel dataPaneel = new JFXPanel();
+    private AccountingOrganization organization;
     
-    public AgentReportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, Enterprise enterprise) {
+    public AgentReportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, Enterprise enterprise, AccountingOrganization organization) {
          initComponents();
+         this.organization = organization;
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
@@ -178,6 +196,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        btnAptVisualization = new javax.swing.JButton();
 
         ApartmentJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -241,6 +260,13 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jLabel7.setText("Agent");
         jLabel7.setToolTipText("");
 
+        btnAptVisualization.setText("Apt Visualization");
+        btnAptVisualization.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAptVisualizationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,19 +284,21 @@ public class AgentReportJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(350, 350, 350)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NetWorkCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 142, Short.MAX_VALUE)
-                                    .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAptVisualization)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6))
+                                    .addGap(22, 22, 22)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(NetWorkCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 142, Short.MAX_VALUE)
+                                        .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                    .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -294,14 +322,16 @@ public class AgentReportJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(btnAptVisualization)
+                .addContainerGap(229, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void AgentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentComboBoxActionPerformed
@@ -327,6 +357,89 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_EnterpriseComboboxActionPerformed
 
+    private void drawPieChart( String agentName,  HashMap<Propority, Integer> aptPercentage ){
+        
+        setLayout( new BorderLayout());
+        
+        ScrollPane sp = new ScrollPane();
+        for (Map.Entry<Propority, Integer> entry : aptPercentage.entrySet())  {
+            String aptName = entry.getKey().getNickname();
+            int percentage = entry.getValue();
+            details.add( new PieChart.Data(aptName, percentage) );
+        } // for
+        
+        pieChart = new PieChart();
+        pieChart.setData(details);
+        pieChart.setTitle(  agentName + "'s apartment sales" );
+        pieChart.setLegendSide(Side.BOTTOM);
+        pieChart.setLabelsVisible(true);
+        sp.setContent(pieChart);
+        Scene scene = new Scene(sp, 400, 300);
+        dataPaneel.setScene(scene);
+     
+        add( dataPaneel);
+        add( dataPaneel);
+        dataPaneel.setVisible(true);
+    }
+    
+    
+    private void btnAptVisualizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAptVisualizationActionPerformed
+        // TODO add your handling code here:
+                DefaultTableModel model = (DefaultTableModel) ApartmentJTable.getModel();
+        model.setRowCount(0);
+        UserAccount agent= (UserAccount)this.AgentComboBox.getSelectedItem();
+        // Create an empty hash map 
+        HashMap<Propority, Double> aptTotalRent= new HashMap<>(); 
+        if( this.slr.size() != 0 ){
+            for( SignLeaseRequest sl : this.slr ){
+                if( sl.getAgent().getUsername().equals(agent.getUsername()) ){
+                    if( sl.getLease() != null ){
+                       if(   sl.getLease().getRentList().size() == 0 ){
+                           aptTotalRent.put(sl.getBuilding(), 0.0);
+                        } // if
+                        else{
+                           Double totalRent = 0.0 ;
+                           for( Rent rent : sl.getLease().getRentList() ){      
+                               totalRent = totalRent + rent.getPayment().getPayAmount();
+                            } // for
+                           aptTotalRent.put(sl.getBuilding(), totalRent - sl.getLease().getSecurityDeposit());
+                        } // else
+                    } // if
+                } //if             
+            } // for
+        } // if
+        
+         /*
+            System.out.println("Size of map is:- "
+                               + aptTotalRent.size()); 
+            System.out.println(aptTotalRent); 
+        */
+        
+         // using for-each loop for iteration over Map.entrySet() 
+        Double sales =  0.0 ;
+        for (Map.Entry<Propority, Double> entry : aptTotalRent.entrySet())  
+            sales = sales + entry.getValue();
+        
+        HashMap<Propority, Integer> aptPercentage= new HashMap<>(); 
+        for (Map.Entry<Propority, Double> entry : aptTotalRent.entrySet())  {
+            int percentage = (int) Math.round(entry.getValue()/sales *100);
+            aptPercentage.put(  entry.getKey(), percentage ) ;
+        } // for
+        System.out.println(aptPercentage); 
+     Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                        Double sales =  0.0 ;
+        for (Map.Entry<Propority, Double> entry : aptTotalRent.entrySet())  
+            sales = sales + entry.getValue();
+                aptReportJFrame testFrame = new aptReportJFrame(agent.getUsername(),  aptPercentage,
+                 userProcessContainer,  ua,  ecosystem,  enterprise,  organization, sales) ;
+                testFrame.setVisible(true);
+            }
+        });
+        //drawPieChart( agent.getUsername(),  aptPercentage);
+    }//GEN-LAST:event_btnAptVisualizationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Object> AgentComboBox;
@@ -334,6 +447,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<Object> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnAptVisualization;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
