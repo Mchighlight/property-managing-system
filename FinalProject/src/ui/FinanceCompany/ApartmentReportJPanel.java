@@ -9,6 +9,7 @@ import ui.PropertyCompany.tenant.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.AccountingOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
@@ -18,6 +19,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.application.Platform;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -35,13 +37,15 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
     UserAccount ua;
     EcoSystem ecosystem;
     Enterprise enterprise ;
+    private AccountingOrganization organization;
     
-    public ApartmentReportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, Enterprise enterprise) {
+    public ApartmentReportJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, Enterprise enterprise, AccountingOrganization organization) {
          initComponents();
          this.ecosystem=business;
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
          this.enterprise = enterprise;
+         this.organization = organization ;
          
          for (Network network : ecosystem.getNetworkList()) {
             NetWorkCombobox.addItem(network.getName());
@@ -259,9 +263,10 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void ApartmentComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApartmentComboboxActionPerformed

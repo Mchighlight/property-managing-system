@@ -23,6 +23,7 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem eco ;
+    
 
     /**
      * Creates new form TenantWorkAreaJPanel
@@ -102,14 +103,14 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
     private void btnAptReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAptReportActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new ApartmentReportJPanel( userProcessContainer,  this.userAccount,  eco, enterprise) );
+        userProcessContainer.add(new ApartmentReportJPanel( userProcessContainer,  this.userAccount,  eco,   enterprise, organization) );
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAptReportActionPerformed
 
     private void btnAgentReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentReportActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new AgentReportJPanel(userProcessContainer,  this.userAccount,  eco,   enterprise));
+        userProcessContainer.add(new AgentReportJPanel(userProcessContainer,  this.userAccount,  eco,   enterprise, organization));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAgentReportActionPerformed
 
