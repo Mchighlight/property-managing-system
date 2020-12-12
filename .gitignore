@@ -25,3 +25,4 @@ hs_err_pid*
 *.db4o
 /FinalProject/nbproject/private/
 /FinalProject/build/
+/FinalProject/dist/
