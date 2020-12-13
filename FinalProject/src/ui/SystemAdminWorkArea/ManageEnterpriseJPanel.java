@@ -109,19 +109,19 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 38, 539, 221));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 539, 221));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 281, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
 
         networkJComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 277, 136, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 136, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 394, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
 
         nameJTextField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         nameJTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -129,15 +129,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 nameJTextFieldActionPerformed(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 389, 136, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 136, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Enterprise Type");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 337, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
 
         enterpriseTypeJComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 333, 136, -1));
+        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 136, -1));
 
         submitJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         submitJButton.setText("Submit");
@@ -146,10 +146,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 322, 97, 49));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 97, 49));
 
         backJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
         backJButton.setToolTipText("");
         backJButton.setBorderPainted(false);
         backJButton.setContentAreaFilled(false);
@@ -159,7 +159,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 57, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 57, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed

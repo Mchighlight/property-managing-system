@@ -135,13 +135,13 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         ApartmentJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         ApartmentCombobox = new javax.swing.JComboBox<>();
         NetWorkCombobox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        backJButton1 = new javax.swing.JButton();
 
         ApartmentJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,14 +171,8 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(ApartmentJTable);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Apartment Report");
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
 
         ApartmentCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,23 +199,31 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         jLabel7.setText("Apartment");
         jLabel7.setToolTipText("");
 
+        backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setToolTipText("");
+        backJButton1.setBorderPainted(false);
+        backJButton1.setContentAreaFilled(false);
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(394, 394, 394))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
+                        .addGap(226, 226, 226)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,24 +231,27 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel6))
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NetWorkCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 142, Short.MAX_VALUE)
-                                    .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(NetWorkCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
                                 .addComponent(ApartmentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backJButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,16 +263,9 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ApartmentCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void ApartmentComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApartmentComboboxActionPerformed
         SignLeaseRequest slr = (SignLeaseRequest)ApartmentCombobox.getSelectedItem() ;      
@@ -292,13 +290,19 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_EnterpriseComboboxActionPerformed
 
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Object> ApartmentCombobox;
     private javax.swing.JTable ApartmentJTable;
     private javax.swing.JComboBox<Object> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

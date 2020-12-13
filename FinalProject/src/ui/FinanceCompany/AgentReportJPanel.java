@@ -189,7 +189,6 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         ApartmentJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         AgentComboBox = new javax.swing.JComboBox<>();
         NetWorkCombobox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -197,6 +196,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         btnAptVisualization = new javax.swing.JButton();
+        backJButton1 = new javax.swing.JButton();
 
         ApartmentJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,13 +227,6 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(ApartmentJTable);
 
         jLabel5.setText("Apartment Report");
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
 
         AgentComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,50 +260,61 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
 
+        backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setToolTipText("");
+        backJButton1.setBorderPainted(false);
+        backJButton1.setContentAreaFilled(false);
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(backJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(394, 394, 394))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
+                        .addGap(221, 221, 221)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAptVisualization)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel6))
-                                    .addGap(22, 22, 22)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(NetWorkCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 142, Short.MAX_VALUE)
-                                        .addComponent(EnterpriseCombobox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                    .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(EnterpriseCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(NetWorkCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAptVisualization, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(290, 290, 290))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backJButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(NetWorkCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,17 +326,11 @@ public class AgentReportJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(32, 32, 32)
-                .addComponent(btnAptVisualization)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAptVisualization, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void AgentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentComboBoxActionPerformed
         UserAccount agent = (UserAccount)AgentComboBox.getSelectedItem() ;      
@@ -440,13 +438,19 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         //drawPieChart( agent.getUsername(),  aptPercentage);
     }//GEN-LAST:event_btnAptVisualizationActionPerformed
 
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Object> AgentComboBox;
     private javax.swing.JTable ApartmentJTable;
     private javax.swing.JComboBox<Object> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton1;
     private javax.swing.JButton btnAptVisualization;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
