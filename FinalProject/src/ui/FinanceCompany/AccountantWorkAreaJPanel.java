@@ -55,7 +55,7 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
         btnAgentReport = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setText("Accountant Work Are");
+        jLabel1.setText("Accountant Work Area");
 
         btnAptReport.setText("Apartment Report");
         btnAptReport.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(292, 292, 292)
                         .addComponent(jLabel1)))
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addContainerGap(347, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
