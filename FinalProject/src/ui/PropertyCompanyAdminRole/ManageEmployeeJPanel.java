@@ -17,6 +17,10 @@ import Business.Role.MarketingRole;
 import Business.UserAccount.UserAccount;
 // UI package
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -116,6 +120,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             row[2] = ma.getEmail();
             model.addRow(row);
         }
+    }
+
+    private boolean emailPatternCorrect() {
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+        Matcher m = p.matcher(txtemail.getText());
+        boolean b = m.matches();
+        return b;
     }
 
     /**
@@ -299,6 +310,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
             JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else if (!emailPatternCorrect()) {
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel4.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null, "Please enter valid Username in the format of xx@xx.xx", "Warning", JOptionPane.WARNING_MESSAGE);
 
         } else {
             if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Agent.getValue())) {
@@ -340,6 +355,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             txtemail.setText("");
             txtUsername.setText("");
             txtpassword.setText("");
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jLabel4.setForeground(Color.BLACK);
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed

@@ -11,6 +11,10 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.AccountantRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -42,6 +46,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         for (Organization organization : organizationDir.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
         }
+    }
+
+    private boolean emailPatternCorrect() {
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+        Matcher m = p.matcher(txtemail.getText());
+        boolean b = m.matches();
+        return b;
     }
 
     private void populateTable(Organization organization) {
@@ -238,6 +249,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String password = txtpassword.getText();
         if (password.equals("") || Username.equals("") || email.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+
+        } else if (!emailPatternCorrect()) {
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel4.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null, "Please enter valid Username in the format of xx@xx.xx", "Warning", JOptionPane.WARNING_MESSAGE);
+
         } else {
             if (organizationJComboBox.getSelectedItem().toString().equals(Organization.Type.Accounting.getValue())) {
 
@@ -250,6 +267,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             txtemail.setText("");
             txtUsername.setText("");
             txtpassword.setText("");
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jLabel4.setForeground(Color.BLACK);
 
         }
 
@@ -294,7 +313,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-       userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed

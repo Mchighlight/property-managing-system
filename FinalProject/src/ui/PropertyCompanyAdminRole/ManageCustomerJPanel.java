@@ -14,6 +14,10 @@ import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 // UI package
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -81,6 +85,13 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             row[5] = String.valueOf(tenant.getSSN());
             model.addRow(row);
         }
+    }
+
+    private boolean emailPatternCorrect() {
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+        Matcher m = p.matcher(txtemail.getText());
+        boolean b = m.matches();
+        return b;
     }
 
     /**
@@ -274,7 +285,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                     .addComponent(customerRoleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtfn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,11 +310,11 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(40, 40, 40)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addJButton)
                     .addComponent(backJButton))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,9 +331,12 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         if (password.equals("") || Username.equals("") || email.equals("") || ssn.equals("") || fn.equals("") || ln.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
-          } else if (!this.customerAccountDirectory.checkIfUsernameIsUnique(Username)) {
+        } else if (!this.customerAccountDirectory.checkIfUsernameIsUnique(Username)) {
             JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
-
+        } else if (!emailPatternCorrect()) {
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel4.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null, "Please enter valid Username in the format of xx@xx.xx", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             Tenant tenant = this.tenantDirectory.createTenant(Username, email, ssn, fn, ln);
             this.customerAccountDirectory.createUserAccount(Username, password, tenant, new TenantRole());
@@ -334,7 +348,10 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             txtSSN.setText("");
             txtfn.setText("");
             txtln.setText("");
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jLabel4.setForeground(Color.BLACK);
         }
+
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void customerRoleJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerRoleJComboBoxActionPerformed

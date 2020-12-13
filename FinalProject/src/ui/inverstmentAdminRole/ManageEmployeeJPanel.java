@@ -14,6 +14,10 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.LandlordRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -62,6 +66,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         }
     }
 
+    private boolean emailPatternCorrect() {
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+        Matcher m = p.matcher(txtemail.getText());
+        boolean b = m.matches();
+        return b;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -277,11 +287,18 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
         } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
             JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else if (!emailPatternCorrect()) {
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel4.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null, "Please enter valid Username in the format of xx@xx.xx", "Warning", JOptionPane.WARNING_MESSAGE);
+
         } else {
             Landlord landlord = organization.getLandlordDirectory().createLandlord(Username, lastname, email, SSN);
             organization.getUserAccountDirectory().createUserAccount(Username, password, landlord, new LandlordRole());
             JOptionPane.showMessageDialog(null, "landlord created");
             populatelandlordTable(organization);
+            txtemail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jLabel4.setForeground(Color.BLACK);
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
