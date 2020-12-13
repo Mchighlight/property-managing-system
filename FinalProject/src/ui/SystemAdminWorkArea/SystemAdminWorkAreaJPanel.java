@@ -133,31 +133,35 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.add(lblSelectedNode, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 42, -1, -1));
 
         btnManageNetwork.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnManageNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/network-64.png"))); // NOI18N
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageNetworkActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 137, 267, 63));
+        jPanel2.add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 290, 63));
 
         btnManageEnterprise.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnManageEnterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company-64.png"))); // NOI18N
         btnManageEnterprise.setText("Manage Enterprise");
+        btnManageEnterprise.setToolTipText("");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 237, 267, 63));
+        jPanel2.add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 240, 290, 63));
 
         btnManageAdmin.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnManageAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee-64.png"))); // NOI18N
         btnManageAdmin.setText("Manage Enterprise Admin");
         btnManageAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 333, 270, 63));
+        jPanel2.add(btnManageAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 290, 63));
 
         jSplitPane.setRightComponent(jPanel2);
 

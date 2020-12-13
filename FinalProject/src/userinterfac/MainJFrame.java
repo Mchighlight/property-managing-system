@@ -17,8 +17,10 @@ import Business.Role.AccountantRole;
 import Business.UserAccount.UserAccount;
 import com.jtattoo.plaf.aero.AeroLookAndFeel;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.Locale;
 import java.util.Properties;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -68,6 +70,7 @@ public class MainJFrame extends javax.swing.JFrame {
         setResizable(false);
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.setMinimumSize(new java.awt.Dimension(5, 5));
 
         container.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(container);
@@ -277,7 +280,17 @@ public class MainJFrame extends javax.swing.JFrame {
                     Properties props = new Properties();
                   props.put("logoString", "my company");
                   AeroLookAndFeel.setCurrentTheme(props);
-                  UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+                  //exmple
+                    // UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    // UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                  //preference
+                 UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+                 //UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+                  
+                //apple look
+//                  System.setProperty("apple.laf.useScreenMenuBar", "true");
+//                  System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WikiTeX");
+//                  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -293,7 +306,10 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                JFrame jf = new MainJFrame();
+               // jf.setUndecorated(true);
+                jf.setVisible(true);
+                
             }
         });
     }

@@ -63,7 +63,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        networkJTable.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        networkJTable.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -95,10 +95,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             networkJTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 34, 590, 206));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 590, 206));
 
         jLabel1.setText("Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, 20));
 
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,13 +106,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 100, 48));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 93, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 100, 48));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 93, -1));
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
         backJButton1.setToolTipText("");
-        backJButton1.setBorder(null);
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +119,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 backJButton1ActionPerformed(evt);
             }
         });
-        add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 57, -1));
+        add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 57, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed

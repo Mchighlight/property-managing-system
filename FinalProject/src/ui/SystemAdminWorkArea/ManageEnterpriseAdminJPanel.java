@@ -136,7 +136,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 789, 230));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 789, 230));
 
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
@@ -200,9 +200,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 180, -1));
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
         backJButton1.setToolTipText("");
-        backJButton1.setBorder(null);
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +209,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 backJButton1ActionPerformed(evt);
             }
         });
-        add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 57, -1));
+        add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 57, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
