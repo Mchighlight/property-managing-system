@@ -433,6 +433,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
                 aptReportJFrame testFrame = new aptReportJFrame(agent.getUsername(),  aptPercentage,
                  userProcessContainer,  ua,  ecosystem,  enterprise,  organization, sales) ;
                 testFrame.setVisible(true);
+                
             }
         });
         //drawPieChart( agent.getUsername(),  aptPercentage);

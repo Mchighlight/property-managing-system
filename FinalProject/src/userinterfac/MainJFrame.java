@@ -94,10 +94,10 @@ public class MainJFrame extends javax.swing.JFrame {
         passwordField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("User Name");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-100.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel2.setText("Password");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password-100.png"))); // NOI18N
 
         logoutJButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
@@ -129,7 +129,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
                 .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)

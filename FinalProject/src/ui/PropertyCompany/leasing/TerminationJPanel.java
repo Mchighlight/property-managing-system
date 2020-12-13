@@ -107,7 +107,6 @@ public class TerminationJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
-        btnreturnRenewal = new javax.swing.JButton();
         btnViewDetail1 = new javax.swing.JButton();
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -147,13 +146,6 @@ public class TerminationJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnreturnRenewal.setText("Return Renewal");
-        btnreturnRenewal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreturnRenewalActionPerformed(evt);
-            }
-        });
-
         btnViewDetail1.setText("View Detail");
         btnViewDetail1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,11 +166,8 @@ public class TerminationJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(btnreturnRenewal)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(262, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(703, Short.MAX_VALUE)
@@ -194,9 +183,7 @@ public class TerminationJPanel extends javax.swing.JPanel {
                     .addComponent(backJButton))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(btnreturnRenewal)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(149, 149, 149)
@@ -246,18 +233,6 @@ public class TerminationJPanel extends javax.swing.JPanel {
         return lease ;
     }
     
-    private void btnreturnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreturnRenewalActionPerformed
-        int row = workRequestJTable.getSelectedRow();
-        if (row < 0) {
-            JOptionPane.showMessageDialog(null, "Please selected the lease!", "Info", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
-        SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
-        selectedSlr.setStatus("Renewal Request");
-        JOptionPane.showMessageDialog(null, "Return back to renewal Request!", "Info", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnreturnRenewalActionPerformed
-
     private void btnViewDetail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetail1ActionPerformed
         int row = workRequestJTable.getSelectedRow();
         if (row < 0) {
@@ -281,7 +256,6 @@ public class TerminationJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnViewDetail1;
-    private javax.swing.JButton btnreturnRenewal;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workRequestJTable;
