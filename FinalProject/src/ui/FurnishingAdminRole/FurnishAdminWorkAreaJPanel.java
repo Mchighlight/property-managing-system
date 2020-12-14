@@ -60,9 +60,10 @@ public class FurnishAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-manager-100.png"))); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
         add(jLabel1);
-        jLabel1.setBounds(114, 23, 411, 29);
+        jLabel1.setBounds(170, 50, 550, 110);
 
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +72,7 @@ public class FurnishAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageEmployeeJButton);
-        manageEmployeeJButton.setBounds(340, 260, 176, 58);
+        manageEmployeeJButton.setBounds(480, 280, 176, 58);
 
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,19 +81,19 @@ public class FurnishAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageOrganizationJButton);
-        manageOrganizationJButton.setBounds(110, 260, 191, 58);
+        manageOrganizationJButton.setBounds(220, 280, 191, 58);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(114, 84, 120, 30);
+        enterpriseLabel.setBounds(270, 180, 120, 30);
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
         add(valueLabel);
-        valueLabel.setBounds(240, 88, 130, 22);
+        valueLabel.setBounds(400, 180, 290, 22);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/furniture-min.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 0, 900, 700);
 

@@ -175,12 +175,12 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(ApartmentJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(133, 74, 737, 229);
+        jScrollPane2.setBounds(10, 74, 880, 229);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Apartment Report");
         add(jLabel5);
-        jLabel5.setBounds(378, 20, 195, 22);
+        jLabel5.setBounds(360, 20, 195, 22);
 
         ApartmentCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +230,7 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(133, 6, 57, 62);
+        backJButton1.setBounds(133, 6, 57, 29);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel8.setText("jLabel4");

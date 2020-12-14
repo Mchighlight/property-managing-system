@@ -124,41 +124,43 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(37, 47, 97, 29);
+        backJButton.setBounds(80, 230, 50, 50);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("RepairmentRequest");
         add(jLabel1);
-        jLabel1.setBounds(283, 15, 224, 30);
+        jLabel1.setBounds(340, 10, 224, 30);
 
         jLabel2.setText("Repaispecialist");
         add(jLabel2);
-        jLabel2.setBounds(339, 76, 94, 16);
+        jLabel2.setBounds(390, 70, 94, 16);
 
         jLabel3.setText("Apartment:");
         add(jLabel3);
-        jLabel3.setBounds(483, 76, 70, 16);
+        jLabel3.setBounds(540, 70, 70, 16);
 
         aptjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(aptjComboBox);
-        aptjComboBox.setBounds(483, 98, 96, 27);
+        aptjComboBox.setBounds(540, 90, 96, 27);
 
         agentjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(agentjComboBox);
-        agentjComboBox.setBounds(339, 98, 96, 27);
+        agentjComboBox.setBounds(390, 90, 96, 27);
 
         jLabel5.setText("Date:");
         add(jLabel5);
-        jLabel5.setBounds(367, 181, 33, 16);
+        jLabel5.setBounds(450, 170, 33, 16);
         add(jTextField1);
-        jTextField1.setBounds(406, 176, 150, 26);
+        jTextField1.setBounds(490, 170, 150, 26);
 
         jButton2.setText("Select");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -167,11 +169,11 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(462, 208, 130, 29);
+        jButton2.setBounds(510, 200, 130, 29);
 
         dateChooserPanel1.setLocale(new java.util.Locale("en", "GB", ""));
         add(dateChooserPanel1);
-        dateChooserPanel1.setBounds(222, 243, 370, 170);
+        dateChooserPanel1.setBounds(280, 240, 370, 170);
 
         createjButton.setText("Send");
         createjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -180,22 +182,24 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
             }
         });
         add(createjButton);
-        createjButton.setBounds(272, 452, 271, 59);
+        createjButton.setBounds(360, 440, 271, 59);
 
-        jButton3.setText("...");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-planner-100.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         add(jButton3);
-        jButton3.setBounds(562, 180, 30, 20);
+        jButton3.setBounds(660, 130, 100, 100);
 
         jLabel6.setText("Requirement:");
         add(jLabel6);
-        jLabel6.setBounds(191, 137, 83, 16);
+        jLabel6.setBounds(240, 130, 83, 16);
         add(jTextField2);
-        jTextField2.setBounds(280, 132, 312, 26);
+        jTextField2.setBounds(330, 130, 312, 26);
 
         netjComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         netjComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -204,16 +208,16 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
             }
         });
         add(netjComboBox1);
-        netjComboBox1.setBounds(191, 98, 96, 27);
+        netjComboBox1.setBounds(240, 90, 96, 27);
 
         jLabel4.setText("Network");
         add(jLabel4);
-        jLabel4.setBounds(200, 76, 53, 16);
+        jLabel4.setBounds(250, 70, 53, 16);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel7.setText("jLabel4");
         add(jLabel7);
-        jLabel7.setBounds(5, -4, 930, 710);
+        jLabel7.setBounds(5, -4, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

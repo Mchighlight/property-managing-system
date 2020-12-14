@@ -197,7 +197,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable2);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(221, 94, 437, 187);
+        jScrollPane2.setBounds(18, 71, 640, 210);
 
         jButton3.setText("Pick Agent");
         jButton3.setEnabled(false);
@@ -284,7 +284,7 @@ public class LandlordWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(221, 325, 437, 186);
+        jScrollPane1.setBounds(18, 301, 640, 210);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         add(jLabel5);

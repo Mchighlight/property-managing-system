@@ -126,7 +126,7 @@ public class customerServiceJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Repair Requirement");
         add(jLabel4);
-        jLabel4.setBounds(311, 36, 170, 22);
+        jLabel4.setBounds(370, 0, 170, 22);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,8 +150,10 @@ public class customerServiceJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(122, 76, 538, 107);
+        jScrollPane1.setBounds(8, 30, 890, 160);
 
+        newjButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        newjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-maintenance-50.png"))); // NOI18N
         newjButton.setText("Make a repairment");
         newjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +161,7 @@ public class customerServiceJPanel extends javax.swing.JPanel {
             }
         });
         add(newjButton);
-        newjButton.setBounds(161, 201, 202, 58);
+        newjButton.setBounds(240, 200, 230, 58);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,13 +177,15 @@ public class customerServiceJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable2);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(122, 317, 538, 90);
+        jScrollPane2.setBounds(8, 300, 890, 150);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Customer Support");
         add(jLabel5);
-        jLabel5.setBounds(297, 277, 158, 22);
+        jLabel5.setBounds(370, 270, 158, 22);
 
+        jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-customer-support-50.png"))); // NOI18N
         jButton4.setText("Feedback");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,26 +193,31 @@ public class customerServiceJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(352, 469, 103, 49);
+        jButton4.setBounds(500, 460, 150, 62);
 
-        jButton5.setText("Contact(email)");
+        jButton5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-send-email-50.png"))); // NOI18N
+        jButton5.setText("Contact");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         add(jButton5);
-        jButton5.setBounds(525, 469, 135, 49);
+        jButton5.setBounds(660, 460, 150, 60);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(28, 18, 97, 29);
+        backJButton.setBounds(60, 200, 60, 50);
 
+        viewjButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         viewjButton.setText("View detail");
         viewjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,8 +225,9 @@ public class customerServiceJPanel extends javax.swing.JPanel {
             }
         });
         add(viewjButton);
-        viewjButton.setBounds(420, 201, 202, 58);
+        viewjButton.setBounds(520, 200, 240, 58);
 
+        jButton6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton6.setText("Apply a request");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,13 +235,13 @@ public class customerServiceJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton6);
-        jButton6.setBounds(122, 469, 187, 49);
+        jButton6.setBounds(290, 460, 200, 60);
 
         jLabel1.setText("Title: ");
         add(jLabel1);
-        jLabel1.setBounds(122, 430, 36, 16);
+        jLabel1.setBounds(60, 480, 36, 16);
         add(jTextField1);
-        jTextField1.setBounds(164, 425, 145, 26);
+        jTextField1.setBounds(110, 470, 145, 26);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel6.setText("jLabel4");

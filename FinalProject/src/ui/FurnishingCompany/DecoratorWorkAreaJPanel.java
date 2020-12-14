@@ -142,7 +142,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        valueLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -150,12 +150,12 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("User :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(286, 27, 53, 30);
+        enterpriseLabel.setBounds(330, 10, 53, 30);
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
         add(valueLabel);
-        valueLabel.setBounds(345, 29, 158, 26);
+        valueLabel.setBounds(390, 10, 158, 26);
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -186,7 +186,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(89, 63, 691, 160);
+        jScrollPane1.setBounds(20, 43, 760, 180);
 
         btndeny.setText("Decline");
         btndeny.addActionListener(new java.awt.event.ActionListener() {
@@ -283,9 +283,10 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel4);
         jLabel4.setBounds(109, 279, 104, 16);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dec11.jpg"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 900, 700);
+        valueLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        valueLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-christmas-tree-50.png"))); // NOI18N
+        add(valueLabel1);
+        valueLabel1.setBounds(730, 240, 50, 70);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel5.setText("jLabel4");
@@ -420,7 +421,6 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -428,6 +428,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtfee;
     private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel valueLabel1;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

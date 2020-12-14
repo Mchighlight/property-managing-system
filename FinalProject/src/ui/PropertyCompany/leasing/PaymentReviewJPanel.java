@@ -122,27 +122,27 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Lease Detail");
         add(jLabel5);
-        jLabel5.setBounds(276, 36, 159, 22);
+        jLabel5.setBounds(420, 30, 159, 22);
 
         txtDayToPay.setEnabled(false);
         add(txtDayToPay);
-        txtDayToPay.setBounds(327, 91, 80, 26);
+        txtDayToPay.setBounds(470, 90, 80, 26);
 
         jLabel1.setText("Day To Pay");
         add(jLabel1);
-        jLabel1.setBounds(225, 96, 69, 16);
+        jLabel1.setBounds(370, 90, 69, 16);
 
         jLabel3.setText("Rental Date");
         add(jLabel3);
-        jLabel3.setBounds(225, 137, 72, 16);
+        jLabel3.setBounds(370, 140, 72, 16);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(327, 132, 80, 26);
+        txtRentalDate.setBounds(470, 130, 80, 26);
 
         jLabel4.setText("Pay Method");
         add(jLabel4);
-        jLabel4.setBounds(225, 181, 72, 16);
+        jLabel4.setBounds(370, 180, 72, 16);
 
         txtPayMethod.setEnabled(false);
         txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -151,39 +151,39 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPayMethod);
-        txtPayMethod.setBounds(327, 176, 80, 26);
+        txtPayMethod.setBounds(470, 170, 80, 26);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(225, 225, 47, 16);
+        jLabel6.setBounds(370, 220, 47, 16);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(327, 220, 80, 26);
+        txtBalance.setBounds(470, 220, 80, 26);
 
         jLabel7.setText("Pay Amount");
         add(jLabel7);
-        jLabel7.setBounds(225, 269, 75, 16);
+        jLabel7.setBounds(370, 270, 75, 16);
 
         txtPayAmount.setEnabled(false);
         add(txtPayAmount);
-        txtPayAmount.setBounds(327, 264, 80, 26);
+        txtPayAmount.setBounds(470, 260, 80, 26);
 
         jLabel8.setText("Pay Date");
         add(jLabel8);
-        jLabel8.setBounds(225, 313, 54, 16);
+        jLabel8.setBounds(370, 310, 54, 16);
 
         txtPayDate.setEnabled(false);
         add(txtPayDate);
-        txtPayDate.setBounds(327, 308, 80, 26);
+        txtPayDate.setBounds(470, 310, 80, 26);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(327, 352, 80, 26);
+        txtTenant.setBounds(470, 350, 80, 26);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(225, 357, 43, 16);
+        jLabel9.setBounds(370, 360, 43, 16);
 
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(139, 46, 97, 29);
+        backJButton1.setBounds(210, 40, 97, 29);
 
         btnAcceptedPayment.setText("Accept Payment");
         btnAcceptedPayment.setToolTipText("");
@@ -202,7 +202,7 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAcceptedPayment);
-        btnAcceptedPayment.setBounds(271, 404, 144, 29);
+        btnAcceptedPayment.setBounds(620, 190, 140, 70);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel10.setText("jLabel4");

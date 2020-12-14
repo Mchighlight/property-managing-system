@@ -116,7 +116,7 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Lease Detail");
         add(jLabel5);
-        jLabel5.setBounds(276, 36, 159, 22);
+        jLabel5.setBounds(360, 30, 159, 22);
 
         btnSubmitRenwalRequest.setText("Submit Renwal Request");
         btnSubmitRenwalRequest.setToolTipText("");
@@ -126,71 +126,71 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmitRenwalRequest);
-        btnSubmitRenwalRequest.setBounds(270, 440, 190, 29);
+        btnSubmitRenwalRequest.setBounds(600, 220, 190, 70);
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(380, 91, 80, 26);
+        txtStartDate.setBounds(470, 90, 80, 26);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(225, 96, 62, 16);
+        jLabel1.setBounds(310, 90, 62, 16);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(225, 137, 56, 16);
+        jLabel3.setBounds(310, 130, 56, 16);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(380, 132, 80, 26);
+        txtEndDate.setBounds(470, 130, 80, 26);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(225, 181, 72, 16);
+        jLabel4.setBounds(310, 180, 72, 16);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(380, 176, 80, 26);
+        txtRentalDate.setBounds(470, 170, 80, 26);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(225, 225, 47, 16);
+        jLabel6.setBounds(310, 220, 47, 16);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(380, 220, 80, 26);
+        txtBalance.setBounds(470, 210, 80, 26);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(225, 269, 103, 16);
+        jLabel7.setBounds(310, 260, 103, 16);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(380, 264, 80, 26);
+        txtSecurityDeposit.setBounds(470, 260, 80, 26);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(225, 313, 51, 16);
+        jLabel8.setBounds(310, 310, 51, 16);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(380, 308, 80, 26);
+        txtBuilding.setBounds(470, 300, 80, 26);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(380, 352, 80, 26);
+        txtTenant.setBounds(470, 350, 80, 26);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(225, 357, 43, 16);
+        jLabel9.setBounds(310, 350, 43, 16);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(225, 401, 109, 16);
+        jLabel10.setBounds(310, 400, 109, 16);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(380, 396, 80, 26);
+        txtTerminationDate.setBounds(470, 390, 80, 26);
 
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(139, 46, 97, 29);
+        backJButton1.setBounds(170, 30, 97, 29);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel11.setText("jLabel4");

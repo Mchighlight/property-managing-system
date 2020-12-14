@@ -141,11 +141,12 @@ public class TerminationJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(129, 112, 538, 90);
+        jScrollPane2.setBounds(9, 52, 890, 240);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Collection");
         add(jLabel5);
-        jLabel5.setBounds(331, 58, 159, 22);
+        jLabel5.setBounds(380, 20, 159, 22);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +155,7 @@ public class TerminationJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton);
-        backJButton.setBounds(137, 56, 97, 29);
+        backJButton.setBounds(130, 20, 97, 29);
 
         btnViewDetail1.setText("View Detail");
         btnViewDetail1.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +164,7 @@ public class TerminationJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail1);
-        btnViewDetail1.setBounds(703, 149, 114, 29);
+        btnViewDetail1.setBounds(380, 310, 130, 70);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

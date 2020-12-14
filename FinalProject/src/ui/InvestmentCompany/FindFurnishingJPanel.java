@@ -173,7 +173,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(150, 74, 703, 166);
+        jScrollPane1.setBounds(10, 70, 910, 180);
 
         assignjButton.setText("Comfirm and Check Out");
         assignjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -198,9 +198,10 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         jLabel1.setBounds(363, 425, 214, 26);
 
         enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-christmas-tree-50.png"))); // NOI18N
         enterpriseLabel1.setText("Furnishing Company Request");
         add(enterpriseLabel1);
-        enterpriseLabel1.setBounds(336, 15, 328, 30);
+        enterpriseLabel1.setBounds(330, 0, 328, 60);
 
         txtfee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +255,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
         NetWorkCombobox.setBounds(434, 258, 142, 27);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -264,7 +265,7 @@ public class FindFurnishingJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(148, 6, 57, 62);
+        backJButton1.setBounds(160, 260, 57, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

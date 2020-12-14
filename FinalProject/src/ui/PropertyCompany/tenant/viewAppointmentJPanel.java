@@ -91,62 +91,71 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(157, 285, 78, 29);
+        jButton2.setBounds(260, 290, 90, 50);
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Chat with: ");
         add(jLabel3);
-        jLabel3.setBounds(112, 106, 68, 16);
+        jLabel3.setBounds(150, 50, 90, 20);
 
+        agentjLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         agentjLabel.setText("<value>");
         add(agentjLabel);
-        agentjLabel.setBounds(186, 106, 53, 16);
+        agentjLabel.setBounds(220, 50, 70, 17);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Appartment: ");
         add(jLabel5);
-        jLabel5.setBounds(273, 106, 82, 16);
+        jLabel5.setBounds(380, 50, 140, 17);
 
+        aptjLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         aptjLabel.setText("<value>");
         add(aptjLabel);
-        aptjLabel.setBounds(361, 106, 53, 16);
+        aptjLabel.setBounds(470, 50, 100, 17);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(112, 132, 359, 128);
+        jScrollPane2.setBounds(19, 78, 880, 190);
 
-        jLabel2.setText("Message");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel2.setText("Conversation");
         add(jLabel2);
-        jLabel2.setBounds(253, 73, 54, 16);
+        jLabel2.setBounds(340, 10, 170, 22);
 
         jTextField1.setFont(new java.awt.Font("Lucida Bright", 0, 13)); // NOI18N
         jTextField1.setText("Please imput message");
         add(jTextField1);
-        jTextField1.setBounds(241, 272, 221, 53);
+        jTextField1.setBounds(370, 290, 221, 53);
 
-        jButton3.setText("Map");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-map-100.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         add(jButton3);
-        jButton3.setBounds(420, 101, 75, 29);
+        jButton3.setBounds(650, 280, 110, 90);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(112, 26, 97, 29);
+        backJButton.setBounds(80, 290, 70, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(5, -4, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

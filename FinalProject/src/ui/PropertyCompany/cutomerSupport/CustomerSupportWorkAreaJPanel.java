@@ -93,9 +93,10 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setText("Customer Feecback");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-customer-support-50.png"))); // NOI18N
+        jLabel1.setText("Customer Support");
         add(jLabel1);
-        jLabel1.setBounds(287, 69, 226, 30);
+        jLabel1.setBounds(290, 0, 310, 50);
 
         jButton1.setText("Process");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +105,7 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(406, 318, 270, 42);
+        jButton1.setBounds(406, 318, 280, 60);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,7 +121,7 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable2);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(138, 130, 538, 170);
+        jScrollPane2.setBounds(8, 60, 880, 240);
 
         jButton2.setText("Asign me");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +130,7 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(138, 318, 222, 42);
+        jButton2.setBounds(138, 318, 250, 60);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

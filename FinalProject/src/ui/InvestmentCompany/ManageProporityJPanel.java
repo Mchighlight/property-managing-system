@@ -107,7 +107,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Propority List :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(278, 28, 190, 30);
+        enterpriseLabel.setBounds(360, 10, 190, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,7 +134,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(53, 92, 750, 200);
+        jScrollPane1.setBounds(3, 62, 890, 230);
 
         addjButton.setText("add");
         addjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +143,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
         add(addjButton);
-        addjButton.setBounds(347, 543, 161, 51);
+        addjButton.setBounds(510, 480, 161, 51);
 
         deletejButton.setText("delete");
         deletejButton.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Monthly rent");
         add(jLabel7);
-        jLabel7.setBounds(612, 373, 80, 16);
+        jLabel7.setBounds(510, 370, 80, 16);
 
         txtrent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,11 +224,11 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
         add(txtrent);
-        txtrent.setBounds(752, 368, 105, 26);
+        txtrent.setBounds(650, 360, 105, 26);
 
         jLabel8.setText("selling price");
         add(jLabel8);
-        jLabel8.setBounds(612, 411, 77, 16);
+        jLabel8.setBounds(510, 410, 77, 16);
 
         txtprice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,22 +236,23 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
         add(txtprice);
-        txtprice.setBounds(752, 406, 105, 26);
+        txtprice.setBounds(650, 400, 105, 26);
 
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         add(jButton1);
-        jButton1.setBounds(50, 20, 66, 50);
+        jButton1.setBounds(70, 10, 66, 50);
 
         jLabel9.setText("square feet");
         add(jLabel9);
-        jLabel9.setBounds(619, 444, 70, 27);
+        jLabel9.setBounds(520, 440, 70, 27);
 
         txtfeet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +260,7 @@ public class ManageProporityJPanel extends javax.swing.JPanel {
             }
         });
         add(txtfeet);
-        txtfeet.setBounds(752, 444, 105, 26);
+        txtfeet.setBounds(650, 440, 105, 26);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         add(jLabel10);

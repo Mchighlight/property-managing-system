@@ -126,11 +126,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(129, 112, 538, 90);
+        jScrollPane2.setBounds(9, 42, 890, 230);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Collection");
         add(jLabel5);
-        jLabel5.setBounds(331, 58, 159, 22);
+        jLabel5.setBounds(380, 10, 159, 22);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +140,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton);
-        backJButton.setBounds(137, 56, 97, 29);
+        backJButton.setBounds(70, 10, 97, 29);
 
         btnDecline.setText("Decline");
         btnDecline.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +149,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDecline);
-        btnDecline.setBounds(129, 242, 117, 43);
+        btnDecline.setBounds(147, 280, 140, 60);
 
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +158,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAccept);
-        btnAccept.setBounds(325, 243, 117, 41);
+        btnAccept.setBounds(360, 280, 150, 60);
 
         btnPaymentRequest.setText("Payment Request");
         btnPaymentRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +167,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentRequest);
-        btnPaymentRequest.setBounds(518, 242, 117, 43);
+        btnPaymentRequest.setBounds(360, 360, 150, 60);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +176,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail);
-        btnViewDetail.setBounds(693, 145, 114, 29);
+        btnViewDetail.setBounds(570, 360, 130, 60);
 
         btnPaymentReview.setText("Payment Review");
         btnPaymentReview.addActionListener(new java.awt.event.ActionListener() {
@@ -184,12 +185,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentReview);
-        btnPaymentReview.setBounds(129, 327, 117, 41);
+        btnPaymentReview.setBounds(150, 360, 140, 60);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

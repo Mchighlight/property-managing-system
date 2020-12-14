@@ -152,7 +152,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(88, 181, 454, 160);
+        jScrollPane1.setBounds(12, 141, 600, 250);
 
         LandlordComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         LandlordComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -161,17 +161,17 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(LandlordComboBox);
-        LandlordComboBox.setBounds(244, 52, 105, 30);
+        LandlordComboBox.setBounds(300, 50, 105, 30);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Client:");
         add(jLabel1);
-        jLabel1.setBounds(96, 52, 76, 30);
+        jLabel1.setBounds(160, 50, 76, 30);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Property:");
         add(jLabel2);
-        jLabel2.setBounds(88, 122, 106, 30);
+        jLabel2.setBounds(150, 90, 106, 30);
 
         jButton3.setText("Request advertisement");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(592, 329, 187, 44);
+        jButton3.setBounds(660, 330, 190, 50);
 
         AgentCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +188,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(AgentCombobox);
-        AgentCombobox.setBounds(659, 265, 142, 18);
+        AgentCombobox.setBounds(710, 270, 142, 18);
 
         NetWorkCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,15 +196,15 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(NetWorkCombobox);
-        NetWorkCombobox.setBounds(667, 158, 142, 27);
+        NetWorkCombobox.setBounds(720, 160, 142, 27);
 
         jLabel4.setText("Network");
         add(jLabel4);
-        jLabel4.setBounds(598, 162, 53, 16);
+        jLabel4.setBounds(650, 170, 53, 16);
 
         jLabel5.setText("Enterprise");
         add(jLabel5);
-        jLabel5.setBounds(598, 201, 63, 16);
+        jLabel5.setBounds(650, 210, 63, 16);
 
         EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,11 +212,11 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(EnterpriseCombobox);
-        EnterpriseCombobox.setBounds(673, 197, 136, 27);
+        EnterpriseCombobox.setBounds(730, 200, 136, 27);
 
         jLabel6.setText("Marketing");
         add(jLabel6);
-        jLabel6.setBounds(578, 265, 63, 16);
+        jLabel6.setBounds(630, 270, 63, 16);
 
         jButton4.setText("Find Marketing person");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -225,10 +225,10 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(596, 230, 205, 29);
+        jButton4.setBounds(650, 230, 205, 29);
 
         backJButton3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton3.setToolTipText("");
         backJButton3.setBorderPainted(false);
         backJButton3.setContentAreaFilled(false);
@@ -238,7 +238,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton3);
-        backJButton3.setBounds(18, 20, 66, 62);
+        backJButton3.setBounds(50, 60, 60, 50);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel7.setText("jLabel4");
@@ -265,6 +265,7 @@ public class RequestMarketingJPanel extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "please select a row");
+            return;
         }
         String propNickname = jTable1.getValueAt(row, 0).toString();
 

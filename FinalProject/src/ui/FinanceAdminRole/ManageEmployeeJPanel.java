@@ -95,6 +95,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        addJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +104,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(addJButton);
-        addJButton.setBounds(297, 408, 148, 50);
+        addJButton.setBounds(297, 408, 200, 50);
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +113,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationJComboBox);
-        organizationJComboBox.setBounds(418, 44, 249, 42);
+        organizationJComboBox.setBounds(410, 10, 249, 42);
 
         jLabel1.setText("Organization");
         add(jLabel1);
-        jLabel1.setBounds(331, 51, 81, 27);
+        jLabel1.setBounds(330, 20, 81, 27);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,7 +148,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(organizationJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(109, 104, 679, 153);
+        jScrollPane1.setBounds(18, 57, 870, 200);
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +180,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(297, 331, 60, 16);
 
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-512.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,10 +189,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(543, 408, 84, 50);
+        btnDelete.setBounds(520, 410, 170, 50);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -198,7 +202,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(109, 24, 57, 62);
+        backJButton1.setBounds(150, 270, 60, 50);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel6.setText("jLabel4");

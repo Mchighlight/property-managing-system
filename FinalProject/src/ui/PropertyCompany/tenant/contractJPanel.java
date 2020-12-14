@@ -87,9 +87,10 @@ public class contractJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Contracts");
         add(jLabel1);
-        jLabel1.setBounds(349, 28, 61, 16);
+        jLabel1.setBounds(410, 10, 120, 30);
 
         jButton2.setText("Sign a contract");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,16 +99,18 @@ public class contractJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(252, 282, 247, 91);
+        jButton2.setBounds(330, 340, 247, 70);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(76, 23, 97, 29);
+        backJButton.setBounds(170, 350, 60, 50);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +126,7 @@ public class contractJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(89, 81, 716, 161);
+        jScrollPane1.setBounds(9, 41, 890, 280);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

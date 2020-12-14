@@ -9,6 +9,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -79,7 +80,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Organization Type ");
         add(jLabel1);
-        jLabel1.setBounds(312, 241, 119, 16);
+        jLabel1.setBounds(270, 210, 119, 16);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,8 +111,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(organizationJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(192, 82, 480, 92);
+        jScrollPane1.setBounds(22, 14, 810, 160);
 
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/network.png"))); // NOI18N
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +121,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(addJButton);
-        addJButton.setBounds(312, 297, 154, 42);
+        addJButton.setBounds(310, 260, 180, 50);
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Accounting", "AnalysisAndReport" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -128,10 +130,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationJComboBox);
-        organizationJComboBox.setBounds(463, 237, 135, 27);
+        organizationJComboBox.setBounds(410, 200, 135, 27);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -141,7 +143,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(192, 14, 57, 62);
+        backJButton1.setBounds(120, 190, 57, 62);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -152,6 +154,12 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
+        for (Organization organization : directory.getOrganizationList()) {
+             if (organization.getName().equals(type.getValue())) {
+                 JOptionPane.showMessageDialog(null, "Organization already added");
+                return;
+            }
+        }
         directory.createOrganization(type);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed

@@ -112,16 +112,17 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(80, 78, 725, 162);
+        jScrollPane1.setBounds(10, 90, 890, 270);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-home-office-100 (1).png"))); // NOI18N
         jLabel1.setText("Visiting apoimemts");
         add(jLabel1);
-        jLabel1.setBounds(312, 30, 224, 30);
+        jLabel1.setBounds(330, 0, 340, 80);
 
         jButton1.setText("transfer into renting request");
         add(jButton1);
-        jButton1.setBounds(304, 258, 222, 44);
+        jButton1.setBounds(300, 370, 230, 50);
 
         jButton2.setText("View");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +140,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(104, 260, 131, 40);
+        jButton4.setBounds(100, 370, 140, 50);
 
         jButton3.setText("Request Marketing for Property");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +149,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(566, 258, 239, 44);
+        jButton3.setBounds(570, 370, 239, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

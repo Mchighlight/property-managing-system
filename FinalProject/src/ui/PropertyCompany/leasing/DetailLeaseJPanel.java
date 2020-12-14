@@ -134,9 +134,10 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Detail");
         add(jLabel5);
-        jLabel5.setBounds(276, 36, 159, 22);
+        jLabel5.setBounds(380, 30, 159, 22);
 
         RentDetailJButton.setText("View Alll Rents Details");
         RentDetailJButton.setToolTipText("");
@@ -146,75 +147,75 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(RentDetailJButton);
-        RentDetailJButton.setBounds(472, 440, 185, 29);
+        RentDetailJButton.setBounds(620, 260, 180, 70);
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(327, 91, 80, 26);
+        txtStartDate.setBounds(480, 110, 80, 26);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(225, 96, 62, 16);
+        jLabel1.setBounds(370, 120, 62, 16);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(225, 137, 56, 16);
+        jLabel3.setBounds(370, 160, 56, 16);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(327, 132, 80, 26);
+        txtEndDate.setBounds(480, 150, 80, 26);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(225, 181, 72, 16);
+        jLabel4.setBounds(370, 200, 72, 16);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(327, 176, 80, 26);
+        txtRentalDate.setBounds(480, 200, 80, 26);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(225, 225, 47, 16);
+        jLabel6.setBounds(370, 250, 47, 16);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(327, 220, 80, 26);
+        txtBalance.setBounds(480, 250, 80, 26);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(225, 269, 103, 16);
+        jLabel7.setBounds(370, 290, 103, 16);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(327, 264, 80, 26);
+        txtSecurityDeposit.setBounds(480, 290, 80, 26);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(225, 313, 51, 16);
+        jLabel8.setBounds(370, 340, 51, 16);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(327, 308, 80, 26);
+        txtBuilding.setBounds(480, 330, 80, 26);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(327, 352, 80, 26);
+        txtTenant.setBounds(490, 370, 80, 26);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(225, 357, 43, 16);
+        jLabel9.setBounds(370, 380, 43, 16);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(225, 401, 109, 16);
+        jLabel10.setBounds(370, 420, 109, 16);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(327, 396, 96, 26);
+        txtTerminationDate.setBounds(480, 410, 96, 26);
 
         jLabel11.setText("Rent History");
         add(jLabel11);
-        jLabel11.setBounds(225, 445, 78, 16);
+        jLabel11.setBounds(370, 470, 78, 16);
 
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +228,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
         RentsCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(RentsCombobox);
-        RentsCombobox.setBounds(327, 441, 96, 27);
+        RentsCombobox.setBounds(470, 460, 96, 27);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel12.setText("jLabel4");

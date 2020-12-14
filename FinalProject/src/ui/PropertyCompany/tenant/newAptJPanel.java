@@ -144,19 +144,19 @@ public class newAptJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Apply an appointmrnt");
         add(jLabel1);
-        jLabel1.setBounds(130, 19, 256, 30);
+        jLabel1.setBounds(290, 30, 256, 30);
 
         jLabel2.setText("Agent:");
         add(jLabel2);
-        jLabel2.setBounds(99, 140, 41, 16);
+        jLabel2.setBounds(260, 150, 41, 16);
 
         jLabel3.setText("Apartment:");
         add(jLabel3);
-        jLabel3.setBounds(265, 66, 70, 16);
+        jLabel3.setBounds(430, 80, 70, 16);
 
         aptjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(aptjComboBox);
-        aptjComboBox.setBounds(265, 94, 96, 27);
+        aptjComboBox.setBounds(430, 110, 96, 27);
 
         agentjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         agentjComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -165,11 +165,11 @@ public class newAptJPanel extends javax.swing.JPanel {
             }
         });
         add(agentjComboBox);
-        agentjComboBox.setBounds(90, 170, 96, 27);
+        agentjComboBox.setBounds(250, 180, 96, 27);
 
         jLabel4.setText("NetWork");
         add(jLabel4);
-        jLabel4.setBounds(99, 66, 54, 16);
+        jLabel4.setBounds(260, 80, 54, 16);
 
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -178,22 +178,24 @@ public class newAptJPanel extends javax.swing.JPanel {
             }
         });
         add(networkJComboBox);
-        networkJComboBox.setBounds(99, 94, 108, 27);
+        networkJComboBox.setBounds(260, 110, 108, 27);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(27, 25, 97, 29);
+        backJButton.setBounds(140, 250, 50, 50);
 
         jLabel5.setText("Date:");
         add(jLabel5);
-        jLabel5.setBounds(265, 140, 33, 16);
+        jLabel5.setBounds(440, 150, 33, 16);
         add(jTextField1);
-        jTextField1.setBounds(265, 168, 150, 26);
+        jTextField1.setBounds(430, 180, 150, 26);
 
         jButton2.setText("Select");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -202,11 +204,11 @@ public class newAptJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(270, 200, 130, 29);
+        jButton2.setBounds(450, 210, 130, 29);
 
         dateChooserPanel1.setLocale(new java.util.Locale("en", "GB", ""));
         add(dateChooserPanel1);
-        dateChooserPanel1.setBounds(90, 230, 370, 170);
+        dateChooserPanel1.setBounds(250, 240, 370, 170);
 
         jButton1.setText("Send");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -215,16 +217,18 @@ public class newAptJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(140, 420, 271, 59);
+        jButton1.setBounds(300, 430, 271, 59);
 
-        jButton3.setText("...");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-planner-100.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         add(jButton3);
-        jButton3.setBounds(420, 170, 30, 20);
+        jButton3.setBounds(580, 140, 100, 90);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel6.setText("jLabel4");

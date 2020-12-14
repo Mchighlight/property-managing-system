@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Business.Enterprise.Enterprise;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
@@ -16,7 +17,7 @@ import mongoDB.jdbcLauncher;
  *
  * @author MyPC1
  */
-public class EcoSystem extends Organization{
+public class EcoSystem extends Organization {
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
@@ -62,13 +63,17 @@ public class EcoSystem extends Organization{
     public void setNetworkList(ArrayList<Network> networkList) {
         this.networkList = networkList;
     }
-    
-    public boolean checkIfUserIsUnique(String userName){
-        if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
-            return false;
-        }
+    @Override
+    public boolean CheckUsernameIsUnique(String userName){
+//        if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
+//            return false;
+//        }
         for(Network network:networkList){
-            
+            for(Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()){
+                if (!ent.CheckUsernameIsUnique(userName)) {
+                    return false;
+                }
+            }
         }
         return true;
     }

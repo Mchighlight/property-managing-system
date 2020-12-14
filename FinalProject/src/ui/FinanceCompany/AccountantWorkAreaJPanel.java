@@ -58,9 +58,10 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-marketing-100.png"))); // NOI18N
         jLabel1.setText("Accountant Work Area");
         add(jLabel1);
-        jLabel1.setBounds(292, 63, 261, 30);
+        jLabel1.setBounds(240, 30, 450, 110);
 
         btnAptReport.setText("Apartment Report");
         btnAptReport.addActionListener(new java.awt.event.ActionListener() {

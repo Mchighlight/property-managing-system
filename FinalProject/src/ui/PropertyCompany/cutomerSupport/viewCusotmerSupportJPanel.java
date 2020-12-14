@@ -74,12 +74,12 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextArea1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(109, 75, 430, 276);
+        jScrollPane1.setBounds(80, 46, 600, 330);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Customer support communication");
         add(jLabel1);
-        jLabel1.setBounds(177, 25, 297, 29);
+        jLabel1.setBounds(280, 10, 297, 29);
 
         jButton1.setText("Complete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(187, 369, 104, 29);
+        jButton1.setBounds(710, 150, 110, 60);
 
         jButton3.setText("Send message");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +97,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(154, 410, 133, 29);
+        jButton3.setBounds(253, 419, 140, 50);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
             }
         });
         add(jTextField1);
-        jTextField1.setBounds(293, 410, 210, 26);
+        jTextField1.setBounds(400, 416, 220, 50);
 
         jButton4.setText("Cancel");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(382, 369, 86, 29);
+        jButton4.setBounds(710, 220, 110, 60);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class viewCusotmerSupportJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton);
-        backJButton.setBounds(54, 28, 97, 29);
+        backJButton.setBounds(70, 10, 97, 29);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

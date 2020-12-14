@@ -102,6 +102,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        addJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         addJButton.setText("Create Landlord");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +111,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(addJButton);
-        addJButton.setBounds(347, 454, 143, 29);
+        addJButton.setBounds(276, 370, 210, 50);
 
         organizationCombox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationCombox.addActionListener(new java.awt.event.ActionListener() {
@@ -118,20 +120,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationCombox);
-        organizationCombox.setBounds(380, 19, 127, 27);
+        organizationCombox.setBounds(350, 10, 127, 27);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Organization");
         add(jLabel1);
-        jLabel1.setBounds(266, 23, 81, 16);
+        jLabel1.setBounds(230, 10, 120, 22);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(211, 454, 97, 29);
+        backJButton.setBounds(130, 260, 60, 50);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,7 +170,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(137, 72, 480, 92);
+        jScrollPane1.setBounds(10, 52, 890, 180);
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,11 +178,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(txtemail);
-        txtemail.setBounds(345, 318, 126, 26);
+        txtemail.setBounds(620, 240, 126, 26);
 
         jLabel4.setText("email");
         add(jLabel4);
-        jLabel4.setBounds(251, 323, 34, 16);
+        jLabel4.setBounds(530, 250, 34, 16);
 
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +190,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(txtlastname);
-        txtlastname.setBounds(345, 258, 126, 26);
+        txtlastname.setBounds(330, 320, 126, 26);
 
         txtSSN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,15 +198,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(txtSSN);
-        txtSSN.setBounds(345, 367, 126, 26);
+        txtSSN.setBounds(620, 290, 126, 26);
 
         jLabel5.setText("Full name");
         add(jLabel5);
-        jLabel5.setBounds(251, 268, 61, 16);
+        jLabel5.setBounds(240, 320, 61, 16);
 
         jLabel6.setText("SSN");
         add(jLabel6);
-        jLabel6.setBounds(251, 372, 24, 16);
+        jLabel6.setBounds(540, 290, 24, 16);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,18 +214,20 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(txtUsername);
-        txtUsername.setBounds(345, 192, 126, 26);
+        txtUsername.setBounds(330, 250, 126, 26);
         add(txtpassword);
-        txtpassword.setBounds(345, 410, 126, 26);
+        txtpassword.setBounds(620, 330, 126, 26);
 
         jLabel7.setText("Username");
         add(jLabel7);
-        jLabel7.setBounds(251, 197, 62, 16);
+        jLabel7.setBounds(240, 250, 62, 16);
 
         jLabel8.setText("password");
         add(jLabel8);
-        jLabel8.setBounds(251, 415, 60, 16);
+        jLabel8.setBounds(520, 340, 60, 16);
 
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-512.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,12 +235,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(653, 72, 84, 29);
+        btnDelete.setBounds(510, 370, 150, 50);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel9.setText("jLabel4");
         add(jLabel9);
-        jLabel9.setBounds(5, -4, 930, 710);
+        jLabel9.setBounds(0, 0, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -245,6 +252,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String SSN = txtSSN.getText();
         String password = txtpassword.getText();
         String Username = txtUsername.getText();
+        
         if (password.equals("") || Username.equals("") || email.equals("") || SSN.equals("") || lastname.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
         } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(Username)) {
