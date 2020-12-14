@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/InvestmentCompany/ManageProporityJPanel.java</file>
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/inverstmentAdminRole/ManageOrganizationJPanel.java</file>
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/TenantWorkAreaJPanel.java</file>
@@ -58,6 +59,7 @@
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/ViewLeaseJPanel.java</file>
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/repair/ProcessJPanel.java</file>
             <file>file:/Users/junyaoli/Documents/CYN_LJY_HHZ/FinalProject/src/ui/PropertyCompany/tenant/UpdateLeaseJPanel.java</file>
+
         </group>
     </open-files>
 </project-private>
