@@ -112,8 +112,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
         backJButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,10 +137,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 789, 230));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(50, 70, 789, 230);
 
         jLabel1.setText("Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(170, 320, 53, 16);
 
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -147,14 +150,18 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 180, -1));
+        add(networkJComboBox);
+        networkJComboBox.setBounds(280, 320, 180, 27);
 
         jLabel2.setText("Username");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
-        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 153, -1));
+        add(jLabel2);
+        jLabel2.setBounds(480, 320, 62, 16);
+        add(usernameJTextField);
+        usernameJTextField.setBounds(590, 320, 153, 26);
 
         jLabel3.setText("Enterprise");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(170, 360, 63, 16);
 
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +169,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 enterpriseJComboBoxActionPerformed(evt);
             }
         });
-        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 180, -1));
+        add(enterpriseJComboBox);
+        enterpriseJComboBox.setBounds(280, 350, 180, 27);
 
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -170,15 +178,20 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 136, 55));
+        add(submitJButton);
+        submitJButton.setBounds(280, 450, 136, 55);
 
         jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, -1, -1));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 153, -1));
+        add(jLabel4);
+        jLabel4.setBounds(480, 360, 59, 16);
+        add(nameJTextField);
+        nameJTextField.setBounds(590, 390, 153, 26);
 
         jLabel5.setText("Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
-        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 153, -1));
+        add(jLabel5);
+        jLabel5.setBounds(480, 390, 36, 16);
+        add(passwordJPasswordField);
+        passwordJPasswordField.setBounds(590, 350, 153, 26);
 
         deleteJButton.setText("Delete");
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,10 +199,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 136, 55));
+        add(deleteJButton);
+        deleteJButton.setBounds(590, 450, 136, 55);
 
         jLabel6.setText("Role");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
+        add(jLabel6);
+        jLabel6.setBounds(170, 390, 27, 16);
 
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roleJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +212,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 roleJComboBoxActionPerformed(evt);
             }
         });
-        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 180, -1));
+        add(roleJComboBox);
+        roleJComboBox.setBounds(280, 390, 180, 27);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
@@ -209,7 +225,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 backJButton1ActionPerformed(evt);
             }
         });
-        add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 57, -1));
+        add(backJButton1);
+        backJButton1.setBounds(50, 10, 57, 62);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel7.setText("jLabel4");
+        add(jLabel7);
+        jLabel7.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
@@ -299,6 +321,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

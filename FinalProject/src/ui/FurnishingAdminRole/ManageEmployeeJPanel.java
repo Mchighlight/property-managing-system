@@ -118,6 +118,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         backJButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -240,7 +241,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/furniture-min.jpg"))); // NOI18N
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 1200, 700);
+        jLabel2.setBounds(0, 0, 0, 700);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel8.setText("jLabel4");
+        add(jLabel8);
+        jLabel8.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -372,6 +378,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;

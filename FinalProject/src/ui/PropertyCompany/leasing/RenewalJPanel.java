@@ -112,6 +112,9 @@ public class RenewalJPanel extends javax.swing.JPanel {
         btnRequestRenewal = new javax.swing.JButton();
         btnRenewalReview = new javax.swing.JButton();
         btnViewDetail = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,7 +144,12 @@ public class RenewalJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workRequestJTable);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(129, 112, 538, 90);
+
         jLabel5.setText("Lease Collection");
+        add(jLabel5);
+        jLabel5.setBounds(331, 58, 159, 22);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +157,8 @@ public class RenewalJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton);
+        backJButton.setBounds(137, 56, 97, 29);
 
         btnRequestRenewal.setText("Request Renewal");
         btnRequestRenewal.setToolTipText("");
@@ -157,6 +167,8 @@ public class RenewalJPanel extends javax.swing.JPanel {
                 btnRequestRenewalActionPerformed(evt);
             }
         });
+        add(btnRequestRenewal);
+        btnRequestRenewal.setBounds(167, 242, 144, 43);
 
         btnRenewalReview.setText("Renewal Review");
         btnRenewalReview.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +176,8 @@ public class RenewalJPanel extends javax.swing.JPanel {
                 btnRenewalReviewActionPerformed(evt);
             }
         });
+        add(btnRenewalReview);
+        btnRenewalReview.setBounds(421, 243, 144, 41);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -171,52 +185,13 @@ public class RenewalJPanel extends javax.swing.JPanel {
                 btnViewDetailActionPerformed(evt);
             }
         });
+        add(btnViewDetail);
+        btnViewDetail.setBounds(693, 145, 114, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(backJButton)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(btnRequestRenewal, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)
-                                .addComponent(btnRenewalReview, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnViewDetail)))))
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnViewDetail)))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRequestRenewal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRenewalReview, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(321, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
      public  Date getNextMonth(Date date){
@@ -350,6 +325,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRenewalReview;
     private javax.swing.JButton btnRequestRenewal;
     private javax.swing.JButton btnViewDetail;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workRequestJTable;

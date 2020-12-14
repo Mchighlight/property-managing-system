@@ -82,6 +82,9 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         btnDecline = new javax.swing.JButton();
         btnLeaseUpdate = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,7 +114,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workRequestJTable);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(129, 112, 538, 90);
+
         jLabel5.setText("Lease Collection");
+        add(jLabel5);
+        jLabel5.setBounds(331, 58, 159, 22);
 
         btnDetail.setText("View Detail");
         btnDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +127,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnDetailActionPerformed(evt);
             }
         });
+        add(btnDetail);
+        btnDetail.setBounds(172, 229, 117, 49);
 
         btnPayLease.setText("Pay Lease");
         btnPayLease.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +136,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnPayLeaseActionPerformed(evt);
             }
         });
+        add(btnPayLease);
+        btnPayLease.setBounds(516, 229, 118, 49);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +145,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton);
+        backJButton.setBounds(137, 56, 97, 29);
 
         btnDecline.setText("Decline");
         btnDecline.setToolTipText("");
@@ -141,6 +155,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnDeclineActionPerformed(evt);
             }
         });
+        add(btnDecline);
+        btnDecline.setBounds(355, 229, 118, 49);
 
         btnLeaseUpdate.setText("Lease Updated");
         btnLeaseUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -148,54 +164,13 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnLeaseUpdateActionPerformed(evt);
             }
         });
+        add(btnLeaseUpdate);
+        btnLeaseUpdate.setBounds(172, 316, 117, 49);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(backJButton)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLeaseUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(66, 66, 66)
-                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnPayLease, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(303, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnPayLease, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)))
-                .addComponent(btnLeaseUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(241, 241, 241))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -288,6 +263,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDetail;
     private javax.swing.JButton btnLeaseUpdate;
     private javax.swing.JButton btnPayLease;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workRequestJTable;

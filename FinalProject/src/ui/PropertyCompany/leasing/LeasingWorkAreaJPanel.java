@@ -49,9 +49,14 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
         btnLeaseCollection = new javax.swing.JButton();
         btnRenewal = new javax.swing.JButton();
         btnTermination1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Lease Office");
+        add(jLabel1);
+        jLabel1.setBounds(241, 58, 141, 30);
 
         btnLeaseCollection.setText("Lease Collection");
         btnLeaseCollection.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +64,8 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
                 btnLeaseCollectionActionPerformed(evt);
             }
         });
+        add(btnLeaseCollection);
+        btnLeaseCollection.setBounds(218, 129, 184, 51);
 
         btnRenewal.setText("Renewal");
         btnRenewal.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +73,8 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
                 btnRenewalActionPerformed(evt);
             }
         });
+        add(btnRenewal);
+        btnRenewal.setBounds(218, 192, 184, 52);
 
         btnTermination1.setText("Termination");
         btnTermination1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,36 +82,13 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
                 btnTermination1ActionPerformed(evt);
             }
         });
+        add(btnTermination1);
+        btnTermination1.setBounds(218, 262, 184, 47);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnLeaseCollection, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                        .addComponent(btnRenewal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(20, 20, 20)))
-                .addContainerGap(324, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(btnLeaseCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRenewal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTermination1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLeaseCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseCollectionActionPerformed
@@ -131,5 +117,6 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRenewal;
     private javax.swing.JButton btnTermination1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -143,6 +143,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -285,6 +286,11 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dec11.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 900, 700);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel5.setText("jLabel4");
+        add(jLabel5);
+        jLabel5.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btndenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndenyActionPerformed
@@ -418,6 +424,7 @@ public class DecoratorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtfee;
     private javax.swing.JLabel valueLabel;
