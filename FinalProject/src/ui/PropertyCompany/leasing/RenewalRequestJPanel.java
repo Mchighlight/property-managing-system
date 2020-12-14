@@ -6,6 +6,8 @@
 package ui.PropertyCompany.leasing;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
@@ -31,14 +33,20 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    LeasingOrganization leaseOrganization;
+    Enterprise enterprise;
     SignLeaseRequest slr;
    
-    public RenewalRequestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr) {
+    public RenewalRequestJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business, 
+            SignLeaseRequest slr
+    ) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
-         this.slr = slr ;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.ecosystem=business;
+         
          populateTextField();
     }
 
@@ -214,9 +222,9 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSubmitRenwalRequestActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
 

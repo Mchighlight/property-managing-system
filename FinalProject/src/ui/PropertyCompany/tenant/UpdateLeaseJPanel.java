@@ -125,67 +125,67 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(470, 100, 80, 26);
+        txtStartDate.setBounds(470, 100, 80, 20);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(360, 100, 62, 16);
+        jLabel1.setBounds(360, 100, 50, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(360, 140, 56, 16);
+        jLabel3.setBounds(360, 140, 44, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(470, 140, 80, 26);
+        txtEndDate.setBounds(470, 140, 80, 20);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(360, 190, 72, 16);
+        jLabel4.setBounds(360, 190, 57, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(470, 180, 80, 26);
+        txtRentalDate.setBounds(470, 180, 80, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(360, 230, 47, 16);
+        jLabel6.setBounds(360, 230, 37, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(470, 230, 80, 26);
+        txtBalance.setBounds(470, 230, 80, 20);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(360, 270, 103, 16);
+        jLabel7.setBounds(360, 270, 78, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(470, 270, 80, 26);
+        txtSecurityDeposit.setBounds(470, 270, 80, 20);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(360, 320, 51, 16);
+        jLabel8.setBounds(360, 310, 36, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(470, 310, 80, 26);
+        txtBuilding.setBounds(470, 310, 80, 20);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(470, 360, 80, 26);
+        txtTenant.setBounds(470, 350, 80, 20);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(360, 360, 43, 16);
+        jLabel9.setBounds(360, 350, 34, 14);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(360, 410, 109, 16);
+        jLabel10.setBounds(360, 390, 82, 14);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(470, 400, 80, 26);
+        txtTerminationDate.setBounds(470, 390, 80, 20);
 
         backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setBorderPainted(false);
@@ -253,14 +253,12 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
         termination.setLeavingDate(leaveDate);
         this.slr.getLease().setTermination(termination);
         JOptionPane.showMessageDialog(null, "Terminate the Lease, we have give back your security fee " +  String.valueOf(this.slr.getLease().getSecurityDeposit() + " dollars"), "Info", JOptionPane.INFORMATION_MESSAGE);
-        return ;
     }//GEN-LAST:event_btnTerminationActionPerformed
 
     private void btnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenewalActionPerformed
 
            this.slr.setStatus("Renewal Reviewing");
            JOptionPane.showMessageDialog(null, "your Renewal has been under reviewing ", "Info", JOptionPane.INFORMATION_MESSAGE);
-            return ;
     }//GEN-LAST:event_btnRenewalActionPerformed
 
 

@@ -95,20 +95,20 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
     private void btnLeaseCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseCollectionActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new ViewLeaseJPanel( userProcessContainer,  ua,  eco) );
+        userProcessContainer.add(new ViewLeaseJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco) );
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnLeaseCollectionActionPerformed
 
     private void btnRenewalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenewalActionPerformed
         // TODO add your handling code here:
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  eco));
+        userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRenewalActionPerformed
 
     private void btnTermination1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTermination1ActionPerformed
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new TerminationJPanel(userProcessContainer,  ua,  eco));
+        userProcessContainer.add(new TerminationJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnTermination1ActionPerformed
 

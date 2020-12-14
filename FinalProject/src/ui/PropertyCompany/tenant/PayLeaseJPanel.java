@@ -122,55 +122,55 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(450, 90, 80, 26);
+        txtStartDate.setBounds(450, 90, 90, 20);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(330, 90, 62, 16);
+        jLabel1.setBounds(330, 90, 50, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(330, 130, 56, 16);
+        jLabel3.setBounds(330, 130, 44, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(450, 130, 80, 26);
+        txtEndDate.setBounds(450, 130, 90, 20);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(330, 180, 72, 16);
+        jLabel4.setBounds(330, 180, 57, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(450, 170, 80, 26);
+        txtRentalDate.setBounds(450, 170, 90, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(330, 450, 47, 16);
+        jLabel6.setBounds(330, 430, 37, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(460, 440, 93, 26);
+        txtBalance.setBounds(450, 420, 93, 20);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(330, 280, 103, 16);
+        jLabel7.setBounds(330, 260, 78, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(460, 270, 80, 26);
+        txtSecurityDeposit.setBounds(450, 260, 90, 20);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(330, 220, 51, 16);
+        jLabel8.setBounds(330, 220, 36, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(450, 220, 80, 26);
+        txtBuilding.setBounds(450, 220, 90, 20);
 
         jLabel11.setText("Pay Method");
         add(jLabel11);
-        jLabel11.setBounds(330, 410, 72, 16);
+        jLabel11.setBounds(330, 390, 57, 14);
 
         btnSubmitPayment.setText("Submit Payment");
         btnSubmitPayment.setToolTipText("");
@@ -180,7 +180,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmitPayment);
-        btnSubmitPayment.setBounds(650, 290, 130, 80);
+        btnSubmitPayment.setBounds(580, 250, 130, 80);
 
         RentsCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Method", "Check", "Credit Card", "Cash" }));
         RentsCombobox.addActionListener(new java.awt.event.ActionListener() {
@@ -189,11 +189,11 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(RentsCombobox);
-        RentsCombobox.setBounds(450, 400, 144, 27);
+        RentsCombobox.setBounds(450, 380, 93, 20);
 
         jLabel12.setText("Rent Price");
         add(jLabel12);
-        jLabel12.setBounds(330, 330, 62, 16);
+        jLabel12.setBounds(330, 300, 49, 14);
 
         txtRentPrice.setEnabled(false);
         txtRentPrice.addActionListener(new java.awt.event.ActionListener() {
@@ -202,11 +202,11 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(txtRentPrice);
-        txtRentPrice.setBounds(460, 320, 80, 26);
+        txtRentPrice.setBounds(450, 300, 90, 20);
 
         jLabel13.setText("Minimum Balance");
         add(jLabel13);
-        jLabel13.setBounds(330, 360, 110, 16);
+        jLabel13.setBounds(330, 350, 80, 14);
 
         txtMinimumBalance.setToolTipText("");
         txtMinimumBalance.setEnabled(false);
@@ -216,7 +216,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(txtMinimumBalance);
-        txtMinimumBalance.setBounds(460, 360, 80, 26);
+        txtMinimumBalance.setBounds(450, 340, 90, 20);
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton.setBorderPainted(false);
@@ -288,8 +288,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 this.slr.setStatus("Payment Reviewing");
                 this.slr.getLease().setBalance(balance);
                 
-                JOptionPane.showMessageDialog(null, "You Select Method" +   payMethod  +
-                        "  Total Balance deposit " + String.valueOf(balance) + " dollars ", "Info", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Your Payment Is Under Reviewing, Please wait for our leasing office", "Info", JOptionPane.INFORMATION_MESSAGE);
             } // if
             else{
                 JOptionPane.showMessageDialog(null, "Please Pay more minimum balance", "Info", JOptionPane.INFORMATION_MESSAGE);

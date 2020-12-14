@@ -233,12 +233,18 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         }
         int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
         SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
-        selectedSlr.setStatus("Decline");
-        
-        
-
-        JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
-        populateRequestTable();
+        String status = workRequestJTable.getValueAt(row, 4).toString() ;
+        if( status.equals("Decline") ){
+             JOptionPane.showMessageDialog(null, "Leasing had been Declined!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // if
+        else if ( status.equals("Contract preparation") ){
+             selectedSlr.setStatus("Decline");
+            JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            populateRequestTable();
+        } // else if
+        else{
+             JOptionPane.showMessageDialog(null, "You had sign the contract, If you want to terminate Lease please contact our lease office", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else 
     }//GEN-LAST:event_btnDeclineActionPerformed
 
     private void btnLeaseUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseUpdateActionPerformed

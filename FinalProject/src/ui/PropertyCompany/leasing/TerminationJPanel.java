@@ -7,6 +7,8 @@ package ui.PropertyCompany.leasing;
 
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
@@ -35,12 +37,17 @@ public class TerminationJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    LeasingOrganization leaseOrganization;
+    Enterprise enterprise;
    
-    public TerminationJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public TerminationJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.ecosystem=business;
+         
          populateRequestTable();
     }
 
@@ -173,9 +180,9 @@ public class TerminationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
      public static Date firstDayOfNextMonth() {
@@ -224,7 +231,7 @@ public class TerminationJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr) );
             layout.next(userProcessContainer);
         }//
         else{

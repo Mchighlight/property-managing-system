@@ -7,6 +7,8 @@ package ui.PropertyCompany.leasing;
 
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
@@ -36,12 +38,17 @@ public class RenewalJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    LeasingOrganization leaseOrganization;
+    Enterprise enterprise;
    
-    public RenewalJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public RenewalJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.ecosystem=business;
+         
          populateRequestTable();
     }
 
@@ -204,9 +211,9 @@ public class RenewalJPanel extends javax.swing.JPanel {
      } //    
     
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
      public static Date firstDayOfNextMonth() {
@@ -266,7 +273,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( status.equals("Payment Completed") ||  status.equals("Renewal Request") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new RenewalRequestJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new RenewalRequestJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr) );
             layout.next(userProcessContainer);
         }//
         else{
@@ -312,7 +319,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr) );
             layout.next(userProcessContainer);
         }//
         else{

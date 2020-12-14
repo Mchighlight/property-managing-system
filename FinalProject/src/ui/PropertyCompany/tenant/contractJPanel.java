@@ -155,21 +155,12 @@ public class contractJPanel extends javax.swing.JPanel {
             return;
         }
         Propority apt = (Propority) jTable1.getValueAt(row, 2) ;
-        UserAccount agent = (UserAccount)jTable1.getValueAt(row, 1);
-        
-        /* Choose Apt
-        Propority apt = new Propority() ;
-        apt.setAddress("123");
-        apt.setAptNo("123");
-        apt.setCity("Boston");
-        apt.setMonthlyrent(1400);
-        apt.setNickname("Lightview1220");
-        apt.setProporityNum(1500);
-        apt.setSellingprice(800000);
-        apt.setSquareFeet(760);
-        apt.setState("MA");
-        apt.setZipCode("02120");
-        */
+        UserAccount agent = (UserAccount)jTable1.getValueAt(row, 1);      
+        String status = jTable1.getValueAt(row, 4).toString() ;
+        if( ! status.equals("Intentional") ){
+             JOptionPane.showMessageDialog(null, "This is not valid intentional contract call !", "Info", JOptionPane.INFORMATION_MESSAGE);
+             return ;
+        } // if
         
         // Choose Leasing !FIX: need to have EnterpriseName & NetworkName
         RealEstateEnterprise ent =  
@@ -212,6 +203,14 @@ public class contractJPanel extends javax.swing.JPanel {
             
             signLeaseRequest.toString();
             JOptionPane.showMessageDialog(null, "Leasing peopole will prepare your lease, Please wait for further instruction on payment");
+            
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow < 0){
+                return;
+            }
+            VisitRequest request = (VisitRequest)jTable1.getValueAt(selectedRow, 0);
+            request.setStatus("Contract in Progress");
+            populateTable();
             
         } else {
             JOptionPane.showMessageDialog(null, "no Leasing office");
