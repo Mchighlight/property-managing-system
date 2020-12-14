@@ -115,40 +115,77 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
         backJButton1 = new javax.swing.JButton();
         btnTermination = new javax.swing.JButton();
         btnRenewal = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jLabel5.setText("Renewal Detail");
+        add(jLabel5);
+        jLabel5.setBounds(276, 36, 159, 22);
 
         txtStartDate.setEnabled(false);
+        add(txtStartDate);
+        txtStartDate.setBounds(350, 91, 80, 26);
 
         jLabel1.setText("Start Date");
+        add(jLabel1);
+        jLabel1.setBounds(240, 96, 62, 16);
 
         jLabel3.setText("End Date");
+        add(jLabel3);
+        jLabel3.setBounds(240, 137, 56, 16);
 
         txtEndDate.setEnabled(false);
+        add(txtEndDate);
+        txtEndDate.setBounds(350, 132, 80, 26);
 
         jLabel4.setText("Rental Date");
+        add(jLabel4);
+        jLabel4.setBounds(240, 181, 72, 16);
 
         txtRentalDate.setEnabled(false);
+        add(txtRentalDate);
+        txtRentalDate.setBounds(350, 176, 80, 26);
 
         jLabel6.setText("Balance");
+        add(jLabel6);
+        jLabel6.setBounds(240, 225, 47, 16);
 
         txtBalance.setEnabled(false);
+        add(txtBalance);
+        txtBalance.setBounds(350, 220, 80, 26);
 
         jLabel7.setText("Security Deposit");
+        add(jLabel7);
+        jLabel7.setBounds(240, 269, 103, 16);
 
         txtSecurityDeposit.setEnabled(false);
+        add(txtSecurityDeposit);
+        txtSecurityDeposit.setBounds(350, 264, 80, 26);
 
         jLabel8.setText("Building");
+        add(jLabel8);
+        jLabel8.setBounds(240, 313, 51, 16);
 
         txtBuilding.setEnabled(false);
+        add(txtBuilding);
+        txtBuilding.setBounds(350, 308, 80, 26);
 
         txtTenant.setEnabled(false);
+        add(txtTenant);
+        txtTenant.setBounds(350, 352, 80, 26);
 
         jLabel9.setText("Tenant");
+        add(jLabel9);
+        jLabel9.setBounds(240, 357, 43, 16);
 
         jLabel10.setText("Termination Date");
+        add(jLabel10);
+        jLabel10.setBounds(240, 401, 109, 16);
 
         txtTerminationDate.setEnabled(false);
+        add(txtTerminationDate);
+        txtTerminationDate.setBounds(350, 396, 80, 26);
 
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +193,8 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
                 backJButton1ActionPerformed(evt);
             }
         });
+        add(backJButton1);
+        backJButton1.setBounds(139, 46, 97, 29);
 
         btnTermination.setText("Terminate Lease");
         btnTermination.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +202,8 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
                 btnTerminationActionPerformed(evt);
             }
         });
+        add(btnTermination);
+        btnTermination.setBounds(207, 440, 146, 29);
 
         btnRenewal.setText("Renewal Lease");
         btnRenewal.addActionListener(new java.awt.event.ActionListener() {
@@ -170,98 +211,13 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
                 btnRenewalActionPerformed(evt);
             }
         });
+        add(btnRenewal);
+        btnRenewal.setBounds(382, 440, 134, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTenant, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTerminationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(btnTermination)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnRenewal)))
-                .addContainerGap(521, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(139, 139, 139)
-                    .addComponent(backJButton1)
-                    .addContainerGap(761, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtTenant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtTerminationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRenewal)
-                    .addComponent(btnTermination))
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(46, 46, 46)
-                    .addComponent(backJButton1)
-                    .addContainerGap(531, Short.MAX_VALUE)))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel11.setText("jLabel4");
+        add(jLabel11);
+        jLabel11.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
@@ -312,6 +268,7 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTermination;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

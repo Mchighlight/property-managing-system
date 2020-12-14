@@ -53,9 +53,14 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnAptReport = new javax.swing.JButton();
         btnAgentReport = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Accountant Work Area");
+        add(jLabel1);
+        jLabel1.setBounds(292, 63, 261, 30);
 
         btnAptReport.setText("Apartment Report");
         btnAptReport.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +68,8 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
                 btnAptReportActionPerformed(evt);
             }
         });
+        add(btnAptReport);
+        btnAptReport.setBounds(324, 169, 184, 51);
 
         btnAgentReport.setText("Agent Report");
         btnAgentReport.addActionListener(new java.awt.event.ActionListener() {
@@ -70,34 +77,13 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
                 btnAgentReportActionPerformed(evt);
             }
         });
+        add(btnAgentReport);
+        btnAgentReport.setBounds(324, 277, 184, 52);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(324, 324, 324)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAptReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgentReport, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(jLabel1)))
-                .addContainerGap(347, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addGap(76, 76, 76)
-                .addComponent(btnAptReport, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(btnAgentReport, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(371, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAptReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAptReportActionPerformed
@@ -119,5 +105,6 @@ public class AccountantWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAgentReport;
     private javax.swing.JButton btnAptReport;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

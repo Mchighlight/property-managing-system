@@ -93,6 +93,9 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         btnPaymentRequest = new javax.swing.JButton();
         btnViewDetail = new javax.swing.JButton();
         btnPaymentReview = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,7 +125,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workRequestJTable);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(129, 112, 538, 90);
+
         jLabel5.setText("Lease Collection");
+        add(jLabel5);
+        jLabel5.setBounds(331, 58, 159, 22);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +138,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton);
+        backJButton.setBounds(137, 56, 97, 29);
 
         btnDecline.setText("Decline");
         btnDecline.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +147,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnDeclineActionPerformed(evt);
             }
         });
+        add(btnDecline);
+        btnDecline.setBounds(129, 242, 117, 43);
 
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +156,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnAcceptActionPerformed(evt);
             }
         });
+        add(btnAccept);
+        btnAccept.setBounds(325, 243, 117, 41);
 
         btnPaymentRequest.setText("Payment Request");
         btnPaymentRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +165,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnPaymentRequestActionPerformed(evt);
             }
         });
+        add(btnPaymentRequest);
+        btnPaymentRequest.setBounds(518, 242, 117, 43);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +174,8 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnViewDetailActionPerformed(evt);
             }
         });
+        add(btnViewDetail);
+        btnViewDetail.setBounds(693, 145, 114, 29);
 
         btnPaymentReview.setText("Payment Review");
         btnPaymentReview.addActionListener(new java.awt.event.ActionListener() {
@@ -165,57 +183,13 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
                 btnPaymentReviewActionPerformed(evt);
             }
         });
+        add(btnPaymentReview);
+        btnPaymentReview.setBounds(129, 327, 117, 41);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(backJButton)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(79, 79, 79)
-                                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76)
-                                .addComponent(btnPaymentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnViewDetail))
-                            .addComponent(btnPaymentReview, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnViewDetail)))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPaymentRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(btnPaymentReview, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -375,6 +349,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPaymentRequest;
     private javax.swing.JButton btnPaymentReview;
     private javax.swing.JButton btnViewDetail;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workRequestJTable;

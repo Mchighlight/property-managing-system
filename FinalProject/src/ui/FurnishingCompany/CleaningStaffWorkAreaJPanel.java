@@ -86,6 +86,7 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
         workRequestJTable1 = new javax.swing.JTable();
         btnaccept = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -142,6 +143,11 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dec11.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(-10, -90, 1000, 810);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnacceptActionPerformed
@@ -170,6 +176,7 @@ public class CleaningStaffWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnaccept;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable1;

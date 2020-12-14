@@ -83,9 +83,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeJComboBox = new javax.swing.JComboBox();
         submitJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         enterpriseJTable.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -109,19 +110,23 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 539, 221));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(170, 80, 539, 221);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(200, 320, 57, 17);
 
         networkJComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 136, -1));
+        add(networkJComboBox);
+        networkJComboBox.setBounds(360, 320, 136, 27);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
+        add(jLabel2);
+        jLabel2.setBounds(200, 440, 39, 17);
 
         nameJTextField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         nameJTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -129,15 +134,18 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 nameJTextFieldActionPerformed(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 136, -1));
+        add(nameJTextField);
+        nameJTextField.setBounds(360, 430, 136, 27);
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Enterprise Type");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(200, 380, 107, 17);
 
         enterpriseTypeJComboBox.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 136, -1));
+        add(enterpriseTypeJComboBox);
+        enterpriseTypeJComboBox.setBounds(360, 370, 136, 27);
 
         submitJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         submitJButton.setText("Submit");
@@ -146,7 +154,8 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 97, 49));
+        add(submitJButton);
+        submitJButton.setBounds(610, 360, 97, 49);
 
         backJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
@@ -159,7 +168,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 57, -1));
+        add(backJButton);
+        backJButton.setBounds(170, 10, 57, 62);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -202,6 +217,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

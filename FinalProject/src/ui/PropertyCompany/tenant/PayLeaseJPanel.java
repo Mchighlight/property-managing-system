@@ -111,34 +111,65 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         txtMinimumBalance = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jLabel5.setText("Lease Detail");
+        add(jLabel5);
+        jLabel5.setBounds(276, 36, 159, 22);
 
         txtStartDate.setEnabled(false);
+        add(txtStartDate);
+        txtStartDate.setBounds(338, 91, 80, 26);
 
         jLabel1.setText("Start Date");
+        add(jLabel1);
+        jLabel1.setBounds(225, 96, 62, 16);
 
         jLabel3.setText("End Date");
+        add(jLabel3);
+        jLabel3.setBounds(225, 137, 56, 16);
 
         txtEndDate.setEnabled(false);
+        add(txtEndDate);
+        txtEndDate.setBounds(338, 132, 80, 26);
 
         jLabel4.setText("Rental Date");
+        add(jLabel4);
+        jLabel4.setBounds(221, 181, 72, 16);
 
         txtRentalDate.setEnabled(false);
+        add(txtRentalDate);
+        txtRentalDate.setBounds(338, 176, 80, 26);
 
         jLabel6.setText("Balance");
+        add(jLabel6);
+        jLabel6.setBounds(221, 485, 47, 16);
 
         txtBalance.setEnabled(false);
+        add(txtBalance);
+        txtBalance.setBounds(325, 480, 93, 26);
 
         jLabel7.setText("Security Deposit");
+        add(jLabel7);
+        jLabel7.setBounds(222, 279, 103, 16);
 
         txtSecurityDeposit.setEnabled(false);
+        add(txtSecurityDeposit);
+        txtSecurityDeposit.setBounds(349, 274, 80, 26);
 
         jLabel8.setText("Building");
+        add(jLabel8);
+        jLabel8.setBounds(221, 225, 51, 16);
 
         txtBuilding.setEnabled(false);
+        add(txtBuilding);
+        txtBuilding.setBounds(338, 220, 80, 26);
 
         jLabel11.setText("Pay Method");
+        add(jLabel11);
+        jLabel11.setBounds(225, 428, 72, 16);
 
         btnSubmitPayment.setText("Submit Payment");
         btnSubmitPayment.setToolTipText("");
@@ -147,6 +178,8 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 btnSubmitPaymentActionPerformed(evt);
             }
         });
+        add(btnSubmitPayment);
+        btnSubmitPayment.setBounds(247, 531, 145, 29);
 
         RentsCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Method", "Check", "Credit Card", "Cash" }));
         RentsCombobox.addActionListener(new java.awt.event.ActionListener() {
@@ -154,8 +187,12 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 RentsComboboxActionPerformed(evt);
             }
         });
+        add(RentsCombobox);
+        RentsCombobox.setBounds(323, 428, 144, 27);
 
         jLabel12.setText("Rent Price");
+        add(jLabel12);
+        jLabel12.setBounds(238, 330, 62, 16);
 
         txtRentPrice.setEnabled(false);
         txtRentPrice.addActionListener(new java.awt.event.ActionListener() {
@@ -163,8 +200,12 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 txtRentPriceActionPerformed(evt);
             }
         });
+        add(txtRentPrice);
+        txtRentPrice.setBounds(349, 325, 80, 26);
 
         jLabel13.setText("Minimum Balance");
+        add(jLabel13);
+        jLabel13.setBounds(221, 365, 110, 16);
 
         txtMinimumBalance.setToolTipText("");
         txtMinimumBalance.setEnabled(false);
@@ -173,6 +214,8 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 txtMinimumBalanceActionPerformed(evt);
             }
         });
+        add(txtMinimumBalance);
+        txtMinimumBalance.setBounds(349, 360, 80, 26);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -180,125 +223,13 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton);
+        backJButton.setBounds(149, 56, 97, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(377, 377, 377))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(btnSubmitPayment)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(24, 24, 24)
-                                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtMinimumBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(txtRentPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(RentsCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(57, 57, 57)
-                                .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 616, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(149, 149, 149)
-                    .addComponent(backJButton)
-                    .addContainerGap(810, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtBuilding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtSecurityDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtRentPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtMinimumBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(RentsCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(btnSubmitPayment)
-                .addContainerGap(101, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(56, 56, 56)
-                    .addComponent(backJButton)
-                    .addContainerGap(521, Short.MAX_VALUE)))
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel9.setText("jLabel4");
+        add(jLabel9);
+        jLabel9.setBounds(5, -4, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
       public  Date getNextMonth(Date date){
@@ -401,6 +332,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtBuilding;
     private javax.swing.JTextField txtEndDate;

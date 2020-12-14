@@ -92,6 +92,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageAdmin = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,15 +123,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSplitPane.setLeftComponent(jPanel1);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1000, 700));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Selected Node:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 42, -1, -1));
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(128, 42, 172, 30);
 
         lblSelectedNode.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblSelectedNode.setText("<View_selected_node>");
-        jPanel2.add(lblSelectedNode, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 42, -1, -1));
+        jPanel2.add(lblSelectedNode);
+        lblSelectedNode.setBounds(318, 42, 268, 30);
 
         btnManageNetwork.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         btnManageNetwork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/network-64.png"))); // NOI18N
@@ -140,7 +143,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetworkActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 290, 63));
+        jPanel2.add(btnManageNetwork);
+        btnManageNetwork.setBounds(160, 150, 290, 63);
 
         btnManageEnterprise.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         btnManageEnterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company-64.png"))); // NOI18N
@@ -151,7 +155,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 240, 290, 63));
+        jPanel2.add(btnManageEnterprise);
+        btnManageEnterprise.setBounds(157, 240, 290, 63);
 
         btnManageAdmin.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         btnManageAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee-64.png"))); // NOI18N
@@ -161,7 +166,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(btnManageAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 290, 63));
+        jPanel2.add(btnManageAdmin);
+        btnManageAdmin.setBounds(160, 330, 290, 63);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(5, -4, 930, 710);
 
         jSplitPane.setRightComponent(jPanel2);
 
@@ -203,6 +214,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
