@@ -64,14 +64,16 @@ public class viewRepairmentJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setDefaultCapable(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(240, 80, 90, 29);
+        backJButton.setBounds(400, 310, 90, 60);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -79,12 +81,12 @@ public class viewRepairmentJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextArea1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(240, 140, 430, 276);
+        jScrollPane1.setBounds(10, 40, 890, 260);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Repairment Process History");
         add(jLabel1);
-        jLabel1.setBounds(350, 80, 237, 22);
+        jLabel1.setBounds(330, 10, 237, 22);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

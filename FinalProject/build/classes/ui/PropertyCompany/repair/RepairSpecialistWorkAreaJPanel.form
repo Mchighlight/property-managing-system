@@ -23,11 +23,14 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="24" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icon/icons8-maintenance-50.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Repair Request"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="205" y="39" width="-1" height="-1"/>
+          <AbsoluteConstraints x="310" y="10" width="280" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -40,7 +43,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="376" y="275" width="-1" height="-1"/>
+          <AbsoluteConstraints x="380" y="359" width="150" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -50,7 +53,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="38" y="123" width="538" height="107"/>
+          <AbsoluteConstraints x="10" y="77" width="880" height="260"/>
         </Constraint>
       </Constraints>
 

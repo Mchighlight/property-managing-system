@@ -53,46 +53,69 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnLease = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
 
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-customer-support-50.png"))); // NOI18N
         jButton1.setText("Customer Service");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         add(jButton1);
-        jButton1.setBounds(214, 81, 184, 51);
+        jButton1.setBounds(370, 170, 240, 62);
 
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reminders-50.png"))); // NOI18N
         jButton2.setText("Appointment");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         add(jButton2);
-        jButton2.setBounds(214, 144, 184, 52);
+        jButton2.setBounds(350, 240, 240, 52);
 
+        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-contract-50.png"))); // NOI18N
         jButton3.setText("Contract");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         add(jButton3);
-        jButton3.setBounds(214, 208, 184, 47);
+        jButton3.setBounds(330, 310, 240, 47);
 
+        btnLease.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnLease.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-key-50.png"))); // NOI18N
         btnLease.setText("Lease");
         btnLease.setToolTipText("");
+        btnLease.setBorderPainted(false);
+        btnLease.setContentAreaFilled(false);
         btnLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeaseActionPerformed(evt);
             }
         });
         add(btnLease);
-        btnLease.setBounds(214, 273, 184, 47);
+        btnLease.setBounds(320, 370, 240, 47);
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-person-at-home-100.png"))); // NOI18N
+        jLabel1.setText("Tenant Work Area");
+        add(jLabel1);
+        jLabel1.setBounds(300, 40, 340, 100);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -133,6 +156,7 @@ public class TenantWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

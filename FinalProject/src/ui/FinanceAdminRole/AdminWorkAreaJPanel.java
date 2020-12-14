@@ -58,12 +58,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-manager-100.png"))); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
         add(jLabel1);
-        jLabel1.setBounds(183, 71, 411, 29);
+        jLabel1.setBounds(140, 30, 580, 100);
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        manageEmployeeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee-64.png"))); // NOI18N
+        manageEmployeeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,10 +72,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageEmployeeJButton);
-        manageEmployeeJButton.setBounds(280, 300, 198, 63);
+        manageEmployeeJButton.setBounds(290, 310, 210, 63);
 
         manageOrganizationJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        manageOrganizationJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company-64.png"))); // NOI18N
+        manageOrganizationJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company.png"))); // NOI18N
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,17 +83,17 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageOrganizationJButton);
-        manageOrganizationJButton.setBounds(280, 201, 198, 63);
+        manageOrganizationJButton.setBounds(290, 210, 210, 63);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(183, 141, 120, 30);
+        enterpriseLabel.setBounds(260, 150, 120, 30);
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
         add(valueLabel);
-        valueLabel.setBounds(309, 145, 130, 22);
+        valueLabel.setBounds(380, 150, 280, 22);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

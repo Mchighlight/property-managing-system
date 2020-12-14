@@ -58,6 +58,7 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-512.png"))); // NOI18N
         jButton1.setText("Cancel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,27 +66,30 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(153, 59, 169, 74);
+        jButton1.setBounds(180, 60, 110, 70);
 
-        jButton2.setText("Defer");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-time-management-50.png"))); // NOI18N
+        jButton2.setText("Delay");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         add(jButton2);
-        jButton2.setBounds(472, 60, 169, 72);
+        jButton2.setBounds(530, 60, 110, 70);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(150, 430, 169, 77);
+        backJButton.setBounds(70, 210, 60, 50);
         add(jTextField1);
-        jTextField1.setBounds(460, 160, 150, 26);
+        jTextField1.setBounds(490, 160, 150, 26);
 
         jButton3.setText("Select");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -94,23 +98,25 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(460, 190, 130, 29);
+        jButton3.setBounds(510, 190, 130, 29);
 
-        jButton4.setText("...");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-planner-100.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         add(jButton4);
-        jButton4.setBounds(610, 160, 30, 20);
+        jButton4.setBounds(650, 130, 100, 90);
         add(dateChooserPanel1);
         dateChooserPanel1.setBounds(170, 220, 470, 180);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(5, -4, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

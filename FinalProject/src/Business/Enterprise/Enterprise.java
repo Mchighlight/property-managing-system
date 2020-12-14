@@ -9,6 +9,8 @@ public abstract class Enterprise extends Organization{
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
     private String networkName ;
+
+    
     
     public enum EnterpriseType{
         Finance("Finance"),

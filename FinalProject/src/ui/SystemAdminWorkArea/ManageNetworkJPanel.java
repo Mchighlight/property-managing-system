@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Network.Network;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -103,6 +104,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(250, 330, 36, 20);
 
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/network.png"))); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,12 +112,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             }
         });
         add(submitJButton);
-        submitJButton.setBounds(480, 320, 100, 48);
+        submitJButton.setBounds(480, 320, 130, 48);
         add(nameJTextField);
         nameJTextField.setBounds(310, 330, 93, 26);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/icons8-back-arrow-100.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -127,7 +129,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         add(backJButton1);
         backJButton1.setBounds(140, 10, 57, 62);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
         jLabel4.setBounds(5, -4, 930, 710);
@@ -137,9 +139,19 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         String name = nameJTextField.getText();
 
+        for(Network net :system.getNetworkList())
+            if (net.getName().equals(name)) {
+                JOptionPane.showMessageDialog(null, "Network existed");
+                return;
+            }
+            if (name.equals("")) {
+                JOptionPane.showMessageDialog(null, "Network name is empty");
+                return;
+            }
+        
         Network network = system.createAndAddNetwork();
         network.setName(name);
-
+            
         populateNetworkTable();
     }//GEN-LAST:event_submitJButtonActionPerformed
 

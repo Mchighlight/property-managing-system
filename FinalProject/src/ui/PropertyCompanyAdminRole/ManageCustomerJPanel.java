@@ -125,14 +125,14 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
-        addJButton.setText("create Tenant");
+        addJButton.setText("Create Tenant");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
         add(addJButton);
-        addJButton.setBounds(316, 455, 129, 29);
+        addJButton.setBounds(530, 300, 170, 60);
 
         customerRoleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         customerRoleJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -141,21 +141,23 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(customerRoleJComboBox);
-        customerRoleJComboBox.setBounds(250, 19, 127, 27);
+        customerRoleJComboBox.setBounds(410, 20, 127, 27);
 
         jLabel1.setText("Customer Role");
         jLabel1.setToolTipText("");
         add(jLabel1);
-        jLabel1.setBounds(108, 23, 92, 16);
+        jLabel1.setBounds(280, 20, 92, 16);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(172, 455, 97, 29);
+        backJButton.setBounds(130, 180, 60, 50);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,7 +192,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(44, 67, 480, 92);
+        jScrollPane1.setBounds(20, 70, 860, 92);
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,11 +200,11 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(txtemail);
-        txtemail.setBounds(434, 330, 126, 26);
+        txtemail.setBounds(320, 290, 126, 26);
 
         jLabel4.setText("email");
         add(jLabel4);
-        jLabel4.setBounds(356, 335, 34, 16);
+        jLabel4.setBounds(240, 290, 34, 16);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,17 +212,17 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(txtUsername);
-        txtUsername.setBounds(434, 237, 126, 26);
+        txtUsername.setBounds(320, 190, 126, 26);
         add(txtpassword);
-        txtpassword.setBounds(434, 286, 126, 26);
+        txtpassword.setBounds(320, 240, 126, 26);
 
         jLabel5.setText("Username");
         add(jLabel5);
-        jLabel5.setBounds(354, 242, 62, 16);
+        jLabel5.setBounds(240, 200, 62, 16);
 
         jLabel6.setText("password");
         add(jLabel6);
-        jLabel6.setBounds(356, 291, 60, 16);
+        jLabel6.setBounds(240, 250, 60, 16);
 
         txtSSN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,11 +230,11 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(txtSSN);
-        txtSSN.setBounds(434, 383, 129, 26);
+        txtSSN.setBounds(320, 340, 129, 26);
 
         jLabel9.setText("SSN");
         add(jLabel9);
-        jLabel9.setBounds(356, 388, 24, 16);
+        jLabel9.setBounds(240, 350, 24, 16);
 
         txtfn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +242,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(txtfn);
-        txtfn.setBounds(717, 199, 126, 26);
+        txtfn.setBounds(600, 190, 126, 26);
 
         txtln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,15 +250,15 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             }
         });
         add(txtln);
-        txtln.setBounds(704, 264, 126, 26);
+        txtln.setBounds(600, 240, 126, 26);
 
         jLabel7.setText("Firstname");
         add(jLabel7);
-        jLabel7.setBounds(643, 204, 62, 16);
+        jLabel7.setBounds(530, 190, 62, 16);
 
-        jLabel8.setText("lastname");
+        jLabel8.setText("Lastname");
         add(jLabel8);
-        jLabel8.setBounds(629, 264, 57, 16);
+        jLabel8.setBounds(530, 240, 60, 16);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel10.setText("jLabel4");

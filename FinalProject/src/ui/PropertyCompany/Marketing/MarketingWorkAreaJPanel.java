@@ -126,7 +126,7 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnaccept);
-        btnaccept.setBounds(272, 344, 116, 29);
+        btnaccept.setBounds(272, 344, 180, 50);
 
         txtURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +152,7 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         int row = workRequestJTable.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "please select a row");
+            return;
         }
         String propertyname = workRequestJTable.getValueAt(row, 3).toString();
 
@@ -161,6 +162,7 @@ public class MarketingWorkAreaJPanel extends javax.swing.JPanel {
         String URL = txtURL.getText();
         if (URL.equals("")) {
             JOptionPane.showMessageDialog(null, "input should not be null");
+            return;
         } else {
 
             ArrayList<FurnishingRequest> work = userAccount.getWorkQueue().getFurnishingRequestList();

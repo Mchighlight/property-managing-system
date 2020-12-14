@@ -10,6 +10,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,16 +81,18 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Organization Type ");
         add(jLabel1);
-        jLabel1.setBounds(320, 380, 119, 16);
+        jLabel1.setBounds(320, 310, 119, 16);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(66, 623, 97, 29);
+        backJButton.setBounds(100, 290, 60, 50);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,8 +123,10 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(organizationJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(180, 190, 480, 92);
+        jScrollPane1.setBounds(10, 22, 890, 260);
 
+        addJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/network.png"))); // NOI18N
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +134,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(addJButton);
-        addJButton.setBounds(571, 623, 154, 29);
+        addJButton.setBounds(380, 350, 200, 60);
 
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +142,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationJComboBox);
-        organizationJComboBox.setBounds(490, 370, 135, 27);
+        organizationJComboBox.setBounds(440, 310, 135, 27);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -155,6 +160,13 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
+        for (Organization organization : directory.getOrganizationList()) {
+             if (organization.getName().equals(type.getValue())) {
+                 JOptionPane.showMessageDialog(null, "Organization already added");
+                return;
+            }
+        }
+       
         directory.createOrganization(type);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed

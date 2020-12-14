@@ -71,9 +71,10 @@ public class RepairSpecialistWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-maintenance-50.png"))); // NOI18N
         jLabel1.setText("Repair Request");
         add(jLabel1);
-        jLabel1.setBounds(205, 39, 173, 30);
+        jLabel1.setBounds(310, 10, 280, 50);
 
         jButton1.setText("View & Process");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +83,7 @@ public class RepairSpecialistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(376, 275, 138, 29);
+        jButton1.setBounds(380, 359, 150, 50);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,7 +107,7 @@ public class RepairSpecialistWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(38, 123, 538, 107);
+        jScrollPane1.setBounds(10, 77, 880, 260);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

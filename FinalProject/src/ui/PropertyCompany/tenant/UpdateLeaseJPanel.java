@@ -121,80 +121,82 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Renewal Detail");
         add(jLabel5);
-        jLabel5.setBounds(276, 36, 159, 22);
+        jLabel5.setBounds(400, 40, 159, 22);
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(350, 91, 80, 26);
+        txtStartDate.setBounds(470, 100, 80, 26);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(240, 96, 62, 16);
+        jLabel1.setBounds(360, 100, 62, 16);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(240, 137, 56, 16);
+        jLabel3.setBounds(360, 140, 56, 16);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(350, 132, 80, 26);
+        txtEndDate.setBounds(470, 140, 80, 26);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(240, 181, 72, 16);
+        jLabel4.setBounds(360, 190, 72, 16);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(350, 176, 80, 26);
+        txtRentalDate.setBounds(470, 180, 80, 26);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(240, 225, 47, 16);
+        jLabel6.setBounds(360, 230, 47, 16);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(350, 220, 80, 26);
+        txtBalance.setBounds(470, 230, 80, 26);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(240, 269, 103, 16);
+        jLabel7.setBounds(360, 270, 103, 16);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(350, 264, 80, 26);
+        txtSecurityDeposit.setBounds(470, 270, 80, 26);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(240, 313, 51, 16);
+        jLabel8.setBounds(360, 320, 51, 16);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(350, 308, 80, 26);
+        txtBuilding.setBounds(470, 310, 80, 26);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(350, 352, 80, 26);
+        txtTenant.setBounds(470, 360, 80, 26);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(240, 357, 43, 16);
+        jLabel9.setBounds(360, 360, 43, 16);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(240, 401, 109, 16);
+        jLabel10.setBounds(360, 410, 109, 16);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(350, 396, 80, 26);
+        txtTerminationDate.setBounds(470, 400, 80, 26);
 
-        backJButton1.setText("<< Back");
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton1.setBorderPainted(false);
+        backJButton1.setContentAreaFilled(false);
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButton1ActionPerformed(evt);
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(139, 46, 97, 29);
+        backJButton1.setBounds(150, 210, 50, 50);
 
         btnTermination.setText("Terminate Lease");
         btnTermination.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +205,7 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnTermination);
-        btnTermination.setBounds(207, 440, 146, 29);
+        btnTermination.setBounds(630, 180, 150, 50);
 
         btnRenewal.setText("Renewal Lease");
         btnRenewal.addActionListener(new java.awt.event.ActionListener() {
@@ -212,12 +214,12 @@ public class UpdateLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRenewal);
-        btnRenewal.setBounds(382, 440, 134, 29);
+        btnRenewal.setBounds(630, 290, 150, 50);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel11.setText("jLabel4");
         add(jLabel11);
-        jLabel11.setBounds(5, -4, 930, 710);
+        jLabel11.setBounds(5, -4, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed

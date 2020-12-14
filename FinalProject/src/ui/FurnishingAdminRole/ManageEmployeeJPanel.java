@@ -122,6 +122,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
+        addJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +131,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(addJButton);
-        addJButton.setBounds(330, 400, 148, 58);
+        addJButton.setBounds(270, 400, 220, 58);
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -138,11 +140,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationJComboBox);
-        organizationJComboBox.setBounds(354, 19, 224, 27);
+        organizationJComboBox.setBounds(370, 10, 224, 27);
 
         jLabel1.setText("Organization");
         add(jLabel1);
-        jLabel1.setBounds(267, 23, 81, 16);
+        jLabel1.setBounds(290, 10, 81, 16);
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,7 +175,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(organizationJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(200, 70, 530, 120);
+        jScrollPane1.setBounds(10, 40, 870, 200);
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +219,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(txtcharge);
         txtcharge.setBounds(510, 330, 126, 26);
 
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-512.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,10 +228,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(510, 400, 126, 58);
+        btnDelete.setBounds(510, 400, 190, 58);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -237,11 +241,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(148, 0, 57, 62);
+        backJButton1.setBounds(100, 250, 60, 50);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/furniture-min.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         add(jLabel2);
-        jLabel2.setBounds(0, 0, 0, 700);
+        jLabel2.setBounds(0, 0, 1920, 700);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel8.setText("jLabel4");
@@ -257,7 +261,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String Username = txtUsername.getText();
         String password = txtpassword.getText();
         String fee = txtcharge.getText();
-        int chargefee = Integer.parseInt(txtcharge.getText());
+        int chargefee=0;
+        try {
+             chargefee = Integer.parseInt(txtcharge.getText());
+        
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Charge Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         if (password.equals("") || Username.equals("") || email.equals("") || fee.equals("")) {
             JOptionPane.showMessageDialog(null, "Input can not be empty", "Warning", JOptionPane.ERROR_MESSAGE);
         } else if (chargefee <= 0) {
@@ -329,6 +342,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         int row = organizationJTable.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!", "get Request", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         String name = organizationJTable.getValueAt(row, 1).toString();
 

@@ -69,25 +69,28 @@ public class feedbackJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTextArea1);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(112, 127, 359, 128);
+        jScrollPane2.setBounds(20, 38, 870, 230);
 
-        jLabel2.setText("Message");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel2.setText("Feedback Message");
         add(jLabel2);
-        jLabel2.setBounds(253, 73, 54, 16);
+        jLabel2.setBounds(370, 10, 240, 22);
 
         jTextField1.setFont(new java.awt.Font("Lucida Bright", 0, 13)); // NOI18N
         jTextField1.setText("Please imput message");
         add(jTextField1);
-        jTextField1.setBounds(241, 267, 221, 53);
+        jTextField1.setBounds(400, 280, 221, 53);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setDefaultCapable(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(112, 26, 97, 29);
+        backJButton.setBounds(110, 280, 60, 50);
 
         jButton2.setText("Reply");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +99,7 @@ public class feedbackJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(157, 280, 78, 29);
+        jButton2.setBounds(300, 280, 90, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

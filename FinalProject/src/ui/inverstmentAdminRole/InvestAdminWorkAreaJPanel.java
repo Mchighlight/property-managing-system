@@ -34,6 +34,7 @@ public class InvestAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.enterprise = enterprise;
+        valueLabel.setText(enterprise.getName());
          //titlejLabel.setText(enterprise.getName());
 
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -58,10 +59,13 @@ public class InvestAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-manager-100.png"))); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
         add(jLabel1);
-        jLabel1.setBounds(124, 59, 411, 29);
+        jLabel1.setBounds(160, 50, 515, 100);
 
+        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        manageEmployeeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,8 +73,10 @@ public class InvestAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageEmployeeJButton);
-        manageEmployeeJButton.setBounds(320, 259, 150, 29);
+        manageEmployeeJButton.setBounds(320, 320, 230, 60);
 
+        manageOrganizationJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        manageOrganizationJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company.png"))); // NOI18N
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,16 +84,17 @@ public class InvestAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageOrganizationJButton);
-        manageOrganizationJButton.setBounds(90, 259, 177, 29);
+        manageOrganizationJButton.setBounds(320, 220, 230, 60);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(104, 120, 120, 30);
+        enterpriseLabel.setBounds(310, 160, 120, 30);
 
+        valueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
         add(valueLabel);
-        valueLabel.setBounds(503, 129, 130, 16);
+        valueLabel.setBounds(430, 170, 250, 16);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

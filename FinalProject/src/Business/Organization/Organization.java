@@ -19,6 +19,7 @@ import Business.Employee.MarketingDirectory;
 import Business.Employee.ProporityCatalog;
 import Business.Enterprise.Enterprise;
 import Business.Role.Role;
+import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
@@ -92,6 +93,15 @@ public abstract class Organization {
         
         organizationID = counter;
         ++counter;
+    }
+    
+    public boolean CheckUsernameIsUnique(String username) {
+        for (UserAccount userAccount : userAccountDirectory.getUserAccountList()) {
+            if (userAccount.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public MarketingDirectory getMarketingDirectory() {

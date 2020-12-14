@@ -54,9 +54,10 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-home-office-100 (1).png"))); // NOI18N
         jLabel1.setText("Lease Office");
         add(jLabel1);
-        jLabel1.setBounds(241, 58, 141, 30);
+        jLabel1.setBounds(310, 10, 290, 100);
 
         btnLeaseCollection.setText("Lease Collection");
         btnLeaseCollection.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +66,7 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnLeaseCollection);
-        btnLeaseCollection.setBounds(218, 129, 184, 51);
+        btnLeaseCollection.setBounds(370, 140, 184, 51);
 
         btnRenewal.setText("Renewal");
         btnRenewal.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +75,7 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRenewal);
-        btnRenewal.setBounds(218, 192, 184, 52);
+        btnRenewal.setBounds(370, 220, 184, 52);
 
         btnTermination1.setText("Termination");
         btnTermination1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +84,7 @@ public class LeasingWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnTermination1);
-        btnTermination1.setBounds(218, 262, 184, 47);
+        btnTermination1.setBounds(370, 300, 184, 47);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

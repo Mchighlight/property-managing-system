@@ -148,6 +148,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeJComboBox.setBounds(360, 370, 136, 27);
 
         submitJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/company.png"))); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,10 +156,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
         add(submitJButton);
-        submitJButton.setBounds(610, 360, 97, 49);
+        submitJButton.setBounds(530, 360, 170, 49);
 
         backJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/icons8-back-arrow-100.png"))); // NOI18N
         backJButton.setToolTipText("");
         backJButton.setBorderPainted(false);
         backJButton.setContentAreaFilled(false);
@@ -171,7 +172,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         add(backJButton);
         backJButton.setBounds(170, 10, 57, 62);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
         jLabel4.setBounds(5, -4, 930, 710);
@@ -188,7 +189,16 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         }
 
         String name = nameJTextField.getText();
-        
+        if (name.equals("")) {
+             JOptionPane.showMessageDialog(null, "Enterprise Name is empty");
+                return;
+        }
+        for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (ent.getName().equals(name)) {
+                JOptionPane.showMessageDialog(null, "Enterprise existed");
+                return;
+            }
+        }
         Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type, network.getName());
         
         populateTable();

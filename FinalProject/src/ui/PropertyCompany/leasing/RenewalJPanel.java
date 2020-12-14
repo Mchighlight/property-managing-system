@@ -145,11 +145,12 @@ public class RenewalJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(129, 112, 538, 90);
+        jScrollPane2.setBounds(9, 52, 890, 230);
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Collection");
         add(jLabel5);
-        jLabel5.setBounds(331, 58, 159, 22);
+        jLabel5.setBounds(340, 10, 170, 30);
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +159,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton);
-        backJButton.setBounds(137, 56, 97, 29);
+        backJButton.setBounds(50, 20, 97, 29);
 
         btnRequestRenewal.setText("Request Renewal");
         btnRequestRenewal.setToolTipText("");
@@ -168,7 +169,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRequestRenewal);
-        btnRequestRenewal.setBounds(167, 242, 144, 43);
+        btnRequestRenewal.setBounds(150, 290, 144, 60);
 
         btnRenewalReview.setText("Renewal Review");
         btnRenewalReview.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +178,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRenewalReview);
-        btnRenewalReview.setBounds(421, 243, 144, 41);
+        btnRenewalReview.setBounds(360, 290, 180, 60);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +187,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail);
-        btnViewDetail.setBounds(693, 145, 114, 29);
+        btnViewDetail.setBounds(620, 290, 120, 60);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

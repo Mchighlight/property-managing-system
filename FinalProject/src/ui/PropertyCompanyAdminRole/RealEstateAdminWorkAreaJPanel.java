@@ -53,9 +53,10 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-manager-100.png"))); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
         add(jLabel1);
-        jLabel1.setBounds(124, 59, 411, 29);
+        jLabel1.setBounds(160, 20, 550, 100);
 
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +65,7 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageEmployeeJButton);
-        manageEmployeeJButton.setBounds(221, 251, 177, 29);
+        manageEmployeeJButton.setBounds(320, 280, 180, 60);
 
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,16 +74,17 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageOrganizationJButton);
-        manageOrganizationJButton.setBounds(221, 187, 177, 29);
+        manageOrganizationJButton.setBounds(320, 210, 180, 60);
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel);
-        enterpriseLabel.setBounds(104, 120, 120, 30);
+        enterpriseLabel.setBounds(300, 140, 120, 30);
 
+        valueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
         add(valueLabel);
-        valueLabel.setBounds(503, 129, 130, 16);
+        valueLabel.setBounds(440, 150, 230, 16);
 
         manageCustomerJButton.setText("Manage Customer");
         manageCustomerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,12 +93,12 @@ public class RealEstateAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(manageCustomerJButton);
-        manageCustomerJButton.setBounds(221, 317, 177, 29);
+        manageCustomerJButton.setBounds(320, 350, 180, 60);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(5, -4, 900, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed

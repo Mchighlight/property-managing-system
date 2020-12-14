@@ -172,6 +172,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(enterpriseJComboBox);
         enterpriseJComboBox.setBounds(280, 350, 180, 27);
 
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +180,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
         add(submitJButton);
-        submitJButton.setBounds(280, 450, 136, 55);
+        submitJButton.setBounds(290, 430, 150, 55);
 
         jLabel4.setText("Password");
         add(jLabel4);
@@ -193,6 +194,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(passwordJPasswordField);
         passwordJPasswordField.setBounds(590, 350, 153, 26);
 
+        deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-512.png"))); // NOI18N
         deleteJButton.setText("Delete");
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,7 +202,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
         add(deleteJButton);
-        deleteJButton.setBounds(590, 450, 136, 55);
+        deleteJButton.setBounds(590, 430, 136, 55);
 
         jLabel6.setText("Role");
         add(jLabel6);
@@ -216,7 +218,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         roleJComboBox.setBounds(280, 390, 180, 27);
 
         backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/icons8-back-arrow-100.png"))); // NOI18N
         backJButton1.setToolTipText("");
         backJButton1.setBorderPainted(false);
         backJButton1.setContentAreaFilled(false);
@@ -228,7 +230,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(backJButton1);
         backJButton1.setBounds(50, 10, 57, 62);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/SystemAdminWorkArea/back.jpg"))); // NOI18N
         jLabel7.setText("jLabel4");
         add(jLabel7);
         jLabel7.setBounds(5, -4, 930, 710);
@@ -251,7 +253,20 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
-        
+        if (username.equals("")) {
+            JOptionPane.showMessageDialog(null, "Username is empty!","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }if (password.equals("")) {
+            JOptionPane.showMessageDialog(null, "Password is empty!","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }if (name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Name is empty!","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!system.CheckUsernameIsUnique(username)) {
+            JOptionPane.showMessageDialog(null, "Username was created!","Warning",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         Role role = (Role) roleJComboBox.getSelectedItem();
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, role);

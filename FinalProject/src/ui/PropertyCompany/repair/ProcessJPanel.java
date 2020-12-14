@@ -69,14 +69,16 @@ public class ProcessJPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
         add(backJButton);
-        backJButton.setBounds(37, 47, 97, 29);
+        backJButton.setBounds(120, 350, 66, 60);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -84,12 +86,12 @@ public class ProcessJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextArea1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(132, 94, 430, 276);
+        jScrollPane1.setBounds(10, 50, 880, 276);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Repairment Process History");
         add(jLabel1);
-        jLabel1.setBounds(231, 47, 237, 22);
+        jLabel1.setBounds(330, 20, 237, 22);
 
         jButton1.setText("Complete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +100,7 @@ public class ProcessJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(209, 382, 104, 29);
+        jButton1.setBounds(310, 340, 104, 40);
 
         jButton2.setText("Delay");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +109,7 @@ public class ProcessJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(319, 382, 79, 29);
+        jButton2.setBounds(420, 340, 79, 40);
 
         jButton3.setText("Send message");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -116,9 +118,9 @@ public class ProcessJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(176, 423, 133, 29);
+        jButton3.setBounds(270, 410, 133, 40);
         add(jTextField1);
-        jTextField1.setBounds(315, 423, 210, 26);
+        jTextField1.setBounds(410, 410, 210, 40);
 
         jButton4.setText("Cancel");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,7 @@ public class ProcessJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(404, 382, 86, 29);
+        jButton4.setBounds(500, 340, 90, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

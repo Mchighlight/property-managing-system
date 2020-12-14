@@ -230,11 +230,11 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(ApartmentJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(128, 85, 737, 162);
+        jScrollPane2.setBounds(15, 47, 880, 200);
 
         jLabel5.setText("Apartment Report");
         add(jLabel5);
-        jLabel5.setBounds(416, 31, 159, 22);
+        jLabel5.setBounds(400, 10, 159, 22);
 
         AgentComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,7 +293,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(128, 17, 57, 62);
+        backJButton1.setBounds(128, 17, 57, 29);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel8.setText("jLabel4");
