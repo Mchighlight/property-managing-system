@@ -8,6 +8,8 @@ package ui.PropertyCompany.leasing;
 
 import ui.PropertyCompany.tenant.*;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
@@ -30,19 +32,27 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form customerServiceJPanel
      */
-     JPanel userProcessContainer;
+    JPanel userProcessContainer;
     UserAccount ua;
-    EcoSystem ecosystem;
+    EcoSystem eco;
+    LeasingOrganization  leaseOrganization ;
+    Enterprise enterprise ;
     SignLeaseRequest slr;
     Rent rent ;
+    String prevInterface;
    
-    public DetaiRentJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr, Rent sr) {
+    public DetaiRentJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business,
+            SignLeaseRequest slr, Rent sr, String prevInterface
+    ) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.eco=business;
          this.slr = slr ;
          this.rent = sr;
+         this.prevInterface = prevInterface;
          populateTextField();
     }
 
@@ -57,12 +67,6 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             txtDayToPay.setText(this.dateToString(this.rent.getDateToPay()));
             
             txtRentaldate.setText(this.dateToString(this.rent.getDate()));
-                
-            if( lease.getBalance() != null )
-                txtBalance.setText(String.valueOf(lease.getBalance()));
-            
-            
-
             txtPayAmount.setText(String.valueOf(this.rent.getPayment().getPayAmount()));
             txtPayDate.setText(this.dateToString(this.rent.getDateToPay()));
             txtPayMethod.setText(this.rent.getPayment().getPayMethod());
@@ -79,21 +83,29 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backJButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        backJButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtDayToPay = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtRentaldate = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtPayMethod = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtBalance = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPayAmount = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtPayDate = new javax.swing.JTextField();
+        backJButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton.setBorderPainted(false);
+        backJButton.setContentAreaFilled(false);
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
 
         setEnabled(false);
         setLayout(null);
@@ -102,34 +114,25 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(390, 70, 159, 22);
 
-        backJButton1.setText("<< Back");
-        backJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButton1ActionPerformed(evt);
-            }
-        });
-        add(backJButton1);
-        backJButton1.setBounds(139, 46, 97, 29);
-
         jLabel1.setText("Day To Pay");
         add(jLabel1);
-        jLabel1.setBounds(350, 130, 69, 16);
+        jLabel1.setBounds(350, 130, 110, 14);
 
         txtDayToPay.setEnabled(false);
         add(txtDayToPay);
-        txtDayToPay.setBounds(450, 130, 80, 26);
+        txtDayToPay.setBounds(480, 130, 80, 20);
 
         jLabel3.setText("Rental Date");
         add(jLabel3);
-        jLabel3.setBounds(350, 170, 72, 16);
+        jLabel3.setBounds(350, 170, 120, 14);
 
         txtRentaldate.setEnabled(false);
         add(txtRentaldate);
-        txtRentaldate.setBounds(450, 170, 80, 26);
+        txtRentaldate.setBounds(480, 170, 80, 20);
 
         jLabel4.setText("Pay Method");
         add(jLabel4);
-        jLabel4.setBounds(350, 220, 72, 16);
+        jLabel4.setBounds(350, 210, 110, 14);
 
         txtPayMethod.setEnabled(false);
         txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -138,60 +141,69 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPayMethod);
-        txtPayMethod.setBounds(450, 210, 80, 26);
-
-        jLabel6.setText("Balance");
-        add(jLabel6);
-        jLabel6.setBounds(350, 260, 47, 16);
-
-        txtBalance.setEnabled(false);
-        add(txtBalance);
-        txtBalance.setBounds(450, 260, 80, 26);
+        txtPayMethod.setBounds(480, 210, 80, 20);
 
         jLabel7.setText("Pay Amount");
         add(jLabel7);
-        jLabel7.setBounds(350, 300, 75, 16);
+        jLabel7.setBounds(350, 250, 120, 14);
 
         txtPayAmount.setEnabled(false);
         add(txtPayAmount);
-        txtPayAmount.setBounds(450, 300, 80, 26);
+        txtPayAmount.setBounds(480, 250, 80, 20);
 
         jLabel8.setText("Pay Date");
         add(jLabel8);
-        jLabel8.setBounds(350, 350, 54, 16);
+        jLabel8.setBounds(350, 290, 100, 14);
 
         txtPayDate.setEnabled(false);
         add(txtPayDate);
-        txtPayDate.setBounds(450, 340, 80, 26);
+        txtPayDate.setBounds(480, 290, 80, 20);
+
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2);
+        backJButton2.setBounds(110, 60, 60, 50);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel9.setText("jLabel4");
         add(jLabel9);
-        jLabel9.setBounds(5, -4, 930, 710);
+        jLabel9.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButton1ActionPerformed
 
     private void txtPayMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPayMethodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPayMethodActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtDayToPay;
     private javax.swing.JTextField txtPayAmount;
     private javax.swing.JTextField txtPayDate;

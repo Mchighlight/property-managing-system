@@ -5,22 +5,19 @@
  */
 package ui.PropertyCompany.leasing;
 
-import ui.PropertyCompany.leasing.*;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
 import Business.property.Lease;
 import Business.property.Rent;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,34 +28,33 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
     /**
      * Creates new form customerServiceJPanel
      */
-     JPanel userProcessContainer;
+    JPanel userProcessContainer;
     UserAccount ua;
-    EcoSystem ecosystem;
+    EcoSystem eco;
+    LeasingOrganization  leaseOrganization ;
+    Enterprise enterprise ;
     SignLeaseRequest slr;
+    String prevInterface;
    
-    public DetailLeaseJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr) {
+    public DetailLeaseJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business,
+            SignLeaseRequest slr, String prevInterface) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.eco=business;
          this.slr = slr ;
+         this.prevInterface = prevInterface ;
          populateTextField();
     }
 
-    public  String dateToString(Date date){
+     public  String dateToString(Date date){
          DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
          String strDate = dateFormat.format(date);  
          return strDate ;
    }
-    
-     public  Date getNextMonth(Date date){
-          Calendar cal=Calendar.getInstance();
-          cal.setTime(date);
-          cal.set(Calendar.MONTH, date.getMonth()+1);
-          Date dueDate = new Date(cal.getTimeInMillis());
-         return dueDate ;
-     } //
-    
+  
    private void populateTextField(){
             Lease lease =  this.slr.getLease() ;
             txtStartDate.setText(this.dateToString(lease.getStartDate()));
@@ -79,7 +75,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
             txtBuilding.setText(lease.getBuilding().toString());
             txtTenant.setText(lease.getTenant().getUsername());
             if( lease.getTermination() != null )
-                txtTerminationDate.setText(dateToString(lease.getTermination().getRefund().getLeavingDate()));
+                txtTerminationDate.setText(dateToString(lease.getTermination().getLeavingDate()));
             else
                 txtTerminationDate.setText("No Termination");
             
@@ -137,7 +133,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Detail");
         add(jLabel5);
-        jLabel5.setBounds(380, 30, 159, 22);
+        jLabel5.setBounds(390, 40, 159, 22);
 
         RentDetailJButton.setText("View Alll Rents Details");
         RentDetailJButton.setToolTipText("");
@@ -147,88 +143,90 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(RentDetailJButton);
-        RentDetailJButton.setBounds(620, 260, 180, 70);
+        RentDetailJButton.setBounds(600, 280, 190, 70);
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(480, 110, 80, 26);
+        txtStartDate.setBounds(460, 90, 80, 20);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(370, 120, 62, 16);
+        jLabel1.setBounds(330, 90, 90, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(370, 160, 56, 16);
+        jLabel3.setBounds(330, 130, 90, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(480, 150, 80, 26);
+        txtEndDate.setBounds(460, 130, 80, 20);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(370, 200, 72, 16);
+        jLabel4.setBounds(330, 180, 90, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(480, 200, 80, 26);
+        txtRentalDate.setBounds(460, 180, 80, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(370, 250, 47, 16);
+        jLabel6.setBounds(330, 220, 80, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(480, 250, 80, 26);
+        txtBalance.setBounds(460, 220, 80, 20);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(370, 290, 103, 16);
+        jLabel7.setBounds(330, 270, 120, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(480, 290, 80, 26);
+        txtSecurityDeposit.setBounds(460, 260, 80, 20);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(370, 340, 51, 16);
+        jLabel8.setBounds(330, 310, 90, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(480, 330, 80, 26);
+        txtBuilding.setBounds(460, 300, 80, 20);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(490, 370, 80, 26);
+        txtTenant.setBounds(460, 350, 80, 20);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(370, 380, 43, 16);
+        jLabel9.setBounds(330, 350, 80, 14);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(370, 420, 109, 16);
+        jLabel10.setBounds(330, 390, 120, 14);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(480, 410, 96, 26);
+        txtTerminationDate.setBounds(460, 390, 80, 20);
 
         jLabel11.setText("Rent History");
         add(jLabel11);
-        jLabel11.setBounds(370, 470, 78, 16);
+        jLabel11.setBounds(330, 430, 90, 14);
 
-        backJButton1.setText("<< Back");
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton1.setBorderPainted(false);
+        backJButton1.setContentAreaFilled(false);
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButton1ActionPerformed(evt);
             }
         });
         add(backJButton1);
-        backJButton1.setBounds(139, 46, 97, 29);
+        backJButton1.setBounds(150, 290, 60, 50);
 
         RentsCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(RentsCombobox);
-        RentsCombobox.setBounds(470, 460, 96, 27);
+        RentsCombobox.setBounds(460, 430, 140, 20);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel12.setText("jLabel4");
@@ -237,17 +235,29 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RentDetailJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentDetailJButtonActionPerformed
-        // TODO add your handling code here:
-        Rent selectedRent = (Rent)RentsCombobox.getSelectedItem();
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new ui.PropertyCompany.tenant.DetaiRentJPanel( userProcessContainer,  ua,  ecosystem, slr, selectedRent) );
-        layout.next(userProcessContainer);
+        try{
+             Rent selectedRent = (Rent)RentsCombobox.getSelectedItem();
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new DetaiRentJPanel( userProcessContainer,  ua, leaseOrganization,  enterprise,  eco,
+             slr,  selectedRent,  prevInterface) );
+            layout.next(userProcessContainer);
+        }
+        catch( Exception e){
+        }
     }//GEN-LAST:event_RentDetailJButtonActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        if ( this.prevInterface.equals("ViewLease") ){
+            userProcessContainer.add(new ViewLeaseJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco));
+        } // if
+        else if(this.prevInterface.equals("Termination")){
+            userProcessContainer.add(new TerminationJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco));
+        } // else if
+        else if(this.prevInterface.equals("Renewal")){
+            userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, eco));
+        }      
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
 

@@ -52,15 +52,8 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
    
     private void populateTextField(){
             Lease lease =  this.slr.getLease() ;
-            txtDayToPay.setText(this.dateToString(this.rent.getDateToPay()));
-            
+            txtDayToPay.setText(this.dateToString(this.rent.getDateToPay()));         
             txtRentaldate.setText(this.dateToString(this.rent.getDate()));
-                
-            if( lease.getBalance() != null )
-                txtBalance.setText(String.valueOf(lease.getBalance()));
-            
-            
-
             txtPayAmount.setText(String.valueOf(this.rent.getPayment().getPayAmount()));
             txtPayDate.setText(this.dateToString(this.rent.getDateToPay()));
             txtPayMethod.setText(this.rent.getPayment().getPayMethod());
@@ -85,8 +78,6 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
         txtRentaldate = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtPayMethod = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtBalance = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPayAmount = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -113,23 +104,23 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Day To Pay");
         add(jLabel1);
-        jLabel1.setBounds(360, 130, 69, 16);
+        jLabel1.setBounds(360, 140, 110, 14);
 
         txtDayToPay.setEnabled(false);
         add(txtDayToPay);
-        txtDayToPay.setBounds(460, 130, 80, 26);
+        txtDayToPay.setBounds(480, 130, 80, 20);
 
         jLabel3.setText("Rental Date");
         add(jLabel3);
-        jLabel3.setBounds(360, 180, 72, 16);
+        jLabel3.setBounds(360, 180, 100, 14);
 
         txtRentaldate.setEnabled(false);
         add(txtRentaldate);
-        txtRentaldate.setBounds(460, 170, 80, 26);
+        txtRentaldate.setBounds(480, 170, 80, 20);
 
         jLabel4.setText("Pay Method");
         add(jLabel4);
-        jLabel4.setBounds(360, 220, 72, 16);
+        jLabel4.setBounds(360, 220, 110, 14);
 
         txtPayMethod.setEnabled(false);
         txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -138,31 +129,23 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPayMethod);
-        txtPayMethod.setBounds(460, 210, 80, 26);
-
-        jLabel6.setText("Balance");
-        add(jLabel6);
-        jLabel6.setBounds(360, 260, 47, 16);
-
-        txtBalance.setEnabled(false);
-        add(txtBalance);
-        txtBalance.setBounds(460, 260, 80, 26);
+        txtPayMethod.setBounds(480, 210, 80, 20);
 
         jLabel7.setText("Pay Amount");
         add(jLabel7);
-        jLabel7.setBounds(360, 310, 75, 16);
+        jLabel7.setBounds(360, 260, 110, 14);
 
         txtPayAmount.setEnabled(false);
         add(txtPayAmount);
-        txtPayAmount.setBounds(460, 300, 80, 26);
+        txtPayAmount.setBounds(480, 260, 80, 20);
 
         jLabel8.setText("Pay Date");
         add(jLabel8);
-        jLabel8.setBounds(360, 350, 54, 16);
+        jLabel8.setBounds(360, 300, 110, 14);
 
         txtPayDate.setEnabled(false);
         add(txtPayDate);
-        txtPayDate.setBounds(460, 350, 80, 26);
+        txtPayDate.setBounds(480, 300, 80, 20);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel9.setText("jLabel4");
@@ -187,11 +170,9 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtDayToPay;
     private javax.swing.JTextField txtPayAmount;
     private javax.swing.JTextField txtPayDate;

@@ -196,7 +196,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         btnAptVisualization = new javax.swing.JButton();
-        backJButton1 = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -230,7 +230,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(ApartmentJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(15, 47, 880, 200);
+        jScrollPane2.setBounds(10, 80, 880, 200);
 
         jLabel5.setText("Apartment Report");
         add(jLabel5);
@@ -242,7 +242,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(AgentComboBox);
-        AgentComboBox.setBounds(440, 349, 186, 18);
+        AgentComboBox.setBounds(420, 390, 186, 18);
 
         NetWorkCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,15 +250,15 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(NetWorkCombobox);
-        NetWorkCombobox.setBounds(440, 265, 186, 27);
+        NetWorkCombobox.setBounds(420, 300, 186, 20);
 
         jLabel4.setText("Network");
         add(jLabel4);
-        jLabel4.setBounds(349, 269, 53, 16);
+        jLabel4.setBounds(330, 310, 40, 14);
 
         jLabel6.setText("Enterprise");
         add(jLabel6);
-        jLabel6.setBounds(349, 308, 63, 16);
+        jLabel6.setBounds(330, 350, 49, 14);
 
         EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,12 +266,12 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(EnterpriseCombobox);
-        EnterpriseCombobox.setBounds(440, 304, 186, 27);
+        EnterpriseCombobox.setBounds(420, 340, 186, 20);
 
         jLabel7.setText("Agent");
         jLabel7.setToolTipText("");
         add(jLabel7);
-        jLabel7.setBounds(349, 349, 37, 16);
+        jLabel7.setBounds(330, 390, 29, 14);
 
         btnAptVisualization.setText("Apt Visualization");
         btnAptVisualization.addActionListener(new java.awt.event.ActionListener() {
@@ -280,25 +280,23 @@ public class AgentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAptVisualization);
-        btnAptVisualization.setBounds(462, 385, 164, 47);
+        btnAptVisualization.setBounds(420, 420, 190, 47);
 
-        backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
-        backJButton1.setToolTipText("");
-        backJButton1.setBorderPainted(false);
-        backJButton1.setContentAreaFilled(false);
-        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButton1ActionPerformed(evt);
+                backJButton2ActionPerformed(evt);
             }
         });
-        add(backJButton1);
-        backJButton1.setBounds(128, 17, 57, 29);
+        add(backJButton2);
+        backJButton2.setBounds(20, 10, 60, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel8.setText("jLabel4");
         add(jLabel8);
-        jLabel8.setBounds(5, -4, 930, 710);
+        jLabel8.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentComboBoxActionPerformed
@@ -408,11 +406,12 @@ public class AgentReportJPanel extends javax.swing.JPanel {
         //drawPieChart( agent.getUsername(),  aptPercentage);
     }//GEN-LAST:event_btnAptVisualizationActionPerformed
 
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
         userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButton1ActionPerformed
+    }//GEN-LAST:event_backJButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -420,7 +419,7 @@ public class AgentReportJPanel extends javax.swing.JPanel {
     private javax.swing.JTable ApartmentJTable;
     private javax.swing.JComboBox<Object> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
-    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnAptVisualization;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

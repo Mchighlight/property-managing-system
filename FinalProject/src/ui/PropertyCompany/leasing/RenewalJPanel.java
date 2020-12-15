@@ -7,6 +7,8 @@ package ui.PropertyCompany.leasing;
 
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
@@ -36,12 +38,17 @@ public class RenewalJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    LeasingOrganization leaseOrganization;
+    Enterprise enterprise;
    
-    public RenewalJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public RenewalJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.ecosystem=business;
+         
          populateRequestTable();
     }
 
@@ -108,10 +115,10 @@ public class RenewalJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         btnRequestRenewal = new javax.swing.JButton();
         btnRenewalReview = new javax.swing.JButton();
         btnViewDetail = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -145,21 +152,12 @@ public class RenewalJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(9, 52, 890, 230);
+        jScrollPane2.setBounds(10, 80, 890, 230);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setText("Lease Collection");
+        jLabel5.setText("RenewalLease Collection");
         add(jLabel5);
-        jLabel5.setBounds(340, 10, 170, 30);
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton);
-        backJButton.setBounds(50, 20, 97, 29);
+        jLabel5.setBounds(340, 10, 230, 30);
 
         btnRequestRenewal.setText("Request Renewal");
         btnRequestRenewal.setToolTipText("");
@@ -169,7 +167,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRequestRenewal);
-        btnRequestRenewal.setBounds(150, 290, 144, 60);
+        btnRequestRenewal.setBounds(130, 320, 180, 60);
 
         btnRenewalReview.setText("Renewal Review");
         btnRenewalReview.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +176,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRenewalReview);
-        btnRenewalReview.setBounds(360, 290, 180, 60);
+        btnRenewalReview.setBounds(360, 320, 180, 60);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -187,12 +185,23 @@ public class RenewalJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail);
-        btnViewDetail.setBounds(620, 290, 120, 60);
+        btnViewDetail.setBounds(600, 320, 180, 60);
+
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2);
+        backJButton2.setBounds(90, 10, 60, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
      public  Date getNextMonth(Date date){
@@ -203,12 +212,6 @@ public class RenewalJPanel extends javax.swing.JPanel {
          return dueDate ;
      } //    
     
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
      public static Date firstDayOfNextMonth() {
             LocalDateTime now = LocalDateTime.now();
             int year = now.getYear();
@@ -266,7 +269,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( status.equals("Payment Completed") ||  status.equals("Renewal Request") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new RenewalRequestJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new RenewalRequestJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr) );
             layout.next(userProcessContainer);
         }//
         else{
@@ -312,7 +315,7 @@ public class RenewalJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr, "Renewal") );
             layout.next(userProcessContainer);
         }//
         else{
@@ -320,9 +323,16 @@ public class RenewalJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewDetailActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnRenewalReview;
     private javax.swing.JButton btnRequestRenewal;
     private javax.swing.JButton btnViewDetail;

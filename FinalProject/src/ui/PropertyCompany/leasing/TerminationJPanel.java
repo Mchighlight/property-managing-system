@@ -7,6 +7,8 @@ package ui.PropertyCompany.leasing;
 
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.LeasingOrganization;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.SignLeaseRequest;
@@ -35,12 +37,17 @@ public class TerminationJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
     UserAccount ua;
     EcoSystem ecosystem;
+    LeasingOrganization leaseOrganization;
+    Enterprise enterprise;
    
-    public TerminationJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public TerminationJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
          initComponents();
-         this.ecosystem=business;
-         this.ua = account;
          this. userProcessContainer = userProcessContainer;
+         this.ua = account;
+         this.leaseOrganization = leaseOrganization;
+         this.enterprise = enterprise ;
+         this.ecosystem=business;
+         
          populateRequestTable();
     }
 
@@ -106,8 +113,8 @@ public class TerminationJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         btnViewDetail1 = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -141,21 +148,12 @@ public class TerminationJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(9, 52, 890, 240);
+        jScrollPane2.setBounds(10, 90, 890, 240);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setText("Lease Collection");
+        jLabel5.setText("Terminated Lease Collection");
         add(jLabel5);
-        jLabel5.setBounds(380, 20, 159, 22);
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton);
-        backJButton.setBounds(130, 20, 97, 29);
+        jLabel5.setBounds(380, 20, 240, 22);
 
         btnViewDetail1.setText("View Detail");
         btnViewDetail1.addActionListener(new java.awt.event.ActionListener() {
@@ -164,19 +162,24 @@ public class TerminationJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail1);
-        btnViewDetail1.setBounds(380, 310, 130, 70);
+        btnViewDetail1.setBounds(340, 340, 170, 70);
+
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2);
+        backJButton2.setBounds(60, 20, 60, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(5, -4, 930, 710);
+        jLabel4.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
      public static Date firstDayOfNextMonth() {
             LocalDateTime now = LocalDateTime.now();
@@ -224,7 +227,7 @@ public class TerminationJPanel extends javax.swing.JPanel {
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  ecosystem, selectedSlr) );
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr, "Termination") );
             layout.next(userProcessContainer);
         }//
         else{
@@ -232,9 +235,16 @@ public class TerminationJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewDetail1ActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnViewDetail1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
