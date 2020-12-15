@@ -94,12 +94,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         btnDecline = new javax.swing.JButton();
         btnAccept = new javax.swing.JButton();
         btnPaymentRequest = new javax.swing.JButton();
         btnViewDetail = new javax.swing.JButton();
         btnPaymentReview = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -133,21 +133,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(workRequestJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(9, 42, 890, 230);
+        jScrollPane2.setBounds(10, 60, 890, 230);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Lease Collection");
         add(jLabel5);
         jLabel5.setBounds(380, 10, 159, 22);
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton);
-        backJButton.setBounds(70, 10, 73, 23);
 
         btnDecline.setText("Decline");
         btnDecline.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +147,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDecline);
-        btnDecline.setBounds(147, 280, 140, 60);
+        btnDecline.setBounds(150, 300, 140, 60);
 
         btnAccept.setText("Leasing Review");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +156,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAccept);
-        btnAccept.setBounds(360, 280, 150, 60);
+        btnAccept.setBounds(360, 300, 150, 60);
 
         btnPaymentRequest.setText("Payment Request");
         btnPaymentRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +165,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentRequest);
-        btnPaymentRequest.setBounds(360, 360, 150, 60);
+        btnPaymentRequest.setBounds(360, 380, 150, 60);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +174,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail);
-        btnViewDetail.setBounds(570, 360, 130, 60);
+        btnViewDetail.setBounds(570, 380, 130, 60);
 
         btnPaymentReview.setText("Payment Review");
         btnPaymentReview.addActionListener(new java.awt.event.ActionListener() {
@@ -192,19 +183,24 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentReview);
-        btnPaymentReview.setBounds(150, 360, 140, 60);
+        btnPaymentReview.setBounds(150, 380, 140, 60);
+
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2);
+        backJButton2.setBounds(10, 10, 60, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
         jLabel4.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
      public static Date firstDayOfNextMonth() {
             LocalDateTime now = LocalDateTime.now();
@@ -254,6 +250,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
        String status = workRequestJTable.getValueAt(row, 4).toString() ;
         if( status.equals("Decline") ){
              JOptionPane.showMessageDialog(null, "Leasing had been Declined!", "Info", JOptionPane.INFORMATION_MESSAGE);
+             return ;
         } // if
         selectedSlr.setStatus("Decline");            
         JOptionPane.showMessageDialog(null, "Status updated! Decline Tenant Leasing", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -276,6 +273,9 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         } // if
         else if (  status.equals("Decline") ){
             JOptionPane.showMessageDialog(null, "Tenant Leasing is declined!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
+        else if ( status.equals("Payment Request") ){
+             JOptionPane.showMessageDialog(null, "Leasing is finished requested. Waiting for customer's payment!", "Info", JOptionPane.INFORMATION_MESSAGE);
         } // else if
         else if ( status.equals("Payment Completed") || status.equals("Contract preparation") ){
             if(selectedSlr.getLease() == null){
@@ -311,6 +311,12 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             selectedSlr.setStatus("Payment Request");
             JOptionPane.showMessageDialog(null, "Status updated!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }//if
+        else if ( status.equals("Payment Request") ){
+             JOptionPane.showMessageDialog(null, "Tenant had received Payment Request!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
+        else if ( status.equals("Decline") ){
+             JOptionPane.showMessageDialog(null, "Lease had been declined !", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
         else{
             JOptionPane.showMessageDialog(null, "Reviewing the lease first then request payment", "Info", JOptionPane.INFORMATION_MESSAGE);
         }            
@@ -326,11 +332,17 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
         int orderId = Integer.parseInt(workRequestJTable.getValueAt(row, 0).toString());
         SignLeaseRequest selectedSlr =  this.ua.getWorkQueue().findSignLeaseRequest(orderId) ;
         String status = workRequestJTable.getValueAt(row, 4).toString() ;
-        if( ! status.equals("Decline")  || ! status.equals("Contract preparation") ){
+        if( ! status.equals("Decline")  && ! status.equals("Contract preparation") ){
             CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem, selectedSlr) );
+            userProcessContainer.add(new DetailLeaseJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem, selectedSlr, "ViewLease") );
             layout.next(userProcessContainer);
         }//
+        else if ( status.equals("Decline") ){
+             JOptionPane.showMessageDialog(null, "Lease had been declined !", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
+        else if ( status.equals("Contract preparation") ){
+             JOptionPane.showMessageDialog(null, "Tenant's contract need to be reviewed !", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
         else{
             JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -349,15 +361,25 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             userProcessContainer.add(new PaymentReviewJPanel( userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem,  selectedSlr) );
             layout.next(userProcessContainer);
         }//
+        else if ( status.equals("Decline") ){
+             JOptionPane.showMessageDialog(null, "Lease had been declined !", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } // else if
         else{
             JOptionPane.showMessageDialog(null, "Your Leasing are not aprroved yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_btnPaymentReviewActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new LeasingWorkAreaJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDecline;
     private javax.swing.JButton btnPaymentRequest;

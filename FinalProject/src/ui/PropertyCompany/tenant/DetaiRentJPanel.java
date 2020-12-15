@@ -104,23 +104,23 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Day To Pay");
         add(jLabel1);
-        jLabel1.setBounds(360, 130, 55, 14);
+        jLabel1.setBounds(360, 140, 110, 14);
 
         txtDayToPay.setEnabled(false);
         add(txtDayToPay);
-        txtDayToPay.setBounds(460, 130, 80, 20);
+        txtDayToPay.setBounds(480, 130, 80, 20);
 
         jLabel3.setText("Rental Date");
         add(jLabel3);
-        jLabel3.setBounds(360, 180, 57, 14);
+        jLabel3.setBounds(360, 180, 100, 14);
 
         txtRentaldate.setEnabled(false);
         add(txtRentaldate);
-        txtRentaldate.setBounds(460, 170, 80, 20);
+        txtRentaldate.setBounds(480, 170, 80, 20);
 
         jLabel4.setText("Pay Method");
         add(jLabel4);
-        jLabel4.setBounds(360, 220, 57, 14);
+        jLabel4.setBounds(360, 220, 110, 14);
 
         txtPayMethod.setEnabled(false);
         txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -129,23 +129,23 @@ public class DetaiRentJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPayMethod);
-        txtPayMethod.setBounds(460, 210, 80, 20);
+        txtPayMethod.setBounds(480, 210, 80, 20);
 
         jLabel7.setText("Pay Amount");
         add(jLabel7);
-        jLabel7.setBounds(360, 260, 58, 14);
+        jLabel7.setBounds(360, 260, 110, 14);
 
         txtPayAmount.setEnabled(false);
         add(txtPayAmount);
-        txtPayAmount.setBounds(460, 260, 80, 20);
+        txtPayAmount.setBounds(480, 260, 80, 20);
 
         jLabel8.setText("Pay Date");
         add(jLabel8);
-        jLabel8.setBounds(360, 300, 44, 14);
+        jLabel8.setBounds(360, 300, 110, 14);
 
         txtPayDate.setEnabled(false);
         add(txtPayDate);
-        txtPayDate.setBounds(460, 300, 80, 20);
+        txtPayDate.setBounds(480, 300, 80, 20);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel9.setText("jLabel4");

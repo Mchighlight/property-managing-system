@@ -122,8 +122,8 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
         txtPayDate = new javax.swing.JTextField();
         txtTenant = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        backJButton1 = new javax.swing.JButton();
         btnAcceptedPayment = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -134,23 +134,23 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
 
         txtDayToPay.setEnabled(false);
         add(txtDayToPay);
-        txtDayToPay.setBounds(470, 90, 80, 26);
+        txtDayToPay.setBounds(470, 90, 80, 20);
 
         jLabel1.setText("Day To Pay");
         add(jLabel1);
-        jLabel1.setBounds(370, 90, 69, 16);
+        jLabel1.setBounds(370, 90, 55, 14);
 
         jLabel3.setText("Rental Date");
         add(jLabel3);
-        jLabel3.setBounds(370, 140, 72, 16);
+        jLabel3.setBounds(370, 140, 57, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(470, 130, 80, 26);
+        txtRentalDate.setBounds(470, 130, 80, 20);
 
         jLabel4.setText("Pay Method");
         add(jLabel4);
-        jLabel4.setBounds(370, 180, 72, 16);
+        jLabel4.setBounds(370, 180, 57, 14);
 
         txtPayMethod.setEnabled(false);
         txtPayMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -159,48 +159,39 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPayMethod);
-        txtPayMethod.setBounds(470, 170, 80, 26);
+        txtPayMethod.setBounds(470, 170, 80, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(370, 220, 47, 16);
+        jLabel6.setBounds(370, 220, 37, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(470, 220, 80, 26);
+        txtBalance.setBounds(470, 220, 80, 20);
 
         jLabel7.setText("Pay Amount");
         add(jLabel7);
-        jLabel7.setBounds(370, 270, 75, 16);
+        jLabel7.setBounds(370, 270, 58, 14);
 
         txtPayAmount.setEnabled(false);
         add(txtPayAmount);
-        txtPayAmount.setBounds(470, 260, 80, 26);
+        txtPayAmount.setBounds(470, 260, 80, 20);
 
         jLabel8.setText("Pay Date");
         add(jLabel8);
-        jLabel8.setBounds(370, 310, 54, 16);
+        jLabel8.setBounds(370, 310, 44, 14);
 
         txtPayDate.setEnabled(false);
         add(txtPayDate);
-        txtPayDate.setBounds(470, 310, 80, 26);
+        txtPayDate.setBounds(470, 310, 80, 20);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(470, 350, 80, 26);
+        txtTenant.setBounds(470, 350, 80, 20);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(370, 360, 43, 16);
-
-        backJButton1.setText("<< Back");
-        backJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButton1ActionPerformed(evt);
-            }
-        });
-        add(backJButton1);
-        backJButton1.setBounds(210, 40, 97, 29);
+        jLabel9.setBounds(370, 360, 34, 14);
 
         btnAcceptedPayment.setText("Accept Payment");
         btnAcceptedPayment.setToolTipText("");
@@ -212,17 +203,22 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
         add(btnAcceptedPayment);
         btnAcceptedPayment.setBounds(620, 190, 140, 70);
 
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2);
+        backJButton2.setBounds(110, 60, 60, 50);
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel10.setText("jLabel4");
         add(jLabel10);
-        jLabel10.setBounds(5, -4, 930, 710);
+        jLabel10.setBounds(0, 10, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new ViewLeaseJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButton1ActionPerformed
 
     private void btnAcceptedPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptedPaymentActionPerformed
         Double security_pay = 0.0 ;
@@ -242,9 +238,16 @@ public class PaymentReviewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPayMethodActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
+        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.add(new ViewLeaseJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnAcceptedPayment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

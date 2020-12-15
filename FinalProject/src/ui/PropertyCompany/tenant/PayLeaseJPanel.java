@@ -126,11 +126,11 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(330, 90, 50, 14);
+        jLabel1.setBounds(330, 90, 100, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(330, 130, 44, 14);
+        jLabel3.setBounds(330, 130, 90, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
@@ -138,7 +138,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(330, 180, 57, 14);
+        jLabel4.setBounds(330, 180, 100, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
@@ -146,7 +146,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(330, 430, 37, 14);
+        jLabel6.setBounds(330, 430, 110, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
@@ -154,7 +154,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(330, 260, 78, 14);
+        jLabel7.setBounds(330, 260, 110, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
@@ -162,7 +162,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(330, 220, 36, 14);
+        jLabel8.setBounds(330, 220, 110, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
@@ -170,7 +170,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Pay Method");
         add(jLabel11);
-        jLabel11.setBounds(330, 390, 57, 14);
+        jLabel11.setBounds(330, 390, 110, 14);
 
         btnSubmitPayment.setText("Submit Payment");
         btnSubmitPayment.setToolTipText("");
@@ -193,7 +193,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel12.setText("Rent Price");
         add(jLabel12);
-        jLabel12.setBounds(330, 300, 49, 14);
+        jLabel12.setBounds(330, 300, 100, 14);
 
         txtRentPrice.setEnabled(false);
         txtRentPrice.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,7 @@ public class PayLeaseJPanel extends javax.swing.JPanel {
 
         jLabel13.setText("Minimum Balance");
         add(jLabel13);
-        jLabel13.setBounds(330, 350, 80, 14);
+        jLabel13.setBounds(330, 350, 110, 14);
 
         txtMinimumBalance.setToolTipText("");
         txtMinimumBalance.setEnabled(false);

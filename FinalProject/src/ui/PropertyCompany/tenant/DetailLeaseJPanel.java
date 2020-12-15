@@ -32,6 +32,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
     UserAccount ua;
     EcoSystem ecosystem;
     SignLeaseRequest slr;
+    String prevInterface ;
    
     public DetailLeaseJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, SignLeaseRequest slr) {
          initComponents();
@@ -39,6 +40,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
          this.ua = account;
          this. userProcessContainer = userProcessContainer;
          this.slr = slr ;
+         this.prevInterface = prevInterface;
          populateTextField();
     }
 
@@ -140,71 +142,71 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(460, 90, 80, 26);
+        txtStartDate.setBounds(460, 90, 80, 20);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(360, 90, 62, 16);
+        jLabel1.setBounds(330, 90, 90, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(360, 130, 56, 16);
+        jLabel3.setBounds(330, 130, 90, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(460, 130, 80, 26);
+        txtEndDate.setBounds(460, 130, 80, 20);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(360, 180, 72, 16);
+        jLabel4.setBounds(330, 180, 90, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(460, 170, 80, 26);
+        txtRentalDate.setBounds(460, 180, 80, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(360, 220, 47, 16);
+        jLabel6.setBounds(330, 220, 80, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(460, 220, 80, 26);
+        txtBalance.setBounds(460, 220, 80, 20);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(360, 270, 103, 16);
+        jLabel7.setBounds(330, 270, 120, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(460, 260, 80, 26);
+        txtSecurityDeposit.setBounds(460, 260, 80, 20);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(360, 310, 51, 16);
+        jLabel8.setBounds(330, 310, 90, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(460, 300, 80, 26);
+        txtBuilding.setBounds(460, 300, 80, 20);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(460, 350, 80, 26);
+        txtTenant.setBounds(460, 350, 80, 20);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(360, 350, 43, 16);
+        jLabel9.setBounds(330, 350, 80, 14);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(360, 400, 109, 16);
+        jLabel10.setBounds(330, 390, 120, 14);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(490, 390, 96, 26);
+        txtTerminationDate.setBounds(460, 390, 80, 20);
 
         jLabel11.setText("Rent History");
         add(jLabel11);
-        jLabel11.setBounds(360, 440, 78, 16);
+        jLabel11.setBounds(330, 430, 90, 14);
 
         backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton1.setBorderPainted(false);
@@ -219,7 +221,7 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
         RentsCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(RentsCombobox);
-        RentsCombobox.setBounds(460, 440, 96, 27);
+        RentsCombobox.setBounds(460, 430, 130, 20);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel12.setText("jLabel4");
@@ -229,13 +231,18 @@ public class DetailLeaseJPanel extends javax.swing.JPanel {
 
     private void RentDetailJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentDetailJButtonActionPerformed
         // TODO add your handling code here:
-        Rent selectedRent = (Rent)RentsCombobox.getSelectedItem();
-        CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
-        userProcessContainer.add(new DetaiRentJPanel( userProcessContainer,  ua,  ecosystem, slr, selectedRent) );
-        layout.next(userProcessContainer);
+         try{
+            Rent selectedRent = (Rent)RentsCombobox.getSelectedItem();
+            CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add(new DetaiRentJPanel( userProcessContainer,  ua,  ecosystem, slr, selectedRent) );
+            layout.next(userProcessContainer);
+        }
+        catch( Exception e){
+        }
     }//GEN-LAST:event_RentDetailJButtonActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+       
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

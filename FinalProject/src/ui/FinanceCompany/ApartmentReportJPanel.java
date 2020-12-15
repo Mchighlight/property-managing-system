@@ -141,7 +141,7 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         EnterpriseCombobox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        backJButton1 = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -175,12 +175,12 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(ApartmentJTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(10, 74, 880, 229);
+        jScrollPane2.setBounds(10, 70, 880, 229);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Apartment Report");
         add(jLabel5);
-        jLabel5.setBounds(360, 20, 195, 22);
+        jLabel5.setBounds(360, 20, 195, 27);
 
         ApartmentCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,15 +196,15 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(NetWorkCombobox);
-        NetWorkCombobox.setBounds(444, 315, 142, 27);
+        NetWorkCombobox.setBounds(444, 315, 142, 20);
 
         jLabel4.setText("Network");
         add(jLabel4);
-        jLabel4.setBounds(359, 319, 53, 16);
+        jLabel4.setBounds(359, 319, 40, 14);
 
         jLabel6.setText("Enterprise");
         add(jLabel6);
-        jLabel6.setBounds(359, 358, 63, 16);
+        jLabel6.setBounds(359, 358, 49, 14);
 
         EnterpriseCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,30 +212,28 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
             }
         });
         add(EnterpriseCombobox);
-        EnterpriseCombobox.setBounds(444, 354, 142, 27);
+        EnterpriseCombobox.setBounds(444, 354, 142, 20);
 
         jLabel7.setText("Apartment");
         jLabel7.setToolTipText("");
         add(jLabel7);
-        jLabel7.setBounds(359, 399, 66, 16);
+        jLabel7.setBounds(359, 399, 51, 14);
 
-        backJButton1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-back-arrow-100.png"))); // NOI18N
-        backJButton1.setToolTipText("");
-        backJButton1.setBorderPainted(false);
-        backJButton1.setContentAreaFilled(false);
-        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButton1ActionPerformed(evt);
+                backJButton2ActionPerformed(evt);
             }
         });
-        add(backJButton1);
-        backJButton1.setBounds(133, 6, 57, 29);
+        add(backJButton2);
+        backJButton2.setBounds(20, 10, 60, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel8.setText("jLabel4");
         add(jLabel8);
-        jLabel8.setBounds(5, -4, 930, 710);
+        jLabel8.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ApartmentComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApartmentComboboxActionPerformed
@@ -261,11 +259,12 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_EnterpriseComboboxActionPerformed
 
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
         userProcessContainer.add(new AccountantWorkAreaJPanel(userProcessContainer,  this.ua,  organization,   enterprise, ecosystem));
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButton1ActionPerformed
+    }//GEN-LAST:event_backJButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -273,7 +272,7 @@ public class ApartmentReportJPanel extends javax.swing.JPanel {
     private javax.swing.JTable ApartmentJTable;
     private javax.swing.JComboBox<Object> EnterpriseCombobox;
     private javax.swing.JComboBox<String> NetWorkCombobox;
-    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

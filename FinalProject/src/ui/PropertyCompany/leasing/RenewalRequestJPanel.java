@@ -46,7 +46,7 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
          this.leaseOrganization = leaseOrganization;
          this.enterprise = enterprise ;
          this.ecosystem=business;
-         
+         this.slr = slr ;
          populateTextField();
     }
 
@@ -117,7 +117,7 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtTerminationDate = new javax.swing.JTextField();
-        backJButton1 = new javax.swing.JButton();
+        backJButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
         setLayout(null);
@@ -138,81 +138,83 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
 
         txtStartDate.setEnabled(false);
         add(txtStartDate);
-        txtStartDate.setBounds(470, 90, 80, 26);
+        txtStartDate.setBounds(470, 90, 80, 20);
 
         jLabel1.setText("Start Date");
         add(jLabel1);
-        jLabel1.setBounds(310, 90, 62, 16);
+        jLabel1.setBounds(310, 90, 50, 14);
 
         jLabel3.setText("End Date");
         add(jLabel3);
-        jLabel3.setBounds(310, 130, 56, 16);
+        jLabel3.setBounds(310, 130, 44, 14);
 
         txtEndDate.setEnabled(false);
         add(txtEndDate);
-        txtEndDate.setBounds(470, 130, 80, 26);
+        txtEndDate.setBounds(470, 130, 80, 20);
 
         jLabel4.setText("Rental Date");
         add(jLabel4);
-        jLabel4.setBounds(310, 180, 72, 16);
+        jLabel4.setBounds(310, 180, 57, 14);
 
         txtRentalDate.setEnabled(false);
         add(txtRentalDate);
-        txtRentalDate.setBounds(470, 170, 80, 26);
+        txtRentalDate.setBounds(470, 170, 80, 20);
 
         jLabel6.setText("Balance");
         add(jLabel6);
-        jLabel6.setBounds(310, 220, 47, 16);
+        jLabel6.setBounds(310, 220, 37, 14);
 
         txtBalance.setEnabled(false);
         add(txtBalance);
-        txtBalance.setBounds(470, 210, 80, 26);
+        txtBalance.setBounds(470, 210, 80, 20);
 
         jLabel7.setText("Security Deposit");
         add(jLabel7);
-        jLabel7.setBounds(310, 260, 103, 16);
+        jLabel7.setBounds(310, 260, 78, 14);
 
         txtSecurityDeposit.setEnabled(false);
         add(txtSecurityDeposit);
-        txtSecurityDeposit.setBounds(470, 260, 80, 26);
+        txtSecurityDeposit.setBounds(470, 260, 80, 20);
 
         jLabel8.setText("Building");
         add(jLabel8);
-        jLabel8.setBounds(310, 310, 51, 16);
+        jLabel8.setBounds(310, 310, 36, 14);
 
         txtBuilding.setEnabled(false);
         add(txtBuilding);
-        txtBuilding.setBounds(470, 300, 80, 26);
+        txtBuilding.setBounds(470, 300, 80, 20);
 
         txtTenant.setEnabled(false);
         add(txtTenant);
-        txtTenant.setBounds(470, 350, 80, 26);
+        txtTenant.setBounds(470, 350, 80, 20);
 
         jLabel9.setText("Tenant");
         add(jLabel9);
-        jLabel9.setBounds(310, 350, 43, 16);
+        jLabel9.setBounds(310, 350, 34, 14);
 
         jLabel10.setText("Termination Date");
         add(jLabel10);
-        jLabel10.setBounds(310, 400, 109, 16);
+        jLabel10.setBounds(310, 400, 82, 14);
 
         txtTerminationDate.setEnabled(false);
         add(txtTerminationDate);
-        txtTerminationDate.setBounds(470, 390, 80, 26);
+        txtTerminationDate.setBounds(470, 390, 80, 20);
 
-        backJButton1.setText("<< Back");
-        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
+        backJButton2.setBorderPainted(false);
+        backJButton2.setContentAreaFilled(false);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButton1ActionPerformed(evt);
+                backJButton2ActionPerformed(evt);
             }
         });
-        add(backJButton1);
-        backJButton1.setBounds(170, 30, 97, 29);
+        add(backJButton2);
+        backJButton2.setBounds(80, 50, 60, 50);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel11.setText("jLabel4");
         add(jLabel11);
-        jLabel11.setBounds(5, -4, 930, 710);
+        jLabel11.setBounds(0, 0, 930, 710);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRenwalRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRenwalRequestActionPerformed
@@ -221,15 +223,16 @@ public class RenewalRequestJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Submit Renewal Request to Tenant", "Info", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSubmitRenwalRequestActionPerformed
 
-    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+
         CardLayout layout =  (CardLayout)userProcessContainer.getLayout();
         userProcessContainer.add(new RenewalJPanel(userProcessContainer,  ua,  leaseOrganization,  enterprise, ecosystem));
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_backJButton1ActionPerformed
+    }//GEN-LAST:event_backJButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JButton btnSubmitRenwalRequest;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
