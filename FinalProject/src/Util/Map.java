@@ -202,7 +202,7 @@ public class Map extends javax.swing.JFrame {
             }
             });
         ///Users/junyaoli/Documents/CYN_LJY_HHZ/java_jar/html
-        browser.loadURL("file:///Users/junyaoli/Documents/CYN_LJY_HHZ/java_jar/html/search.html");//testbb，marker版本，import,search
+        browser.loadURL("C:\\Users\\Mchig\\Desktop\\Info5100\\final_project\\CYN_LJY_HHZ\\java_jar\\html\\search.html");//testbb，marker版本，import,search
     }
     
 }

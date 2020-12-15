@@ -13,6 +13,7 @@ import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -145,7 +146,8 @@ public class updateAppointmentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         request.setStatus("defered");
          try {
-            Date date=new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy").parse(jTextField1.getText());
+            SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+            Date date=parserSDF.parse(jTextField1.getText());
             request.setPointedDate(date);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());

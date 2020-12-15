@@ -77,7 +77,6 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -120,10 +119,6 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(330, 0, 340, 80);
 
-        jButton1.setText("transfer into renting request");
-        add(jButton1);
-        jButton1.setBounds(300, 370, 230, 50);
-
         jButton2.setText("View");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +126,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2);
-        jButton2.setBounds(483, 597, 75, 29);
+        jButton2.setBounds(483, 597, 55, 23);
 
         jButton4.setText("View Message");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +135,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton4);
-        jButton4.setBounds(100, 370, 140, 50);
+        jButton4.setBounds(210, 370, 180, 50);
 
         jButton3.setText("Request Marketing for Property");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +144,7 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(570, 370, 239, 50);
+        jButton3.setBounds(500, 370, 185, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -194,7 +189,6 @@ public class RealEstateAgentWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

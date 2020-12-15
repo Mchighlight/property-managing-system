@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -254,8 +255,8 @@ public class newRepairmentJPanel extends javax.swing.JPanel {
             //String requirement, Propority department, UserAccount customerAccount, UserAccount RepairSpecialist
 
         try {
-           
-            Date date=new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy").parse(jTextField1.getText());
+           SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+            Date date=parserSDF.parse(jTextField1.getText());
             request.setPointedDate(date);
             agent.getWorkQueue().getRepairRequestRequestList().add(request);
             ua.getWorkQueue().getRepairRequestRequestList().add(request);
