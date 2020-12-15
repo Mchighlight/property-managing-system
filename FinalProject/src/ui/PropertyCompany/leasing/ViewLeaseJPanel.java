@@ -39,6 +39,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
     
     public ViewLeaseJPanel(JPanel userProcessContainer, UserAccount account, LeasingOrganization leaseOrganization, Enterprise enterprise, EcoSystem business) {
          initComponents();
+         btnDecline.setVisible(false);
          this. userProcessContainer = userProcessContainer;
          this.ua = account;
          this.leaseOrganization = leaseOrganization;
@@ -147,7 +148,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDecline);
-        btnDecline.setBounds(150, 300, 140, 60);
+        btnDecline.setBounds(10, 380, 140, 60);
 
         btnAccept.setText("Leasing Review");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +157,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAccept);
-        btnAccept.setBounds(360, 300, 150, 60);
+        btnAccept.setBounds(160, 300, 150, 60);
 
         btnPaymentRequest.setText("Payment Request");
         btnPaymentRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +166,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentRequest);
-        btnPaymentRequest.setBounds(360, 380, 150, 60);
+        btnPaymentRequest.setBounds(350, 300, 150, 60);
 
         btnViewDetail.setText("View Detail");
         btnViewDetail.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +175,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetail);
-        btnViewDetail.setBounds(570, 380, 130, 60);
+        btnViewDetail.setBounds(790, 20, 90, 23);
 
         btnPaymentReview.setText("Payment Review");
         btnPaymentReview.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +184,7 @@ public class ViewLeaseJPanel extends javax.swing.JPanel {
             }
         });
         add(btnPaymentReview);
-        btnPaymentReview.setBounds(150, 380, 140, 60);
+        btnPaymentReview.setBounds(540, 300, 140, 60);
 
         backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back-arrow.png"))); // NOI18N
         backJButton2.setBorderPainted(false);

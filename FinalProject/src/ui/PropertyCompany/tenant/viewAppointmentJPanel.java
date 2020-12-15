@@ -96,22 +96,22 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Chat with: ");
         add(jLabel3);
-        jLabel3.setBounds(150, 50, 90, 20);
+        jLabel3.setBounds(140, 50, 70, 20);
 
         agentjLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         agentjLabel.setText("<value>");
         add(agentjLabel);
-        agentjLabel.setBounds(220, 50, 70, 17);
+        agentjLabel.setBounds(220, 50, 140, 21);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Appartment: ");
         add(jLabel5);
-        jLabel5.setBounds(380, 50, 140, 17);
+        jLabel5.setBounds(380, 50, 90, 21);
 
         aptjLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         aptjLabel.setText("<value>");
         add(aptjLabel);
-        aptjLabel.setBounds(470, 50, 100, 17);
+        aptjLabel.setBounds(470, 50, 380, 21);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -123,7 +123,7 @@ public class viewAppointmentJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("Conversation");
         add(jLabel2);
-        jLabel2.setBounds(340, 10, 170, 22);
+        jLabel2.setBounds(340, 10, 170, 27);
 
         jTextField1.setFont(new java.awt.Font("Lucida Bright", 0, 13)); // NOI18N
         jTextField1.setText("Please imput message");

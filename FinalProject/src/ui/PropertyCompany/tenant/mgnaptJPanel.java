@@ -47,7 +47,7 @@ public class mgnaptJPanel extends javax.swing.JPanel {
             return;
         }
         for (VisitRequest wq : ua.getWorkQueue().getVisitRequestList()) {
-            if (wq.getStatus().equals("waiting processed")) {
+            if (wq.getStatus().equals("waiting processed") || wq.getStatus().equals("defered") ) {
                 Object[] row = new Object[jTable1.getColumnCount()];
             row[0] = wq;
             row[1] = wq.getAgent();
